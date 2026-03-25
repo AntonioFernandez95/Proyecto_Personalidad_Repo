@@ -16,7 +16,11 @@ def badge_resultado(texto: str, color: str) -> rx.Component:
         display="inline-flex", align_items="center",
     )
 
-@rx.page(route="/academia/historial", title="Academia Online - Historial", on_load=AcademiaState.check_login)
+@rx.page(
+    route="/academia/historial", 
+    title="Academia Online - Historial", 
+    on_load=[AcademiaState.check_login, AcademiaState.cargar_historial]
+)
 def historial() -> rx.Component:
     return academia_layout(
         rx.text("MI HISTORIAL DE SIMULACROS", font_size="1.9em", font_weight="900", color="white"),
@@ -30,14 +34,14 @@ def historial() -> rx.Component:
                     )
                 ),
                 rx.table.body(
-                    *[
-                        rx.table.row(
-                            rx.table.cell(fecha, color="black"),
-                            rx.table.cell(test, color="black"),
-                            rx.table.cell(badge_resultado(res, color)),
+                    rx.foreach(
+                        AcademiaState.historial,
+                        lambda item: rx.table.row(
+                            rx.table.cell(item["fecha"], color="black"),
+                            rx.table.cell(item["test"], color="black"),
+                            rx.table.cell(badge_resultado(item["resultado"], item["color"])),
                         )
-                        for fecha, test, res, color in _HISTORIAL
-                    ]
+                    )
                 ),
                 width="100%",
             ),
