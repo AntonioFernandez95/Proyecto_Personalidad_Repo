@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "6630bad042ffaff7f2c23db4"
+  },
+  "username": "Prueba 1",
+  "email": "btoledo@academiametodos.com"
+},
+{
+  "_id": {
+    "$oid": "6630bb5242ffaff7f2c23db5"
+  },
+  "username": "Prueba 1",
+  "email": "btoledo@academiametodos.com"
+},
+{
+  "_id": {
+    "$oid": "6630bb5342ffaff7f2c23db6"
+  },
+  "username": "Prueba 1",
+  "email": "btoledo@academiametodos.com"
+},
+{
+  "_id": {
+    "$oid": "6630bb5342ffaff7f2c23db7"
+  },
+  "username": "Prueba 1",
+  "email": "btoledo@academiametodos.com"
+}]

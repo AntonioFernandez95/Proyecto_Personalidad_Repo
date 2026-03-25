@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "66865cafbe2391ddc5f89783"
+  },
+  "img": "17.png",
+  "titular": "Plataforma de Inglés Guardia Civil",
+  "enlace": "https://academiametodos.com/plataforma-de-ingles-guardia-civil/",
+  "fecha": "10/10/2023",
+  "plataformas": "guardia_civil"
+},
+{
+  "_id": {
+    "$oid": "66865cafbe2391ddc5f89784"
+  },
+  "img": "18.png",
+  "titular": "Temario actualizado Guardia Civil – Convocatoria 2023",
+  "enlace": "https://academiametodos.com/temario-actualizado-guardia-civil-convocatoria-2023/",
+  "fecha": "03/20/2023",
+  "plataformas": "guardia_civil"
+},
+{
+  "_id": {
+    "$oid": "66865cafbe2391ddc5f89785"
+  },
+  "img": "gc.jpg",
+  "titular": "Convocatoria Guardia Civil 2023",
+  "enlace": "https://academiametodos.com/convocatoria-guardia-civil-2023/",
+  "fecha": "07/28/2023",
+  "plataformas": "guardia_civil"
+},
+{
+  "_id": {
+    "$oid": "66865cafbe2391ddc5f89786"
+  },
+  "img": "19.png",
+  "titular": "GUARDIA CIVIL 2023: Listas provisionales, fecha, hora y lugar de la primera prueba.",
+  "enlace": "https://academiametodos.com/guardia-civil-listas-provisionales-fecha-hora-lugar-de-la-primera-prueba/",
+  "fecha": "10/02/2023",
+  "plataformas": "guardia_civil"
+},
+{
+  "_id": {
+    "$oid": "66865cafbe2391ddc5f89787"
+  },
+  "img": "opo.jpg",
+  "titular": "Letra de comienzo en las oposiciones 2024",
+  "enlace": "https://academiametodos.com/orden-actuacion-oposiciones-2024/",
+  "fecha": "02/14/2024",
+  "plataformas": "guardia_civil, tropa"
+},
+{
+  "_id": {
+    "$oid": "66a0bc6d630b129d5791916d"
+  },
+  "img": "gc.jpg",
+  "titular": "Convocatoria Guardia Civil 2024",
+  "enlace": "https://academiametodos.com/convocatoria-guardia-civil-2024-2/",
+  "fecha": "06/26/2024",
+  "plataformas": "guardia_civil"
+},
+{
+  "_id": {
+    "$oid": "66bf10a72b2e97527e693eda"
+  },
+  "img": "17.png",
+  "titular": "Admitidos- Excluidos- fecha y hora del examen- Convocatoria 2024",
+  "enlace": "https://academiametodos.com/guardia-civil-2024-admitidos-excluidos-fecha-y-hora-examen/",
+  "fecha": "06/08/2024",
+  "plataformas": "guardia_civil"
+}]

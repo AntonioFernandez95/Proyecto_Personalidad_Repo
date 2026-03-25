@@ -1,0 +1,40 @@
+# Stage 1: Build the static frontend
+FROM python:3.12-slim AS builder
+
+# Install Node.js and system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    unzip \
+    libpq-dev \
+    gcc \
+    git \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application files
+COPY . .
+
+# Exportar el frontend. 
+# Usamos env vars vacías para que el código de conexión a DB no explote si no hay host
+RUN reflex init
+RUN REFLEX_ENV=prod DATABASE_URL=postgresql://ignore:ignore@localhost/ignore reflex export --frontend-only --no-zip
+
+# Stage 2: Serve the static files with Nginx
+FROM nginx:alpine
+
+# Copy the generated static files from the builder stage
+COPY --from=builder /app/.web/_static /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]

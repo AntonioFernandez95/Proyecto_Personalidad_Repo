@@ -1,0 +1,16 @@
+.venv
+.venv_win
+.web
+__pycache__
+.git
+.gitignore
+.gitattributes
+postgres_data
+## data (Keep data for importador)
+*.log
+Dockerfile*
+docker-compose.yml*
+README.md
+GUIA_*
+## importador.py (Keep for database population)
+#check_db_debug.py

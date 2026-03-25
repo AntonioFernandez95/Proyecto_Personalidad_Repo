@@ -1,0 +1,10 @@
+[0;1;31m×[0m personalidad.service - Gunicorn instance to serve myapp
+     Loaded: loaded (/etc/systemd/system/personalidad.service; enabled; vendor preset: enabled)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Fri 2024-06-07 11:53:41 UTC; 4s ago
+    Process: 127962 ExecStart=/var/www/html/PersonalidadCompleto/.venv/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 --log-level debug --access-logfile /var/www/html/PersonalidadCompleto/gunicorn.access.log --error-logfile /var/www/html/PersonalidadCompleto/gunicorn.error.log Personalidad.Personalidad:app [0;1;31m(code=exited, status=3)[0m
+   Main PID: 127962 (code=exited, status=3)
+        CPU: 248ms
+
+Jun 07 11:53:40 localhost systemd[1]: Started Gunicorn instance to serve myapp.
+Jun 07 11:53:41 localhost systemd[1]: [0;1;39m[0;1;31m[0;1;39mpersonalidad.service: Main process exited, code=exited, status=3/NOTIMPLEMENTED[0m
+Jun 07 11:53:41 localhost systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mpersonalidad.service: Failed with result 'exit-code'.[0m

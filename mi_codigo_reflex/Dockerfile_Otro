@@ -1,0 +1,60 @@
+# Use the official Python image
+FROM python:3.11
+
+# Set environment variables
+ARG API_URL
+ENV API_URL=${API_URL:-http://localhost:8000}
+
+# Install necessary packages including Apache
+RUN apt-get update -y && apt-get install -y apache2 && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy the application code
+COPY . .
+
+# Set up virtual environment
+ENV VIRTUAL_ENV=/app/.venv_docker
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+RUN python3.11 -m venv $VIRTUAL_ENV
+RUN pip install --upgrade pip
+
+# Install app requirements
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Deploy templates and prepare app
+RUN reflex init
+# Crear el directorio de destino antes de mover archivos estáticos
+RUN mkdir -p /var/www/html/PersonalidadCompleto/
+# Download all npm dependencies and compile frontend
+RUN reflex export --frontend-only --no-zip && mv .web/_static/* /var/www/html/PersonalidadCompleto/ && rm -rf .web
+
+# Create Apache configuration file
+RUN echo '<VirtualHost *:80> \
+    ServerAdmin informatica2@academiametodos.com \
+    ServerName personalidad.academiametodos.com \
+    DocumentRoot /var/www/html \
+    ProxyPreserveHost On \
+    RewriteEngine On \
+    RewriteCond %{HTTP:Upgrade} =websocket [NC] \
+    RewriteRule /(.*) ws://localhost:8000/$1 [P,L] \
+    ProxyPass / http://localhost:8000/ \
+    ProxyPassReverse / http://localhost:8000/ \
+    ErrorLog ${APACHE_LOG_DIR}/error.log \
+    CustomLog ${APACHE_LOG_DIR}/access.log combined \
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+
+# Enable required Apache modules and site
+RUN a2enmod proxy proxy_http proxy_wstunnel rewrite && \
+    a2ensite 000-default.conf && \
+    a2dissite 000-default.conf
+
+# Needed until Reflex properly passes SIGTERM on backend.
+STOPSIGNAL SIGKILL
+
+# Expose port 80
+EXPOSE 80
+
+# Apply migrations before starting the backend.
+CMD [ -d alembic ] && reflex db migrate; \
+    service apache2 start && gunicorn --workers 3 --bind 0.0.0.0:8000 Personalidad.Personalidad:app

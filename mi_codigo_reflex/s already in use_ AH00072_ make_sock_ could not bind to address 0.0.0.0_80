@@ -1,0 +1,17 @@
+[0;1;31m×[0m apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Wed 2024-06-19 22:24:58 UTC; 10s ago
+       Docs: https://httpd.apache.org/docs/2.4/
+    Process: 49900 ExecStart=/usr/sbin/apachectl start [0;1;31m(code=exited, status=1/FAILURE)[0m
+        CPU: 42ms
+
+Jun 19 22:24:58 localhost apachectl[49904]: [Wed Jun 19 22:24:58.272817 2024] [alias:warn] [pid 49904] AH00671: The Alias directive in /etc/apache2/mods-enabled/alias.conf at line 14 will probably never match because it overlaps an earlier Alias.
+Jun 19 22:24:58 localhost apachectl[49904]: (98)Address already in use: AH00072: make_sock: could not bind to address [::]:80
+Jun 19 22:24:58 localhost apachectl[49904]: (98)Address already in use: AH00072: make_sock: could not bind to address 0.0.0.0:80
+Jun 19 22:24:58 localhost apachectl[49904]: no listening sockets available, shutting down
+Jun 19 22:24:58 localhost apachectl[49904]: AH00015: Unable to open logs
+Jun 19 22:24:58 localhost apachectl[49900]: Action 'start' failed.
+Jun 19 22:24:58 localhost apachectl[49900]: The Apache error log may have more information.
+Jun 19 22:24:58 localhost systemd[1]: [0;1;39m[0;1;31m[0;1;39mapache2.service: Control process exited, code=exited, status=1/FAILURE[0m
+Jun 19 22:24:58 localhost systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mapache2.service: Failed with result 'exit-code'.[0m
+Jun 19 22:24:58 localhost systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start The Apache HTTP Server.[0m

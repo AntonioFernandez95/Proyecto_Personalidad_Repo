@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "6666e219d510e25dcd01772c"
+  },
+  "nombreCompleto": "Guardia Civil Psicotécnicos",
+  "mote": "guardiaCivil",
+  "source": "/GC_2.png",
+  "hrefPlataforma": "/guardia_civil",
+  "hrefInfo": "https://academiametodos.com/guardia-civil-2/"
+},
+{
+  "_id": {
+    "$oid": "6666e3bbd510e25dcd01772e"
+  },
+  "nombreCompleto": "Oficiales y Suboficiales",
+  "mote": "suboficiales",
+  "source": "/Suboficiales.png",
+  "hrefPlataforma": "/suboficiales",
+  "hrefInfo": "https://academiametodos.com/oficiales-suboficiales-acceso-directo/"
+},
+{
+  "_id": {
+    "$oid": "6666e402d510e25dcd01772f"
+  },
+  "nombreCompleto": "Tropa y Marinería",
+  "mote": "tropa",
+  "source": "/Tropa.png",
+  "hrefPlataforma": "/tropa",
+  "hrefInfo": "https://academiametodos.com/tropa-y-marineria/"
+},
+{
+  "_id": {
+    "$oid": "6669500339f2f9a35e562d40"
+  },
+  "nombreCompleto": "Tropa Permanente",
+  "mote": "troPermanente",
+  "source": "/tropaper.png",
+  "hrefPlataforma": "/tropa_permanente",
+  "hrefInfo": "https://academiametodos.com/tropa-permanente/"
+},
+{
+  "_id": {
+    "$oid": "66bc77d5bcf7c61235088059"
+  },
+  "nombreCompleto": "Guardia Civil Inglés",
+  "mote": "gcIngles",
+  "source": "/GC_2.png",
+  "hrefPlataforma": "/gc_ingles",
+  "hrefInfo": "http://gcingles.academiametodos.com/"
+}]

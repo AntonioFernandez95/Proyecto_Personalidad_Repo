@@ -1,0 +1,5532 @@
+[{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ea8"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Mis hábitos son aceptables socialmente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eab"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Soy puntual en mis citas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eac"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Suelo ser poco puntual en mis citas",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eb2"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "No hablo de lo que desconozco",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eb8"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "He sentido envidia por los éxitos de los demás",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ebf"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando suena el despertador para ir a trabajar, me apetece quedarme en la cama",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ec1"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Soy una persona simpática, incluso con aquellas personas que no me caen bien",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ec2"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Hay personas que conozco que me disgustan por su forma de pensar",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ec4"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Muestro mi simpatía a todas las personas que conozco",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ec5"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando por equivocación me han devuelto más dinero al pagar algo, me he callado",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ecb"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Asumo mis errores sin problemas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ed0"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Hago cosas por los demás para quedar bien",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ed3"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Hablo mal de mis amigos cuando no están",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ed8"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "En un juego o deporte prefiero ganar a perder",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ee0"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me gusta presumir cuando consigo algo",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ee1"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Si tengo que mentir, no me cuesta hacerlo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ee4"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me gusta salirme con la mía",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ee5"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me gusta tener la razón en una discusión",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eec"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Quiero ser el mejor en lo que hago",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eed"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Siempre estoy de acuerdo con los demás",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ef1"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me gusta comportarme de forma desinteresada",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ef4"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Estoy de acuerdo con la afirmación “Todo es mejorable”",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ef6"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Siempre he resuelto de forma satisfactoria los problemas que se me han planteado",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ef8"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Soy una persona que me asusto con facilidad",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6efb"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Siempre he cumplido con las normas, incluso cuando era pequeño",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6efe"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Pido disculpas cuando he dicho o hecho algo mal",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f00"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando una persona está hablando no la interrumpo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f02"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando estaba en la escuela, aunque el profesor se ausentase de clase, me comportaba correctamente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f04"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Si prometo hacer algo, lo hago a pesar de los muchos inconvenientes que se puedan presentar",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f0d"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo poco confianza en mí mismo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f0e"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me falta confianza en mí mismo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f0f"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "He tenido tantos fracasos en mi vida que he perdido la confianza en mí mismo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f13"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Soy una persona despreocupada",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f18"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo sentimientos de culpabilidad por cosas que hice mucho tiempo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f19"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me siento triste sin razón aparente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f1b"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me siento feliz",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f1f"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Hay momentos en los que me siento muy elegre, sin ninguna razón especial",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f22"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo muchos planes de futuro",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f23"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo mucha ilusión en mi futuro",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f26"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "He perdido el interés por lo que hago",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f29"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Creo que he fracasado más que la mayoría de las personas que conozco",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f2e"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Hay pocas cosas que me llamen la atención",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f32"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "No me atraen tantas cosas como hace unos meses",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f39"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo que esforzarme mucho para hacer cualquier cosa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f3d"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me considero una persona como las demás",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f42"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "No me importa lo que les ocurra a los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f43"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me importa poco lo que pase a mi alrededor",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f4b"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Mis pensamientos me impiden dormir",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f4c"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo un sueño superficial ya que me suelo despertar por cualquier ruido",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f4f"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me despierto más cansado/a por la mañana",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f50"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo dificultades para expresar lo que pienso",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f56"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me preocupa mi salud más de lo normal",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f5a"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "He perdido el interés por el sexo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f65"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Soy una persona tranquila",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f66"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "En el colegio tenía problemas con los demás compañeros",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f67"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "En el colegio me llamaron la atención por mal comportamiento",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f68"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me gustaba ir a la escuela",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f69"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "He hecho “novillos” en la escuela",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f71"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me gustaría llevarme mejor con mis familiares",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f72"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Las normas son para los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f74"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Mi modo de hacer las cosas es poco comprensible para los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f75"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Para hacer las cosas sigo las reglas establecidas",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f76"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "He sido (soy) independiente de las reglas familiares",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f7a"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "He consumido sustancias prohibidas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ea9"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Todas mis costumbres son buenas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eaa"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Todo lo que hago o pienso es bueno",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eae"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Hago las cosas según lo que predico",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eb1"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Si pudiera colarme lo haría",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eb4"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me gusta parecer que sé de todo",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eb7"
+  },
+  "ITEM": 1,
+  "PREGUNTA": " Me gusta que me reconozcan lo que hago bien",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eb9"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "No me considero una persona envidiosa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ebb"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me desagrada oír palabrotas o “tacos” en una conversación",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ec6"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando he podido aprovecharme de alguien lo he hecho",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ecd"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Mi estado de humor es siempre el mismo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6edc"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me como todo lo que me ponen en el plato, aunque no me guste mucho",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6edf"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Si estoy en la calle y tengo que tirar un papel, busco una papelera",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eeb"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Si creo que algo puede perjudicarme no digo nada que pueda sentarle mal a otra persona",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eee"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Acepto las ideas de los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ef3"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me muevo por interés",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ef5"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Comprendo todo lo que leo, aunque sea algo que desconozco",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ef7"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Soy una persona valiente, incluso en situaciones muy peligrosas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ef9"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Soy una persona que no se asusta con facilidad",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f05"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Si puedo ayudar a una persona lo hago sin dudarlo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f12"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me preocupo por cualquier cosa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f14"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "He decepcionado a los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f16"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me considero una persona optimista",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f1a"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me siento infeliz",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f1d"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me gustaría ser tan feliz como parecen serlo los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f2f"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Mi vida diaria está ocupada por cosas que me interesan",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f30"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Durante el día hago cosas que me interesan",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f33"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "No puedo centrarme en las cosas porque no tengo ganas de nada",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f37"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me encuentro muy cansado la mayor parte del tiempo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f3a"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Estoy descontento conmigo mismo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f41"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me molesto o irrito con más facilidad que antes",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f46"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Duermo tan bien como siempre",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f47"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo dificultad para coger el sueño",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f4d"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me despierto durante la noche",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f51"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Soy capaz de expresar lo que siento",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f52"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "He perdido el apetito, últimamente como menos que antes",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f57"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Mi salud física es tan buena como la del resto de mis amigos",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f5c"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me pongo de mal humor por cosas sin importancia",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f5e"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me considero una carga para los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f62"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo buena memoria",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f6c"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Cuando vivía (vivo) con mis padres era independiente y libre de las normas familiares.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f78"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Hago lo que los demás piensan que debo hacer",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f80"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "En el pasado, he robado alguna cosa de poco valor",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f89"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Hay que ser sincero y asumir las consecuencias de nuestros actos",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f8d"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me preocupa tener deudas",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f8f"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me preocupa mi futuro y el de mi familia",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f92"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Mis amigos me convencen para hacer cosas que sé que están mal",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f94"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Sentiría mucha pena al ver un animal cogido en un cepo o trampa",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f97"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me enfado fácilmente.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f99"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me gusta discutir por discutir",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f9d"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Pierdo el control con facilidad",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f9f"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me preocupo por las necesidades de los demás.",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fa5"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Puedo tomar decisiones fríamente sin reparar en que pueden perjudicar a otros.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fa8"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me tiene sin cuidado los que los demás piensan de mí",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6faa"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Respeto a las demás",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fb3"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me molesta la gente que conduce con cuidado y respeta las normas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fb5"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Estoy de acuerdo con la frase “sólo los más fuertes sobreviven”",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fb7"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Creo que la mayoría de la gente está dispuesta a hacer lo que sea, incluso si no es correcto, para conseguir lo que quieren",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fb9"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gustan los trabajos en los que puedo trabajar sólo",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fc1"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gustan las multitudes",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fc3"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Si estoy solo mucho tiempo, siento la necesidad de estar con más gente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fc4"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Soy una persona alegre y animada",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fc9"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Las reuniones sociales me parecen aburridas",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fca"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Disfruto en las fiestas en las que hay mucha gente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fce"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Cuando estoy en un grupo prefiero que hablen los demás",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fd7"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me pongo nervioso si tengo que hablar en público",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f7c"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "He abusado del alcohol",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f83"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "En el pasado hice cosas malas que no se las cuento a nadie",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f86"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Si pudiera entra en un concierto, cine, campo de futbol…. Sin que me vieran, lo haría",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f8a"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Se me da bien ocultar mis intenciones a los demás.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f8b"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Si quiero puedo fingir muy bien y aparentar que soy lo que no soy",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f8e"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Vivo el día a día",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f95"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Pienso que la persona que abandona o hace daño a un perro es despreciable",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f96"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "He tenido mala suerte en mis relaciones afectivas y laborales",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f9b"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Hago cosas de las que me arrepiento después de hacerlas",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f9e"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Soy capaz de controlarme en situaciones difíciles",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fa1"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me importan los problemas de los demás",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fa4"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "He hecho cosas peligrosas por el placer de hacerlas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fa6"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Soy grosero y mal educado con la gente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fa7"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me comporto de forma educada con la gente",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fa9"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "No soy respetuoso con los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fac"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me produce placer molestar a los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fb2"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Ahogo mis penas en alcohol.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fb6"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "He hecho cosas que no debería haber realizado, sólo por el placer de hacerlo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fb8"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Creo que todo el mundo mentiría para evitar meterse en problemas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fba"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Prefiero trabajos solitarios, sin que otros me molesten",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fbc"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me rio con facilidad",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fcd"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me cuesta animar una fiesta aburrida",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fd2"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Formo parte de muchos grupos de WhatsApp",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fd3"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Expreso mi alegría muy intensamente, con gestos o palabras",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fd8"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Prefiero estar en segundo plano en un grupo o en una fiesta",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fdf"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Mis amigos me consideren una persona tímida",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fe0"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me considero una persona tímida, sobre todo con las personas del otro sexo",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fe1"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Soy una persona activa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fe3"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me cuesta iniciar una conversación con personas que no conozco",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fe6"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Mis amigos me consideran una persona bromista",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6feb"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Tengo muchos amigos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ff1"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Antes de hablar en un grupo pienso lo que voy a decir",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ff2"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Pienso que es mejor no confiar en los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7000"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Soy una persona precavida con la gente que se muestra más amistosa de lo que espero",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7008"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "La mayoría de las personas hacen lo correcto porque tienen miedo de que les castiguen",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7010"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "La gente dice cosas groseras sobre mí",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7011"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Tengo enemigos que desean hacerme daño",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7013"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Si la gente no lo hubiera impedido hubiera tenido más éxito.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7017"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Las personas tienen malas intenciones",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc701a"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Prefiero soñar despierto antes que hacer cualquier cosa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc701f"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Los demás saben lo que pienso",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7020"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Oigo voces que los demás no oyen",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc702f"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Puedo soñar despierto en cualquier momento y lugar",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7035"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Creo que puedo “perder la cabeza”",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7038"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Debería ser castigado por mis pecados",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc703d"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "En situaciones tensas mantengo la calma",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc703e"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Mantengo la calma y actitud positiva incluso en los momentos más difíciles",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc703f"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me pongo nervioso en situaciones estresantes",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7043"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Soy una persona impaciente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7044"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Mis amigos me dicen que tengo mucha paciencia",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc704a"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me asaltan sentimientos de culpa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc704b"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me cuesta hablar o tartamudeo un poco",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7050"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me siento mal cuando algo no me sale como quiero",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7053"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me cuesta mucho enfadarme",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7055"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me molesta la forma en que me tratan los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc705a"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Soy una persona nerviosa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7062"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Soy una persona reflexiva, antes de actuar pienso muy bien que voy a hacer",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7065"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me altero con facilidad",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7068"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me considero una persona despreocupada y feliz",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7069"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me preocupa equivocarme",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc706c"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me preocupa mi futuro",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7070"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Pienso que puede ocurrirme algo malo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7074"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me preocupa asumir riesgos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fd9"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Soy el centro de atención de un grupo o de una fiesta",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fda"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gusta ampliar mi red de amigos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fdb"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Cuando realizo un viaje me gusta hablar con los demás viajeros",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fdd"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Prefiero leer un libro a estar con mucha gente",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fde"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Mis amigos me consideran una persona habladora",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fe2"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Cuando conozco a alguien tengo muchos temas de conversación",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fe5"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me considero una persona sociable",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fe8"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gusta estar sólo",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fed"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gusta estar en lugares con mucha gente alrededor",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fee"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Prefiero quedarme en casa a salir",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fef"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Mis amigos piensan que soy una persona animada",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ff0"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me considero una persona reservada excepto con mis amigos",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ff3"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Confío en los demás",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ff7"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Si lo permitiera, la gente se aprovecharía de mí",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ffd"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Cuando alguien me obliga a hacer algo, hago lo contrario aunque esté mal",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7001"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Cuando un desconocido me trata de forma amable pienso que quiere algo de mí.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7002"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "La mayoría de mis problemas son culpa de los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7003"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Cuando hablo con un desconocido pienso que me oculta algo.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7004"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Hay personas que sólo quieren hacerme daño",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7006"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Los demás me tienen envidia",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc700d"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Sé quién es el (la) responsable de la mayoría de mis desgracias.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7014"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Hay personas que me tienen manía.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc701d"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "He tenido experiencias extrañas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7021"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo pensamientos que no son míos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7023"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Creo que pienso en voz alta",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7024"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "He sentido que no era yo cuando me he mirado en un espejo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7025"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Una fuerza interior me lleva a realizar cosas que no me gustan",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7028"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Las personas y los objetos que me rodena se han vuelto extraños",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc702b"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo la sensación de que salgo de mi cuerpo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc702c"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo la sensación de que hay alguien a mi lado, aunque no pueda verlo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc702d"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Me gustaría tener poderes especiales",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7030"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo facilidad para soñar y fantasear",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7032"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Siento las cosas como si no fueran reales",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7034"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Mis amigos dicen que he hecho cosas que no recuerdo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc703a"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Me relaciono con los demás interpretando un personaje",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7041"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Soy una persona emocionalmente estable",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7042"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Si tengo que hablar con gente que desconozco lo paso mal",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7046"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me considero una persona miedosa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7048"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Tengo miedo a cosas o situaciones que son normales para otras personas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7049"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Tengo sentimientos de culpa sin razón",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc704f"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Vivo las cosas menos intensamente que las personas que conozco",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7051"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Cuando hago o digo alguna cosa me gusta que me lo reconozcan los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7056"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Cuando las cosas me salen mal, me desánimo y tengo ganas de dejarlo todo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7057"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me siento “harto de todo”",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc705d"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me cuesta tomar decisiones",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc705e"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Dudo mucho antes de tomar una decisión, aunque sea pequeña",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7061"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Soy una persona impulsiva, que actúa sin pensar las cosas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7076"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me siento más inseguro/a que las personas que conozco",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eaf"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Predico con el ejemplo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ead"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "He llegado tarde al trabajo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eb0"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Si no me descubrieran, no me importaría hacer lo que fuese para pagar menos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eb5"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me gusta que los demás me digan que hago bien las cosas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eb6"
+  },
+  "ITEM": 1,
+  "PREGUNTA": " Busco el reconocimiento de los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ebc"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando oigo que otro está diciendo palabrotas, intento corregirlo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ebd"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "He dicho que estoy enfermo para no ir al trabajo/escuela",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ebe"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Intento no escuchar conversaciones ajenas, aunque esté muy cerca",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ec7"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando me equivoco lo reconozco",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ec9"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "He cogido algo que no era mío",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eca"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando nadie me ha visto he cogido algo que no me pertenecía",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ece"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me enfado con facilidad",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ecf"
+  },
+  "ITEM": 1,
+  "PREGUNTA": " Me gusta quedar bien con los demás",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ed5"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "He dicho cosas sobre alguien con mala intención",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ed7"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando participo en un juego me gusta ganar",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eda"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando me han invitado a comer, he comido de más",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6edb"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me he comido más dulces de los que debería",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ede"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me gusta dar una buena imagen",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ee8"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Siempre que cojo el coche respeto la normativa vial",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eea"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando he bebido algo de alcohol no he cogido el coche",
+  "SI": 5,
+  "MUCHAS VECES": 1,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eef"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me gusta discutir con otras personas",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ef2"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Soy una persona desinteresada",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6efc"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando tengo oportunidad, me gusta hablar de mis éxitos en la vida",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6efd"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Si me equivoco, pienso que cuantas menos personas lo sepan mejor",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f06"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Estoy deprimido",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f09"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo sentimientos de inferioridad",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f0a"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me considero inferior a otros",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f0b"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me siento sólo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f0c"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me siento abandonado por los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f11"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me importa poco lo que me sucede",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f17"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "A menudo me siento culpable",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f1c"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Soy feliz la mayor parte del tiempo",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f1e"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Soy una persona alegre",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f20"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me siento desgraciado",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f27"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Considero que vida merece la pena vivirla auqnue me encuentre con dificultades",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f28"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Pienso que la vida no merece la pena",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f2b"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Cuando no me salen las cosas como espero me vengo abajo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f2c"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Cuando me salen las cosas bien soy feliz",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f31"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "En mi vida diaria realizo muchas cosas interesantes",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f34"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me siento cansado en el día a día sin razón aparente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f35"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Cualquier cosa que hago me fatiga",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f38"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me cuesta concentrarme en lo que hago",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f3b"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Estoy contento conmigo mismo",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f3e"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Soy muy autocritico con mis errores",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f40"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Lloro fácilmente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f44"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tomar decisiones me resulta más difícil que antes",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f45"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me considero una persona insegura a la que le cuesta tomar decisiones",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f48"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me cuesta mucho dormirme",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f49"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Duermo \"a saltos\" y mi sueño es intranquilo.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f53"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "He perdido peso en los últimos meses",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f54"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo buen apetito",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f55"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo tantas ganas de comer como antes",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f58"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Mi salud es tan buena como la de los demás",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f5b"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me encuentro tenso e irritable",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f5d"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me siento inútil",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f60"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me tienen que animar a hacer las cosas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f61"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me cuesta empezar a hacer cualquier cosa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f6b"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me siento muy apegado/ a a mi familia.",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f73"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "La gente debe actuar según lo que piensa, aunque para ello deba dejar de respetar alguna regla social",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f77"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Cuando discuto, siempre me salgo con la mía",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f7b"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "He tomado drogas o medicamentos que pudieran tener efectos desconocidoss o peligrosos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f7d"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "He tenido problemas con la policía",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f81"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me es imposible evitar robar algo si sé que no me van a coger",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f84"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me he metido en líos por romper o destruir cosas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f87"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Soy capaz de mentir, sobre todo si me libro de un castigo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f8c"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "A mi familia le desagradan mis proyectos de trabajo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eb3"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Sólo hablo de lo que conozco",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eba"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Utilizo palabras o expresiones groseras cuando me expreso",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ec0"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "He tenido ganas de no ir al trabajo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ec3"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Algunas personas que conozco me disgustan",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ec8"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Antes de tomar una decisión tengo en cuenta todas las posibilidades",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ecc"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Mi estado de ánimo suele cambiar",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ed1"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Hablo mal de mis amigos a sus espaldas",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ed2"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "He criticado a las personas que conozco",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ed4"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Hablo bien de mis amigos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ed6"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Dejo para mañana lo que puedo hacer hoy",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ed9"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Alguna vez he hecho trampas para ganar en un juego",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6edd"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "He bebido más de la cuenta en alguna celebración",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ee2"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me considero una persona sincera",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ee3"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "He mentido cuando lo he considerado oportuno",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ee6"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Conduciendo, he insultado a otro conductor",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ee7"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando conduzco me pongo agresivo",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ee9"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando no encuentro aparcamiento dejo el coche mal aparcado si sé que no me van a multar",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ef0"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Aprovecho cualquier ocasión para llamar la atención de la persona que me atrae, aunque no la conozca",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6efa"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Soy una persona segura y no me cuesta tomar decisiones",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6eff"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Hago lo que me piden",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f01"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Me lavo las manos antes de sentarme a comer",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f03"
+  },
+  "ITEM": 1,
+  "PREGUNTA": "Cuando me ha tocado repartir algo, me he quedado con la mejor parte",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f07"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me siento apático y desganado",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f08"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me siento con energía para hacer muchas cosas",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f15"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Soy una persona pesimista, veo el “vaso medio vacio\"",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f21"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Soy una persona afortunada",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f24"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Cuando pienso en mi fututo me desanimo",
+  "SI": 5,
+  "MUCHAS VECES": 1,
+  "ALGUNA VEZ": 2,
+  "POCAS VECES": 3,
+  "NO": 4
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f25"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Encuentro muy fácil perder la esperanza de llegar a ser algo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f2a"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Fracaso en todo lo que empiezo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f2d"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "No disfruto de las cosas que hago como antes",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f36"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me encuentro con más energía para hacer cosas que hace unos meses",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f3c"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me considero peor que cualquier otra persona que conozco",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f3f"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Soy de “lagrima fácil”, lloro con facilidad",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f4a"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tardo bastante en conciliar el sueño",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f4e"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo un sueño inquieto, me despierto fácilmente y tardo en volver a dormirme",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f59"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Estoy menos interesado por el sexo que antes",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f5f"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Tengo dificultades para empezar a hacer algo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f63"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Me cuesta recordad las cosas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f64"
+  },
+  "ITEM": 3,
+  "PREGUNTA": "Creo que soy más nervioso que la mayoría de la gente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f6a"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Tengo muchas peleas con mi familia.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f6d"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Recuerdo haber deseado irme de casa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f6e"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Mi vida familiar es tan agradable como la de la mayoría de la gente que conozco",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f6f"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "A mi familia no le gustan mis amigos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f70"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me llevo bien con la mayoría de mis familiares",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f79"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Hago lo que quiero y cuando quiero",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f7e"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Mis amigos tienen o han tenido problemas con la policía",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f7f"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Mi forma de vida ha sido poco correcta",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f82"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "He hecho cosas que están fuera de la ley",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f85"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Soy una persona cuidadosa con las cosas que pertenecen a otros",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f88"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me resulta difícil mentir.",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f90"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Evito las responsabilidades.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f91"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me gusta asumir responsabilidades",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f9c"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Cuando me emociono puedo llegar a perder el control.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fa2"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Cuando veo a gente sufriendo tiendo a pasarlo mal.",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fbb"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gusta trabajar con otras personas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fbd"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Disfruto hablando con la gente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fbf"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me resulta fácil entablar conversación con desconocidos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fc0"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me resulta fácil hacer nuevos amigos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fc5"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Quiero estar donde se encuentre la acción",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fc6"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Mis amigos me consideran una persona fría y distante",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fc8"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Soy una persona muy activa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fcc"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Soy incapaz de defender mis opiniones todo lo que debiera",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fd0"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Cuando estoy con más personas tiendo a ser el que más habla",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fd1"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Generalmente permanezco callado cuando estoy con otras personas",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f93"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me sentiría mal al ver un perro que acaba de ser atropellado",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f98"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me enfado con los demás cuando no hacen o dicen lo que yo esperaba",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6f9a"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Hago, a propósito, lo contrario de lo que los demás quieren",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fa0"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me preocupan los problemas de las personas con las que más me relaciono",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fa3"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me afecta el sufrimiento de otras personas.",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fab"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me divierten las bromas que pueden molestar a otros",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fad"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me divierte meter miedo a los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6faf"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Si encuentro un niño perdido entre una mucha gente, le ayudaría",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fb1"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Tengo facilidad para hacer que los demás hagan lo que yo quiero",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fb4"
+  },
+  "ITEM": 7,
+  "PREGUNTA": "Me parece bien que las personas se aprovechen de otros cuando pueden",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fbe"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gusta mucho hablar con la gente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fc2"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gusta que haya mucha animación y bullicio, a mi alrededor",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fc7"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Prefiero pasar las vacaciones en la playa, rodeado de gente, a estar en una cabaña aislada en el monte",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fcb"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Soy capaz de defender mis opiniones, aunque pueda estar equivocado",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fcf"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Prefiero que los demás lleven la voz cantante en una conversación",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fd5"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gusta relacionarme con personas con diferente forma de pensar",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fe4"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gusta contar chistes o historias cuando estoy con otras personas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fe7"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Prefiero buscar información sobre algo a preguntarle a otra persona",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ff8"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Mis familiares encuentran más defectos en mí de los que debieran",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7007"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Me siento poseído por malos espíritus",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc700e"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Sé quién es el responsable de la mayoría de mis problemas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc700f"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Me han castigado sin motivo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7012"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Creo que hay personas que conspiran en contra de mí",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7015"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Si la gente no la hubiera tomado conmigo, me hubiese ido mejor",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc702a"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Si uno se concentra en una cosa puede hacer que esta ocurra",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7033"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo pensamientos que no me permiten concentrarme",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7037"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "He tenido (tengo) sueños tan intensos que parecían reales",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7039"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Me considero una persona distante con los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc703c"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me siento inquieto sin razón aparente",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7040"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Afronto las situaciones estresantes con tranquilidad",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7045"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me asusto con facilidad",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7047"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Tengo menos miedos que la mayoría de la gente que conozco",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc704d"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Tengo, al menos, tanta suerte como las personas que conozco",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc704e"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me siento una persona desagraciada sin ninguna razón",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7060"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Mis amigos consideran que tengo buen carácter",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7063"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Pierdo los nervios con facilidad",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7066"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Después de hacer las cosas de forma impulsiva me arrepiento",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc706a"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me preocupo mucho si creo que algo puede salirme mal",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc706d"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me preocupan las cosas terribles que me puedan suceder",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7071"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me preocupa mi salud, tanto física como mental",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7075"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me preocupo por mi apariencia externa",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fd4"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gusta dar el primer paso para empezar una conversación con alguien que no conozco",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fd6"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me gusta hablar en público",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fdc"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Puedo llegar a pensar que sobro en un grupo",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fe9"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Cuando salgo quedo con mis amigos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fea"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Me siento a gusto cuando estoy en un grupo de desconocidos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fec"
+  },
+  "ITEM": 2,
+  "PREGUNTA": "Tengo pocos amigos, pero escogidos",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ff4"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Soy una persona desconfiada",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ff5"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "La vida me trata mal",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ff6"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Creo que alguien me la tiene jurada",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ff9"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Me gusta guardarme para mí las cosas importantes",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ffa"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Nadie me comprende",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ffb"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "La vida me habría ido mejor si la gente no la hubiera tomado conmigo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ffc"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Creo que la mayoría de las personas mienten para conseguir algo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6ffe"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Estoy seguro(a) de que hablan mal de mí",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc6fff"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Creo que me vigilan y me siguen",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7005"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Pienso en cosas demasiado malas que prefiero no hablar de ellas con nadie",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7009"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Siento las cosas más intensamente que los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc700a"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Soy más sensible que la mayoría de las personas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc700b"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Los demás no comparten mi forma de pensar",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc700c"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Me gustaría dar a la gente su merecido",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7016"
+  },
+  "ITEM": 6,
+  "PREGUNTA": "Las personas son buenas por naturaleza",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7018"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo pensamientos extraños y raros",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7019"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Pienso en cosas de las que es mejor no hablar",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc701b"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Creo que soy otra persona",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc701c"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Siento que no soy yo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc701e"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Creo que hay personas que pueden leer y controlar el pensamiento de los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7022"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo la sensación de que algo anda mal en mi cuerpo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7026"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo la impresión de que me roban los pensamientos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7027"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo la sensación de no ser como las demás personas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7029"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Creo que una fuerza extraña dirige mis pensamientos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc702e"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Me interesan mucho los temas paranormales",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7031"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo un sexto sentido",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7036"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Me cuesta tener momentos de intimidad con los demás",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc703b"
+  },
+  "ITEM": 5,
+  "PREGUNTA": "Tengo arrebatos agresivos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc704c"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me distraigo fácilmente cuando estoy haciendo alguna tarea",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7052"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me enfado cuando me provocan",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7054"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Soy una persona irritable, de “poco aguante”",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7058"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Estoy “hasta la coronilla”",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7059"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me considero una persona tranquila",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc705b"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me controlo en situaciones difíciles",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc705c"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "En situaciones de estrés, siento que voy a perder el control",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc705f"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me gusta asumir riesgos",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7064"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Es difícil que pierda los nervios",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7067"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me preocupo por cualquier cosa, aunque sea sin importancia",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc706b"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Temo equivocarme cuando tengo que hacer algo",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc706e"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Tengo la sensación de que ocurrirá alguna desgracia",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc706f"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Al acabar de hacer algo, pienso que podría haberlo hecho mejor",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7072"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Soy capaz de manejar los problemas más difíciles que me puedan surgir en mi vida diaria",
+  "SI": 1,
+  "MUCHAS VECES": 2,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 4,
+  "NO": 5
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7073"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Me preocupo durante mucho tiempo cuando creo que he hecho una tontería",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+},
+{
+  "_id": {
+    "$oid": "6638e8a239a391dcaffc7077"
+  },
+  "ITEM": 4,
+  "PREGUNTA": "Temo perder el control y hacer daño a otras personas",
+  "SI": 5,
+  "MUCHAS VECES": 4,
+  "ALGUNA VEZ": 3,
+  "POCAS VECES": 2,
+  "NO": 1
+}]

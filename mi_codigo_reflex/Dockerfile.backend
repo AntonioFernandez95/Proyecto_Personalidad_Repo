@@ -1,0 +1,31 @@
+# Stage 1: Base image
+FROM python:3.12-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    unzip \
+    libpq-dev \
+    gcc \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application files
+COPY . .
+
+# Initialize Reflex
+RUN reflex init
+
+# Expose backend port
+EXPOSE 8000
+
+# Command to run only the backend
+CMD ["reflex", "run", "--env", "prod", "--backend-only"]

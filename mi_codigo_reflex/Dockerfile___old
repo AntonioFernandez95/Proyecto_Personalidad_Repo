@@ -1,0 +1,31 @@
+# Use the official Python image
+FROM python:3.11
+
+WORKDIR /app
+
+
+# Copy the application code
+COPY . .
+
+
+# Set up virtual environment
+ENV VIRTUAL_ENV=/app/.venv_docker
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+RUN python3.11 -m venv $VIRTUAL_ENV
+RUN pip install --upgrade pip
+
+# Install app requirements
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Deploy templates and prepare app
+RUN reflex init
+
+# Enable required Apache modules and site
+# RUN a2enmod proxy proxy_http proxy_wstunnel rewrite
+# RUN a2ensite * 
+# RUN a2dissite *
+
+
+RUN reflex run --env prod
+# docker run -d -p 3000:3000 -p 8000:8000 --name app reflex-project:latest
+

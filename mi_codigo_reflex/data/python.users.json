@@ -1,0 +1,217 @@
+[{
+  "_id": {
+    "$oid": "6639dafbd280c1652b178c4a"
+  },
+  "password": "eN?m?bA",
+  "disabled": true,
+  "email": "clo@clo.com",
+  "full_name": "Claudia Mendoza",
+  "username": "clomendan",
+  "count_login": 16,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "663c916f39a391dcafb64f8d"
+  },
+  "password": "G3a¿GRK",
+  "disabled": false,
+  "email": "clo@gmail.com",
+  "full_name": "Claudia Mendoza",
+  "username": "claudiaMA",
+  "count_login": 0,
+  "are_terms_accepted": true
+},
+{
+  "_id": {
+    "$oid": "664323c8cd1d297e234a67c2"
+  },
+  "password": "xl5aGnN",
+  "disabled": false,
+  "email": "academiametodos@gmail.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 0,
+  "are_terms_accepted": true
+},
+{
+  "_id": {
+    "$oid": "664726fb2a1ddbecafd2efa5"
+  },
+  "password": "Pr5#ZyY",
+  "disabled": false,
+  "email": "claudia@academiametodos.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 48,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "664b557375147f1e143745a2"
+  },
+  "password": "M9aOUSG",
+  "disabled": false,
+  "email": "btoledogonzalez@gmail.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 0,
+  "are_terms_accepted": true
+},
+{
+  "_id": {
+    "$oid": "665ecdb53be398d8d5302af7"
+  },
+  "password": "PGpWY?r",
+  "disabled": false,
+  "email": "test@gmail.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 1,
+  "are_terms_accepted": true
+},
+{
+  "_id": {
+    "$oid": "66694c197d1f768ec1d5a832"
+  },
+  "password": "N991*@F",
+  "disabled": false,
+  "email": "enrique@academiametodos.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 4,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "66697c407d1f768ec1d5a833"
+  },
+  "password": "1avICZQ",
+  "disabled": false,
+  "email": "mariam@academiametodos.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 1,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "66697d397d1f768ec1d5a834"
+  },
+  "password": "1pZCosL",
+  "disabled": false,
+  "email": "joseametodos@gmail.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 1,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "66697df57d1f768ec1d5a835"
+  },
+  "password": "@nF0e2H",
+  "disabled": false,
+  "email": "rosa@academiametodos.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 1,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "666980e57d1f768ec1d5a836"
+  },
+  "password": "bjqDJoQ",
+  "disabled": false,
+  "email": "maria@academiametodos.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 1,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "666980f37d1f768ec1d5a837"
+  },
+  "password": "k10XAAS",
+  "disabled": false,
+  "email": "ema@academiametodos.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 1,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "666987107d1f768ec1d5a838"
+  },
+  "password": "7nd5w1?",
+  "disabled": false,
+  "email": "pilar.vega.gonzalez1@gmail.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 1,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "666aa1827d1f768ec1d5a839"
+  },
+  "password": "o17p4sC",
+  "disabled": false,
+  "email": "zealeman@gmail.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 1,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "666aa2557d1f768ec1d5a83a"
+  },
+  "password": "riArAJC",
+  "disabled": false,
+  "email": "btoledo@academiametodos.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 1,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "666aa2dd7d1f768ec1d5a83b"
+  },
+  "password": "¿g0m4Ql",
+  "disabled": false,
+  "email": "david_alfgo@outlook.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 1,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+},
+{
+  "_id": {
+    "$oid": "66d11fc5bb27611b6cd81f8d"
+  },
+  "password": "34V52X8",
+  "disabled": false,
+  "email": "jmhidalgo@grupojoly.com",
+  "full_name": "",
+  "username": "",
+  "count_login": 0,
+  "are_terms_accepted": true,
+  "is_optional_checked": true
+}]

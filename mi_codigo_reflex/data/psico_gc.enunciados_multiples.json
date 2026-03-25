@@ -1,0 +1,865 @@
+[{
+  "_id": 1,
+  "Enunciado": "Observar los elementos que forman las columnas y las filas y después determinar cuantos elementos reúnen 5 carácterísticas de las señaladas en cada ejercicio:",
+  "ImagenEnunciado": "5GCPSICO.jpg"
+},
+{
+  "_id": 2,
+  "Enunciado": "Teniendo en cuenta los distintos números que aparecen en el encabezamiento, contestar a las siguientes preguntas: ",
+  "ImagenEnunciado": "15GCPSICO.jpg"
+},
+{
+  "_id": 3,
+  "Enunciado": "Responde a las siguientes cuestiones teniendo en cuenta el siguiente texto: ",
+  "ImagenEnunciado": "16GCPSICO.jpg"
+},
+{
+  "_id": 4,
+  "Enunciado": "Observa los datos de la siguiente tabla y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "evoluciondelitos01.jpg"
+},
+{
+  "_id": 5,
+  "Enunciado": "Teniendo en cuenta los datos de la siguiente tabla, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "evoluciondelitos02.jpg"
+},
+{
+  "_id": 6,
+  "Enunciado": "Con la ayuda de la tabla conteste a cada una de las siguientes cuestiones: ",
+  "ImagenEnunciado": "evoluciondelitos03.jpg"
+},
+{
+  "_id": 7,
+  "Enunciado": "Con la ayuda de la tabla conteste a cada una de las siguientes cuestiones: ",
+  "ImagenEnunciado": "accidentetrabajo.jpg"
+},
+{
+  "_id": 8,
+  "Enunciado": "Con la ayuda de la tabla conteste a cada una de las siguientes cuestiones: ",
+  "ImagenEnunciado": "accidentetrabajo01.jpg"
+},
+{
+  "_id": 9,
+  "Enunciado": "Teniendo en cuenta los datos de la siguiente tabla, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "embalses1.jpg"
+},
+{
+  "_id": 10,
+  "Enunciado": "Teniendo en cuenta los datos de la siguiente tabla, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "embalses2.jpg"
+},
+{
+  "_id": 11,
+  "Enunciado": "Observa los datos de la siguiente tabla y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "embalses3.jpg"
+},
+{
+  "_id": 12,
+  "Enunciado": "Observa los datos de la siguiente tabla y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "embalses4.jpg"
+},
+{
+  "_id": 13,
+  "Enunciado": "Observa los datos de la siguiente tabla y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "embalses5.jpg"
+},
+{
+  "_id": 14,
+  "Enunciado": "Teniendo en cuenta los datos de la siguiente tabla, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "embalses6.jpg"
+},
+{
+  "_id": 15,
+  "Enunciado": "Con la ayuda de la tabla conteste a cada una de las siguientes cuestiones: ",
+  "ImagenEnunciado": "embalses7.jpg"
+},
+{
+  "_id": 16,
+  "Enunciado": "Con la ayuda de la tabla conteste a cada una de las siguientes cuestiones: ",
+  "ImagenEnunciado": "embalses8.jpg"
+},
+{
+  "_id": 17,
+  "Enunciado": "Teniendo en cuenta los datos de la siguiente tabla, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "embalses9.jpg"
+},
+{
+  "_id": 18,
+  "Enunciado": "Teniendo en cuenta los datos de la siguiente tabla, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "embalses10.jpg"
+},
+{
+  "_id": 19,
+  "Enunciado": "Con la ayuda de la tabla conteste a cada una de las siguientes cuestiones: ",
+  "ImagenEnunciado": "distanciacombustible01.jpg"
+},
+{
+  "_id": 20,
+  "Enunciado": "Con la ayuda de la tabla conteste a cada una de las siguientes cuestiones: ",
+  "ImagenEnunciado": "distanciacombustible02.jpg"
+},
+{
+  "_id": 21,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesnuevas01.jpg"
+},
+{
+  "_id": 22,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesmultiples1.jpg"
+},
+{
+  "_id": 23,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesmultiples2.jpg"
+},
+{
+  "_id": 24,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesmultiples3.jpg"
+},
+{
+  "_id": 25,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesmultiples4.jpg"
+},
+{
+  "_id": 26,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesmultiples5.jpg"
+},
+{
+  "_id": 27,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesmultiples6.jpg"
+},
+{
+  "_id": 28,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesmultiples7.jpg"
+},
+{
+  "_id": 29,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesmultiples8.jpg"
+},
+{
+  "_id": 30,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesmultiples9.jpg"
+},
+{
+  "_id": 31,
+  "Enunciado": "La siguiente gráfica representada con los datos de la tabla, representa los goles marcados por varios equipos de futbol en las diferentes competiciones donde han participado. Observa los datos representados y responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "golesmultiples10.jpg"
+},
+{
+  "_id": 32,
+  "Enunciado": "En el siguiente gráfico vemos las tendencias de los precios de los pisos por m² en distintas ciudades en años anteriores. Teniendo en cuenta los datos que se muestran:",
+  "ImagenEnunciado": "preciospisos01.jpg"
+},
+{
+  "_id": 33,
+  "Enunciado": "En el siguiente gráfico vemos las tendencias de los precios de los pisos por m² en distintas ciudades en años anteriores. Teniendo en cuenta los datos que se muestran:",
+  "ImagenEnunciado": "preciospisos02.jpg"
+},
+{
+  "_id": 34,
+  "Enunciado": "En la siguiente imagen tenemos representados el porcentaje de mujeres, niños, hombres y abuelos que hay en 3 poblaciones distintas. Atendiendo a los datos que se muestran, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "sectorespoblacion01.jpg"
+},
+{
+  "_id": 35,
+  "Enunciado": "En la siguiente imagen tenemos representados el porcentaje de mujeres, niños, hombres y abuelos que hay en 3 poblaciones distintas. Atendiendo a los datos que se muestran, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "sectorespoblacion02.jpg"
+},
+{
+  "_id": 36,
+  "Enunciado": "En la siguiente imagen tenemos representados el porcentaje de mujeres, niños, hombres y abuelos que hay en 3 poblaciones distintas. Atendiendo a los datos que se muestran, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "sectorespoblacion03.jpg"
+},
+{
+  "_id": 37,
+  "Enunciado": "En la siguiente imagen tenemos representados el porcentaje de mujeres, niños, hombres y abuelos que hay en 3 poblaciones distintas. Atendiendo a los datos que se muestran, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "sectorespoblacion04.jpg"
+},
+{
+  "_id": 38,
+  "Enunciado": "En la siguiente imagen tenemos representados el porcentaje de mujeres, niños, hombres y abuelos que hay en 3 poblaciones distintas. Atendiendo a los datos que se muestran, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "sectorespoblacion05.jpg"
+},
+{
+  "_id": 39,
+  "Enunciado": "En la siguiente imagen tenemos representados el porcentaje de mujeres, niños, hombres y abuelos que hay en 3 poblaciones distintas. Atendiendo a los datos que se muestran, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "sectorespoblacion06.jpg"
+},
+{
+  "_id": 40,
+  "Enunciado": "En la siguiente imagen tenemos representados el porcentaje de mujeres, niños, hombres y abuelos que hay en 3 poblaciones distintas. Atendiendo a los datos que se muestran, responde a las siguientes cuestiones: ",
+  "ImagenEnunciado": "sectorespoblacion07.jpg"
+},
+{
+  "_id": 41,
+  "Enunciado": "La pregunta siguiente está compuesta por una fila de letras a partir de la cual se deberá obtener uno de los resultados finales entre los que aprecen como opciones de respuesta. Para llegar al resultado correcto deberá seguir los pasos que se indican a continuación:",
+  "ImagenEnunciado": "abstractomultiple1.jpg"
+},
+{
+  "_id": 42,
+  "Enunciado": "La pregunta siguiente está compuesta por una fila de letras a partir de la cual se deberá obtener uno de los resultados finales entre los que aprecen como opciones de respuesta. Para llegar al resultado correcto deberá seguir los pasos que se indican a continuación:",
+  "ImagenEnunciado": "abstractomultiple2.jpg"
+},
+{
+  "_id": 43,
+  "Enunciado": "La pregunta siguiente está compuesta por una fila de letras a partir de la cual se deberá obtener uno de los resultados finales entre los que aprecen como opciones de respuesta. Para llegar al resultado correcto deberá seguir los pasos que se indican a continuación:",
+  "ImagenEnunciado": "abstractomultiple3.jpg"
+},
+{
+  "_id": 44,
+  "Enunciado": "La pregunta siguiente está compuesta por una fila de letras a partir de la cual se deberá obtener uno de los resultados finales entre los que aprecen como opciones de respuesta. Para llegar al resultado correcto deberá seguir los pasos que se indican a continuación:",
+  "ImagenEnunciado": "abstractomultiple4.jpg"
+},
+{
+  "_id": 45,
+  "Enunciado": "La pregunta siguiente está compuesta por una fila de letras a partir de la cual se deberá obtener uno de los resultados finales entre los que aprecen como opciones de respuesta. Para llegar al resultado correcto deberá seguir los pasos que se indican a continuación:",
+  "ImagenEnunciado": "abstractomultiple5.jpg"
+},
+{
+  "_id": 46,
+  "Enunciado": "La pregunta siguiente está compuesta por una fila de letras a partir de la cual se deberá obtener uno de los resultados finales entre los que aprecen como opciones de respuesta. Para llegar al resultado correcto deberá seguir los pasos que se indican a continuación:",
+  "ImagenEnunciado": "abstractomultiple6.jpg"
+},
+{
+  "_id": 47,
+  "Enunciado": "La pregunta siguiente está compuesta por una fila de letras a partir de la cual se deberá obtener uno de los resultados finales entre los que aprecen como opciones de respuesta. Para llegar al resultado correcto deberá seguir los pasos que se indican a continuación:",
+  "ImagenEnunciado": "abstractomultiple7.jpg"
+},
+{
+  "_id": 48,
+  "Enunciado": "La pregunta siguiente está compuesta por una fila de letras a partir de la cual se deberá obtener uno de los resultados finales entre los que aprecen como opciones de respuesta. Para llegar al resultado correcto deberá seguir los pasos que se indican a continuación:",
+  "ImagenEnunciado": "abstractomultiple8.jpg"
+},
+{
+  "_id": 49,
+  "Enunciado": "La pregunta siguiente está compuesta por una fila de letras a partir de la cual se deberá obtener uno de los resultados finales entre los que aprecen como opciones de respuesta. Para llegar al resultado correcto deberá seguir los pasos que se indican a continuación:",
+  "ImagenEnunciado": "abstractomultiple9.jpg"
+},
+{
+  "_id": 50,
+  "Enunciado": "La pregunta siguiente está compuesta por una fila de letras a partir de la cual se deberá obtener uno de los resultados finales entre los que aprecen como opciones de respuesta. Para llegar al resultado correcto deberá seguir los pasos que se indican a continuación:",
+  "ImagenEnunciado": "abstractomultiple10.jpg"
+},
+{
+  "_id": 51,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 52,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 53,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 54,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 55,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 56,
+  "Enunciado": "A continuación se muestran unas series de letras y números que siguen un orden lógico. Señala qué letra o número no debería estar en cada serie:"
+},
+{
+  "_id": 57,
+  "Enunciado": "En el siguiente bloque de preguntas, analiza y completa con la opción que falta en cada caso:  "
+},
+{
+  "_id": 58,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 59,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 60,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 61,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 62,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 63,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 64,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 65,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 66,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 67,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 68,
+  "Enunciado": "A continuación, se muestran varias series de números y letras que siguen un orden lógico. Analiza y elige qué letra o número falta en cada serie en cada caso:  "
+},
+{
+  "_id": 69,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 70,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 71,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 72,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 73,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 74,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 75,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 76,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 77,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 78,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 79,
+  "Enunciado": "En el siguiente bloque de preguntas se muestran una serie de figuras que siguen un orden lógico que hay que descubrir. Elige en cada caso, la opción que completa la serie:"
+},
+{
+  "_id": 80,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 81,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 82,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 83,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 84,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 85,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 86,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 87,
+  "Enunciado": "Analice las siguientes series de dominó y señale la respuesta correcta en cada caso. "
+},
+{
+  "_id": 88,
+  "Enunciado": "Observa el siguiente código y ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: sumando los puntos correspondientes al código establecido, todas las opciones de respuesta suman lo mismo excepto una ¿Cuál es?",
+  "ImagenEnunciado": "codigomultiple1.jpg"
+},
+{
+  "_id": 89,
+  "Enunciado": "Observa el siguiente código y ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: sumando los puntos correspondientes al código establecido, todas las opciones de respuesta suman lo mismo excepto una ¿Cuál es?",
+  "ImagenEnunciado": "codigomultiple2.jpg"
+},
+{
+  "_id": 90,
+  "Enunciado": "Observa el siguiente código y ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: sumando los puntos correspondientes al código establecido, todas las opciones de respuesta suman lo mismo excepto una ¿Cuál es?",
+  "ImagenEnunciado": "codigomultiple3.jpg"
+},
+{
+  "_id": 91,
+  "Enunciado": "Observa el siguiente código y ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: sumando los puntos correspondientes al código establecido, todas las opciones de respuesta suman lo mismo excepto una ¿Cuál es?",
+  "ImagenEnunciado": "codigomultiple5.jpg"
+},
+{
+  "_id": 92,
+  "Enunciado": "En una clave secreta se sustituye cada letra por la siguiente del alfabeto. Descifre las siguientes palabras:"
+},
+{
+  "_id": 93,
+  "Enunciado": "En una clave secreta se sustituye cada letra por la siguiente del alfabeto. Descifre las siguientes palabras:"
+},
+{
+  "_id": 94,
+  "Enunciado": "En una clave secreta se sustituye cada letra por la siguiente del alfabeto. Descifre las siguientes palabras:"
+},
+{
+  "_id": 95,
+  "Enunciado": "Suponiendo que no se dispone de más fichas que las 9 de la palabra modelo, y que no se pueden repetir, señale en cada caso, en cuál de las cuatro palabras siguientes se pueden utilizar mayor número de fichas."
+},
+{
+  "_id": 96,
+  "Enunciado": "Suponiendo que no se dispone de más fichas que las 9 de la palabra modelo, y que no se pueden repetir, señale en cada caso, en cuál de las cuatro palabras siguientes se pueden utilizar mayor número de fichas."
+},
+{
+  "_id": 97,
+  "Enunciado": "Suponiendo que no se dispone de más fichas que las 9 de la palabra modelo, y que no se pueden repetir, señale en cada caso, en cuál de las cuatro palabras siguientes se pueden utilizar mayor número de fichas."
+},
+{
+  "_id": 98,
+  "Enunciado": "Suponiendo que no se dispone de más fichas que las 9 de la palabra modelo, y que no se pueden repetir, señale en cada caso, en cuál de las cuatro palabras siguientes se pueden utilizar mayor número de fichas."
+},
+{
+  "_id": 99,
+  "Enunciado": "Observa el siguiente código. Dadas las siguientes claves, señale el dibujo que representa las palabras indicadas en cada caso:",
+  "ImagenEnunciado": "codigomultiple4.jpg"
+},
+{
+  "_id": 100,
+  "Enunciado": "Observa el siguiente código y ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: ",
+  "ImagenEnunciado": "codigomultiple6.jpg"
+},
+{
+  "_id": 101,
+  "Enunciado": "Observa el siguiente código. Dadas las siguientes claves, señale el dibujo que representa las palabras indicadas en cada caso:",
+  "ImagenEnunciado": "codigomultiple7.jpg"
+},
+{
+  "_id": 102,
+  "Enunciado": "Observa el siguiente código. Dadas las siguientes claves, señale el dibujo que representa las palabras indicadas en cada caso:",
+  "ImagenEnunciado": "codigomultiple8.jpg"
+},
+{
+  "_id": 103,
+  "Enunciado": "Dadas las siguientes claves señale la palabra de valor más alto.",
+  "ImagenEnunciado": "abstractogc214.jpg"
+},
+{
+  "_id": 104,
+  "Enunciado": "Observa el siguiente código y sumando los puntos correspondientes al código establecido, ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: ",
+  "ImagenEnunciado": "codigomultiple9.jpg"
+},
+{
+  "_id": 105,
+  "Enunciado": "Observa el siguiente código y sumando los puntos correspondientes al código establecido, ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: ",
+  "ImagenEnunciado": "codigomultiple10.jpg"
+},
+{
+  "_id": 106,
+  "Enunciado": "Observa el siguiente código y sumando los puntos correspondientes al código establecido, ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: ",
+  "ImagenEnunciado": "codigomultiple11.jpg"
+},
+{
+  "_id": 107,
+  "Enunciado": "Dadas las siguientes claves, señale el dibujo que representa la palabra indicada."
+},
+{
+  "_id": 108,
+  "Enunciado": "Dadas las siguientes claves, señale el dibujo que representa la palabra indicada."
+},
+{
+  "_id": 109,
+  "Enunciado": "Dadas las siguientes claves, señale el dibujo que representa la palabra indicada."
+},
+{
+  "_id": 110,
+  "Enunciado": "Dadas las siguientes claves, señale el dibujo que representa la palabra indicada."
+},
+{
+  "_id": 111,
+  "Enunciado": "Observa el siguiente código y sumando los puntos correspondientes al código establecido, ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: ",
+  "ImagenEnunciado": "codigomultiple14.jpg"
+},
+{
+  "_id": 112,
+  "Enunciado": "Observa el siguiente código y sumando los puntos correspondientes al código establecido, ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: ",
+  "ImagenEnunciado": "codigomultiple15.jpg"
+},
+{
+  "_id": 113,
+  "Enunciado": "Observa el siguiente código y sumando los puntos correspondientes al código establecido, ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: ",
+  "ImagenEnunciado": "codigomultiple16.jpg"
+},
+{
+  "_id": 114,
+  "Enunciado": "Observa el siguiente código y sumando los puntos correspondientes al código establecido, ten en cuenta lo siguiente para señalar la respuesta correcta en cada caso: ",
+  "ImagenEnunciado": "codigomultiple17.jpg"
+},
+{
+  "_id": 115,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 116,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 117,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 118,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 119,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 120,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 121,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 122,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 123,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 124,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 125,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 126,
+  "Enunciado": "Observa y responde a las preguntas que a continuación se detallan indicando cómo se completa la matríz en cada caso:"
+},
+{
+  "_id": 127,
+  "Enunciado": "En la primera fila tienes 4  palabras, en la segunda esas palabras están codificadas, escritas en otro orden. Estudiando la relación que hay entre ellas, responde: ",
+  "ImagenEnunciado": "barcodigo1.jpg"
+},
+{
+  "_id": 128,
+  "Enunciado": "En la primera fila tienes 4  palabras, en la segunda esas palabras están codificadas, escritas en otro orden. Estudiando la relación que hay entre ellas, responde: ",
+  "ImagenEnunciado": "barcodigo4.jpg"
+},
+{
+  "_id": 129,
+  "Enunciado": "En la primera fila tienes 4  palabras, en la segunda esas palabras están codificadas, escritas en otro orden. Estudiando la relación que hay entre ellas, responde: ",
+  "ImagenEnunciado": "barcodigo6.jpg"
+},
+{
+  "_id": 130,
+  "Enunciado": "Suponiendo que no se dispone de más fichas que las de la palabra modelo, y que no se pueden repetir, señale en cuál de las cuatro palabras siguientes se pueden utilizar mayor número de fichas."
+},
+{
+  "_id": 131,
+  "Enunciado": "Suponiendo que no se dispone de más fichas que las de la palabra modelo, y que no se pueden repetir, señale en cuál de las cuatro palabras siguientes se pueden utilizar mayor número de fichas."
+},
+{
+  "_id": 132,
+  "Enunciado": "A continuación se muestran unas figuras que se han volteado y luego se han girado, ¿qué figura resulta de ello en cada caso?"
+},
+{
+  "_id": 133,
+  "Enunciado": "A continuación, tenemos varias figuras que se han recortado en trozos, ¿cuál de las opciones A, B, C o D se ha formado en cada caso con esos trozos teniendo en cuenta que las líneas pueden cruzarse pero no superponerse en su totalidad?"
+},
+{
+  "_id": 134,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden1.jpg"
+},
+{
+  "_id": 135,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden7.jpg"
+},
+{
+  "_id": 136,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden1.jpg"
+},
+{
+  "_id": 137,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden1.jpg"
+},
+{
+  "_id": 138,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden1.jpg"
+},
+{
+  "_id": 139,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden7.jpg"
+},
+{
+  "_id": 140,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden7.jpg"
+},
+{
+  "_id": 141,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden7.jpg"
+},
+{
+  "_id": 142,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden12.jpg"
+},
+{
+  "_id": 143,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden12.jpg"
+},
+{
+  "_id": 144,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden12.jpg"
+},
+{
+  "_id": 145,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden12.jpg"
+},
+{
+  "_id": 146,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden17.jpg"
+},
+{
+  "_id": 147,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden17.jpg"
+},
+{
+  "_id": 148,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden17.jpg"
+},
+{
+  "_id": 149,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden17.jpg"
+},
+{
+  "_id": 150,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden30.jpg"
+},
+{
+  "_id": 151,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden30.jpg"
+},
+{
+  "_id": 152,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden30.jpg"
+},
+{
+  "_id": 153,
+  "Enunciado": "Partiendo de la figura modelo, sigue las siguientes instrucciones codificadas y dí ¿cuál de las opciones A, B, C o D es la resultante?",
+  "ImagenEnunciado": "orden30.jpg"
+},
+{
+  "_id": 154,
+  "Enunciado": "De los cuatro despliegues a continuación (A, B, C y D), cuál de ellas se corresponde con la figura en primer término."
+},
+{
+  "_id": 155,
+  "Enunciado": "¿Cuál es el número de cubos que componen la siguiente figura? Indica la correcta"
+},
+{
+  "_id": 156,
+  "Enunciado": "¿Cuál es el número de cubos que componen la siguiente figura? Indica la correcta"
+},
+{
+  "_id": 157,
+  "Enunciado": "Del las cuatro posibles soluciones A, B, C y D, ¿cuál de ellas se puede obtener rotando la primera figura a la izquierda?"
+},
+{
+  "_id": 158,
+  "Enunciado": "Del las cuatro posibles soluciones A, B, C y D, ¿cuál de ellas se puede obtener rotando la primera figura a la izquierda?"
+},
+{
+  "_id": 159,
+  "Enunciado": "De las cuatro posibles soluciones A, B, C y D, ¿cuál de ellas se puede obtener si desplegamos la pieza en la primera casilla hasta formar la figura entera?"
+},
+{
+  "_id": 160,
+  "Enunciado": "De las cuatro posibles soluciones A, B, C y D, ¿cuál de ellas se puede obtener si plegamos la figura por la línea de puntos?"
+},
+{
+  "_id": 161,
+  "Enunciado": "De los cuatro despliegues a continuación (A, B, C y D), cual de ellas se corresponde con la figura en primer término."
+},
+{
+  "_id": 162,
+  "Enunciado": "Elige la figura que encaja en el recuadro de la izquierda"
+},
+{
+  "_id": 163,
+  "Enunciado": "¿ Qué figura encaja en el recorte de la izquierda ?"
+},
+{
+  "_id": 164,
+  "Enunciado": "¿ Qué pieza se ha recortado de la figura ?"
+},
+{
+  "_id": 165,
+  "Enunciado": "¿ Qué pieza se ha recortado de la figura ?"
+},
+{
+  "_id": 166,
+  "Enunciado": "¿ Qué pieza se ha recortado de la figura ?"
+},
+{
+  "_id": 167,
+  "Enunciado": "¿Cuál de las piezas: A, B, C o D, que se muestran a continuación, se ha formado a partir del modelo?"
+},
+{
+  "_id": 168,
+  "Enunciado": "¿Cuál de las siguientes figuras no será nunca igual a la original?"
+},
+{
+  "_id": 170,
+  "Enunciado": "Señale la opción que no llega al final del laberinto"
+},
+{
+  "_id": 171,
+  "Enunciado": "Señale la opción que llega al final del laberinto"
+},
+{
+  "_id": 172,
+  "Enunciado": "Señale la opción que llega al final del laberinto"
+},
+{
+  "_id": 173,
+  "Enunciado": "¿Qué objeto está menos a la derecha?"
+},
+{
+  "_id": 174,
+  "Enunciado": "¿Qué objeto está menos a la izquierda?"
+},
+{
+  "_id": 175,
+  "Enunciado": "¿Qué objeto está menos adelantado?"
+},
+{
+  "_id": 176,
+  "Enunciado": "¿Qué objeto está menos atrasado?"
+},
+{
+  "_id": 177,
+  "Enunciado": "¿Qué figura resulta de superponer las dos primeras? La respuesta puede estar girada"
+},
+{
+  "_id": 178,
+  "Enunciado": "¿Qué figura resulta de superponer las dos primeras? La respuesta puede estar girada"
+},
+{
+  "_id": 179,
+  "Enunciado": "¿Qué figura resulta de superponer las dos primeras? La respuesta puede estar girada"
+},
+{
+  "_id": 180,
+  "Enunciado": "¿Cuál de las figuras, A, B, C o D, es igual al modelo?"
+},
+{
+  "_id": 181,
+  "Enunciado": "¿Cuál de las opciones A, B, C o D se puede montar a partir de las piezas que te damos a continuación?"
+},
+{
+  "_id": 182,
+  "Enunciado": "¿Qué figura se ha tenido que añadir  a la figura 1 para conseguir la figura 2?"
+},
+{
+  "_id": 183,
+  "Enunciado": "¿Qué pieza A, B, C o D se ha recortado de la figura?"
+},
+{
+  "_id": 184,
+  "Enunciado": "¿Cuál de las piezas: A, B, C o D, que se muestran a continuación, se ha formado a partir del modelo?"
+},
+{
+  "_id": 257,
+  "Enunciado": "¿Qué figura no corresponde con figura de la izquierda?"
+},
+{
+  "_id": 258,
+  "Enunciado": "¿Cuál de las siguientes piezas, giradas de izquierda a derecha o de derecha a izquierda, no será nunca igual a la pieza origen?"
+},
+{
+  "_id": 259,
+  "Enunciado": "¿Cuál de las siguientes piezas, giradas de izquierda a derecha o de derecha a izquierda, no será nunca igual a la pieza origen?"
+},
+{
+  "_id": 260,
+  "Enunciado": "Entre las siguientes figuras, unas son iguales y otra no, señale la que no:"
+},
+{
+  "_id": 261,
+  "Enunciado": "¿Cuál de las siguientes piezas, se corresponde con la figura modelo girada 180 grados?"
+},
+{
+  "_id": 262,
+  "Enunciado": "Señale la opción que, al girar, es igual a la figura que se muestra a continuación"
+},
+{
+  "_id": 263,
+  "Enunciado": "¿ Cuando plegamos el modelo por la línea de puntos, cuál de las cuatro opciones resulta ?"
+},
+{
+  "_id": 264,
+  "Enunciado": "¿Cuál de las siguientes piezas corresponde con la original una vez plegada por la línea de puntos?"
+},
+{
+  "_id": 265,
+  "Enunciado": "Seleccione en  cada caso,  la pieza que sobra al completar la figura"
+},
+{
+  "_id": 266,
+  "Enunciado": "¿Cuál de las siguientes piezas no es válida para montar la pieza origen?"
+},
+{
+  "_id": 267,
+  "Enunciado": "¿Cuál de las siguientes figuras no es válida para formar la pieza original? La pieza original puede ESTAR GIRADA."
+}]
