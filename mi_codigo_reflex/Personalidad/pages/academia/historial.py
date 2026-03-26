@@ -31,7 +31,7 @@ def historial() -> rx.Component:
                 rx.table.header(
                     rx.table.row(
                         rx.table.column_header_cell("Fecha",     font_weight="700", color=OLIVE),
-                        rx.table.column_header_cell("Test",      font_weight="700", color=OLIVE),
+                        rx.table.column_header_cell("Usuario",   font_weight="700", color=OLIVE),
                         rx.table.column_header_cell("Resultado", font_weight="700", color=OLIVE),
                     )
                 ),
@@ -40,7 +40,7 @@ def historial() -> rx.Component:
                         HistorialSimplificado_State.historial,
                         lambda item: rx.table.row(
                             rx.table.cell(item["fecha"], color="black"),
-                            rx.table.cell(item["test"], color="black"),
+                            rx.table.cell(item["user_id"], color="black"),
                             rx.table.cell(badge_resultado(item["resultado"], item["color"])),
                         )
                     )

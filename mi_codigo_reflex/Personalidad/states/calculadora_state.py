@@ -46,6 +46,11 @@ class CalculadoraState(State):
             from Personalidad.api.calculadora_api import CalculadoraAPI
             await CalculadoraAPI.ejecutar_flujo_calculo(self)
             
+            # 5. Refrescar el historial de la otra pestaña/componente dinámicamente
+            from Personalidad.states.historial_state import HistorialSimplificado_State
+            hist_state = await self.get_state(HistorialSimplificado_State)
+            hist_state.cargar_historial()
+            
         except Exception as e:
             print(f"ERROR en procesar_calculo: {e}")
             self.resultado = "ERROR"

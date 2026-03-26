@@ -27,8 +27,8 @@ class CalculadoraAPI:
             "resultado": state.resultado
         }
         
-        # Lanzamos el guardado sin esperar (fire and forget)
-        asyncio.create_task(CalculadoraAPI._guardar_en_db(user_id, payload))
+        # 3. Guardamos en DB de forma asíncrona pero esperable
+        await CalculadoraAPI._guardar_en_db(user_id, payload)
 
     @staticmethod
     async def _guardar_en_db(user_id, payload):
