@@ -1,8 +1,8 @@
 import reflex as rx
 from .layout import academia_layout, big_card
-from .state import AcademiaState
+from Personalidad.states.base_state import State
 
-@rx.page(route="/academia", title="Academia Online - Dashboard", on_load=AcademiaState.check_login)
+@rx.page(route="/academia", title="Academia Online - Dashboard", on_load=State.check_login)
 def index() -> rx.Component:
     return academia_layout(
         rx.vstack(

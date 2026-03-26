@@ -1,8 +1,7 @@
 import reflex as rx
 from .layout import academia_layout, small_card, back_button
-from .state import AcademiaState
-
-@rx.page(route="/academia/fisicas", title="Academia Online - Pruebas Físicas", on_load=AcademiaState.check_login)
+from Personalidad.states.fisicas import FisicasState
+@rx.page(route="/academia/fisicas", title="Academia Online - Pruebas Físicas", on_load=FisicasState.check_plan_fisicas)
 def fisicas() -> rx.Component:
     return academia_layout(
         rx.text("CURSO PRUEBAS FÍSICAS", font_size="2em", font_weight="900", color="white", letter_spacing="0.1em"),

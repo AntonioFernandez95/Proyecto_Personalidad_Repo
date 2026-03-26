@@ -1,6 +1,6 @@
 import reflex as rx
 from .layout import academia_layout, OLIVE, TEXT_DARK, plan_row, back_button, CARD_STYLE
-from .state import AcademiaState
+from Personalidad.states.fisicas import FisicasState
 
 _MARCAS = [
     ("Flexiones",     "17 reps", "12 reps"),
@@ -9,7 +9,7 @@ _MARCAS = [
     ("Agilidad",      "25 seg",  "27 seg"),
 ]
 
-@rx.page(route="/academia/planificacion", title="Academia Online - Planificación", on_load=AcademiaState.check_login)
+@rx.page(route="/academia/planificacion", title="Academia Online - Planificación", on_load=FisicasState.check_plan_fisicas)
 def planificacion() -> rx.Component:
     return academia_layout(
         rx.text("PLANIFICACIÓN DEL ENTRENAMIENTO", font_size="1.9em", font_weight="900", color="white"),

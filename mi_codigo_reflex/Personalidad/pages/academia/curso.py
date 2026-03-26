@@ -1,6 +1,7 @@
 import reflex as rx
 from .layout import academia_layout, OLIVE, TEXT_MID, BTN_PRIMARY_BASE, CARD_STYLE, back_button
-from .state import AcademiaState
+
+
 
 @rx.page(route="/academia/curso", title="Academia Online - Bienvenida", on_load=AcademiaState.check_login)
 def curso() -> rx.Component:
