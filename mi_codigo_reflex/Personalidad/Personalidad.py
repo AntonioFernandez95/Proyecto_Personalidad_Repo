@@ -3,6 +3,7 @@ from Personalidad.states.login_state import LoginState
 from Personalidad.states.calculadora_state import CalculadoraState
 from Personalidad.states.historial_state import HistorialSimplificado_State
 from Personalidad.states.results_state import ResultsState
+from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.test_state import TestState
 
 from Personalidad.pages import login, test, info, results, academia

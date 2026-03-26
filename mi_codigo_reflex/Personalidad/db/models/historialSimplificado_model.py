@@ -13,5 +13,14 @@ class HistorialSimplificado(Base):
     id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
     user_id = Column(String, nullable=False)
     simulacro_code = Column(String, nullable=False)  # ej: 'FISC-01'
-    resultado = Column(String, nullable=False)       # 'APTO' o 'NO APTO'
+    resultado = Column(String, nullable=False)       # 'APTO' o 'NO APTO' (para compatibilidad)
+    
+    # Nuevas Columnas Estructuradas
+    gender = Column(String, nullable=True)
+    flexiones = Column(String, nullable=True)
+    plancha_seg = Column(String, nullable=True)
+    km2000 = Column(String, nullable=True)
+    agilidad_seg = Column(String, nullable=True)
+    porcentaje = Column(String, nullable=True)
+    
     fecha = Column(DateTime, default=datetime.datetime.utcnow)

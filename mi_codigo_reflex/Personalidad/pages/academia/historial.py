@@ -1,6 +1,7 @@
 import reflex as rx
-from .layout import academia_layout, OLIVE, back_button, CARD_STYLE, BADGE_GREEN, BADGE_GRAY
-from .state import AcademiaState
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, CARD_STYLE, back_button, BADGE_GREEN, BADGE_GRAY
+from Personalidad.states.fisicas_state import FisicasState
+from Personalidad.states.calculadora_state import CalculadoraState
 from Personalidad.states.historial_state import HistorialSimplificado_State
 
 _HISTORIAL = [
@@ -19,8 +20,8 @@ def badge_resultado(texto: str, color: str) -> rx.Component:
 
 @rx.page(
     route="/academia/historial", 
-    title="Academia Online - Historial", 
-    on_load=[AcademiaState.check_login, HistorialSimplificado_State.cargar_historial]
+    title="Academia Online - Mi Historial", 
+    on_load=[CalculadoraState.check_login, HistorialSimplificado_State.cargar_historial]
 )
 def historial() -> rx.Component:
     return academia_layout(

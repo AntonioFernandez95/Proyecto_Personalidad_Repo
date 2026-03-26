@@ -1,8 +1,7 @@
-# Personalidad/api/calculadora_api.py
 import reflex as rx
 import uuid
-from Personalidad.db.crud import guardar_historial_ligero
-from Personalidad.db.schemas.historialSimplificado_schema import HistorialSimplificadoCreate
+import asyncio
+import json
 
 class CalculadoraAPI:
     """
@@ -13,37 +12,44 @@ class CalculadoraAPI:
     @staticmethod
     async def ejecutar_flujo_calculo(state):
         """
-        Orquesta el flujo: Motor -> Captura -> CRUD -> Historial.
+        Lanza el guardado en DB en segundo plano para no bloquear al usuario.
         """
-        from Personalidad.states.calculadora_state import CalculadoraState
-        from Personalidad.states.historial_state import HistorialSimplificado_State
-        
-        # 1. Recepción y Llamada al Motor (Delegación)
-        # Obtenemos el motor de cálculo
-        calc_engine = await state.get_state(CalculadoraState)
-        
-        # Ejecutamos el motor pasando los datos del estado
-        resultado_apto = calc_engine.motor_de_calculo(
-            state.gender,
-            state.flexiones,
-            state.plancha_seg,
-            state.km2000,
-            state.agilidad_seg
-        )
-
-        # 2. Captura de Resultados
-        state.resultado = resultado_apto
         user_id = state.user if state.user else "anónimo"
+        
+        # Extraemos los datos del estado
+        payload = {
+            "gender": state.gender,
+            "flexiones": state.flexiones,
+            "plancha_seg": state.plancha_seg,
+            "km2000": state.km2000,
+            "agilidad_seg": state.agilidad_seg,
+            "porcentaje": str(state.porcentaje),
+            "resultado": state.resultado
+        }
+        
+        # Lanzamos el guardado sin esperar (fire and forget)
+        asyncio.create_task(CalculadoraAPI._guardar_en_db(user_id, payload))
 
-        # 3. Guardado (Llamada al CRUD)
-        # Preparamos el schema para el CRUD (Caja Negra)
+    @staticmethod
+    async def _guardar_en_db(user_id, payload):
         try:
+            from Personalidad.db.crud import guardar_historial_ligero
+            from Personalidad.db.schemas.historialSimplificado_schema import HistorialSimplificadoCreate
+            
             datos_ticket = HistorialSimplificadoCreate(
                 id=str(uuid.uuid4()),
                 user_id=user_id,
                 simulacro_code="CALC-API",
-                resultado=state.resultado
+                resultado=payload["resultado"],
+                gender=payload["gender"],
+                flexiones=payload["flexiones"],
+                plancha_seg=payload["plancha_seg"],
+                km2000=payload["km2000"],
+                agilidad_seg=payload["agilidad_seg"],
+                porcentaje=payload["porcentaje"]
             )
+            print(f"DEBUG DB: Guardando para {user_id}...")
             guardar_historial_ligero(datos_ticket)
+            print(f"DEBUG DB: Guardado OK.")
         except Exception as e:
-            print(f"Error al guardar en el CRUD: {e}")
+            print(f"DEBUG DB ERROR: {e}")

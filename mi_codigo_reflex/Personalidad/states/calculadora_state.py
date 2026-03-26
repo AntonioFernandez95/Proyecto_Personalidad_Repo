@@ -7,41 +7,55 @@ class CalculadoraState(State):
     """Estado de la Calculadora: Hace las matemáticas y le pasa el dato al CRUD"""
    
     # Variables del formulario conectadas al frontend
-    genero: str = "Hombre"
-    carrera_minutos: int = 0
-    carrera_segundos: int = 0
-    flexiones: int = 0
-    plancha_seg: int = 0
-    agilidad_seg: float = 0.0
+    gender: str = "male"  # male/female
+    flexiones: str = ""
+    plancha_seg: str = ""
+    km2000: str = ""
+    agilidad_seg: str = ""
+    resultado: str = ""
+    porcentaje: int = 0
    
     # Variable de respuesta
     resultado_final: str = ""
    
-    def calcular_resultado(self):
-        """Aplica las matemáticas del baremo oficial y prepara el guardado."""
-        tiempo_carrera_total = (int(self.carrera_minutos) * 60) + int(self.carrera_segundos)
-        agilidad = float(self.agilidad_seg)
-       
-        es_apto = False
-       
-        # Lógica para HOMBRES
-        if self.genero == "Hombre":
-            if tiempo_carrera_total < 714 and agilidad < 15.4:
-                es_apto = True
-               
-        # Lógica para MUJERES
-        elif self.genero == "Mujer":
-            if tiempo_carrera_total < 778 and agilidad < 17.1:
-                es_apto = True
+    async def procesar_calculo(self):
+        """
+        CAPA DE CONEXIÓN: Realiza el cálculo y delega el guardado a la API.
+        Usa yield para asegurar que la UI se actualice en cada paso.
+        """
+        # 1. Indicamos inicio de procesamiento
+        self.resultado = "Procesando..."
+        yield
+        
+        try:
+            # 2. Realizamos el cálculo directamente (es síncrono y rápido)
+            res, porc = self.motor_de_calculo(
+                self.gender, 
+                self.flexiones, 
+                self.plancha_seg, 
+                self.km2000, 
+                self.agilidad_seg
+            )
+            
+            # 3. Actualizamos valores y 'yield' para que el usuario los vea YA
+            self.resultado = res
+            self.porcentaje = porc
+            yield
+            
+            # 4. Guardado en DB (Delegado a la API)
+            from Personalidad.api.calculadora_api import CalculadoraAPI
+            await CalculadoraAPI.ejecutar_flujo_calculo(self)
+            
+        except Exception as e:
+            print(f"ERROR en procesar_calculo: {e}")
+            self.resultado = "ERROR"
+            yield
+            yield rx.window_alert(f"Error en el cálculo: {str(e)}")
+            return
 
-        # Asignamos el resultado
-        if es_apto:
-            self.resultado_final = "APTO"
-        else:
-            self.resultado_final = "NO APTO"
-           
-        # Llamamos a la función que le pasa los datos al código de tu amigo
-        self._enviar_datos_al_crud()
+    def calcular_resultado(self):
+        """Método antiguo - Mantenido por compatibilidad si se usa internamente."""
+        pass
 
     def _enviar_datos_al_crud(self):
         """Prepara el paquete de datos y llama a la función de base de datos de tu compañero"""
@@ -66,40 +80,65 @@ class CalculadoraState(State):
         except Exception as e:
             print(f"❌ Error al conectar con el CRUD: {e}")
 
-    def motor_de_calculo(self, genero: str, flexiones: str, plancha: str, km2000: str, agilidad: str) -> str:
+    def motor_de_calculo(self, genero: str, flexiones: str, plancha: str, km2000: str, agilidad: str) -> tuple:
         """
-        Motor de Cálculo (Punto 1B).
-        Recibe los datos y devuelve "APTO" o "NO APTO".
+        Motor de Cálculo.
+        Recibe los datos y devuelve "APTO" o "NO APTO" y el porcentaje.
         """
         try:
-            # Reutilizamos la lógica de Personalidad.api.motor o implementamos una similar.
-            # Para cumplir la regla de "Pásale los datos", procesamos aquí.
-            
-            # Objetivos simplificados para el ejemplo (basados en Baremo)
+            # Baremo simplificado
             if genero == "male":
-                t_flex, t_plan, t_agil, t_carr = 17, 60, 25.0, 660
+                t_flex, t_plan, t_agil, t_carr = 17, 60, 25.0, 660 # 11:00 min
             else:
-                t_flex, t_plan, t_agil, t_carr = 12, 40, 27.0, 780
+                t_flex, t_plan, t_agil, t_carr = 12, 40, 27.0, 780 # 13:00 min
 
-            val_flex = int(flexiones) if flexiones else 0
-            val_plan = int(plancha) if plancha else 0
-            val_agil = float(agilidad) if agilidad else 999.0
+            # Conversión segura
+            def to_int(v, default=0):
+                try: return int(float(v)) if v else default
+                except: return default
             
-            # Procesar carrera 2000m (mm:ss)
-            val_carr = 9999
-            if km2000 and ":" in km2000:
-                parts = km2000.split(":")
-                if len(parts) == 2:
-                    val_carr = int(parts[0]) * 60 + int(parts[1])
+            def to_float(v, default=0.0):
+                try: return float(v) if v else default
+                except: return default
 
-            # El APTO se rige por cumplir los mínimos en al menos 3 pruebas
+            val_flex = to_int(flexiones)
+            val_plan = to_int(plancha)
+            val_agil = to_float(agilidad, 999.0)
+            
+            # Procesar carrera 2000m (mm:ss o segundos)
+            val_carr = 9999
+            if km2000:
+                if ":" in km2000:
+                    parts = km2000.split(":")
+                    if len(parts) == 2:
+                        val_carr = to_int(parts[0]) * 60 + to_int(parts[1])
+                else:
+                    val_carr = to_int(km2000, 9999)
+
+            print(f"MOTOR DEBUG: Genero={genero}, Flex={val_flex}(>={t_flex}), Plan={val_plan}(>={t_plan}), Agil={val_agil}(<={t_agil}), Carr={val_carr}(<={t_carr})")
+
             puntos_apto = 0
+            # Ratios de progreso (0.0 a 1.0)
+            r_flex = min(1.0, val_flex / t_flex) if t_flex > 0 else 0
+            r_plan = min(1.0, val_plan / t_plan) if t_plan > 0 else 0
+            # Para agilidad y carrera, menor es mejor. Ratio = objetivo / actual
+            r_agil = min(1.0, t_agil / val_agil) if val_agil > 0 else 0
+            r_carr = min(1.0, t_carr / val_carr) if val_carr > 0 else 0
+
             if val_flex >= t_flex: puntos_apto += 1
             if val_plan >= t_plan: puntos_apto += 1
             if val_agil <= t_agil: puntos_apto += 1
             if val_carr <= t_carr: puntos_apto += 1
             
-            return "APTO" if puntos_apto >= 3 else "NO APTO"
+            # El porcentaje es la media de los progresos individuales
+            porcentaje = int(((r_flex + r_plan + r_agil + r_carr) / 4) * 100)
+            
+            # Nuevo criterio: APTO a partir del 70% de progreso medio
+            resultado = "APTO" if porcentaje >= 70 else "NO APTO"
+            
+            print(f"MOTOR DEBUG: Ratios -> Flex:{r_flex:.2f}, Plan:{r_plan:.2f}, Agil:{r_agil:.2f}, Carr:{r_carr:.2f} -> Total:{porcentaje}% RESULTADO:{resultado}")
+
+            return resultado, porcentaje
         except Exception as e:
             print(f"Error en motor de cálculo: {e}")
-            return "ERROR"
+            return "ERROR", 0

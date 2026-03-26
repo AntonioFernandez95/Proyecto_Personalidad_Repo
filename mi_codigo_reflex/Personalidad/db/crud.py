@@ -32,7 +32,14 @@ def guardar_historial_ligero(data_validada: HistorialSimplificadoCreate):
             id=data_validada.id,
             user_id=data_validada.user_id,
             simulacro_code=data_validada.simulacro_code,
-            resultado=data_validada.resultado
+            resultado=data_validada.resultado,
+            # Nuevos Campos Mapeados
+            gender=data_validada.gender,
+            flexiones=data_validada.flexiones,
+            plancha_seg=data_validada.plancha_seg,
+            km2000=data_validada.km2000,
+            agilidad_seg=data_validada.agilidad_seg,
+            porcentaje=data_validada.porcentaje
             # "fecha" se autocompleta por el modelo
         )
         db.add(nuevo_historial)

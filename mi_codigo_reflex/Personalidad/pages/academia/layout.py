@@ -58,7 +58,7 @@ BTN_BACK_BASE = dict(
 # ─────────────────────────────────────────────
 
 def navbar() -> rx.Component:
-    from .state import AcademiaState
+    from Personalidad.states.calculadora_state import CalculadoraState
     return rx.box(
         rx.hstack(
             rx.hstack(
@@ -102,7 +102,7 @@ def navbar() -> rx.Component:
                     font_size="0.85em",
                     font_weight="500",
                     _hover={"color": "white", "background": "rgba(255,255,255,0.1)"},
-                    on_click=AcademiaState.logout,
+                    on_click=CalculadoraState.logout,
                 ),
                 rx.icon_button(
                     rx.icon("message-circle", size=16),

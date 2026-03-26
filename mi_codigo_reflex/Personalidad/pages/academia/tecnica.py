@@ -1,8 +1,9 @@
 import reflex as rx
-from .layout import academia_layout, prueba_row, back_button
-from .state import AcademiaState
+from Personalidad.pages.academia.layout import academia_layout, prueba_row, back_button
+from Personalidad.states.fisicas_state import FisicasState
+from Personalidad.states.calculadora_state import CalculadoraState
 
-@rx.page(route="/academia/tecnica", title="Academia Online - Técnica", on_load=AcademiaState.check_login)
+@rx.page(route="/academia/tecnica", title="Academia Online - Técnica", on_load=CalculadoraState.check_login)
 def tecnica() -> rx.Component:
     return academia_layout(
         rx.text("TÉCNICA DE PRUEBAS FÍSICAS", font_size="2em", font_weight="900", color="white"),

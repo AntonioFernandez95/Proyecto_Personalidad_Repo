@@ -1,8 +1,9 @@
 import reflex as rx
-from .layout import academia_layout, OLIVE, TEXT_MID, BTN_PRIMARY_BASE, CARD_STYLE, back_button
-from .state import AcademiaState
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_MID, BTN_PRIMARY_BASE, CARD_STYLE, back_button
+from Personalidad.states.fisicas_state import FisicasState
+from Personalidad.states.calculadora_state import CalculadoraState
 
-@rx.page(route="/academia/curso", title="Academia Online - Bienvenida", on_load=AcademiaState.check_login)
+@rx.page(route="/academia/curso", title="Academia Online - Curso", on_load=CalculadoraState.check_login)
 def curso() -> rx.Component:
     return academia_layout(
         rx.box(

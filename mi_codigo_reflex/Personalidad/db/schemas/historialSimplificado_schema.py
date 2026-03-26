@@ -3,23 +3,20 @@ from typing import Optional, Any
 
 class HistorialSimplificadoCreate(BaseModel):
     """
-    El 'Portero de Discoteca':
-    Filtra los datos antes de guardarlos. Si el frontend intenta enviar un ID falso
-    o un resultado que no sea texto, este archivo lo bloquea y lanza un error.
+    Schema para crear un registro en el historial con todos los campos detallados.
     """
-    id: Optional[str] = None  # <-- CAMBIO REALIZADO AQUÍ: Ahora es opcional
+    id: Optional[str] = None
     user_id: str
     simulacro_code: str
     resultado: str
-
-    @validator('resultado')
-    def validar_resultado(cls, v):
-        if not isinstance(v, str):
-            raise ValueError("El resultado debe ser de tipo texto")
-        v_upper = v.upper()
-        if v_upper not in ['APTO', 'NO APTO']:
-            raise ValueError("El resultado debe ser exactamente 'APTO' o 'NO APTO'")
-        return v_upper
+    
+    # Nuevos campos individuales
+    gender: Optional[str] = None
+    flexiones: Optional[str] = None
+    plancha_seg: Optional[str] = None
+    km2000: Optional[str] = None
+    agilidad_seg: Optional[str] = None
+    porcentaje: Optional[str] = None
 
 class Response(BaseModel):
     success: bool

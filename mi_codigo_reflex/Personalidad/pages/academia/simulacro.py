@@ -1,8 +1,9 @@
 import reflex as rx
-from .layout import academia_layout, OLIVE, TEXT_MID, back_button, CARD_STYLE
-from .state import AcademiaState
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_MID, back_button, CARD_STYLE
+from Personalidad.states.fisicas_state import FisicasState
+from Personalidad.states.calculadora_state import CalculadoraState
 
-@rx.page(route="/academia/simulacro", title="Academia Online - Simulacro Presencial", on_load=AcademiaState.check_login)
+@rx.page(route="/academia/simulacro", title="Academia Online - Simulacro Presencial", on_load=CalculadoraState.check_login)
 def simulacro() -> rx.Component:
     return academia_layout(
         rx.text("SIMULACRO PRESENCIAL", font_size="2.2em", font_weight="900", color="white", letter_spacing="0.1em"),
