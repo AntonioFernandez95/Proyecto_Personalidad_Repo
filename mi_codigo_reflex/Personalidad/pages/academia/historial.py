@@ -1,6 +1,7 @@
 import reflex as rx
 from .layout import academia_layout, OLIVE, back_button, CARD_STYLE, BADGE_GREEN, BADGE_GRAY
 from .state import AcademiaState
+from Personalidad.states.historial_state import HistorialSimplificado_State
 
 _HISTORIAL = [
     ("12/03/2026", "Simulacro #04", "APTO",    BADGE_GREEN),
@@ -19,7 +20,7 @@ def badge_resultado(texto: str, color: str) -> rx.Component:
 @rx.page(
     route="/academia/historial", 
     title="Academia Online - Historial", 
-    on_load=[AcademiaState.check_login, AcademiaState.cargar_historial]
+    on_load=[AcademiaState.check_login, HistorialSimplificado_State.cargar_historial]
 )
 def historial() -> rx.Component:
     return academia_layout(
@@ -35,7 +36,7 @@ def historial() -> rx.Component:
                 ),
                 rx.table.body(
                     rx.foreach(
-                        AcademiaState.historial,
+                        HistorialSimplificado_State.historial,
                         lambda item: rx.table.row(
                             rx.table.cell(item["fecha"], color="black"),
                             rx.table.cell(item["test"], color="black"),

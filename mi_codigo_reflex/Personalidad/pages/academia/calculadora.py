@@ -48,9 +48,9 @@ def calculadora() -> rx.Component:
                              border_radius="8px", width="100%"),
                     spacing="1", align="start", width="100%",
                 ),
-                rx.button(
-                    "CALCULAR",
-                    on_click=AcademiaState.calcular,
+                    rx.button(
+                        "CALCULAR",
+                        on_click=AcademiaState.procesar_calculo,
                     **BTN_PRIMARY_BASE,
                     width="100%", font_size="1em", padding="0.8em", margin_top="0.5em",
                 ),

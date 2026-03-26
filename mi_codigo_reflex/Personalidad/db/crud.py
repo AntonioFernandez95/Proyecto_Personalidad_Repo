@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import os
-from .models.historial_model import HistorialSimplificado, Base
-from .schemas.historial_schema import HistorialSimplificadoCreate
+from .models.historialSimplificado_model import HistorialSimplificado, Base
+from .schemas.historialSimplificado_schema import HistorialSimplificadoCreate
 # Configuramos SQLAlchemy para conectarse a Postgres (usando las credenciales actuales)
 DB_NAME = os.getenv("DB_NAME", "db_personalidad_proyecto")
 DB_USER = os.getenv("DB_USER", "postgres")
@@ -16,7 +16,11 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # "Le dice a SQL que cree una tabla aislada con 4 columnas exactas"
 # Esto crea la tabla en la base de datos si no existe
-Base.metadata.create_all(bind=engine)
+try:
+    Base.metadata.create_all(bind=engine)
+except Exception:
+    # Ignoramos fallos durante el build; las tablas se crearán al arrancar el contenedor
+    pass
 def guardar_historial_ligero(data_validada: HistorialSimplificadoCreate):
     """
     Funcionamiento: Recibe los datos validados del schema y ejecuta el INSERT real
@@ -39,5 +43,19 @@ def guardar_historial_ligero(data_validada: HistorialSimplificadoCreate):
         db.rollback()
         print(f"Error al guardar historial ligero: {e}")
         raise e
+    finally:
+        db.close()
+
+def consultar_historial_usuario(user_id: str):
+    """
+    Funcionamiento: Consulta todos los registros de la tabla historial_simplificado
+    para un usuario específico.
+    """
+    db = SessionLocal()
+    try:
+        return db.query(HistorialSimplificado).filter(HistorialSimplificado.user_id == user_id).order_by(HistorialSimplificado.fecha.desc()).all()
+    except Exception as e:
+        print(f"Error al consultar historial: {e}")
+        return []
     finally:
         db.close()

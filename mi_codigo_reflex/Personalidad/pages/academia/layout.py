@@ -54,12 +54,11 @@ BTN_BACK_BASE = dict(
 )
 
 
-# ─────────────────────────────────────────────
 # COMPONENTES COMPARTIDOS
 # ─────────────────────────────────────────────
-from .state import AcademiaState
 
 def navbar() -> rx.Component:
+    from .state import AcademiaState
     return rx.box(
         rx.hstack(
             rx.hstack(

@@ -1,7 +1,12 @@
+import reflex as rx
+from Personalidad.states.login_state import LoginState
+from Personalidad.states.calculadora_state import CalculadoraState
+from Personalidad.states.historial_state import HistorialSimplificado_State
+from Personalidad.states.results_state import ResultsState
+from Personalidad.states.test_state import TestState
+
 from Personalidad.pages import login, test, info, results, academia
 from Personalidad.styles.styles import BASE_STYLE, STYLESHEETS
-from Personalidad.api.calculo_api import router as calculo_router
-import reflex as rx
 
 # Define the app with the given theme and styles
 app = rx.App(
@@ -16,4 +21,4 @@ app = rx.App(
 )
 
 # Registramos el endpoint de API directo
-app.api.include_router(calculo_router)
+# (Se eliminó calculo_router por no existir el archivo calculo_api.py)

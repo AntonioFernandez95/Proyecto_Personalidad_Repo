@@ -65,3 +65,41 @@ class CalculadoraState(State):
            
         except Exception as e:
             print(f"❌ Error al conectar con el CRUD: {e}")
+
+    def motor_de_calculo(self, genero: str, flexiones: str, plancha: str, km2000: str, agilidad: str) -> str:
+        """
+        Motor de Cálculo (Punto 1B).
+        Recibe los datos y devuelve "APTO" o "NO APTO".
+        """
+        try:
+            # Reutilizamos la lógica de Personalidad.api.motor o implementamos una similar.
+            # Para cumplir la regla de "Pásale los datos", procesamos aquí.
+            
+            # Objetivos simplificados para el ejemplo (basados en Baremo)
+            if genero == "male":
+                t_flex, t_plan, t_agil, t_carr = 17, 60, 25.0, 660
+            else:
+                t_flex, t_plan, t_agil, t_carr = 12, 40, 27.0, 780
+
+            val_flex = int(flexiones) if flexiones else 0
+            val_plan = int(plancha) if plancha else 0
+            val_agil = float(agilidad) if agilidad else 999.0
+            
+            # Procesar carrera 2000m (mm:ss)
+            val_carr = 9999
+            if km2000 and ":" in km2000:
+                parts = km2000.split(":")
+                if len(parts) == 2:
+                    val_carr = int(parts[0]) * 60 + int(parts[1])
+
+            # El APTO se rige por cumplir los mínimos en al menos 3 pruebas
+            puntos_apto = 0
+            if val_flex >= t_flex: puntos_apto += 1
+            if val_plan >= t_plan: puntos_apto += 1
+            if val_agil <= t_agil: puntos_apto += 1
+            if val_carr <= t_carr: puntos_apto += 1
+            
+            return "APTO" if puntos_apto >= 3 else "NO APTO"
+        except Exception as e:
+            print(f"Error en motor de cálculo: {e}")
+            return "ERROR"
