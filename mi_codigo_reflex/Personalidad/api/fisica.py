@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 import uuid
-from Personalidad.api.motor import calcular_resultado_test
+
 from Personalidad.db.crud import guardar_historial_ligero
 from Personalidad.db.schemas.historial_schema import HistorialSimplificadoCreate
 
@@ -19,7 +19,7 @@ async def api_calcular_fisicas(
     Punto 3 vía API: Recibe datos externos, calcula y persiste en DB.
     """
     # 1. Ejecutar Motor (1B)
-    res = calcular_resultado_test(gender, flexiones, plancha_seg, km2000, agilidad_seg) [cite: 75]
+    res = calcular_resultado_test(gender, flexiones, plancha_seg, km2000, agilidad_seg) 
     
     if not res["success"]:
         raise HTTPException(status_code=400, detail=res.get("error"))
@@ -33,8 +33,8 @@ async def api_calcular_fisicas(
             resultado=res["resultado"]
         )
         
-        guardar_historial_ligero(ticket) [cite: 91]
+        guardar_historial_ligero(ticket) 
         return res
         
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Error al guardar el ticket en la base de datos") [cite: 97]
+        raise HTTPException(status_code=500, detail="Error al guardar el ticket en la base de datos") 

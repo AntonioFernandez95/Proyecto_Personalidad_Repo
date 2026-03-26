@@ -30,25 +30,25 @@ class CalculadoraState(State):
             self.plancha_seg, 
             self.km2000, 
             self.agilidad_seg
-        ) [cite: 75]
+        ) 
 
         if res_motor["success"]:
             # 2. Cogemos el resultado ("APTO"/"NO APTO") y el user_id de la sesión
-            self.resultado_final = res_motor["resultado"] [cite: 49]
-            self.porcentaje = res_motor["porcentaje"] [cite: 50]
-            usuario_id = self.user if self.user else "anonimo@test.com" [cite: 244]
+            self.resultado_final = res_motor["resultado"] 
+            self.porcentaje = res_motor["porcentaje"]
+            usuario_id = self.user if self.user else "anonimo@test.com"
 
             # 3. Llama al ejecutor de crud.py (Punto 2C) para guardar el "ticket"
             try:
                 nuevo_ticket = HistorialSimplificadoCreate(
-                    id=str(uuid.uuid4()), [cite: 84]
-                    user_id=usuario_id, [cite: 85]
-                    simulacro_code="FISICAS-CALC", [cite: 86]
-                    resultado=self.resultado_final [cite: 88]
+                    id=str(uuid.uuid4()), 
+                    user_id=usuario_id, 
+                    simulacro_code="FISICAS-CALC", 
+                    resultado=self.resultado_final 
                 )
                 
                 # Ejecución real del guardado
-                guardar_historial_ligero(nuevo_ticket) [cite: 91, 178]
+                guardar_historial_ligero(nuevo_ticket)
                 return rx.window_alert(f"¡Cálculo guardado con éxito! Resultado: {self.resultado_final}")
             
             except Exception as e:

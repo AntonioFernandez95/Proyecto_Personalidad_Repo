@@ -1,57 +1,115 @@
 import reflex as rx
-from datetime import datetime
-import uuid
-from Personalidad.states.base_state import State
-# Importamos el Motor (1B) y el CRUD (2C)
-from Personalidad.db.crud import guardar_historial_ligero
-from Personalidad.db.schemas.historial_schema import HistorialSimplificadoCreate
+from .layout import academia_layout, OLIVE, TEXT_DARK, TEXT_MID, GRAY_LIGHT, BTN_PRIMARY_BASE, CARD_STYLE, back_button, BADGE_GREEN, BADGE_GRAY
 
-class CalculadoraState(State):
-    """
-    Punto 3: Capa de Conexión.
-    Es el puente entre el cálculo (motor.py) y la base de datos (crud.py).
-    """
-    genero: str = "male"
-    flexiones: str = ""
-    plancha_seg: str = ""
-    km2000: str = ""
-    agilidad_seg: str = ""
-    
-    resultado_final: str = ""
-    porcentaje: int = 0
+from Personalidad.states.calculadora import CalculadoraState
+from Personalidad.states.fisicas import FisicasState
 
-    def calcular_y_guardar(self):
-        """Función que se dispara al darle al botón 'Calcular'"""
-        
-        # 1. Recibe el clic y ejecuta el Motor de Cálculo (Punto 1B)
-        res_motor = calcular_resultado_test(
-            self.genero, 
-            self.flexiones, 
-            self.plancha_seg, 
-            self.km2000, 
-            self.agilidad_seg
-        ) [cite: 75]
-
-        if res_motor["success"]:
-            # 2. Cogemos el resultado ("APTO"/"NO APTO") y el user_id de la sesión
-            self.resultado_final = res_motor["resultado"] [cite: 49]
-            self.porcentaje = res_motor["porcentaje"] [cite: 50]
-            usuario_id = self.user if self.user else "anonimo@test.com" [cite: 244]
-
-            # 3. Llama al ejecutor de crud.py (Punto 2C) para guardar el "ticket"
-            try:
-                nuevo_ticket = HistorialSimplificadoCreate(
-                    id=str(uuid.uuid4()), [cite: 84]
-                    user_id=usuario_id, [cite: 85]
-                    simulacro_code="FISICAS-CALC", [cite: 86]
-                    resultado=self.resultado_final [cite: 88]
-                )
-                
-                # Ejecución real del guardado
-                guardar_historial_ligero(nuevo_ticket) [cite: 91, 178]
-                return rx.window_alert(f"¡Cálculo guardado con éxito! Resultado: {self.resultado_final}")
-            
-            except Exception as e:
-                return rx.window_alert(f"Error al guardar en el historial: {str(e)}")
-        else:
-            return rx.window_alert(f"Error en los datos: {res_motor.get('error')}")
+@rx.page(route="/academia/calculadora", title="Academia Online - Calculadora", on_load=FisicasState.check_plan_fisicas)
+def calculadora() -> rx.Component:
+    return academia_layout(
+        rx.text("CALCULADORA DE RESULTADOS", font_size="1.9em", font_weight="900", color="white"),
+        rx.hstack(
+            rx.vstack(
+                rx.text("Introduce tus marcas", font_size="1.1em", font_weight="700", color=OLIVE),
+                rx.vstack(
+                    rx.text("Género", font_size="0.85em", font_weight="600", color=TEXT_MID),
+                    rx.radio_group(
+                        ["Hombre", "Mujer"],
+                        default_value="Hombre",
+                        on_change=CalculadoraState.set_genero,
+                        direction="row",
+                    ),
+                    spacing="1", align="start", width="100%",
+                ),
+                rx.vstack(
+                    rx.text("Flexiones (repeticiones)", font_size="0.85em", font_weight="600", color=TEXT_MID),
+                    rx.input(placeholder="Ej: 20", type="number",
+                             on_change=CalculadoraState.set_flexiones,
+                             border_radius="8px", width="100%"),
+                    spacing="1", align="start", width="100%",
+                ),
+                rx.vstack(
+                    rx.text("Plancha (segundos)", font_size="0.85em", font_weight="600", color=TEXT_MID),
+                    rx.input(placeholder="Ej: 90", type="number",
+                             on_change=CalculadoraState.set_plancha_seg,
+                             border_radius="8px", width="100%"),
+                    spacing="1", align="start", width="100%",
+                ),
+                rx.vstack(
+                    rx.text("Carrera 2000m (Minutos y Segundos)", font_size="0.85em", font_weight="600", color=TEXT_MID),
+                    rx.hstack(
+                        rx.input(placeholder="Minutos (Ej: 10)", type="number",
+                                 on_change=CalculadoraState.set_carrera_minutos,
+                                 border_radius="8px", width="50%"),
+                        rx.input(placeholder="Segundos (Ej: 30)", type="number",
+                                 on_change=CalculadoraState.set_carrera_segundos,
+                                 border_radius="8px", width="50%"),
+                        width="100%"
+                    ),
+                    spacing="1", align="start", width="100%",
+                ),
+                rx.vstack(
+                    rx.text("Agilidad (segundos)", font_size="0.85em", font_weight="600", color=TEXT_MID),
+                    rx.input(placeholder="Ej: 24.5", type="number",
+                             on_change=CalculadoraState.set_agilidad_seg,
+                             border_radius="8px", width="100%"),
+                    spacing="1", align="start", width="100%",
+                ),
+                rx.button(
+                    "CALCULAR",
+                    on_click=CalculadoraState.calcular_resultado, 
+                    **BTN_PRIMARY_BASE,
+                    width="100%", font_size="1em", padding="0.8em", margin_top="0.5em",
+                ),
+                spacing="4", **CARD_STYLE, padding="2em", width="310px", align="start",
+            ),
+            rx.vstack(
+                rx.text("TU RESULTADO", font_size="1em", font_weight="800", color=OLIVE, letter_spacing="0.1em"),
+                rx.center(
+                    rx.vstack(
+                        rx.icon(
+                            "gauge", size=68,
+                            color=rx.cond(CalculadoraState.resultado_final == "APTO", BADGE_GREEN, "#aaa"),
+                        ),
+                        rx.text(
+                            "Evaluación Oficial",
+                            font_size="1.05em", font_weight="700", color="black",
+                        ),
+                        align="center", spacing="2",
+                    ),
+                    background=GRAY_LIGHT, border_radius="50%",
+                    width="185px", height="185px",
+                ),
+                rx.cond(
+                    CalculadoraState.resultado_final != "", 
+                    rx.box(
+                        rx.hstack(
+                            rx.cond(
+                                CalculadoraState.resultado_final == "APTO",
+                                rx.icon("check-circle", size=20, color="white"),
+                                rx.icon("x-circle",     size=20, color="white"),
+                            ),
+                            rx.text(
+                                CalculadoraState.resultado_final,
+                                font_size="1.35em", font_weight="900",
+                                color="white", letter_spacing="0.1em",
+                            ),
+                            spacing="2", align="center",
+                        ),
+                        background=rx.cond(CalculadoraState.resultado_final == "APTO", BADGE_GREEN, BADGE_GRAY),
+                        border_radius="12px", padding="0.7em 2em",
+                        box_shadow="0 4px 16px rgba(0,0,0,0.2)",
+                    ),
+                    rx.text(
+                        "Rellena el formulario y pulsa Calcular",
+                        font_size="0.9em", color=TEXT_MID, text_align="center",
+                    ),
+                ),
+                spacing="4", align="center",
+                **CARD_STYLE, padding="2em", flex="1", min_width="260px", justify="center",
+            ),
+            spacing="5", width="100%", max_width="780px", align="start", wrap="wrap",
+        ),
+        back_button(),
+        align="center", spacing="4", padding_top="2em", width="100%",
+    )
