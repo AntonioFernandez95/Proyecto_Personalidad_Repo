@@ -1,6 +1,8 @@
 import reflex as rx
-from .layout import academia_layout, OLIVE, back_button, CARD_STYLE, BADGE_GREEN, BADGE_GRAY
-from Personalidad.states.fisicas import FisicasState
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, CARD_STYLE, back_button, BADGE_GREEN, BADGE_GRAY
+from Personalidad.states.fisicas_state import FisicasState
+from Personalidad.states.calculadora_state import CalculadoraState
+from Personalidad.states.historial_state import HistorialSimplificado_State
 
 _HISTORIAL = [
     ("12/03/2026", "Simulacro #04", "APTO",    BADGE_GREEN),
@@ -18,8 +20,8 @@ def badge_resultado(texto: str, color: str) -> rx.Component:
 
 @rx.page(
     route="/academia/historial", 
-    title="Academia Online - Historial", 
-    on_load=[FisicasState.check_plan_fisicas, AcademiaState.cargar_historial]
+    title="Academia Online - Mi Historial", 
+    on_load=[CalculadoraState.check_login, HistorialSimplificado_State.cargar_historial]
 )
 def historial() -> rx.Component:
     return academia_layout(
@@ -29,16 +31,16 @@ def historial() -> rx.Component:
                 rx.table.header(
                     rx.table.row(
                         rx.table.column_header_cell("Fecha",     font_weight="700", color=OLIVE),
-                        rx.table.column_header_cell("Test",      font_weight="700", color=OLIVE),
+                        rx.table.column_header_cell("Usuario",   font_weight="700", color=OLIVE),
                         rx.table.column_header_cell("Resultado", font_weight="700", color=OLIVE),
                     )
                 ),
                 rx.table.body(
                     rx.foreach(
-                        AcademiaState.historial,
+                        HistorialSimplificado_State.historial,
                         lambda item: rx.table.row(
                             rx.table.cell(item["fecha"], color="black"),
-                            rx.table.cell(item["test"], color="black"),
+                            rx.table.cell(item["user_id"], color="black"),
                             rx.table.cell(badge_resultado(item["resultado"], item["color"])),
                         )
                     )

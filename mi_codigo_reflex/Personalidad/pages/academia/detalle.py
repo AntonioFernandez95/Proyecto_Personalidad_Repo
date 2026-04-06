@@ -1,9 +1,9 @@
 import reflex as rx
-from .layout import academia_layout, OLIVE, OLIVE_LIGHT, TEXT_DARK, GRAY_LIGHT, norma_item, back_button, CARD_STYLE
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, OLIVE_LIGHT, TEXT_DARK, GRAY_LIGHT, norma_item, back_button, CARD_STYLE
+from Personalidad.states.fisicas_state import FisicasState
+from Personalidad.states.calculadora_state import CalculadoraState
 
-from Personalidad.states.fisicas import FisicasState
-
-@rx.page(route="/academia/tecnica/flexiones", title="Academia Online - Detalle Ejercicio", on_load=FisicasState.check_plan_fisicas)
+@rx.page(route="/academia/detalle", title="Academia Online - Técnica Detalle", on_load=CalculadoraState.check_login)
 def detalle() -> rx.Component:
     return academia_layout(
         rx.text("POTENCIA TREN SUPERIOR", font_size="1.8em", font_weight="900", color="white"),

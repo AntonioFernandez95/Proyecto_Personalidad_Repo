@@ -1,3 +1,4 @@
+import random
 from Personalidad.db.schemas.pregunta_schema import pregunta_schema, listado_preguntas_schema
 from Personalidad.db.models.pregunta_model import PreguntaModel
 from Personalidad.db.client import db_client  # CAMBIO: Usamos db_client que apunta al esquema 'personalidad'
