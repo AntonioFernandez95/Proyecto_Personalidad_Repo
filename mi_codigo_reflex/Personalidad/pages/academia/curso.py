@@ -8,14 +8,11 @@ def curso() -> rx.Component:
     return academia_layout(
         rx.box(
             rx.hstack(
-                rx.center(
-                    rx.vstack(
-                        rx.icon("play-circle", size=52, color="white"),
-                        rx.text("Vídeo de Bienvenida", color="white", font_size="0.88em"),
-                        align="center",
-                    ),
-                    background="black", border_radius="12px",
-                    width="300px", height="190px", flex_shrink="0",
+                rx.video(
+                    url="https://www.youtube.com/watch?v=47nDxfaBD3I",
+                    width="300px",
+                    height="190px",
+                    border_radius="12px",
                 ),
                 rx.vstack(
                     rx.text("BIENVENIDA AL CURSO", font_size="1.45em", font_weight="800", color=OLIVE),
@@ -25,9 +22,9 @@ def curso() -> rx.Component:
                         color=TEXT_MID, font_size="0.92em",
                     ),
                     rx.vstack(
-                        rx.hstack(rx.icon("file-text", size=15, color=OLIVE), rx.text("Normativa de las pruebas",    font_size="0.9em")),
-                        rx.hstack(rx.icon("calendar",  size=15, color=OLIVE), rx.text("Calendario de convocatorias", font_size="0.9em")),
-                        rx.hstack(rx.icon("pen-line",  size=15, color=OLIVE), rx.text("Proceso de inscripción",      font_size="0.9em")),
+                        rx.hstack(rx.icon("file-text", size=15, color=OLIVE), rx.text("Normativa de las pruebas",    font_size="0.9em", color=OLIVE)),
+                        rx.hstack(rx.icon("calendar",  size=15, color=OLIVE), rx.text("Calendario de convocatorias", font_size="0.9em", color=OLIVE)),
+                        rx.hstack(rx.icon("pen-line",  size=15, color=OLIVE), rx.text("Proceso de inscripción",      font_size="0.9em", color=OLIVE)),
                         spacing="2", margin_top="0.5em",
                     ),
                     spacing="3", flex="1",

@@ -2,8 +2,8 @@ from .index import index
 from .fisicas import fisicas
 from .curso import curso
 from .tecnica import tecnica
-from .detalle import detalle
 from .planificacion import planificacion
 from .calculadora import calculadora
 from .historial import historial
 from .simulacro import simulacro
+from .detallesTecnicas import detalles_tecnicas

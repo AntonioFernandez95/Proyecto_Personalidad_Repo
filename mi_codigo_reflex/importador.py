@@ -30,7 +30,8 @@ ARCHIVOS_A_IMPORTAR = {
     "psico_gc.preguntas_normales.json": ("psico_gc", "preguntas_normales"),
     "psico_gc.preguntas_contestadas.json": ("psico_gc", "preguntas_contestadas"),
     "psico_gc.sesiones_contestadas.json": ("psico_gc", "sesiones_contestadas"),
-    "python.users.json": ("python", "users")
+    "python.users.json": ("python", "users"),
+    "tecnicas_data.json": ("tecnicas", "tecnicas_data")
 }
 
 
@@ -65,14 +66,18 @@ def importar_todo():
             ejemplo = lista_datos[0]
             columnas = [k for k in ejemplo.keys() if k != '_id']
 
-
             # 1. Crear Esquema y recrear Tabla con columnas reales
             cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
             cursor.execute(f"DROP TABLE IF EXISTS {esquema}.{tabla} CASCADE;")
-           
+            
             # Creamos todas las columnas como TEXT para máxima compatibilidad al importar
             columnas_sql = ", ".join([f'"{col}" TEXT' for col in columnas])
-            cursor.execute(f'CREATE TABLE {esquema}.{tabla} (id SERIAL PRIMARY KEY, {columnas_sql});')
+            
+            # Si el JSON ya contiene una clave 'id', usamos otro nombre para la primary key autogenerada
+            if "id" in columnas:
+                cursor.execute(f'CREATE TABLE {esquema}.{tabla} (serial_id SERIAL PRIMARY KEY, {columnas_sql});')
+            else:
+                cursor.execute(f'CREATE TABLE {esquema}.{tabla} (id SERIAL PRIMARY KEY, {columnas_sql});')
 
 
             # 2. Insertar los datos

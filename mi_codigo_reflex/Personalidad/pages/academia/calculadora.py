@@ -16,7 +16,8 @@ def calculadora() -> rx.Component:
                 rx.vstack(
                     rx.text("Género", font_size="0.85em", font_weight="600", color=TEXT_MID),
                     rx.radio_group(
-                        ["male", "female"],
+                        ["masculino", "femenino"],
+                        color=OLIVE,
                         value=CalculadoraState.gender,
                         on_change=CalculadoraState.set_gender,
                         direction="row",
@@ -131,12 +132,12 @@ def calculadora() -> rx.Component:
                     rx.foreach(
                         HistorialSimplificado_State.historial,
                         lambda item: rx.table.row(
-                            rx.table.cell(item["fecha"], color=TEXT_DARK),
-                            rx.table.cell(item["gender"], color=TEXT_DARK),
-                            rx.table.cell(item["flexiones"], color=TEXT_DARK),
-                            rx.table.cell(item["plancha"], color=TEXT_DARK),
-                            rx.table.cell(item["km2000"], color=TEXT_DARK),
-                            rx.table.cell(item["agilidad"], color=TEXT_DARK),
+                            rx.table.cell(item["fecha"], color=OLIVE),
+                            rx.table.cell(item["gender"], color=OLIVE),
+                            rx.table.cell(item["flexiones"], color=OLIVE),
+                            rx.table.cell(item["plancha"], color=OLIVE),
+                            rx.table.cell(item["km2000"], color=OLIVE),
+                            rx.table.cell(item["agilidad"], color=OLIVE),
                             rx.table.cell(
                                 rx.box(
                                     rx.text(item["resultado"], font_size="0.85em", font_weight="700", color="white"),

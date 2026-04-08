@@ -16,6 +16,4 @@ def index() -> rx.Component:
             big_card("person-standing", "PRUEBAS FÍSICAS",      "Curso completo y herramientas", "Acceder al Curso", "/academia/fisicas"),
             spacing="6", wrap="wrap", justify="center",
         ),
-        padding_top="3em",
-        align="center",
     )

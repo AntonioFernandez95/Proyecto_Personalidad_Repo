@@ -108,9 +108,15 @@ def navbar() -> rx.Component:
                     rx.icon("message-circle", size=16),
                     variant="ghost", color_scheme="gray", title="Telegram",
                 ),
-                rx.icon_button(
-                    rx.icon("instagram", size=16),
-                    variant="ghost", color_scheme="gray", title="Instagram",
+                rx.link(
+                    rx.icon_button(
+                        rx.icon("instagram", size=16),
+                        variant="ghost", 
+                        color_scheme="gray", 
+                        title="Instagram",
+                    ),
+                    href="https://www.instagram.com/academiaprefortia",
+                    is_external=True, # Esto hace que se abra en una pestaña nueva
                 ),
                 spacing="4", align="center",
             ),
@@ -127,19 +133,25 @@ def navbar() -> rx.Component:
 
 def academia_layout(*children, **props) -> rx.Component:
     """Standard layout for all Academia pages."""
+    # Establecer valores por defecto si no se pasan en props para evitar conflictos
+    props.setdefault("align", "center")
+    props.setdefault("spacing", "4")
+
     return rx.box(
         navbar(),
-        rx.box(
+        rx.center(
             rx.container(
                 rx.vstack(
                     *children,
                     **props,
                 ),
                 max_width="1100px",
+                width="100%",
                 padding_x="1.5em",
-                padding_bottom="4em",
+                padding_y="2em",
             ),
-            min_height="100vh",
+            width="100%",
+            min_height="calc(100vh - 5em)",
         ),
         background=PAGE_BG,
         background_size="cover",

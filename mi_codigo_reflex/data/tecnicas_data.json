@@ -1,0 +1,69 @@
+[
+    {
+        "id": "flexiones",
+        "titulo": "Potencia de Tren Superior (Flexo-extensiones)",
+        "posicion_inicial": "Manos apoyadas a la anchura de los hombros, brazos extendidos. Cuerpo alineado formando una línea recta desde la cabeza a los talones.",
+        "ejecucion": [
+            "Flexión simultánea de brazos hasta tocar con la barbilla la almohadilla de 10 cm",
+            "Extensión completa de brazos volviendo a la posición inicial",
+            "Cuerpo sin tocar el suelo excepto con manos, puntas de los pies y barbilla"
+        ],
+        "normas": [
+            "Descansos permitidos solo en posición de extensión (arriba)",
+            "Termina si se descansa abajo o apoyando rodillas",
+            "Nulo si no toca almohadilla, no extiende brazos o pierde alineación de cadera",
+            "Movimientos de brazos deben ser simultáneos"
+        ],
+        "tiempo": "Máximo 2 minutos",
+        "intentos": "1 intento"
+    },
+    {
+        "id": "plancha",
+        "titulo": "Fuerza Abdominal (Plancha Isométrica)",
+        "posicion_inicial": "Apoyo sobre antebrazos y puntas de los pies. Codos alineados bajo los hombros. Cuerpo en prolongación recta.",
+        "ejecucion": [
+            "Mantener la posición estática el tiempo exigido"
+        ],
+        "normas": [
+            "No elevar cadera ni dejarla caer (arqueo lumbar)",
+            "Prohibido apoyar rodillas, muslos o abdomen",
+            "No se permite modificar la posición de los brazos",
+            "Primer aviso ante pérdida de postura; al segundo se detiene el cronómetro"
+        ],
+        "tiempo": "Según marca exigida",
+        "intentos": "1 intento"
+    },
+    {
+        "id": "agilidad",
+        "titulo": "Circuito de Agilidad-Velocidad",
+        "posicion_inicial": "Sentado en el suelo, de espaldas al sentido de la carrera, manos sobre las rodillas.",
+        "ejecucion": [
+            "Ida: Eslalon alternando 7 conos por el exterior",
+            "Transición: Recoger pelota de tenis en línea de fondo (P2)",
+            "Vuelta: Carrera de velocidad lineal hasta cruzar meta con el pecho",
+            "Final: Dejar la pelota en la posición de partida"
+        ],
+        "normas": [
+            "Nulo por derribar/desplazar conos o caída de la pelota",
+            "Nulo por equivocación en el recorrido",
+            "Se permite 1 salida falsa por intento"
+        ],
+        "tiempo": "Según marca",
+        "intentos": "2 intentos (si el primero es nulo)"
+    },
+    {
+        "id": "carrera",
+        "titulo": "Resistencia (Carrera 2.000 metros)",
+        "posicion_inicial": "De pie, tras la línea de salida.",
+        "ejecucion": [
+            "Carrera continua sobre superficie lisa, plana y compacta",
+            "Salida tras voces 'A sus puestos' y 'Ya'"
+        ],
+        "normas": [
+            "Se permite una única salida nula",
+            "Prohibido el uso de auriculares o cascos"
+        ],
+        "tiempo": "Según marca",
+        "intentos": "1 solo intento"
+    }
+]
