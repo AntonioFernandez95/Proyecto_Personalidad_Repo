@@ -127,8 +127,8 @@ class CalculadoraState(State):
             r_flex = min(1.0, val_flex / t_flex) if t_flex > 0 else 0
             r_plan = min(1.0, val_plan / t_plan) if t_plan > 0 else 0
             # Para agilidad y carrera, menor es mejor. Ratio = objetivo / actual
-            r_agil = min(1.0, t_agil / val_agil) if val_agil > 0 else 0
-            r_carr = min(1.0, t_carr / val_carr) if val_carr > 0 else 0
+            r_agil = min(1.0, t_agil / val_agil) if (agilidad and val_agil > 0) else 0
+            r_carr = min(1.0, t_carr / val_carr) if (km2000 and val_carr > 0) else 0
 
             if val_flex >= t_flex: puntos_apto += 1
             if val_plan >= t_plan: puntos_apto += 1

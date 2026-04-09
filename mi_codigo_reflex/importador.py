@@ -35,6 +35,13 @@ ARCHIVOS_A_IMPORTAR = {
 }
 
 
+# Diccionario para tablas que no tienen JSON aún pero queremos crear su estructura
+# (Esquema, [Columnas])
+TABLAS_VACIAS = {
+    "historial_simplificado": ("personalidad", ["id", "user_id", "simulacro_code", "resultado", "gender", "flexiones", "plancha_seg", "km2000", "agilidad_seg", "porcentaje", "fecha"])
+}
+
+
 def importar_todo():
     try:
         print("--- INICIANDO IMPORTACIÓN TOTAL ---")
@@ -42,6 +49,7 @@ def importar_todo():
         cursor = conexion.cursor()
 
 
+        # 1. Procesar archivos JSON existentes
         for archivo, (esquema, tabla) in ARCHIVOS_A_IMPORTAR.items():
             ruta_completa = os.path.join(RUTA_DATOS, archivo)
            
@@ -66,21 +74,18 @@ def importar_todo():
             ejemplo = lista_datos[0]
             columnas = [k for k in ejemplo.keys() if k != '_id']
 
-            # 1. Crear Esquema y recrear Tabla con columnas reales
+            # Crear Esquema y recrear Tabla con columnas reales
             cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
             cursor.execute(f"DROP TABLE IF EXISTS {esquema}.{tabla} CASCADE;")
             
             # Creamos todas las columnas como TEXT para máxima compatibilidad al importar
             columnas_sql = ", ".join([f'"{col}" TEXT' for col in columnas])
             
-            # Si el JSON ya contiene una clave 'id', usamos otro nombre para la primary key autogenerada
-            if "id" in columnas:
-                cursor.execute(f'CREATE TABLE {esquema}.{tabla} (serial_id SERIAL PRIMARY KEY, {columnas_sql});')
-            else:
-                cursor.execute(f'CREATE TABLE {esquema}.{tabla} (id SERIAL PRIMARY KEY, {columnas_sql});')
+            # No creamos id serial
+            cursor.execute(f'CREATE TABLE {esquema}.{tabla} ({columnas_sql});')
 
 
-            # 2. Insertar los datos
+            # Insertar los datos
             for item in lista_datos:
                 # Convertir dicts/lists a strings JSON para que quepan en las columnas TEXT
                 valores = []
@@ -101,6 +106,20 @@ def importar_todo():
 
 
             print(f"¡{esquema}.{tabla} lista!")
+
+
+        # 2. Procesar tablas que solo quieren estructura (sin datos)
+        print("\n--- CREANDO TABLAS DE ESTRUCTURA (SIN DATOS) ---")
+        for tabla, (esquema, columnas) in TABLAS_VACIAS.items():
+            print(f"Creando estructura: {esquema}.{tabla}...")
+            
+            cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
+            cursor.execute(f"DROP TABLE IF EXISTS {esquema}.{tabla} CASCADE;")
+            
+            columnas_sql = ", ".join([f'"{col}" TEXT' for col in columnas])
+            cursor.execute(f'CREATE TABLE {esquema}.{tabla} ({columnas_sql});')
+            
+            print(f"¡{esquema}.{tabla} creada (vacía)!")
 
 
         conexion.commit()
