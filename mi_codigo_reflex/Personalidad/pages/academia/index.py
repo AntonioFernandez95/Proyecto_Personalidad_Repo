@@ -12,7 +12,7 @@ def index() -> rx.Component:
             align="center", spacing="1", margin_bottom="1.5em",
         ),
         rx.hstack(
-            big_card("brain",           "TEST DE PERSONALIDAD", "Historial y nuevos simulacros", "Comenzar Test",    "/academia/historial"),
+            big_card("brain",           "TEST DE PERSONALIDAD", "Historial y nuevos simulacros", "Comenzar Test",    "/info"),
             # RESTRICCIÓN: Solo se muestra la tarjeta de Físicas si el usuario tiene acceso (plan contratado o admin)
             rx.cond(
                 State.has_fisicas_access,

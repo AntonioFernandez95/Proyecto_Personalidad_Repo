@@ -28,4 +28,3 @@ class State(rx.State):
         if self.user == "claudia@academiametodos.com":
             return True
         return self.user_plan.lower() == "plan fisico"
-鼓

@@ -7,8 +7,8 @@ from collections import defaultdict
 
 #*GET listado todas las preguntas BD*#
 async def preguntas(): 
-    # CAMBIO: Usamos db_client en lugar de personalidad_db_client
-    return listado_preguntas_schema(db_client.find_all("db_personalidad"))
+    # CAMBIO: Especificamos el esquema 'personalidad'
+    return listado_preguntas_schema(db_client.find_all("personalidad.db_personalidad"))
 
 #*GET PREGUNTAS BY ITEM, FILTRO (PONER INT ITEM)*#
 async def buscar_preguntas_item(item:int):
@@ -33,8 +33,8 @@ async def pregunta_id(id: str):
 
 def buscar_pregunta_id(field: str, key):
     try:
-        # CAMBIO: Usamos db_client
-        pregunta = db_client.find_one("db_personalidad", field, key)
+        # CAMBIO: Especificamos el esquema 'personalidad'
+        pregunta = db_client.find_one("personalidad.db_personalidad", field, key)
         if pregunta:
             return PreguntaModel(**pregunta_schema(pregunta))
         else: 
