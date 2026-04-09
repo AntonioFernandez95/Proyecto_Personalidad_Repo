@@ -18,11 +18,16 @@ class HistorialSimplificado_State(State):
         
         # Importamos aquí para evitar circulares si fuera necesario, 
         # aunque en este caso consultar_historial_usuario está en crud.py
+        from Personalidad.db.crud import consultar_historial_usuario
         registros = consultar_historial_usuario(user_id)
         
         self.historial = []
         for r in registros:
-            fecha_str = r.fecha.strftime("%d/%m/%Y")
+            # Si r.fecha ya es un string (por el importador), lo usamos tal cual
+            if isinstance(r.fecha, str):
+                fecha_str = r.fecha[:10] # Solo pillamos YYYY-MM-DD
+            else:
+                fecha_str = r.fecha.strftime("%d/%m/%Y")
             color = "#787C4D" if r.resultado == "APTO" else "#4A4D4E"
             
             porcentaje_str = r.porcentaje if r.porcentaje else ""

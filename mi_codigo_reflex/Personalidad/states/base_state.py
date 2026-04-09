@@ -1,11 +1,11 @@
 from typing import Optional
-
 import reflex as rx
 
 class State(rx.State):
     """The base state for the app."""
 
     user: str = None
+    user_plan: str = "sin_plan"
 
     def logout(self):
         """Log out a user."""
@@ -21,3 +21,11 @@ class State(rx.State):
     def logged_in(self):
         """Check if a user is logged in."""
         return self.user is not None
+
+    @rx.var
+    def has_fisicas_access(self) -> bool:
+        """Control de acceso centralizado."""
+        if self.user == "claudia@academiametodos.com":
+            return True
+        return self.user_plan.lower() == "plan fisico"
+鼓

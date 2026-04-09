@@ -2,7 +2,10 @@ import os
 import json
 import psycopg2
 from psycopg2 import sql
-
+#No se muestran datos de historial en la db porque no se ha implementado la funcion de guardar historial
+#No se ha definido un esquema
+#
+#
 
 import os
 
@@ -37,8 +40,10 @@ ARCHIVOS_A_IMPORTAR = {
 
 # Diccionario para tablas que no tienen JSON aún pero queremos crear su estructura
 # (Esquema, [Columnas])
+# Diccionario para tablas que no tienen JSON aún pero queremos crear su estructura
+# (Esquema, [Columnas])
 TABLAS_VACIAS = {
-    "historial_simplificado": ("personalidad", ["id", "user_id", "simulacro_code", "resultado", "gender", "flexiones", "plancha_seg", "km2000", "agilidad_seg", "porcentaje", "fecha"])
+    "registros_calculadora_fisicas": ("historial_simplificado", ["id", "user_id", "simulacro_code", "resultado", "gender", "flexiones", "plancha_seg", "km2000", "agilidad_seg", "porcentaje", "fecha"])
 }
 
 
@@ -78,10 +83,15 @@ def importar_todo():
             cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
             cursor.execute(f"DROP TABLE IF EXISTS {esquema}.{tabla} CASCADE;")
             
-            # Creamos todas las columnas como TEXT para máxima compatibilidad al importar
-            columnas_sql = ", ".join([f'"{col}" TEXT' for col in columnas])
+            # Creamos las columnas. 'fecha' será TIMESTAMP, el resto TEXT
+            columnas_def = []
+            for col in columnas:
+                if col == "fecha":
+                    columnas_def.append(f'"{col}" TIMESTAMP DEFAULT CURRENT_TIMESTAMP')
+                else:
+                    columnas_def.append(f'"{col}" TEXT')
             
-            # No creamos id serial
+            columnas_sql = ", ".join(columnas_def)
             cursor.execute(f'CREATE TABLE {esquema}.{tabla} ({columnas_sql});')
 
 

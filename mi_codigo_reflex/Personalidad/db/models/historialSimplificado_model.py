@@ -5,10 +5,10 @@ import uuid
 Base = declarative_base()
 class HistorialSimplificado(Base):
     """
-    Funcionamiento: Le dice a SQL que cree una tabla aislada con 4 columnas exactas:
-    id, user_id, simulacro_code, resultado y fecha (automática).
+    Funcionamiento: Le dice a SQL que cree una tabla aislada dentro del esquema historial_simplificado.
     """
-    __tablename__ = "historial_simplificado"
+    __tablename__ = "registros_calculadora_fisicas"
+    __table_args__ = {"schema": "historial_simplificado"}
    
     id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
     user_id = Column(String, nullable=False)
