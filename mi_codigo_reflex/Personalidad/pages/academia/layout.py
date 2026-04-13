@@ -16,7 +16,7 @@ BADGE_GRAY  = "#555"
 
 PAGE_BG = (
     "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), "
-    "url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80')"
+    "url('/fondo-soldados (1).png')"
 )
 
 CARD_STYLE = dict(
@@ -176,7 +176,7 @@ def norma_item(texto: str) -> rx.Component:
     )
 
 
-def plan_row(title: str, subtitle: str) -> rx.Component:
+def plan_row(title: str, subtitle: str, href: str = "") -> rx.Component:
     return rx.hstack(
         rx.vstack(
             rx.text(title,    font_size="1em",    font_weight="700", color="black"),
@@ -184,9 +184,13 @@ def plan_row(title: str, subtitle: str) -> rx.Component:
             spacing="0", align="start",
         ),
         rx.spacer(),
-        rx.button(
-            rx.hstack(rx.icon("download", size=14), rx.text("PDF"), spacing="1"),
-            **BTN_PRIMARY_BASE, padding="0.4em 1em", font_size="0.82em",
+        rx.link(
+            rx.button(
+                rx.hstack(rx.icon("download", size=14), rx.text("PDF"), spacing="1"),
+                **BTN_PRIMARY_BASE, padding="0.4em 1em", font_size="0.82em",
+            ),
+            href=href,
+            is_external=True,
         ),
         width="100%", align="center", padding="1em",
         background=GRAY_LIGHT, border_radius="10px",

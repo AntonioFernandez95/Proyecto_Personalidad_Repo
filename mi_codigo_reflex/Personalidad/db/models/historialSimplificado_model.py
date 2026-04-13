@@ -7,7 +7,7 @@ class HistorialSimplificado(Base):
     """
     Funcionamiento: Le dice a SQL que cree una tabla aislada dentro del esquema historial_simplificado.
     """
-    __tablename__ = "fisicas"
+    __tablename__ = "registros_calculadora_fisicas"
     __table_args__ = {"schema": "historial_simplificado"}
    
     id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))

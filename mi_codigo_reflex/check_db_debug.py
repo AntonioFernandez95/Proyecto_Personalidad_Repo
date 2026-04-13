@@ -23,33 +23,25 @@ def check():
             print("SOLUCIÓN: Ejecuta 'python importador.py'")
             return
 
-        # 2. Verificar si existe la tabla fisica (ya estaba)
-        cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'historial_simplificado' AND table_name = 'fisicas'")
-        if cur.fetchone():
-            cur.execute('SELECT COUNT(*) FROM historial_simplificado.fisicas')
-            count = cur.fetchone()[0]
-            print(f"Registros en FISICAS: {count}")
-            if count > 0:
-                cur.execute('SELECT fecha, user_id, resultado FROM historial_simplificado.fisicas ORDER BY fecha DESC LIMIT 2')
-                for r in cur.fetchall():
-                    print(f" - {r[0]} | Usuario: {r[1]} | Res: {r[2]}")
-        else:
-            print("AVISO: Tabla 'fisicas' NO existe.")
+        # 2. Verificar si existe la tabla
+        cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'historial_simplificado' AND table_name = 'registrosCalculadoraFisicas'")
+        if not cur.fetchone():
+            print("ERROR: La tabla 'registrosCalculadoraFisicas' NO EXISTE en el esquema.")
+            print("SOLUCIÓN: Ejecuta 'python importador.py'")
+            return
 
-        print("-" * 30)
-
-        # 3. Verificar si existe la tabla personalidad
-        cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'historial_simplificado' AND table_name = 'personalidad'")
-        if cur.fetchone():
-            cur.execute('SELECT COUNT(*) FROM historial_simplificado.personalidad')
-            count = cur.fetchone()[0]
-            print(f"Registros en PERSONALIDAD: {count}")
-            if count > 0:
-                cur.execute('SELECT fecha, user_id, es_apto FROM historial_simplificado.personalidad ORDER BY fecha DESC LIMIT 3')
-                for r in cur.fetchall():
-                    print(f" - {r[0]} | Usuario: {r[1]} | Res: {r[2]}")
+        # 3. Contar registros
+        cur.execute('SELECT COUNT(*) FROM historial_simplificado."registrosCalculadoraFisicas"')
+        count = cur.fetchone()[0]
+        print(f"Número de registros encontrados: {count}")
+        
+        if count > 0:
+            print("\nÚltimos 3 registros:")
+            cur.execute('SELECT fecha, user_id, resultado FROM historial_simplificado."registrosCalculadoraFisicas" ORDER BY fecha DESC LIMIT 3')
+            for r in cur.fetchall():
+                print(f" - {r[0]} | Usuario: {r[1]} | Resultado: {r[2]}")
         else:
-            print("ERROR: La tabla 'personalidad' NO EXISTE.")
+            print("\nAVISO: La tabla está vacía. Intenta usar la calculadora ahora.")
 
         cur.close()
         conn.close()

@@ -37,9 +37,15 @@ def curso() -> rx.Component:
             rx.vstack(
                 rx.text("📣 COMUNIDAD", font_size="1em", font_weight="700", color="black", letter_spacing="0.1em"),
                 rx.hstack(
-                    rx.button("✈️  Telegram – Grupo Privado", **BTN_PRIMARY_BASE, padding="0.6em 1.4em", width="100%"),
                     rx.button(
-                        "💬  WhatsApp – Tutorías",
+                        "✈️  Telegram – Grupo Pruebas Físicas", 
+                        **BTN_PRIMARY_BASE, 
+                        padding="0.6em 1.4em", 
+                        width="100%",
+                        on_click=rx.redirect("https://t.me/+1ftMK4D17I1iYzg0")
+                    ),
+                    rx.button(
+                        "💬  WhatsApp – Tutorías (676917128)",
                         background="#25D366", color="white", border_radius="8px",
                         padding="0.6em 1.4em", font_weight="600",
                         _hover={"background": "#1ebe57"}, width="100%",

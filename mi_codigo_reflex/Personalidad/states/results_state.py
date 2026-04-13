@@ -1,10 +1,11 @@
 import reflex as rx
-import uuid
+
 from Personalidad.states.test_state import TestState
 from Personalidad.states.base_state import State
-from Personalidad.db_service import guardar_resultado_personalidad
+
 
 class ResultsState(rx.State):
+    
     isUserApto: bool = False
     
     score_item_1: int = 0
@@ -23,19 +24,9 @@ class ResultsState(rx.State):
     is_6_ok: bool = False
     is_7_ok: bool = False
     
+    #*Función que recorre la lista de resultados y calcula la puntuación final en cada item*#
     async def calculate_results(self):
-        """Calcula la puntuación basada en las selecciones guardadas."""
         test = await self.get_state(TestState)
-        
-        # 1. RESETEAMOS PUNTUACIONES (para evitar duplicados al recargar)
-        self.score_item_1 = 0
-        self.score_item_2 = 0
-        self.score_item_3 = 0
-        self.score_item_4 = 0
-        self.score_item_5 = 0
-        self.score_item_6 = 0
-        self.score_item_7 = 0
-        
         item_to_score_attr = {
             1: 'score_item_1',
             2: 'score_item_2',
@@ -46,99 +37,74 @@ class ResultsState(rx.State):
             7: 'score_item_7',
         }
         
-        # 2. CALCULAMOS SOBRE LAS RESPUESTAS
-        for key_str, value in test.selections.items():
-            try:
-                idx = int(key_str)
-                if idx >= len(test.test_data):
-                    continue
-                    
-                current_question = test.test_data[idx]
-                db_key = self.key_converter(value)
-                answer_value_raw = current_question.get(db_key, 0)
-                
-                # Convertimos a entero (la BD devuelve texto)
-                try:
-                    answer_value = int(float(answer_value_raw)) if answer_value_raw is not None else 0
-                except:
-                    answer_value = 0
-                
-                current_item = current_question.get('ITEM')
-                # Forzamos que ITEM también sea un número para comparar
-                try:
-                    current_item_int = int(float(str(current_item)))
-                except:
-                    current_item_int = 0
-                
-                if current_item_int in item_to_score_attr:
-                    score_attr = item_to_score_attr[current_item_int]
-                    setattr(self, score_attr, getattr(self, score_attr) + answer_value)
-            except Exception as e:
-                print(f"Error procesando pregunta {key_str}: {e}")
+        for key, value in test.selections.items():
+            current_question = test.test_data[key]
+            answer_value = current_question.get(self.key_converter(value))
+            current_item = current_question.get('ITEM')
+            
+            if current_item in item_to_score_attr:
+                score_attr = item_to_score_attr[current_item]
+                setattr(self, score_attr, getattr(self, score_attr) + answer_value)
                 
         self.isOk()
         self.isApto()
         
-        # 3. GUARDAMOS EN BASE DE DATOS
-        self.persist_results()
-
-    def persist_results(self):
-        """Envía los datos calculados a la tabla historial_simplificado.personalidad"""
-        if not self.user:
-            print("AVISO: No se puede guardar el resultado porque 'user' es None.")
-            return
-
-        data = {
-            "id": str(uuid.uuid4()),
-            "user_id": self.user, # Heredado de State
-            "sinceridad": self.score_item_1,
-            "extraversion": self.score_item_2,
-            "neuroticismo": (self.score_item_3 + self.score_item_4) // 2,
-            "psicoticismo": (self.score_item_5 + self.score_item_6 + self.score_item_7) // 3,
-            "es_apto": "APTO" if self.isUserApto else "NO APTO"
-        }
-        success = guardar_resultado_personalidad(data)
-        if success:
-            print(f"ÉXITO: Resultado guardado para {self.user}")
-        else:
-            print(f"ERROR: Falló el guardado en DB para {self.user}")
         
+    #*Función que recoge la respuesta del usuario y la convierte al formato de la BBDD*#
     def key_converter(self, value: str) -> str:
-        """Convierte la respuesta del usuario al nombre de columna en la BD."""
         conversion_map = {
             "Si": "SI",
-            "Muchas veces": "MUCHAS VECES",
-            "Alguna vez": "ALGUNA VEZ",
-            "Pocas veces": "POCAS VECES",
+            "Muchas veces": "MUCHAS_VECES",
+            "Alguna vez": "ALGUNA_VEZ",
+            "Pocas veces": "POCAS_VECES",
             "No": "NO"
         }
-        return conversion_map.get(value, "NO")
-
+        return conversion_map.get(value, "")    
     
+    #*Función que revisa las puntuaciones del usuario y devuelve si es apto o no es apto*#
     def isApto(self):
-        """Determina si el usuario es APTO o NO APTO."""
         scores = [
-            self.score_item_1, self.score_item_2, self.score_item_3, 
-            self.score_item_4, self.score_item_5, self.score_item_6, 
-            self.score_item_7
+                self.score_item_1,
+                self.score_item_2,
+                self.score_item_3, 
+                self.score_item_4, 
+                self.score_item_5, 
+                self.score_item_6, 
+                self.score_item_7
         ]
-        
-        # Lógica de aptitud: basándonos en si los puntos positivos son > 33 y negativos < 80
-        # (Ajusta estos umbrales según el criterio real de la academia)
-        sinceridad_extraversion_ok = all(s > 33 for s in scores[:2])
-        negativos_ok = all(s < 80 for s in scores[2:])
-        
-        if sinceridad_extraversion_ok and negativos_ok:
-            self.isUserApto = True
-        else:
-            self.isUserApto = False
-
+            
+        if any(score < 34 for score in scores[:2]):
+            return print("Sinceridad o extraversión por debajo de la media")
+            
+        if any(score > 80 for score in scores[2:]):
+            return print("Alguno negativo por encima de la media")
+            
+        if all(33 < score < 81 for score in scores):
+            return print("Todos en la media")
+            
+        self.isUserApto = True
+        return print("Todo bien!")
+    
     def isOk(self):
-        """Marca los checkmarks visuales para cada item."""
-        self.is_1_ok = self.score_item_1 > 33
-        self.is_2_ok = self.score_item_2 > 33
-        self.is_3_ok = self.score_item_3 < 80
-        self.is_4_ok = self.score_item_4 < 80
-        self.is_5_ok = self.score_item_5 < 80
-        self.is_6_ok = self.score_item_6 < 80
-        self.is_7_ok = self.score_item_7 < 80
+        if self.score_item_1 > 33:
+            self.is_1_ok = True
+            
+        if self.score_item_2 > 33:
+            self.is_2_ok = True
+            
+        if self.score_item_3 < 80:
+            self.is_3_ok = True
+            
+        if self.score_item_4 < 80:
+            self.is_4_ok = True
+            
+        if self.score_item_5 < 80:
+            self.is_5_ok = True
+            
+        if self.score_item_6 < 80:
+            self.is_6_ok = True
+            
+        if self.score_item_7 < 80:
+            self.is_7_ok = True
+        
+

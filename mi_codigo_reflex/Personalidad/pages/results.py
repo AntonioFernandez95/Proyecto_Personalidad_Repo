@@ -50,8 +50,8 @@ def index():
                         rx.text("Desviación Psicopática"),
                         show_progress(get_progress_percentage(ResultsState.score_item_7), Size.ZERO, ResultsState.is_7_ok),
                         rx.button(
-                            "Volver a la academia",
-                            on_click=rx.redirect("/academia"),
+                            "Salir",
+                            on_click=State.logout,
                         ),
                         align="center",
                         spacing="2",

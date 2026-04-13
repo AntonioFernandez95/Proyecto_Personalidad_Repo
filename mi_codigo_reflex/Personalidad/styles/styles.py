@@ -30,6 +30,9 @@ BASE_STYLE = {
     "webkit_user_select": "none",
     "moz_user_select": "none",
     "ms_user_select": "none",
+    "background_image": "url('/fondo-soldados (1).png')",
+    "background_size": "cover",
+    "background_attachment": "fixed",
     rx.button: {
         "padding": Size.DEFAULT.value,
         "border_radius": "0",

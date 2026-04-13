@@ -174,7 +174,7 @@ def index():
         ),
         height="100vh",
         width="100%",
-        background="linear-gradient(rgba(0,0,0,0.8), rgba(27,154,175,0.8)), url('/tropa.jpg')",
+        background="linear-gradient(rgba(0,0,0,0.8), rgba(27,154,175,0.8)), url('/fondo-soldados (1).png')",
         background_size="cover",
         position="relative",
         background_position="center", 

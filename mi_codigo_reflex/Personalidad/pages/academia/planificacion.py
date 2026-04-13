@@ -17,9 +17,10 @@ def planificacion() -> rx.Component:
         rx.hstack(
             rx.vstack(
                 rx.text("📋 PLANES DE ENTRENAMIENTO", font_size="1em", font_weight="800", color=OLIVE, letter_spacing="0.05em"),
-                plan_row("Plan Iniciación", "6 semanas · Nivel básico"),
-                plan_row("Plan Avanzado",   "8 semanas · Nivel medio-alto"),
-                plan_row("Plan Pro",        "12 semanas · Máximo rendimiento"),
+                plan_row("CURSO PRUEBA FÍSICAS 2026", "6 semanas · Nivel básico", "/curso_fisicas_2026.pdf"),
+                plan_row("PRUEBAS FÍSICAS 2026 CIRCUITO", "8 semanas · Nivel medio-alto", "/circuito_2026.pdf"),
+                plan_row("PRUEBAS FÍSICAS FLEXIONES Y PLANCHAS", "12 semanas · Máximo rendimiento", "/flexiones_planchas.pdf"),
+                plan_row("CURSO PRUEBA FÍSICAS CARRERA", "Entrenamiento específico", "/curso_carrera.pdf"),
                 spacing="3", **CARD_STYLE, padding="2em", flex="1", min_width="280px", align="start",
             ),
             rx.vstack(
