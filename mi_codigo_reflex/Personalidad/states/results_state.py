@@ -26,6 +26,9 @@ class ResultsState(rx.State):
     async def calculate_results(self):
         """Calcula la puntuación basada en las selecciones guardadas."""
         test = await self.get_state(TestState)
+        # Obtenemos el usuario del estado base correctamente
+        base_state = await self.get_state(State)
+        user = base_state.user
         
         # 1. RESETEAMOS PUNTUACIONES (para evitar duplicados al recargar)
         self.score_item_1 = 0
@@ -47,13 +50,15 @@ class ResultsState(rx.State):
         }
         
         # 2. CALCULAMOS SOBRE LAS RESPUESTAS
-        for key_str, value in test.selections.items():
+        # Creamos un mapa de ID a pregunta (idx_global como clave si id es None)
+        id_a_pregunta = {str(q.get("id") or i): q for i, q in enumerate(test.test_data)}
+        
+        for q_id, value in test.respuestas_acumuladas.items():
             try:
-                idx = int(key_str)
-                if idx >= len(test.test_data):
+                current_question = id_a_pregunta.get(q_id)
+                if not current_question:
                     continue
                     
-                current_question = test.test_data[idx]
                 db_key = self.key_converter(value)
                 answer_value_raw = current_question.get(db_key, 0)
                 
@@ -74,23 +79,23 @@ class ResultsState(rx.State):
                     score_attr = item_to_score_attr[current_item_int]
                     setattr(self, score_attr, getattr(self, score_attr) + answer_value)
             except Exception as e:
-                print(f"Error procesando pregunta {key_str}: {e}")
+                print(f"Error procesando pregunta {q_id}: {e}")
                 
         self.isOk()
         self.isApto()
         
         # 3. GUARDAMOS EN BASE DE DATOS
-        self.persist_results()
+        self.persist_results(user)
 
-    def persist_results(self):
+    def persist_results(self, user: str):
         """Envía los datos calculados a la tabla historial_simplificado.personalidad"""
-        if not self.user:
+        if not user:
             print("AVISO: No se puede guardar el resultado porque 'user' es None.")
             return
 
         data = {
             "id": str(uuid.uuid4()),
-            "user_id": self.user, # Heredado de State
+            "user_id": user,
             "sinceridad": self.score_item_1,
             "extraversion": self.score_item_2,
             "neuroticismo": (self.score_item_3 + self.score_item_4) // 2,
@@ -99,17 +104,17 @@ class ResultsState(rx.State):
         }
         success = guardar_resultado_personalidad(data)
         if success:
-            print(f"ÉXITO: Resultado guardado para {self.user}")
+            print(f"ÉXITO: Resultado guardado para {user}")
         else:
-            print(f"ERROR: Falló el guardado en DB para {self.user}")
+            print(f"ERROR: Falló el guardado en DB para {user}")
         
     def key_converter(self, value: str) -> str:
         """Convierte la respuesta del usuario al nombre de columna en la BD."""
         conversion_map = {
             "Si": "SI",
-            "Muchas veces": "MUCHAS VECES",
-            "Alguna vez": "ALGUNA VEZ",
-            "Pocas veces": "POCAS VECES",
+            "Muchas veces": "MUCHAS_VECES",   # con guión bajo, igual que PreguntaModel
+            "Alguna vez": "ALGUNA_VEZ",        # con guión bajo
+            "Pocas veces": "POCAS_VECES",      # con guión bajo
             "No": "NO"
         }
         return conversion_map.get(value, "NO")
@@ -123,8 +128,6 @@ class ResultsState(rx.State):
             self.score_item_7
         ]
         
-        # Lógica de aptitud: basándonos en si los puntos positivos son > 33 y negativos < 80
-        # (Ajusta estos umbrales según el criterio real de la academia)
         sinceridad_extraversion_ok = all(s > 33 for s in scores[:2])
         negativos_ok = all(s < 80 for s in scores[2:])
         

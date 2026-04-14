@@ -13,10 +13,7 @@ from Personalidad.states.test_state import TestState
 @rx.page(route="/test", title="Test", on_load=[State.check_login, TestState.crear_test])
 def index():
 
-    def showlist(item: rx.Var, index: int):
-        # Calculamos el índice global basándonos en la página actual
-        global_index = (TestState.pag_actual * TestState.num_preguntas + index).to_string()
-        
+    def showlist(item: rx.Var, index: int):        
         return rx.vstack(
             rx.text(
                 rx.text.span(index + 1 + (TestState.pag_actual * TestState.num_preguntas), font_weight="bold", margin_right="0.5em"),
@@ -25,8 +22,8 @@ def index():
             ),
             rx.radio(
                 ["Si", "Muchas veces", "Alguna vez", "Pocas veces", "No"],
-                on_change=lambda value: TestState.set_selection(global_index, value),
-                value=TestState.selections[global_index],
+                on_change=lambda val: TestState.set_page_answer(index, val),
+                value=TestState.page_answers[index],
                 color_scheme="orange",
                 direction="row",
                 spacing="4",
@@ -35,6 +32,7 @@ def index():
             border_bottom="1px solid #f0f0f0",
             align_items="start",
             width="100%",
+            key=(TestState.pag_actual * TestState.num_preguntas + index).to_string(),
         )
 
     return rx.box(
