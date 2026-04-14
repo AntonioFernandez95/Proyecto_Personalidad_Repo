@@ -138,10 +138,10 @@ def calculadora() -> rx.Component:
                         lambda item: rx.table.row(
                             rx.table.cell(item["fecha"], color=OLIVE),
                             rx.table.cell(item["gender"], color=OLIVE),
-                            rx.table.cell(item["flexiones"], color=OLIVE),
-                            rx.table.cell(item["plancha"], color=OLIVE),
-                            rx.table.cell(item["km2000"], color=OLIVE),
-                            rx.table.cell(item["agilidad"], color=OLIVE),
+                            rx.table.cell(item["flexiones"], color=rx.cond(item["flex_ok"], OLIVE, BADGE_RED)),
+                            rx.table.cell(item["plancha"],   color=rx.cond(item["plan_ok"], OLIVE, BADGE_RED)),
+                            rx.table.cell(item["km2000"],    color=rx.cond(item["carr_ok"], OLIVE, BADGE_RED)),
+                            rx.table.cell(item["agilidad"],  color=rx.cond(item["agil_ok"], OLIVE, BADGE_RED)),
                             rx.table.cell(
                                 rx.box(
                                     rx.text(item["resultado"], font_size="0.85em", font_weight="700", color="white"),

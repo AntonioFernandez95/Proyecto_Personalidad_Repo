@@ -35,6 +35,45 @@ class HistorialSimplificado_State(State):
             # Color para el componente Badge de Radix/Reflex
             color_name = "green" if r.resultado == "APTO" else "gray"
             
+            # ─────────────────────────────────────────────────────────────
+            # LÓGICA DE VALIDACIÓN INDIVIDUAL (PARA COLORES)
+            # ─────────────────────────────────────────────────────────────
+            def time_to_sec(t_str):
+                try:
+                    if ":" in str(t_str):
+                        p = str(t_str).split(":")
+                        return int(float(p[0])) * 60 + int(float(p[1]))
+                    return int(float(t_str))
+                except: return 9999
+
+            g = r.gender.lower() if r.gender else "masculino"
+            # Umbrales
+            if g == "femenino":
+                t_flex, t_plan, t_carr, t_agil = 12, 40, 780, 27.0
+            else:
+                t_flex, t_plan, t_carr, t_agil = 17, 60, 660, 25.0
+
+            flex_val = 0
+            try: flex_val = int(float(r.flexiones)) if r.flexiones else 0
+            except: pass
+
+            plan_val = 0
+            try: plan_val = int(float(r.plancha_seg)) if r.plancha_seg else 0
+            except: pass
+
+            agil_val = 999.0
+            try: agil_val = float(r.agilidad_seg) if r.agilidad_seg else 999.0
+            except: pass
+
+            carr_val = time_to_sec(r.km2000)
+
+            # Flags de éxito
+            flex_ok = flex_val >= t_flex
+            plan_ok = plan_val >= t_plan
+            carr_ok = carr_val <= t_carr
+            agil_ok = agil_val <= t_agil
+            # ─────────────────────────────────────────────────────────────
+
             self.historial.append({
                 "fecha": fecha_str,
                 "test": r.simulacro_code,
@@ -47,5 +86,10 @@ class HistorialSimplificado_State(State):
                 "km2000": r.km2000 if r.km2000 else "-",
                 "agilidad": r.agilidad_seg if r.agilidad_seg else "-",
                 "porcentaje": porcentaje_str if porcentaje_str else "-",
-                "user_id": r.user_id if r.user_id else "anónimo"
+                "user_id": r.user_id if r.user_id else "anónimo",
+                "flex_ok": flex_ok,
+                "plan_ok": plan_ok,
+                "carr_ok": carr_ok,
+                "agil_ok": agil_ok
             })
+
