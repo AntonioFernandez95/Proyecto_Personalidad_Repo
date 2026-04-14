@@ -2,7 +2,12 @@ import os
 import json
 import psycopg2
 from psycopg2 import sql
-from datetime import datetime
+#No se muestran datos de historial en la db porque no se ha implementado la funcion de guardar historial
+#No se ha definido un esquema
+#
+#
+
+import os
 
 DB_CONFIG = {
     "dbname": os.getenv("DB_NAME", "db_personalidad_proyecto"),
@@ -12,98 +17,132 @@ DB_CONFIG = {
     "port": os.getenv("DB_PORT", "5432")
 }
 
+
+# Ruta relativa donde tienes tus archivos .json en la carpeta data
 RUTA_DATOS = os.path.join(os.path.dirname(__file__), "data")
 
-# Mapeo de archivos JSON a tablas
+
+# Diccionario completo con todas las tablas del proyecto
 ARCHIVOS_A_IMPORTAR = {
     "Personalidad.users.json": ("personalidad", "users"),
     "Personalidad.db_personalidad.json": ("personalidad", "db_personalidad"),
     "usuarios_metodos.plataformas_metodos.json": ("usuarios_metodos", "plataformas_metodos"),
     "usuarios_metodos.usuarios_plataformas.json": ("usuarios_metodos", "usuarios_plataformas"),
+    "usuarios_metodos.actualizaciones_plataformas.json": ("usuarios_metodos", "actualizaciones_plataformas"),
     "psico_gc.enunciados_multiples.json": ("psico_gc", "enunciados_multiples"),
     "psico_gc.preguntas_normales.json": ("psico_gc", "preguntas_normales"),
+    "psico_gc.preguntas_contestadas.json": ("psico_gc", "preguntas_contestadas"),
+    "psico_gc.sesiones_contestadas.json": ("psico_gc", "sesiones_contestadas"),
     "python.users.json": ("python", "users"),
+    "tecnicas_data.json": ("tecnicas", "tecnicas_data")
 }
 
-# Estructuras de tablas vacías (Historial)
+
+# Diccionario para tablas que no tienen JSON aún pero queremos crear su estructura
+# (Esquema, [Columnas])
+# Diccionario para tablas que no tienen JSON aún pero queremos crear su estructura
+# (Esquema, [Columnas])
 TABLAS_VACIAS = {
-    "fisicas": ("historial_simplificado", ["id", "user_id", "simulacro_code", "resultado", "gender", "flexiones", "plancha_seg", "km2000", "agilidad_seg", "porcentaje", "fecha"]),
-    "personalidad": ("historial_simplificado", ["id", "user_id", "sinceridad", "extraversion", "neuroticismo", "psicoticismo", "es_apto", "fecha"])
+    "registros_calculadora_fisicas": ("historial_simplificado", ["id", "user_id", "simulacro_code", "resultado", "gender", "flexiones", "plancha_seg", "km2000", "agilidad_seg", "porcentaje", "fecha"])
 }
+
 
 def importar_todo():
-    conexion = None
     try:
         print("--- INICIANDO IMPORTACIÓN TOTAL ---")
         conexion = psycopg2.connect(**DB_CONFIG)
         cursor = conexion.cursor()
 
-        # 1. CREAR TABLAS DE ESTRUCTURA (Prioridad)
-        print("\n--- 1. CREANDO TABLAS DE HISTORIAL ---")
-        for tabla, (esquema, columnas) in TABLAS_VACIAS.items():
-            print(f"Preparando: {esquema}.{tabla}...")
+
+        # 1. Procesar archivos JSON existentes
+        for archivo, (esquema, tabla) in ARCHIVOS_A_IMPORTAR.items():
+            ruta_completa = os.path.join(RUTA_DATOS, archivo)
+           
+            if not os.path.exists(ruta_completa):
+                print(f"Saltando: No se encontró {archivo}")
+                continue
+
+
+            print(f"Procesando: {esquema}.{tabla}...")
+           
+            with open(ruta_completa, 'r', encoding='utf-8') as f:
+                datos = json.load(f)
+           
+            if not datos:
+                print(f"Empty: {archivo} no tiene datos.")
+                continue
+           
+            # Normalizar: asegurar que datos sea una lista
+            lista_datos = datos if isinstance(datos, list) else [datos]
+           
+            # Detectar columnas (excluyendo el _id de MongoDB para evitar conflictos)
+            ejemplo = lista_datos[0]
+            columnas = [k for k in ejemplo.keys() if k != '_id']
+
+            # Crear Esquema y recrear Tabla con columnas reales
             cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
             cursor.execute(f"DROP TABLE IF EXISTS {esquema}.{tabla} CASCADE;")
-            columnas_def = [f'"{col}" TEXT' for col in columnas if col != "fecha"]
-            columnas_def.append('"fecha" TIMESTAMP DEFAULT CURRENT_TIMESTAMP')
-            cursor.execute(f'CREATE TABLE {esquema}.{tabla} ({", ".join(columnas_def)});')
-            print(f"¡{esquema}.{tabla} lista (vacía)!")
+            
+            # Creamos las columnas. 'fecha' será TIMESTAMP, el resto TEXT
+            columnas_def = []
+            for col in columnas:
+                if col == "fecha":
+                    columnas_def.append(f'"{col}" TIMESTAMP DEFAULT CURRENT_TIMESTAMP')
+                else:
+                    columnas_def.append(f'"{col}" TEXT')
+            
+            columnas_sql = ", ".join(columnas_def)
+            cursor.execute(f'CREATE TABLE {esquema}.{tabla} ({columnas_sql});')
 
-        # 2. IMPORTAR DATOS JSON
-        print("\n--- 2. IMPORTANDO DATOS DESDE JSON ---")
-        for archivo, (esquema, tabla) in ARCHIVOS_A_IMPORTAR.items():
-            try:
-                ruta_completa = os.path.join(RUTA_DATOS, archivo)
-                if not os.path.exists(ruta_completa):
-                    print(f"Saltando: {archivo} (No existe)")
-                    continue
 
-                print(f"Importando: {esquema}.{tabla}...")
-                with open(ruta_completa, 'r', encoding='utf-8') as f:
-                    datos = json.load(f)
-                
-                if not datos: continue
-                lista_datos = datos if isinstance(datos, list) else [datos]
-                ejemplo = lista_datos[0]
-                columnas = [k for k in ejemplo.keys() if k != '_id']
-
-                cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
-                cursor.execute(f"DROP TABLE IF EXISTS {esquema}.{tabla} CASCADE;")
-                
-                cols_sql = []
+            # Insertar los datos
+            for item in lista_datos:
+                # Convertir dicts/lists a strings JSON para que quepan en las columnas TEXT
+                valores = []
                 for col in columnas:
-                    if col == "fecha": cols_sql.append(f'"{col}" TIMESTAMP DEFAULT CURRENT_TIMESTAMP')
-                    else: cols_sql.append(f'"{col}" TEXT')
-                
-                cursor.execute(f'CREATE TABLE {esquema}.{tabla} ({", ".join(cols_sql)});')
+                    val = item.get(col)
+                    if isinstance(val, (dict, list)):
+                        valores.append(json.dumps(val))
+                    else:
+                        valores.append(str(val) if val is not None else None)
+               
+                query = sql.SQL("INSERT INTO {}.{} ({}) VALUES ({})").format(
+                    sql.Identifier(esquema),
+                    sql.Identifier(tabla),
+                    sql.SQL(', ').join(map(sql.Identifier, columnas)),
+                    sql.SQL(', ').join(sql.Placeholder() * len(columnas))
+                )
+                cursor.execute(query, valores)
 
-                for item in lista_datos:
-                    valores = []
-                    for col in columnas:
-                        val = item.get(col)
-                        if isinstance(val, (dict, list)): valores.append(json.dumps(val))
-                        else: valores.append(str(val) if val is not None else None)
-                    
-                    query = sql.SQL("INSERT INTO {}.{} ({}) VALUES ({})").format(
-                        sql.Identifier(esquema), sql.Identifier(tabla),
-                        sql.SQL(', ').join(map(sql.Identifier, columnas)),
-                        sql.SQL(', ').join(sql.Placeholder() * len(columnas))
-                    )
-                    cursor.execute(query, valores)
-                print(f"¡{esquema}.{tabla} completada!")
 
-            except Exception as e:
-                print(f"Error procesando {archivo}: {e} (saltando...)")
-                conexion.rollback()
+            print(f"¡{esquema}.{tabla} lista!")
+
+
+        # 2. Procesar tablas que solo quieren estructura (sin datos)
+        print("\n--- CREANDO TABLAS DE ESTRUCTURA (SIN DATOS) ---")
+        for tabla, (esquema, columnas) in TABLAS_VACIAS.items():
+            print(f"Creando estructura: {esquema}.{tabla}...")
+            
+            cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
+            cursor.execute(f"DROP TABLE IF EXISTS {esquema}.{tabla} CASCADE;")
+            
+            columnas_sql = ", ".join([f'"{col}" TEXT' for col in columnas])
+            cursor.execute(f'CREATE TABLE {esquema}.{tabla} ({columnas_sql});')
+            
+            print(f"¡{esquema}.{tabla} creada (vacía)!")
+
 
         conexion.commit()
-        print("\n--- PROCESO FINALIZADO CON ÉXITO ---")
+        print("\n¡BASE DE DATOS COMPLETA! Todas las tablas están normalizadas.")
+
 
     except Exception as e:
-        print(f"ERROR CRÍTICO: {e}")
+        print(f"Error crítico: {e}")
     finally:
-        if conexion:
+        if 'conexion' in locals():
+            cursor.close()
             conexion.close()
+
 
 if __name__ == "__main__":
     importar_todo()

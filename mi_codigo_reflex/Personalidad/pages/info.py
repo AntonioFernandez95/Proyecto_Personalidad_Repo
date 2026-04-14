@@ -22,7 +22,7 @@ reflex run
 @rx.page(route="/info", title="Info", on_load=[State.check_login, TestState.reset_test]) #
 def info() -> rx.Component:
     return rx.box(
-        utils.lang(),
+        utils.langg(),
         navbar(),
         rx.center(
             rx.vstack(

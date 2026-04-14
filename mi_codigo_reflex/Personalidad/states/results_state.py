@@ -1,10 +1,13 @@
 import reflex as rx
 import uuid
+
 from Personalidad.states.test_state import TestState
 from Personalidad.states.base_state import State
 from Personalidad.db_service import guardar_resultado_personalidad
 
+
 class ResultsState(rx.State):
+    
     isUserApto: bool = False
     
     score_item_1: int = 0
@@ -23,8 +26,8 @@ class ResultsState(rx.State):
     is_6_ok: bool = False
     is_7_ok: bool = False
     
+    #*Función que recorre la lista de resultados y calcula la puntuación final en cada item*#
     async def calculate_results(self):
-        """Calcula la puntuación basada en las selecciones guardadas."""
         test = await self.get_state(TestState)
         # Obtenemos el usuario del estado base correctamente
         base_state = await self.get_state(State)

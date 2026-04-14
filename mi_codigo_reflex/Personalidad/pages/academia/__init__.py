@@ -7,3 +7,4 @@ from .calculadora import calculadora
 from .historial import historial
 from .simulacro import simulacro
 from .detallesTecnicas import detalles_tecnicas
+from . import tecnica as tecnica_pages

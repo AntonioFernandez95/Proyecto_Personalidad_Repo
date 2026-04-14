@@ -27,4 +27,4 @@ class State(rx.State):
         """Control de acceso centralizado."""
         if self.user == "claudia@academiametodos.com":
             return True
-        return self.user_plan.lower() == "plan fisico"
+        return self.user_plan.lower() == "plan fisico"

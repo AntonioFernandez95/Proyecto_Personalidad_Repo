@@ -23,8 +23,17 @@ class DetallesTecnicasState(State):
 
     def cargar_datos_prueba(self):
         """Llama a la API cuando la página carga para rellenar los datos."""
+        # 1. Intentamos obtener el ID del parámetro dinámico [prueba_id]
         id_a_buscar = self.router.page.params.get("prueba_id", "")
-        print(f"ON_LOAD TRIGGERED. prueba_id from router: '{id_a_buscar}'")
+        
+        # 2. Si no hay parámetro (página estática), lo extraemos del final de la URL
+        if not id_a_buscar:
+            # Quitamos los "?" de la URL si los hay y cogemos el último segmento
+            raw_path = self.router.page.raw_path.split("?")[0]
+            id_a_buscar = raw_path.strip("/").split("/")[-1]
+            print(f"ID extraído de la ruta: '{id_a_buscar}'")
+
+        print(f"ON_LOAD TRIGGERED. id_a_buscar: '{id_a_buscar}'")
 
         if not id_a_buscar:
             self.titulo = "ERROR"
