@@ -51,7 +51,7 @@ def index():
                         show_progress(get_progress_percentage(ResultsState.score_item_7), Size.ZERO, ResultsState.is_7_ok),
                         rx.button(
                             "Salir",
-                            on_click=State.logout,
+                            on_click=rx.redirect("/academia"),
                         ),
                         align="center",
                         spacing="2",

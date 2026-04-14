@@ -28,19 +28,6 @@ def navbar() -> rx.Component:
             rx.cond(
                 State.logged_in,
                 rx.hstack(
-                    rx.cond(
-                        State.has_fisicas_access,
-                        rx.link(
-                            rx.text("Pruebas Físicas", color=rx.color_mode_cond(light=Color.TEXT, dark="white"), font_weight="500", _hover={"color": "#ee6a19"}),
-                            href="/academia/fisicas",
-                            underline="none",
-                        ),
-                    ),
-                    rx.link(
-                        rx.text("Personalidad", color=rx.color_mode_cond(light=Color.TEXT, dark="white"), font_weight="500", _hover={"color": "#ee6a19"}),
-                        href="/info", 
-                        underline="none",
-                    ),
                     rx.link(
                         rx.text("Simulacro Presencial", color=rx.color_mode_cond(light=Color.TEXT, dark="white"), font_weight="500", _hover={"color": "#ee6a19"}),
                         href="/academia/simulacro",

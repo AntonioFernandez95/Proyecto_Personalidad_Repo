@@ -69,10 +69,6 @@ def index():
                                     rx.cond(
                                         (TestState.pag_actual + 1) == TestState.total_pages,
                                         alert_dialog("Finalizar test", "¿Has revisado todas tus respuestas? Esta acción no es reversible.", "Revisar", "Sí, finalizar", TestState.finalizar_test),
-                                    ),
-                                    rx.spacer(),
-                                    rx.cond(
-                                        (TestState.pag_actual + 1) != TestState.total_pages,
                                         round_button_right_icon("Siguiente", "arrow-big-right", TestState.next_page),
                                     ),
                                     margin_top=Size.MEDIUM_BIG,
@@ -84,7 +80,8 @@ def index():
                                     round_button_left_icon("Anterior","arrow-big-left", TestState.previous_page),
                                     rx.spacer(),
                                     rx.cond(
-                                        (TestState.pag_actual + 1) != TestState.total_pages,
+                                        (TestState.pag_actual + 1) == TestState.total_pages,
+                                        rx.fragment(),
                                         round_button_right_icon("Siguiente", "arrow-big-right", TestState.next_page),
                                     ),
                                     margin_top=Size.MEDIUM_BIG,
@@ -96,6 +93,7 @@ def index():
                                         alert_dialog("Finalizar test", "¿Has revisado todas tus respuestas? Esta acción no es reversible.", "Revisar", "Sí, finalizar", TestState.finalizar_test),
                                         margin_top=Size.DEFAULT,
                                     ),
+                                    rx.fragment(),
                                 )
                             ),
                             width="100%",

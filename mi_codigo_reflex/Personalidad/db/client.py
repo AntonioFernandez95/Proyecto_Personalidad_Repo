@@ -7,19 +7,37 @@ class PostgresClient:
         self.schema = schema
 
     def _get_connection(self):
-        # Usamos las credenciales de variables de entorno o defaults
-        return psycopg2.connect(
-            dbname=os.getenv("DB_NAME", "db_personalidad_proyecto"),
-            user=os.getenv("DB_USER", "postgres"),
-            password=os.getenv("DB_PASSWORD", "Prefor2026!"),
-            host=os.getenv("DB_HOST", "db"),
-            port=os.getenv("DB_PORT", "5432")
-        )
+        # Intentamos con las variables de entorno primero
+        host = os.getenv("DB_HOST", "db")
+        try:
+            return psycopg2.connect(
+                dbname=os.getenv("DB_NAME", "db_personalidad_proyecto"),
+                user=os.getenv("DB_USER", "postgres"),
+                password=os.getenv("DB_PASSWORD", "Prefor2026!"),
+                host=host,
+                port=os.getenv("DB_PORT", "5432")
+            )
+        except Exception as e:
+            # Si falla, posiblemente estamos en Windows local fuera del docker, probamos localhost
+            if host != "localhost":
+                try:
+                    return psycopg2.connect(
+                        dbname=os.getenv("DB_NAME", "db_personalidad_proyecto"),
+                        user=os.getenv("DB_USER", "postgres"),
+                        password=os.getenv("DB_PASSWORD", "Prefor2026!"),
+                        host="localhost",
+                        port=os.getenv("DB_PORT", "5432")
+                    )
+                except Exception as inner_e:
+                    print(f"Error fatal conectando a PostgreSQL local: {inner_e}")
+                    raise
+            raise e
 
     def _get_full_table_name(self, table):
         if "." in table:
             return table
         return f"{self.schema}.{table}"
+
 
     def find_one(self, table, query_field, query_value):
         conn = self._get_connection()
