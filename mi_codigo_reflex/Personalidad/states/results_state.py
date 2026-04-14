@@ -102,11 +102,12 @@ class ResultsState(rx.State):
             "psicoticismo": (self.score_item_5 + self.score_item_6 + self.score_item_7) // 3,
             "es_apto": "APTO" if self.isUserApto else "NO APTO"
         }
+        print(f"DEBUG: Intentando guardar resultados para {user}. Data: {data}")
         success = guardar_resultado_personalidad(data)
         if success:
-            print(f"ÉXITO: Resultado guardado para {user}")
+            print(f"ÉXITO: Resultado guardado correctamente en la tabla personalidad para {user}")
         else:
-            print(f"ERROR: Falló el guardado en DB para {user}")
+            print(f"ERROR: Falló el guardado en la base de datos para {user}. Revisa los logs de db_service.py")
         
     def key_converter(self, value: str) -> str:
         """Convierte la respuesta del usuario al nombre de columna en la BD."""
