@@ -12,6 +12,7 @@ TEXT_DARK   = "#1a1a1a"
 TEXT_MID    = "#444"
 GRAY_LIGHT  = "#f0f0f0"
 BADGE_GREEN = "#28a745"
+BADGE_RED   = "#e53e3e"
 BADGE_GRAY  = "#555"
 
 PAGE_BG = (

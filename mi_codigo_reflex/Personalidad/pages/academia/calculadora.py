@@ -2,7 +2,7 @@ import reflex as rx
 from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.calculadora_state import CalculadoraState
 from Personalidad.states.historial_state import HistorialSimplificado_State
-from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, TEXT_MID, GRAY_LIGHT, BTN_PRIMARY_BASE, CARD_STYLE, back_button, BADGE_GREEN, BADGE_GRAY
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, TEXT_MID, GRAY_LIGHT, BTN_PRIMARY_BASE, CARD_STYLE, back_button, BADGE_GREEN, BADGE_RED, BADGE_GRAY
 
 
 @rx.page(route="/academia/calculadora", title="Academia Online - Calculadora", on_load=[CalculadoraState.check_login, HistorialSimplificado_State.cargar_historial])
@@ -71,7 +71,11 @@ def calculadora() -> rx.Component:
                     rx.vstack(
                         rx.icon(
                             "gauge", size=68,
-                            color=rx.cond(CalculadoraState.resultado == "APTO", BADGE_GREEN, "#aaa"),
+                            color=rx.cond(
+                                CalculadoraState.resultado == "APTO", 
+                                BADGE_GREEN, 
+                                rx.cond(CalculadoraState.resultado == "NO APTO", BADGE_RED, "#aaa")
+                            ),
                         ),
                         rx.text(
                             CalculadoraState.porcentaje,
@@ -99,7 +103,7 @@ def calculadora() -> rx.Component:
                             ),
                             spacing="2", align="center",
                         ),
-                        background=rx.cond(CalculadoraState.resultado == "APTO", BADGE_GREEN, BADGE_GRAY),
+                        background=rx.cond(CalculadoraState.resultado == "APTO", BADGE_GREEN, BADGE_RED),
                         border_radius="12px", padding="0.7em 2em",
                         box_shadow="0 4px 16px rgba(0,0,0,0.2)",
                     ),

@@ -138,10 +138,10 @@ class CalculadoraState(State):
             # El porcentaje es la media de los progresos individuales
             porcentaje = int(((r_flex + r_plan + r_agil + r_carr) / 4) * 100)
             
-            # Nuevo criterio: APTO a partir del 70% de progreso medio
-            resultado = "APTO" if porcentaje >= 70 else "NO APTO"
+            # REGLA DE ORO: Solo APTO si se cumplen TODAS las marcas mínimas (4 de 4)
+            resultado = "APTO" if puntos_apto == 4 else "NO APTO"
             
-            print(f"MOTOR DEBUG: Ratios -> Flex:{r_flex:.2f}, Plan:{r_plan:.2f}, Agil:{r_agil:.2f}, Carr:{r_carr:.2f} -> Total:{porcentaje}% RESULTADO:{resultado}")
+            print(f"MOTOR DEBUG: Ratios -> Flex:{r_flex:.2f}, Plan:{r_plan:.2f}, Agil:{r_agil:.2f}, Carr:{r_carr:.2f} -> Total:{porcentaje}% Puntos:{puntos_apto} RESULTADO:{resultado}")
 
             return resultado, porcentaje
         except Exception as e:
