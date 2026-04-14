@@ -10,6 +10,7 @@ from Personalidad.views.header import header
 from Personalidad.components.button import custoom_button
 from Personalidad.views.footer import footer
 from Personalidad.states.base_state import State
+from Personalidad.states.test_state import TestState
 #from reflex_google_recaptcha_v2 import google_recaptcha_v2
 
 """
@@ -18,7 +19,7 @@ reflex run
 
 """
 
-@rx.page(route="/info", title="Info", on_load=State.check_login) #
+@rx.page(route="/info", title="Info", on_load=[State.check_login, TestState.reset_test]) #
 def info() -> rx.Component:
     return rx.box(
         utils.lang(),

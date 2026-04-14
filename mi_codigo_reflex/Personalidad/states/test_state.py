@@ -97,7 +97,6 @@ class TestState(rx.State):
         return rx.redirect("/results")
 
     def reset_test(self):
-        self.test_data = []
         self.pag_actual = 0
         self.respuestas_acumuladas = {}
         self.page_answers = ["", "", "", "", "", "", "", "", "", ""]
