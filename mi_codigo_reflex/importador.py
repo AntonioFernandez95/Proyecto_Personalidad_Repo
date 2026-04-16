@@ -39,11 +39,21 @@ ARCHIVOS_A_IMPORTAR = {
 
 
 # Diccionario para tablas que no tienen JSON aún pero queremos crear su estructura
-# (Esquema, [Columnas])
-# Diccionario para tablas que no tienen JSON aún pero queremos crear su estructura
-# (Esquema, [Columnas])
+# (Esquema, {Columna: Tipo})
 TABLAS_VACIAS = {
-    "registros_calculadora_fisicas": ("historial_simplificado", ["token_simulacro", "propietario_id", "simulacro_code", "resultado", "gender", "flexiones", "plancha_seg", "km2000", "agilidad_seg", "porcentaje", "fecha"])
+    "registros_calculadora_fisicas": ("historial_simplificado", {
+        "token_simulacro": "TEXT PRIMARY KEY",
+        "propietario_id": "TEXT",
+        "simulacro_code": "TEXT",
+        "resultado": "TEXT",
+        "gender": "TEXT",
+        "flexiones": "INTEGER",
+        "plancha_seg": "INTEGER",
+        "km2000": "INTEGER",
+        "agilidad_seg": "FLOAT",
+        "porcentaje": "TEXT",
+        "fecha": "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+    })
 }
 
 
@@ -126,7 +136,11 @@ def importar_todo():
             cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
             cursor.execute(f"DROP TABLE IF EXISTS {esquema}.{tabla} CASCADE;")
             
-            columnas_sql = ", ".join([f'"{col}" TEXT' for col in columnas])
+            if isinstance(columnas, dict):
+                columnas_sql = ", ".join([f'"{col}" {tipo}' for col, tipo in columnas.items()])
+            else:
+                columnas_sql = ", ".join([f'"{col}" TEXT' for col in columnas])
+            
             cursor.execute(f'CREATE TABLE {esquema}.{tabla} ({columnas_sql});')
             
             print(f"¡{esquema}.{tabla} creada (vacía)!")

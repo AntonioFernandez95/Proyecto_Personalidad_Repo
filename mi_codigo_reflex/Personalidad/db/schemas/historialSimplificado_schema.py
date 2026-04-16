@@ -10,12 +10,12 @@ class HistorialSimplificadoCreate(BaseModel):
     simulacro_code: str
     resultado: str
     
-    # Nuevos campos individuales
+    # Nuevos campos individuales con tipos corregidos
     gender: Optional[str] = None
-    flexiones: Optional[str] = None
-    plancha_seg: Optional[str] = None
-    km2000: Optional[str] = None
-    agilidad_seg: Optional[str] = None
+    flexiones: Optional[int] = None
+    plancha_seg: Optional[int] = None
+    km2000: Optional[int] = None  # Segundos totales
+    agilidad_seg: Optional[float] = None
     porcentaje: Optional[str] = None
 
 class Response(BaseModel):

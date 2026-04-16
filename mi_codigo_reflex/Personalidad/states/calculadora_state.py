@@ -85,65 +85,64 @@ class CalculadoraState(State):
         except Exception as e:
             print(f"❌ Error al conectar con el CRUD: {e}")
 
+    def to_seconds(self, time_str: str) -> int:
+        """Convierte 'MM:SS' o segundos en formato string a un entero de segundos totales."""
+        if not time_str:
+            return 9999  # Valor alto para indicar marca no superada en pruebas de tiempo
+        try:
+            if ":" in time_str:
+                parts = time_str.split(":")
+                return int(parts[0]) * 60 + int(parts[1])
+            return int(float(time_str))
+        except:
+            return 9999
+
     def motor_de_calculo(self, genero: str, flexiones: str, plancha: str, km2000: str, agilidad: str) -> tuple:
         """
-        Motor de Cálculo.
-        Recibe los datos y devuelve "APTO" o "NO APTO" y el porcentaje.
+        Motor de Cálculo optimizado.
+        Maneja conversiones una sola vez y realiza comparaciones numéricas.
         """
         try:
-            # Baremo simplificado
+            # 1. Baremos de corte (Objetivos)
             if genero == "male":
                 t_flex, t_plan, t_agil, t_carr = 17, 60, 25.0, 660 # 11:00 min
             else:
                 t_flex, t_plan, t_agil, t_carr = 12, 40, 27.0, 780 # 13:00 min
 
-            # Conversión segura
-            def to_int(v, default=0):
-                try: return int(float(v)) if v else default
-                except: return default
-            
-            def to_float(v, default=0.0):
-                try: return float(v) if v else default
-                except: return default
-
-            val_flex = to_int(flexiones)
-            val_plan = to_int(plancha)
-            val_agil = to_float(agilidad, 999.0)
-            
-            # Procesar carrera 2000m (mm:ss o segundos)
-            val_carr = 9999
-            if km2000:
-                if ":" in km2000:
-                    parts = km2000.split(":")
-                    if len(parts) == 2:
-                        val_carr = to_int(parts[0]) * 60 + to_int(parts[1])
-                else:
-                    val_carr = to_int(km2000, 9999)
+            # 2. Conversión de entradas a tipos numéricos
+            try:
+                val_flex = int(float(flexiones)) if flexiones else 0
+                val_plan = int(float(plancha)) if plancha else 0
+                val_agil = float(agilidad) if agilidad else 999.0
+                val_carr = self.to_seconds(km2000)
+            except ValueError:
+                return "ERROR FORMATO", 0
 
             print(f"MOTOR DEBUG: Genero={genero}, Flex={val_flex}(>={t_flex}), Plan={val_plan}(>={t_plan}), Agil={val_agil}(<={t_agil}), Carr={val_carr}(<={t_carr})")
 
-            puntos_apto = 0
-            # Ratios de progreso (0.0 a 1.0)
+            # 3. Cálculo de Ratios de Progreso (0.0 a 1.0)
+            # Evitamos división por cero asegurando que los baremos son > 0
             r_flex = min(1.0, val_flex / t_flex) if t_flex > 0 else 0
             r_plan = min(1.0, val_plan / t_plan) if t_plan > 0 else 0
-            # Para agilidad y carrera, menor es mejor. Ratio = objetivo / actual
-            r_agil = min(1.0, t_agil / val_agil) if (agilidad and val_agil > 0) else 0
-            r_carr = min(1.0, t_carr / val_carr) if (km2000 and val_carr > 0) else 0
+            
+            # Para agilidad y carrera, menor tiempo es mejor progreso
+            r_agil = min(1.0, t_agil / val_agil) if val_agil > 0 else 0
+            r_carr = min(1.0, t_carr / val_carr) if val_carr > 0 else 0
 
+            # 4. Evaluación de marca mínima (4 de 4 requeridos para APTO)
+            puntos_apto = 0
             if val_flex >= t_flex: puntos_apto += 1
             if val_plan >= t_plan: puntos_apto += 1
             if val_agil <= t_agil: puntos_apto += 1
             if val_carr <= t_carr: puntos_apto += 1
             
-            # El porcentaje es la media de los progresos individuales
+            # 5. Cálculo del porcentaje global (media de progresos)
             porcentaje = int(((r_flex + r_plan + r_agil + r_carr) / 4) * 100)
-            
-            # REGLA DE ORO: Solo APTO si se cumplen TODAS las marcas mínimas (4 de 4)
             resultado = "APTO" if puntos_apto == 4 else "NO APTO"
             
-            print(f"MOTOR DEBUG: Ratios -> Flex:{r_flex:.2f}, Plan:{r_plan:.2f}, Agil:{r_agil:.2f}, Carr:{r_carr:.2f} -> Total:{porcentaje}% Puntos:{puntos_apto} RESULTADO:{resultado}")
+            print(f"MOTOR DEBUG: Progresos -> Flex:{r_flex:.2f}, Plan:{r_plan:.2f}, Agil:{r_agil:.2f}, Carr:{r_carr:.2f} | Puntos:{puntos_apto}/4 | Resultado:{resultado}")
 
             return resultado, porcentaje
         except Exception as e:
             print(f"Error en motor de cálculo: {e}")
-            return "ERROR", 0
+            return "ERROR CRITICO", 0

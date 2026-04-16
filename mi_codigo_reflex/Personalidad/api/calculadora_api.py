@@ -16,13 +16,22 @@ class CalculadoraAPI:
         """
         user_id = state.user if state.user else "anónimo"
         
-        # Extraemos los datos del estado
+        # 1. Extraemos y convertimos los datos del estado a tipos numéricos
+        try:
+            val_flex = int(float(state.flexiones)) if state.flexiones else 0
+            val_plan = int(float(state.plancha_seg)) if state.plancha_seg else 0
+            val_agil = float(state.agilidad_seg) if state.agilidad_seg else 0.0
+            val_km2000 = state.to_seconds(state.km2000)
+        except Exception as e:
+            print(f"ERROR de conversión en API: {e}")
+            val_flex, val_plan, val_agil, val_km2000 = 0, 0, 0.0, 9999
+
         payload = {
             "gender": state.gender,
-            "flexiones": state.flexiones,
-            "plancha_seg": state.plancha_seg,
-            "km2000": state.km2000,
-            "agilidad_seg": state.agilidad_seg,
+            "flexiones": val_flex,
+            "plancha_seg": val_plan,
+            "km2000": val_km2000,
+            "agilidad_seg": val_agil,
             "porcentaje": str(state.porcentaje),
             "resultado": state.resultado
         }
