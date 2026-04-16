@@ -43,7 +43,7 @@ ARCHIVOS_A_IMPORTAR = {
 # Diccionario para tablas que no tienen JSON aún pero queremos crear su estructura
 # (Esquema, [Columnas])
 TABLAS_VACIAS = {
-    "registros_calculadora_fisicas": ("historial_simplificado", ["id", "user_id", "simulacro_code", "resultado", "gender", "flexiones", "plancha_seg", "km2000", "agilidad_seg", "porcentaje", "fecha"])
+    "registros_calculadora_fisicas": ("historial_simplificado", ["token_simulacro", "propietario_id", "simulacro_code", "resultado", "gender", "flexiones", "plancha_seg", "km2000", "agilidad_seg", "porcentaje", "fecha"])
 }
 
 

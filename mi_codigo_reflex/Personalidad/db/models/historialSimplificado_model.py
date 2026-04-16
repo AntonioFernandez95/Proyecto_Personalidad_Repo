@@ -10,8 +10,8 @@ class HistorialSimplificado(Base):
     __tablename__ = "registros_calculadora_fisicas"
     __table_args__ = {"schema": "historial_simplificado"}
    
-    id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
-    user_id = Column(String, nullable=False)
+    token_simulacro = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
+    propietario_id = Column(String, nullable=False)
     simulacro_code = Column(String, nullable=False)  # ej: 'FISC-01'
     resultado = Column(String, nullable=False)       # 'APTO' o 'NO APTO' (para compatibilidad)
     

@@ -5,8 +5,8 @@ class HistorialSimplificadoCreate(BaseModel):
     """
     Schema para crear un registro en el historial con todos los campos detallados.
     """
-    id: Optional[str] = None
-    user_id: str
+    token_simulacro: Optional[str] = None
+    propietario_id: str
     simulacro_code: str
     resultado: str
     

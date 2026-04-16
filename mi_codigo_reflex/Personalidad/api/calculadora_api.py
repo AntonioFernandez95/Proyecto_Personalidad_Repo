@@ -37,8 +37,8 @@ class CalculadoraAPI:
             from Personalidad.db.schemas.historialSimplificado_schema import HistorialSimplificadoCreate
             
             datos_ticket = HistorialSimplificadoCreate(
-                id=str(uuid.uuid4()),
-                user_id=user_id,
+                token_simulacro=str(uuid.uuid4()),
+                propietario_id=user_id,
                 simulacro_code="CALC-API",
                 resultado=payload["resultado"],
                 gender=payload["gender"],

@@ -34,8 +34,8 @@ def guardar_historial_ligero(data_validada: HistorialSimplificadoCreate):
     db = SessionLocal()
     try:
         nuevo_historial = HistorialSimplificado(
-            id=data_validada.id,
-            user_id=data_validada.user_id,
+            token_simulacro=data_validada.token_simulacro,
+            propietario_id=data_validada.propietario_id,
             simulacro_code=data_validada.simulacro_code,
             resultado=data_validada.resultado,
             gender=data_validada.gender,
@@ -58,7 +58,7 @@ def guardar_historial_ligero(data_validada: HistorialSimplificadoCreate):
 def consultar_historial_usuario(user_id: str):
     db = SessionLocal()
     try:
-        return db.query(HistorialSimplificado).filter(HistorialSimplificado.user_id == user_id).order_by(HistorialSimplificado.fecha.desc()).all()
+        return db.query(HistorialSimplificado).filter(HistorialSimplificado.propietario_id == user_id).order_by(HistorialSimplificado.fecha.desc()).all()
     except Exception as e:
         return []
     finally:

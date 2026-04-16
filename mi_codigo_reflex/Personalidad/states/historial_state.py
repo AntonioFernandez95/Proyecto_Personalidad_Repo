@@ -86,7 +86,7 @@ class HistorialSimplificado_State(State):
                 "km2000": r.km2000 if r.km2000 else "-",
                 "agilidad": r.agilidad_seg if r.agilidad_seg else "-",
                 "porcentaje": porcentaje_str if porcentaje_str else "-",
-                "user_id": r.user_id if r.user_id else "anónimo",
+                "user_id": r.propietario_id if r.propietario_id else "anónimo",
                 "flex_ok": flex_ok,
                 "plan_ok": plan_ok,
                 "carr_ok": carr_ok,
