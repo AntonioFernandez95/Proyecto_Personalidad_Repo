@@ -1,5 +1,5 @@
 import reflex as rx
-from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, GRAY_LIGHT, back_button, CARD_STYLE
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, GRAY_LIGHT, back_button, CARD_STYLE, BTN_PRIMARY_BASE
 from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.detallesTecnicas_state import DetallesTecnicasState
 
@@ -91,6 +91,27 @@ def agilidad() -> rx.Component:
                     width="100%",
                 ),
                 **CARD_STYLE, padding="2.5em", width="100%", max_width="780px", margin_top="1em"
+            ),
+            
+            # BOTÓN DESCARGA PDF
+            rx.center(
+                rx.link(
+                    rx.button(
+                        rx.hstack(
+                            rx.icon("file-text", size=20),
+                            rx.text("Descargar Guía Técnica en PDF"),
+                            spacing="2",
+                        ),
+                        **BTN_PRIMARY_BASE,
+                        width="fit-content",
+                        padding="1.5em",
+                    ),
+                    href="/circuito_2026.pdf",
+                    is_external=True,
+                    underline="none",
+                ),
+                width="100%",
+                margin_top="3em",
             ),
             
             # BOTÓN VOLVER
