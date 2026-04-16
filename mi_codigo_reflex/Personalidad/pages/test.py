@@ -37,6 +37,7 @@ def index():
             border_bottom="1px solid #f0f0f0",
             align_items="start",
             width="100%",
+            flex_shrink="0",
             key=(TestState.pag_actual * TestState.num_preguntas + index).to_string(),
         )
 
@@ -104,14 +105,15 @@ def index():
                     ),
                 ),
                 width= "90%",
-                max_width= "37.5em",
+                max_width= "50em",
                 margin = "0 auto",
+                margin_top="100px",
+                margin_bottom="2em",
                 background= rx.color_mode_cond(light="white", dark=Color.TEXT),
                 padding= "3.1em 1.8em",
-                transform="translate(-50%, -50%)",
-                top="50%",
-                left="50%",
-                position="absolute",
+                height="100vh",
+                overflow_y="auto",
+                border_radius="10px",
                 align= "center",
                 box_shadow="0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
             ),
