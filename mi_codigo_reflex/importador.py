@@ -34,6 +34,7 @@ ARCHIVOS_A_IMPORTAR = {
     "psico_gc.preguntas_contestadas.json": ("psico_gc", "preguntas_contestadas"),
     "psico_gc.sesiones_contestadas.json": ("psico_gc", "sesiones_contestadas"),
     "python.users.json": ("python", "users"),
+    
     "tecnicas_data.json": ("tecnicas", "tecnicas_data")
 }
 
@@ -41,7 +42,7 @@ ARCHIVOS_A_IMPORTAR = {
 # Diccionario para tablas que no tienen JSON aún pero queremos crear su estructura
 # (Esquema, {Columna: Tipo})
 TABLAS_VACIAS = {
-    "registros_calculadora_fisicas": ("historial_simplificado", {
+    "fisicas": ("historial_simplificado", {
         "token_simulacro": "TEXT PRIMARY KEY",
         "propietario_id": "TEXT",
         "simulacro_code": "TEXT",
@@ -53,6 +54,16 @@ TABLAS_VACIAS = {
         "agilidad_seg": "FLOAT",
         "porcentaje": "TEXT",
         "fecha": "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+    }),
+    "personalidad": ("historial_simplificado", {
+        "id": "TEXT PRIMARY KEY",
+        "user_id": "TEXT",
+        "sinceridad": "INTEGER",
+        "extraversion": "INTEGER",
+        "neuroticismo": "INTEGER",
+        "psicoticismo": "INTEGER",
+        "es_apto": "TEXT",
+        "fecha": "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
     })
 }
 
@@ -62,6 +73,9 @@ def importar_todo():
         print("--- INICIANDO IMPORTACIÓN TOTAL ---")
         conexion = psycopg2.connect(**DB_CONFIG)
         cursor = conexion.cursor()
+        
+        # Set datestyle to MDY to avoid errors with MM/DD/YYYY format dates
+        cursor.execute("SET datestyle = 'ISO, MDY';")
 
 
         # 1. Procesar archivos JSON existentes

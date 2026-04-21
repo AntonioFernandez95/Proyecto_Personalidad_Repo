@@ -23,7 +23,7 @@ class FisicasState(State):
                 plan_actual = user_data.get("user_plan", "sin_plan").lower()
                 
                 # --- FILTRO EXCLUSIVO PARA TI ---
-                # Sustituye 'tu_email@ejemplo.com' por el email con el que te logueas tú
+                # Sustituye hay que cambiarlo para q lo pueda ver todo el mundo que tenga el plan de fisicas.
                 if self.user == "claudia@academiametodos.com":
                     return None # Acceso total para ti, sin preguntas.
 

@@ -72,7 +72,7 @@ class HistorialSimplificado_State(State):
             plan_ok = plan_val >= t_plan
             carr_ok = carr_val <= t_carr
             agil_ok = agil_val <= t_agil
-            # ─────────────────────────────────────────────────────────────
+            
 
             self.historial.append({
                 "fecha": fecha_str,
