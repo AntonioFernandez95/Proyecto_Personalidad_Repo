@@ -39,6 +39,14 @@ def navbar() -> rx.Component:
                         href="/academia/simulacro",
                         underline="none",
                     ),
+                    rx.cond(
+                        State.user.to(str).contains("@academiametodos.com"),
+                        rx.link(
+                            rx.text("Panel de Control", color=rx.color_mode_cond(light=Color.TEXT, dark="white"), font_weight="500", _hover={"color": "#ee6a19"}),
+                            href="/admin",
+                            underline="none",
+                        ),
+                    ),
                     spacing="6",
                     align="center",
                 ),
