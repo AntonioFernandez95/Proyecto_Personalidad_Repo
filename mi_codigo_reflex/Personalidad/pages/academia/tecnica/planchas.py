@@ -79,12 +79,33 @@ def planchas() -> rx.Component:
 
                     rx.divider(margin_y="1.5em"),
                     
-                    # TIEMPOS E INTENTOS
+                    # TIEMPOS E INTENTOS + BOTÓN PDF
                     rx.hstack(
-                        rx.text(f"Tiempo máximo: {DetallesTecnicasState.tiempo}", font_weight="bold", color=OLIVE),
-                        rx.text("|", color=TEXT_DARK),
-                        rx.text(f"Intentos: {DetallesTecnicasState.intentos}", font_weight="bold", color=OLIVE),
-                        spacing="4"
+                        rx.hstack(
+                            rx.text(f"Tiempo máximo: {DetallesTecnicasState.tiempo}", font_weight="bold", color=OLIVE),
+                            rx.text("|", color=TEXT_DARK),
+                            rx.text(f"Intentos: {DetallesTecnicasState.intentos}", font_weight="bold", color=OLIVE),
+                            spacing="4",
+                            align_items="center",
+                        ),
+                        rx.link(
+                            rx.button(
+                                rx.hstack(
+                                    rx.icon("file-text", size=16),
+                                    rx.text("Descargar PDF", font_size="0.85em"),
+                                    spacing="2",
+                                ),
+                                **BTN_PRIMARY_BASE,
+                                padding="0.8em 1.2em",
+                                margin_right="0.5em",
+                            ),
+                            href="/flexiones_planchas.pdf",
+                            is_external=True,
+                            underline="none",
+                        ),
+                        justify="between",
+                        align_items="center",
+                        width="100%",
                     ),
 
                     align="start",
@@ -93,26 +114,6 @@ def planchas() -> rx.Component:
                 **CARD_STYLE, padding="2.5em", width="100%", max_width="780px", margin_top="1em"
             ),
             
-            # BOTÓN DESCARGA PDF
-            rx.center(
-                rx.link(
-                    rx.button(
-                        rx.hstack(
-                            rx.icon("file-text", size=20),
-                            rx.text("Descargar Guía Técnica en PDF"),
-                            spacing="2",
-                        ),
-                        **BTN_PRIMARY_BASE,
-                        width="fit-content",
-                        padding="1.5em",
-                    ),
-                    href="/flexiones_planchas.pdf",
-                    is_external=True,
-                    underline="none",
-                ),
-                width="100%",
-                margin_top="3em",
-            ),
             
             # BOTÓN VOLVER
             back_button(label="← Volver", href="/academia/tecnica"),
