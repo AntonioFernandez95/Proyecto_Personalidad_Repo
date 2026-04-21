@@ -69,4 +69,40 @@ def guardar_resultado_personalidad(data: dict) -> bool:
         return True
     except Exception as e:
         print(f"Error guardando en BD (personalidad): {e}")
-        return False
+
+def obtener_resultados_personalidad(user_id: str) -> list[dict]:
+    """Recupera los resultados previos de un usuario de la BD."""
+    try:
+        conn = get_db_connection()
+        if not conn: return []
+        cursor = conn.cursor()
+        
+        # Seleccionamos las columnas principales incluyendo la fecha
+        select_query = sql.SQL(
+            "SELECT id, sinceridad, extraversion, neuroticismo, psicoticismo, es_apto, fecha "
+            "FROM historial_simplificado.personalidad "
+            "WHERE user_id = %s "
+            "ORDER BY fecha DESC"
+        )
+        
+        cursor.execute(select_query, (user_id,))
+        rows = cursor.fetchall()
+        
+        resultados = []
+        for row in rows:
+            resultados.append({
+                "id": row[0],
+                "sinceridad": row[1],
+                "extraversion": row[2],
+                "neuroticismo": row[3],
+                "psicoticismo": row[4],
+                "es_apto": row[5],
+                "fecha": row[6].strftime("%d/%m/%Y %H:%M") if row[6] else "N/A"
+            })
+            
+        cursor.close()
+        conn.close()
+        return resultados
+    except Exception as e:
+        print(f"Error obteniendo historial en BD (personalidad): {e}")
+        return []

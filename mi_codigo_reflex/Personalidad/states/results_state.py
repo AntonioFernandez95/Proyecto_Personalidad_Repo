@@ -3,12 +3,14 @@ import uuid
 
 from Personalidad.states.test_state import TestState
 from Personalidad.states.base_state import State
-from Personalidad.db_service import guardar_resultado_personalidad
+from Personalidad.db_service import guardar_resultado_personalidad, obtener_resultados_personalidad
 
 
 class ResultsState(rx.State):
     
     isUserApto: bool = False
+    historial_resultados: list[dict] = []
+    show_history: bool = False
     
     score_item_1: int = 0
     score_item_2: int = 0
@@ -89,6 +91,9 @@ class ResultsState(rx.State):
         
         # 3. GUARDAMOS EN BASE DE DATOS
         self.persist_results(user)
+        
+        # 4. CARGAMOS EL HISTORIAL ACTUALIZADO
+        await self.cargar_historial()
 
     def persist_results(self, user: str):
         """Envía los datos calculados a la tabla historial_simplificado.personalidad"""
@@ -149,3 +154,18 @@ class ResultsState(rx.State):
         self.is_5_ok = self.score_item_5 < 80
         self.is_6_ok = self.score_item_6 < 80
         self.is_7_ok = self.score_item_7 < 80
+
+    async def cargar_historial(self):
+        """Carga el historial de resultados de personalidad de la BD."""
+        base_state = await self.get_state(State)
+        user = base_state.user
+        if user:
+            self.historial_resultados = obtener_resultados_personalidad(user)
+        else:
+            self.historial_resultados = []
+
+    async def toggle_history(self):
+        """Alterna la visibilidad del historial y lo carga si es necesario."""
+        self.show_history = not self.show_history
+        if self.show_history:
+            await self.cargar_historial()
