@@ -7,35 +7,42 @@ from Personalidad.pages.academia.layout import academia_layout, BTN_PRIMARY_BASE
 def edit_profile_card() -> rx.Component:
     return rx.vstack(
         rx.hstack(
-            rx.icon("user-cog", size=24, color="#5B733A"),
-            rx.heading("Editar Datos del Perfil", size="5", color="black"),
-            spacing="2",
+            rx.icon("user-cog", size=28, color="#5B733A"),
+            rx.heading("Perfil del Alumno", size="6", color="black", font_weight="900"),
+            spacing="3",
             align="center",
-            margin_bottom="1em",
+            margin_bottom="1.5em",
         ),
-        rx.vstack(
-            rx.text("Nombre Completo:", font_size="0.85em", color="#666"),
-            rx.input(
-                value=AdminState.new_name,
-                on_change=AdminState.set_new_name,
-                placeholder="Nombre y Apellidos",
-                width="100%",
-                background_color="white",
-                color="black",
+        rx.flex(
+            rx.vstack(
+                rx.text("Nombre Completo:", font_size="0.9em", color="#444", font_weight="bold"),
+                rx.input(
+                    value=AdminState.new_name,
+                    on_change=AdminState.set_new_name,
+                    width="100%",
+                    background="white",
+                    color="black",
+                    border="1px solid #ddd",
+                    height="3em",
+                ),
+                width="100%", flex="1",
             ),
-            width="100%", align="start",
-        ),
-        rx.vstack(
-            rx.text("Correo Electrónico:", font_size="0.85em", color="#666", margin_top="1em"),
-            rx.input(
-                value=AdminState.new_email,
-                on_change=AdminState.set_new_email,
-                placeholder="email@ejemplo.com",
-                width="100%",
-                background_color="white",
-                color="black",
+            rx.vstack(
+                rx.text("Correo Electrónico:", font_size="0.9em", color="#444", font_weight="bold"),
+                rx.input(
+                    value=AdminState.new_email,
+                    on_change=AdminState.set_new_email,
+                    width="100%",
+                    background="white",
+                    color="black",
+                    border="1px solid #ddd",
+                    height="3em",
+                ),
+                width="100%", flex="1",
             ),
-            width="100%", align="start",
+            width="100%",
+            spacing="6",
+            flex_direction=["column", "row"],
         ),
         rx.button(
             "Guardar Cambios de Perfil",
@@ -43,12 +50,15 @@ def edit_profile_card() -> rx.Component:
             background_color="#5B733A",
             color="white",
             width="100%",
-            margin_top="1.5em",
+            height="3.5em",
+            margin_top="2em",
+            font_weight="bold",
         ),
         **CARD_STYLE,
-        padding="2em",
+        padding="2.5em",
         width="100%",
-        margin_bottom="2em",
+        margin_bottom="3em",
+        opacity="1",
     )
 
 def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_alargar: Any, on_toggle: Any) -> rx.Component:
@@ -57,89 +67,108 @@ def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_
     return rx.vstack(
         rx.hstack(
             rx.vstack(
-                rx.heading(plan_name, size="5", color="black"),
+                rx.heading(plan_name, size="5", color="black", font_weight="800"),
                 rx.badge(
                     status, 
                     color_scheme=rx.cond(is_active_cond, "green", "gray"),
-                    variant="solid"
+                    variant="solid",
+                    size="2"
                 ),
                 spacing="1", align="start",
             ),
             rx.spacer(),
-            rx.icon("calendar-clock", color=rx.cond(is_active_cond, "#5B733A", "#ccc"), size=32),
+            rx.icon("calendar-clock", color=rx.cond(is_active_cond, "#5B733A", "#ccc"), size=36),
             width="100%", align="center",
         ),
-        rx.divider(margin_y="1em"),
+        rx.divider(margin_y="1.5em", border_color="#eee"),
         rx.vstack(
-            rx.text("Fecha de Vencimiento Actual:", font_size="0.85em", color="#666"),
+            rx.text("Vencimiento Actual:", font_size="0.9em", color="#666", font_weight="bold"),
             rx.text(
                 expiration, 
-                font_weight="bold", 
-                font_size="1.2em", 
+                font_weight="900", 
+                font_size="1.5em", 
                 color=rx.cond(is_active_cond, "#5B733A", "#999")
             ),
             width="100%", align="start",
         ),
-        rx.hstack(
-            rx.input(
-                placeholder="Días a sumar", 
-                width="100%",
-                value=AdminState.days_to_add,
-                on_change=AdminState.set_days_to_add,
-                background_color="white",
-                color="black",
+        rx.vstack(
+            rx.text("Añadir tiempo (días):", font_size="0.85em", color="#444", margin_top="1em"),
+            rx.hstack(
+                rx.input(
+                    placeholder="Ej: 30", 
+                    width="100%",
+                    value=AdminState.days_to_add,
+                    on_change=AdminState.set_days_to_add,
+                    background="white",
+                    color="black",
+                    border="1px solid #ddd",
+                ),
+                rx.button(
+                    "Alargar", 
+                    on_click=on_alargar,
+                    **BTN_SECONDARY_BASE,
+                    height="3em",
+                ),
+                width="100%", spacing="3",
             ),
-            rx.button(
-                "Alargar", 
-                on_click=on_alargar,
-                **BTN_SECONDARY_BASE
-            ),
-            width="100%", spacing="2", margin_top="1em",
+            width="100%",
         ),
         rx.button(
             rx.cond(is_active_cond, "Dar de Baja", "Reactivar Plan"),
             background_color=rx.cond(is_active_cond, "#7d804e", "#5B733A"),
             color="white",
             width="100%", 
-            margin_top="1.5em",
-            on_click=on_toggle
+            height="3.5em",
+            margin_top="2em",
+            on_click=on_toggle,
+            font_weight="bold",
         ),
         **CARD_STYLE,
-        padding="2em",
+        padding="2.5em",
         width="100%",
         opacity="1",
+        flex="1",
     )
 
-@rx.page(route="/academia/admin_plans", title="Gestión de Planes - Administración", on_load=AdminState.on_load)
+@rx.page(route="/academia/admin_plans", title="Gestión de Alumno", on_load=AdminState.on_load)
 def admin_plans() -> rx.Component:
     return academia_layout(
-        rx.vstack(
+        rx.flex(
+            # CABECERA CON BOTÓN VOLVER MUY VISIBLE
             rx.hstack(
                 rx.link(
-                    rx.button("← Volver al Panel", **BTN_BACK_BASE),
+                    rx.button(
+                        rx.icon("arrow-left", size=20),
+                        "Volver al Listado",
+                        background_color="white",
+                        color="#5B733A",
+                        border="2px solid #5B733A",
+                        font_weight="bold",
+                        height="3.5em",
+                        _hover={"background_color": "#f0f4f0"},
+                    ),
                     href="/academia/admin_panel",
                     underline="none",
                 ),
                 rx.spacer(),
                 align="center",
                 width="100%",
-                margin_bottom="2em",
+                margin_bottom="3em",
             ),
+            
             rx.heading(
                 rx.cond(
                     AdminState.selected_user["full_name"],
-                    rx.text(f"Gestionar: {AdminState.selected_user['full_name']}"),
-                    rx.text(f"Gestionar: {AdminState.selected_user['email']}")
+                    rx.text(f"Gestionar Alumno: {AdminState.selected_user['full_name']}"),
+                    rx.text(f"Gestionar Alumno: {AdminState.selected_user['email']}")
                 ),
-                size="8", color="white", font_weight="800"
+                size="9", color="white", font_weight="900", margin_bottom="0.5em"
             ),
-            rx.text("Configuración independiente por cada plan de estudios.", color="rgba(255,255,255,0.7)"),
+            rx.text("Panel de control individual para cambios de perfil y planes.", color="rgba(255,255,255,0.9)", margin_bottom="2em"),
             
-            # NUEVA TARJETA DE EDICIÓN DE PERFIL
             edit_profile_card(),
 
-            rx.hstack(
-                # Tarjeta 1: Plan Academia / Personalidad
+            rx.flex(
                 plan_management_card(
                     "Test Personalidad", 
                     rx.cond(AdminState.selected_user["disabled_personalidad"], "Inactivo", "Activo"),
@@ -147,7 +176,6 @@ def admin_plans() -> rx.Component:
                     AdminState.alargar_vencimiento_plan("personalidad"),
                     AdminState.toggle_baja_plan("personalidad")
                 ),
-                # Tarjeta 2: Plan Pruebas Físicas
                 plan_management_card(
                     "Pruebas Físicas", 
                     rx.cond(AdminState.selected_user["disabled_fisicas"], "Inactivo", "Activo"),
@@ -155,19 +183,16 @@ def admin_plans() -> rx.Component:
                     AdminState.alargar_vencimiento_plan("fisicas"),
                     AdminState.toggle_baja_plan("fisicas")
                 ),
-                spacing="9",
                 width="100%",
-                margin_top="1em",
+                spacing="8",
+                flex_direction=["column", "column", "row"],
                 align_items="stretch",
             ),
             
-            rx.text(
-                "Nota: Cada plan se gestiona de forma aislada. La baja en uno no afecta al otro.",
-                font_size="0.85em", color="rgba(255,255,255,0.6)", margin_top="3em", text_align="center"
-            ),
-            
-            align="center",
+            direction="column",
             width="100%",
-            max_width="1000px",
+            max_width="1200px",
+            align_items="center",
+            padding_bottom="5em",
         )
     )
