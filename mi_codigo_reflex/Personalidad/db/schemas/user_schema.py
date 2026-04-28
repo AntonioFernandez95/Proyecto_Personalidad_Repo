@@ -13,6 +13,10 @@ def user_schema(user):
         "are_terms_accepted": bool(user.get("are_terms_accepted", False)),
         "is_optional_checked": bool(user.get("is_optional_checked", False)),
         "rol": user.get("rol", "estudiante"),
+        "hasta_personalidad": user.get("hasta_personalidad").strftime("%Y-%m-%d") if user.get("hasta_personalidad") else "N/A",
+        "hasta_fisicas": user.get("hasta_fisicas").strftime("%Y-%m-%d") if user.get("hasta_fisicas") else "N/A",
+        "disabled_personalidad": bool(user.get("disabled_personalidad", False)),
+        "disabled_fisicas": bool(user.get("disabled_fisicas", False)),
     }
 
 #*Devuelve un listado de usuarios*#

@@ -4,6 +4,7 @@ from Personalidad.styles.fonts import Font
 from Personalidad.styles.styles import Size
 from Personalidad.styles.colors import Color
 from Personalidad.states.base_state import State
+from Personalidad.states.login_state import ButtonClick
 
 def navbar() -> rx.Component:
     return rx.hstack(
@@ -32,6 +33,16 @@ def navbar() -> rx.Component:
                         rx.text("Simulacro Presencial", color=rx.color_mode_cond(light=Color.TEXT, dark="white"), font_weight="500", _hover={"color": "#ee6a19"}),
                         href="/academia/simulacro",
                         underline="none",
+                    ),
+                    # ENLACE PANEL ADMIN (Ahora en el centro)
+                    rx.cond(
+                        State.is_admin,
+                        rx.link(
+                            rx.text("Panel Admin", color="white", font_weight="500", _hover={"color": "#ee6a19"}),
+                            href="/academia/admin_panel",
+                            underline="none",
+                        ),
+                        rx.fragment()
                     ),
                     spacing="6",
                     align="center",

@@ -5,8 +5,9 @@ from Personalidad.states.historial_state import HistorialSimplificado_State
 from Personalidad.states.results_state import ResultsState
 from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.test_state import TestState
-
 from Personalidad.pages import login, test, info, results, academia
+from Personalidad.pages.academia import admin_panel, admin_plans
+from Personalidad.states.admin_state import AdminState
 from Personalidad.styles.styles import BASE_STYLE, STYLESHEETS
 
 # Define the app with the given theme and styles

@@ -75,6 +75,23 @@ class PostgresClient:
         finally:
             conn.close()
 
+    def delete_one(self, table, query_field, query_value):
+        """Elimina un registro de la tabla."""
+        conn = self._get_connection()
+        try:
+            with conn.cursor() as cur:
+                table_name = self._get_full_table_name(table)
+                sql = f'DELETE FROM {table_name} WHERE "{query_field}" = %s'
+                cur.execute(sql, (str(query_value),))
+                conn.commit()
+                return True
+        except Exception as e:
+            print(f"Error en delete_one ({table}): {e}")
+            conn.rollback()
+            return False
+        finally:
+            conn.close()
+
     def find_all(self, table):
         """Devuelve todos los registros de una tabla."""
         conn = self._get_connection()

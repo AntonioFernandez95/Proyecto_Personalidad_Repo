@@ -54,8 +54,9 @@ class LoginState(State):
         return "none" if self.isEmailValid or self.email == "" else "block"
         
     @rx.var
-    def show_terms_alert(self) -> str:
-        return "none" if self.isChecked else "block"
+    def show_terms_alert(self) -> bool:
+        """Determina si debe mostrarse la alerta de términos (True = mostrar)."""
+        return not self.isChecked
 
 class ButtonClick(LoginState):
     """Maneja las acciones de los botones (Login y Recuperación)."""
@@ -93,6 +94,7 @@ class ButtonClick(LoginState):
         # 4. Éxito: Registro de login y redirección
         increment_login_count(self.email)
         self.user = self.email
+        self.user_role = user_data.rol
         self.isWaiting = False
         yield rx.redirect("/academia")
 

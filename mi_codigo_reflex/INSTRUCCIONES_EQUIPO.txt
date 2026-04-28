@@ -1,0 +1,32 @@
+# GUÍA DE PUESTA EN MARCHA PARA EL EQUIPO
+
+¡Hola! Si acabas de descargar este proyecto, sigue estos pasos para que todo funcione correctamente, especialmente el acceso de ADMINISTRADOR.
+
+## 1. Levantar la infraestructura
+Primero, asegúrate de tener Docker corriendo y levanta los contenedores:
+```bash
+docker-compose up -d
+```
+
+## 2. IMPORTANTE: Sincronizar Base de Datos y Cifrado
+Este proyecto utiliza seguridad profesional (Bcrypt) para las contraseñas y un sistema de roles (Admin/Estudiante). Para que tu base de datos local tenga estos datos configurados, DEBES ejecutar el script importador:
+
+```bash
+python importador.py
+```
+**¿Qué hace este script?**
+- Crea las tablas necesarias en tu base de datos local.
+- Limpia los usuarios antiguos y deja solo los autorizados (@academiametodos.com).
+- CIFRA las contraseñas para que el login funcione.
+- Asigna automáticamente el ROL de "admin" a los usuarios de la academia.
+
+## 3. Acceso de Administrador (Claudia)
+Una vez ejecutado el importador, ya puedes entrar en la web (localhost:3000) con las siguientes credenciales:
+
+- **Email**: claudia@academiametodos.com
+- **Contraseña**: ATC4IWR
+
+Al entrar con esta cuenta, tendrás acceso exclusivo al **Panel de Control** en la ruta `/admin`.
+
+---
+*Nota: Si intentas entrar con un usuario que no es de la academia o no has ejecutado el importador, el sistema te denegará el acceso por seguridad.*
