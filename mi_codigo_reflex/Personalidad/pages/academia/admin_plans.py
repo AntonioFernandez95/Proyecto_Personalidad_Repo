@@ -4,6 +4,45 @@ from Personalidad.states.base_state import State
 from Personalidad.states.admin_state import AdminState
 from Personalidad.pages.academia.layout import academia_layout, BTN_PRIMARY_BASE, BTN_SECONDARY_BASE, BTN_BACK_BASE, CARD_STYLE
 
+def admin_plans_header() -> rx.Component:
+    return rx.flex(
+        rx.vstack(
+            rx.heading(
+                rx.cond(
+                    AdminState.selected_user["full_name"],
+                    rx.text(f"Gestionar: {AdminState.selected_user['full_name']}"),
+                    rx.text(f"Gestionar: {AdminState.selected_user['email']}")
+                ),
+                size="9", color="white", font_weight="900"
+            ),
+            rx.text("Configuración individual de perfil y planes.", color="rgba(255,255,255,0.8)", font_size="1.1em"),
+            align_items="start",
+            spacing="1",
+        ),
+        rx.spacer(),
+        rx.link(
+            rx.button(
+                rx.icon("arrow-left", size=18),
+                rx.text("Volver al Panel", white_space="nowrap"),
+                background_color="white",
+                color="#5B733A",
+                font_weight="bold",
+                height="3.5em",
+                padding_x="2em",
+                border_radius="12px",
+                _hover={"background_color": "#f0f0f0", "transform": "scale(1.02)"},
+            ),
+            href="/academia/admin_panel",
+            underline="none",
+        ),
+        align="center",
+        width="100%",
+        padding_top="5em",
+        padding_bottom="3em",
+        flex_direction=["column", "row"],
+        gap="2em",
+    )
+
 def edit_profile_card() -> rx.Component:
     return rx.vstack(
         rx.hstack(
@@ -23,7 +62,8 @@ def edit_profile_card() -> rx.Component:
                     background="white",
                     color="black",
                     border="1px solid #ddd",
-                    height="3em",
+                    height="3.5em",
+                    border_radius="10px",
                 ),
                 width="100%", flex="1",
             ),
@@ -36,7 +76,8 @@ def edit_profile_card() -> rx.Component:
                     background="white",
                     color="black",
                     border="1px solid #ddd",
-                    height="3em",
+                    height="3.5em",
+                    border_radius="10px",
                 ),
                 width="100%", flex="1",
             ),
@@ -50,9 +91,10 @@ def edit_profile_card() -> rx.Component:
             background_color="#5B733A",
             color="white",
             width="100%",
-            height="3.5em",
+            height="4em",
             margin_top="2em",
             font_weight="bold",
+            border_radius="12px",
         ),
         **CARD_STYLE,
         padding="2.5em",
@@ -102,12 +144,18 @@ def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_
                     background="white",
                     color="black",
                     border="1px solid #ddd",
+                    height="3em",
+                    border_radius="10px",
                 ),
                 rx.button(
                     "Alargar", 
                     on_click=on_alargar,
-                    **BTN_SECONDARY_BASE,
+                    # Eliminamos BTN_SECONDARY_BASE para evitar conflicto de border_radius
+                    background_color="#5B733A",
+                    color="white",
                     height="3em",
+                    border_radius="10px",
+                    padding_x="1em",
                 ),
                 width="100%", spacing="3",
             ),
@@ -118,10 +166,11 @@ def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_
             background_color=rx.cond(is_active_cond, "#7d804e", "#5B733A"),
             color="white",
             width="100%", 
-            height="3.5em",
+            height="4em",
             margin_top="2em",
             on_click=on_toggle,
             font_weight="bold",
+            border_radius="12px",
         ),
         **CARD_STYLE,
         padding="2.5em",
@@ -134,37 +183,7 @@ def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_
 def admin_plans() -> rx.Component:
     return academia_layout(
         rx.flex(
-            # CABECERA CON BOTÓN VOLVER MUY VISIBLE
-            rx.hstack(
-                rx.link(
-                    rx.button(
-                        rx.icon("arrow-left", size=20),
-                        "Volver al Listado",
-                        background_color="white",
-                        color="#5B733A",
-                        border="2px solid #5B733A",
-                        font_weight="bold",
-                        height="3.5em",
-                        _hover={"background_color": "#f0f4f0"},
-                    ),
-                    href="/academia/admin_panel",
-                    underline="none",
-                ),
-                rx.spacer(),
-                align="center",
-                width="100%",
-                margin_bottom="3em",
-            ),
-            
-            rx.heading(
-                rx.cond(
-                    AdminState.selected_user["full_name"],
-                    rx.text(f"Gestionar Alumno: {AdminState.selected_user['full_name']}"),
-                    rx.text(f"Gestionar Alumno: {AdminState.selected_user['email']}")
-                ),
-                size="9", color="white", font_weight="900", margin_bottom="0.5em"
-            ),
-            rx.text("Panel de control individual para cambios de perfil y planes.", color="rgba(255,255,255,0.9)", margin_bottom="2em"),
+            admin_plans_header(),
             
             edit_profile_card(),
 
@@ -191,8 +210,9 @@ def admin_plans() -> rx.Component:
             
             direction="column",
             width="100%",
-            max_width="1200px",
+            max_width="1400px",
             align_items="center",
             padding_bottom="5em",
+            padding_x=["1em", "2em", "4em"],
         )
     )
