@@ -7,8 +7,8 @@ class FisicasState(State):
    
     def check_plan_fisicas(self):
         """
-        Seguridad estricta: Solo permite el acceso si el usuario es el admin 
-        o si tiene explícitamente el 'plan fisico'.
+        Seguridad estricta: Solo permite el acceso si el usuario es de Academia Métodos
+        o si tiene su acceso vigente (fecha 'hasta').
         """
         # 1. Si no hay sesión, al login de cabeza
         if not self.user:
@@ -16,22 +16,38 @@ class FisicasState(State):
             
         try:
             # 2. Buscamos tu usuario en la base de datos
-            user_data = db_client.find_one("personalidad.users", "email", self.user)
+            user_data = db_client.find_one("usuarios_metodos.usuarios_plataformas", "email", self.user)
             
             if user_data:
-                # Sacamos el plan, si no tiene nada, por defecto es "sin_plan"
-                plan_actual = user_data.get("user_plan", "sin_plan").lower()
-                
-                # --- FILTRO EXCLUSIVO PARA TI ---
-                # Sustituye 'tu_email@ejemplo.com' por el email con el que te logueas tú
-                if self.user == "claudia@academiametodos.com":
-                    return None # Acceso total para ti, sin preguntas.
+                # Acceso total para personal de Academia Métodos
+                email_lower = self.user.lower()
+                if email_lower.endswith("@academiametodos.com") or email_lower.endswith("@academiametodos.es"):
+                    return None
 
+                # Verificación de fecha de caducidad (hasta)
+                # Si 'hasta' existe y es mayor que ahora, tiene acceso.
+                from datetime import datetime
+                hasta = user_data.get("hasta")
+                
+                tiene_acceso = False
+                if hasta:
+                    try:
+                        if isinstance(hasta, str):
+                            # El formato suele ser ISO o similar desde Postgres
+                            fecha_hasta = datetime.fromisoformat(hasta.replace('Z', '+00:00'))
+                        else:
+                            fecha_hasta = hasta
+                            
+                        if fecha_hasta > datetime.now(fecha_hasta.tzinfo if fecha_hasta.tzinfo else None):
+                            tiene_acceso = True
+                    except Exception as e:
+                        print(f"Error parseando fecha hasta: {e}")
+                
                 # --- FILTRO PARA EL RESTO ---
-                # Solo deja pasar si el texto es exactamente "plan fisico"
-                if plan_actual != "plan fisico":
-                    return rx.window_alert("Necesitas el 'plan fisico' para ver esta sección.")
-                    # O si prefieres echarlo: return rx.redirect("/academia")
+                if not tiene_acceso:
+                    return rx.window_alert("Tu acceso ha caducado o no tienes el plan activo.")
+                
+                return None # Acceso concedido si tiene fecha vigente
             else:
                 return rx.redirect("/")
                 

@@ -83,49 +83,60 @@ def index():
                             ),
                         ),
                         # Checkbox Condiciones Acceso
-                        rx.text(
-                            rx.hstack(
-                                rx.checkbox(
-                                    checked=ButtonClick.isOptionalChecked,
-                                    on_change=ButtonClick.toggleOptionalCheck,
-                                ),
-                                "Acepto las",
+                        rx.hstack(
+                            rx.checkbox(
+                                checked=ButtonClick.isOptionalChecked,
+                                on_change=ButtonClick.toggleOptionalCheck,
+                            ),
+                            rx.text(
+                                "Acepto las ",
                                 rx.link(
                                     "condiciones de acceso",
-                                    weight="medium",
                                     is_external=True,
-                                    href="https://academiametodos.com/home/acceso-gratis-al-test-de-personalidad-consentimiento/"
+                                    href="https://academiametodos.com/home/acceso-gratis-al-test-de-personalidad-consentimiento/",
+                                    color_scheme="orange",
                                 ),
-                                "al test gratuito"
+                                " al test gratuito",
+                                size="1",
+                                cursor="default",
                             ),
-                            as_="label",
-                            size="1",
+                            spacing="2",
+                            align="center",
+                            width="100%",
                         ),
+
                         # Checkbox Términos y Condiciones
-                        rx.text(
-                            rx.hstack(
-                                rx.checkbox(
-                                    checked=ButtonClick.isChecked,
-                                    on_change=ButtonClick.toggleCheck,
-                                ),
-                                "Acepto los",
+                        rx.hstack(
+                            rx.checkbox(
+                                checked=ButtonClick.isChecked,
+                                on_change=ButtonClick.toggleCheck,
+                            ),
+                            rx.text(
+                                "Acepto los ",
                                 rx.link(
                                     "términos y condiciones",
-                                    weight="medium",
                                     is_external=True,
-                                    href="https://academiametodos.com/home/terminos-y-condiciones-test-de-personalidad-tropa-y-marineria/"
+                                    href="https://academiametodos.com/home/terminos-y-condiciones-test-de-personalidad-tropa-y-marineria/",
+                                    color_scheme="orange",
                                 ),
-                                "de la aplicación"
+                                " de la aplicación",
+                                size="1",
+                                cursor="default",
                             ),
-                            as_="label",
-                            size="1",
-                        ),
-                        # Alerta Términos No Aceptados
-                        rx.callout(
-                            "Acepta los términos para poder continuar",
-                            display=ButtonClick.show_terms_alert,
-                            size="1",
+                            spacing="2",
+                            align="center",
                             width="100%",
+                        ),
+
+                        # Alerta Términos No Aceptados
+                        rx.cond(
+                            ButtonClick.show_terms_alert,
+                            rx.callout(
+                                "Acepta los términos para poder continuar",
+                                size="1",
+                                width="100%",
+                                color_scheme="red",
+                            ),
                         ),
 
                         # --- OPCIÓN RECUPERACIÓN DE CONTRASEÑA ---

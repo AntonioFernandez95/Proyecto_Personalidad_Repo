@@ -24,6 +24,8 @@ services:
       - db
     environment:
       - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
+    volumes:
+      - .:/app
 
   # Frontend Service (Static Files via Nginx)
   frontend:

@@ -1,45 +1,45 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
-import os
+from Personalidad.config import DB_HOST, DB_NAME, DB_USER, DB_PASSWORD, DB_PORT
 
 class PostgresClient:
-    def __init__(self, schema):
-        self.schema = schema
+    def __init__(self, default_schema="public"):
+        self.default_schema = default_schema
 
     def _get_connection(self):
-        # Intentamos con las variables de entorno primero
-        host = os.getenv("DB_HOST", "db")
+        """Crea y devuelve una nueva conexión a PostgreSQL."""
         try:
             return psycopg2.connect(
-                dbname=os.getenv("DB_NAME", "db_personalidad_proyecto"),
-                user=os.getenv("DB_USER", "postgres"),
-                password=os.getenv("DB_PASSWORD", "Prefor2026!"),
-                host=host,
-                port=os.getenv("DB_PORT", "5432")
+                dbname=DB_NAME,
+                user=DB_USER,
+                password=DB_PASSWORD,
+                host=DB_HOST,
+                port=DB_PORT
             )
         except Exception as e:
-            # Si falla, posiblemente estamos en Windows local fuera del docker, probamos localhost
-            if host != "localhost":
+            # Fallback para desarrollo local fuera de Docker
+            if DB_HOST != "localhost":
                 try:
                     return psycopg2.connect(
-                        dbname=os.getenv("DB_NAME", "db_personalidad_proyecto"),
-                        user=os.getenv("DB_USER", "postgres"),
-                        password=os.getenv("DB_PASSWORD", "Prefor2026!"),
+                        dbname=DB_NAME,
+                        user=DB_USER,
+                        password=DB_PASSWORD,
                         host="localhost",
-                        port=os.getenv("DB_PORT", "5432")
+                        port=DB_PORT
                     )
                 except Exception as inner_e:
-                    print(f"Error fatal conectando a PostgreSQL local: {inner_e}")
+                    print(f"Error fatal conectando a PostgreSQL: {inner_e}")
                     raise
             raise e
 
     def _get_full_table_name(self, table):
+        """Asegura que el nombre de la tabla incluya el esquema."""
         if "." in table:
             return table
-        return f"{self.schema}.{table}"
-
+        return f"{self.default_schema}.{table}"
 
     def find_one(self, table, query_field, query_value):
+        """Busca un único registro que coincida con el campo y valor dado."""
         conn = self._get_connection()
         try:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
@@ -55,12 +55,13 @@ class PostgresClient:
             conn.close()
 
     def update_one(self, table, query_field, query_value, update_dict):
+        """Actualiza un registro existente."""
         conn = self._get_connection()
         try:
             with conn.cursor() as cur:
                 table_name = self._get_full_table_name(table)
                 fields = list(update_dict.keys())
-                values = [str(update_dict[f]) for f in fields]
+                values = [update_dict[f] for f in fields]
                 set_query = ", ".join([f'"{f}" = %s' for f in fields])
                 
                 sql = f'UPDATE {table_name} SET {set_query} WHERE "{query_field}" = %s'
@@ -75,6 +76,7 @@ class PostgresClient:
             conn.close()
 
     def find_all(self, table):
+        """Devuelve todos los registros de una tabla."""
         conn = self._get_connection()
         try:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
@@ -89,7 +91,6 @@ class PostgresClient:
         finally:
             conn.close()
 
-# Instancias
-db_client = PostgresClient("public")
-personalidad_db_client = PostgresClient("public")
-python_db_client = PostgresClient("public")
+# Instancia global para la aplicación
+# Usamos el esquema 'usuarios_metodos' como base para evitar confusiones
+db_client = PostgresClient("usuarios_metodos")

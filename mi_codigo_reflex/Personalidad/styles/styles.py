@@ -26,10 +26,10 @@ STYLESHEETS = [
 
 #Styles
 BASE_STYLE = {
-    "user_select": "none",
-    "webkit_user_select": "none",
-    "moz_user_select": "none",
-    "ms_user_select": "none",
+    "user_select": "auto",
+    "webkit_user_select": "auto",
+    "moz_user_select": "auto",
+    "ms_user_select": "auto",
     "background_image": "url('/fondo-soldados (1).png')",
     "background_size": "cover",
     "background_attachment": "fixed",

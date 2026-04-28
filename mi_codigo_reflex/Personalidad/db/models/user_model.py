@@ -8,6 +8,7 @@ class UserModel(BaseModel):
     full_name: str
     count_login: int = Field(default=0)
     are_terms_accepted: bool
+    rol: str = "estudiante"
  
 
 

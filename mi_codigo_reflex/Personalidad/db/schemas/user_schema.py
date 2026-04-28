@@ -4,14 +4,15 @@
 def user_schema(user):
     return {
         "id": str(user.get("id", user.get("_id", ""))),        
-        "disabled": user.get("disabled", False),
+        "disabled": bool(user.get("disabled", False)),
         "email": user.get("email"),
-        "full_name": user.get("full_name"),
+        "full_name": f"{user.get('nombre', '')} {user.get('apellidos', '')}".strip() or user.get("full_name", ""),
         "password": user.get("password"),
-        "username": user.get("username"),
+        "username": user.get("email"), # Usamos email como username por defecto
         "count_login": int(user.get("count_login", 0)),
-        "are_terms_accepted": user.get("are_terms_accepted", False),
-
+        "are_terms_accepted": bool(user.get("are_terms_accepted", False)),
+        "is_optional_checked": bool(user.get("is_optional_checked", False)),
+        "rol": user.get("rol", "estudiante"),
     }
 
 #*Devuelve un listado de usuarios*#
