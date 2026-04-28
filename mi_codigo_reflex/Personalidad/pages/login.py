@@ -82,6 +82,20 @@ def index():
                                 width="100%",
                             ),
                         ),
+                        # Alerta Suscripción Expirada
+                        rx.cond(
+                            ButtonClick.showSubscriptionExpiredAlert,
+                            rx.callout.root(
+                                rx.callout.icon(rx.icon(tag="clock", size=18)),
+                                rx.callout.text(
+                                    "Tu acceso ha caducado. Contacta con soporte para renovar tu suscripción.",
+                                    font_size="0.8em",
+                                ),
+                                color_scheme="yellow",
+                                role="alert",
+                                width="100%",
+                            ),
+                        ),
                         # Checkbox Condiciones Acceso
                         rx.text(
                             rx.hstack(

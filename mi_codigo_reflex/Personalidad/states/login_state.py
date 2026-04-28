@@ -1,5 +1,11 @@
 import reflex as rx
 import re
+<<<<<<< Updated upstream
+=======
+from datetime import datetime
+from sqlmodel import select
+from typing import Optional
+>>>>>>> Stashed changes
 
 # Importamos la nueva función de envío de recuperación
 from Personalidad.api.login_api import login, checkEmailProvided, changePassword, sendEmail, sendRecoveryEmail, optionalCheck
@@ -23,6 +29,7 @@ class LoginState(State):
     isClick1Done: bool = False
     showPasswordAlert: str = "none" # Controla el aviso de contraseña mal
     showEmailNotFoundAlert: bool = False # Controla el aviso de email no existe
+    showSubscriptionExpiredAlert: bool = False # Controla el aviso de suscripción caducada
     
     def update_email(self, email):
         self.email = email.strip() # Limpiamos espacios
@@ -62,6 +69,7 @@ class ButtonClick(LoginState):
     
     @rx.background
     async def click_event(self):
+<<<<<<< Updated upstream
         self.isWaiting = True
         self.showEmailNotFoundAlert = False 
         self.showPasswordAlert = "none"
@@ -101,6 +109,67 @@ class ButtonClick(LoginState):
         self.user = self.email
         self.isWaiting = False
         yield rx.redirect("/academia")
+=======
+        try:
+            # Usamos background task para no bloquear la UI
+            self.isWaiting = True
+            self.showEmailNotFoundAlert = False 
+            self.showPasswordAlert = "none"
+            self.showSubscriptionExpiredAlert = False
+            
+            # 2. VALIDAR CONTRASEÑA
+            login_success, user_obj = await login(self.email, self.password)
+            
+            if not login_success:
+                db = SessionLocal()
+                try:
+                    exists = db.query(UsuariosMetodos).filter(UsuariosMetodos.email.ilike(self.email.strip())).first()
+                    if not exists:
+                        self.showEmailNotFoundAlert = True
+                    else:
+                        self.showPasswordAlert = "block"
+                    self.isWaiting = False
+                finally:
+                    db.close()
+                return
+
+            # 4. VERIFICAR SUSCRIPCIÓN (Fecha 'hasta')
+            if user_obj.hasta:
+                try:
+                    today = datetime.now().date()
+                    hasta_str = str(user_obj.hasta).strip().split(" ")[0]
+                    formats = ["%Y-%m-%d", "%d/%m/%Y", "%Y/%m/%d", "%d-%m-%Y"]
+                    hasta_date = None
+                    for fmt in formats:
+                        try:
+                            hasta_date = datetime.strptime(hasta_str, fmt).date()
+                            break
+                        except ValueError:
+                            continue
+                    
+                    if hasta_date and today > hasta_date:
+                        self.showSubscriptionExpiredAlert = True
+                        self.isWaiting = False
+                        return
+                except Exception as e:
+                    print(f"Error checking expiry at login: {e}")
+
+            # 5. ÉXITO: Incrementamos contador y actualizamos el State global
+            self.increment_login_count_direct(user_obj)
+            
+            self.usuario_actual = user_obj
+            self.isWaiting = False
+            
+            yield rx.redirect("/academia")
+        except Exception as e:
+            import traceback
+            error_msg = f"ERROR EN LOGIN: {str(e)}\n{traceback.format_exc()}"
+            print(error_msg)
+            with open("DEBUG_LOGIN_ERROR.txt", "w") as f:
+                f.write(error_msg)
+            self.isWaiting = False
+            raise e
+>>>>>>> Stashed changes
 
     @rx.background
     async def recover_password(self):
@@ -155,6 +224,7 @@ class ButtonClick(LoginState):
         self.isOptionalChecked = False
         self.showPasswordAlert = "none"
         self.showEmailNotFoundAlert = False
+        self.showSubscriptionExpiredAlert = False
 
 class Authentication(LoginState):
     async def user_login(self):

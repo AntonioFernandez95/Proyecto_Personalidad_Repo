@@ -13,6 +13,7 @@ async def checkEmailProvided(email: str):
     Verifica si el correo electrónico existe en la tabla de personalidad.
     """
     try:
+<<<<<<< Updated upstream
         user_check = search_user("email", email)
         if user_check is None:
             return False
@@ -20,12 +21,60 @@ async def checkEmailProvided(email: str):
     except Exception as e:
         print(f"Error en checkEmailProvided: {e}")
         return False
+=======
+        # Usamos filter con comparación insensible a mayúsculas
+        user = db.query(UsuariosMetodos).filter(UsuariosMetodos.email.ilike(email.strip())).first()
+        return user is not None
+    finally:
+        db.close()
+>>>>>>> Stashed changes
 
 async def login(email: str, password: str):
     """
     Valida email y password contra la base de datos.
     """
+<<<<<<< Updated upstream
     user_db = search_password_from_user("email", email)
+=======
+    db = SessionLocal()
+    try:
+        # Búsqueda robusta: ignora mayúsculas y quita espacios
+        user = db.query(UsuariosMetodos).filter(UsuariosMetodos.email.ilike(email.strip())).first()
+        
+        if not user:
+            return False, None
+            
+        is_valid = False
+        needs_upgrade = False
+        
+        try:
+            if bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
+                is_valid = True
+        except (ValueError, TypeError):
+            # Fallback a texto plano
+            if password == user.password:
+                is_valid = True
+                needs_upgrade = True
+        
+        if is_valid:
+            if needs_upgrade:
+                # Auto-upgrade de seguridad
+                hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+                user.password = hashed
+                db.add(user)
+                db.commit()
+                db.refresh(user)
+            return True, user
+            
+        return False, None
+    finally:
+        db.close()
+
+async def changePassword(email: str):
+    """Genera una nueva contraseña aleatoria y la guarda (encriptada)."""
+    newPassword = genRandomPassword()
+    hashed = bcrypt.hashpw(newPassword.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+>>>>>>> Stashed changes
     
     if not user_db:
         print("Usuario no encontrado")
