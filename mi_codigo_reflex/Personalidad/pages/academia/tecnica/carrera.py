@@ -1,5 +1,7 @@
 import reflex as rx
 from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, GRAY_LIGHT, back_button, CARD_STYLE
+from Personalidad.components.recursos import video_section, pdf_section
+from Personalidad.states.base_state import State
 from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.detallesTecnicas_state import DetallesTecnicasState
 
@@ -15,7 +17,7 @@ def item_lista(texto: str) -> rx.Component:
 @rx.page(
     route="/academia/tecnica/carrera", 
     title="Academia Online - Técnica de Carrera", 
-    on_load=[FisicasState.check_plan_fisicas, DetallesTecnicasState.cargar_datos_prueba]
+    on_load=[State.check_fisicas_access, DetallesTecnicasState.cargar_datos_prueba]
 )
 def carrera() -> rx.Component:
     return academia_layout(
@@ -29,16 +31,8 @@ def carrera() -> rx.Component:
             # CONTENEDOR BLANCO PRIMARY
             rx.box(
                 rx.vstack(
-                    # VÍDEO TÉCNICO
-                    rx.center(
-                        rx.vstack(
-                            rx.icon("play-circle", size=46, color="white"),
-                            rx.text("VÍDEO TÉCNICO", color="white", font_size="0.84em", font_weight="bold"),
-                            align="center",
-                        ),
-                        background="black", border_radius="12px",
-                        width="100%", height="200px", margin_bottom="1em"
-                    ),
+                    # VÍDEO TÉCNICO DINÁMICO
+                    video_section(),
 
                     # POSICIÓN INICIAL
                     rx.text("POSICIÓN INICIAL", font_size="1.1em", font_weight="800", color=TEXT_DARK, letter_spacing="0.05em"),
@@ -79,13 +73,17 @@ def carrera() -> rx.Component:
 
                     rx.divider(margin_y="1.5em"),
                     
-                    # TIEMPOS E INTENTOS
                     rx.hstack(
                         rx.text(f"Tiempo máximo: {DetallesTecnicasState.tiempo}", font_weight="bold", color=OLIVE),
                         rx.text("|", color=TEXT_DARK),
                         rx.text(f"Intentos: {DetallesTecnicasState.intentos}", font_weight="bold", color=OLIVE),
                         spacing="4"
                     ),
+
+                    rx.divider(margin_y="1.5em"),
+                    
+                    # RECURSOS PDF DINÁMICOS
+                    pdf_section(),
 
                     align="start",
                     width="100%",

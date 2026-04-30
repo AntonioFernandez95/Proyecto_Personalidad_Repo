@@ -15,7 +15,7 @@ reflex run
 
 """
 
-@rx.page(route="/test", title="Test", on_load=[State.check_login, TestState.crear_test])
+@rx.page(route="/test", title="Test", on_load=[State.check_personalidad_access, TestState.crear_test])
 def index():
 
     def showlist(item: rx.Var, index: int):        

@@ -14,10 +14,72 @@ class AdminState(State):
     filter_role: str = "todos"
     is_loading: bool = False
     
-    # Campos de edición
     new_name: str = ""
     new_email: str = ""
     days_to_add: str = "30"
+
+    # --- GESTIÓN DE RECURSOS ---
+    recursos: List[dict] = []
+    selected_categoria: str = "flexiones"
+    categorias_disponibles: List[str] = ["flexiones", "plancha", "agilidad", "carrera", "planificacion"]
+    
+    def fetch_recursos(self):
+        """Obtiene todos los recursos de la base de datos."""
+        from Personalidad.db.crud import obtener_todos_los_recursos
+        from Personalidad.db.schemas.recurso_schema import recurso_schema
+        try:
+            raw = obtener_todos_los_recursos()
+            self.recursos = [recurso_schema(r) for r in raw]
+        except Exception as e:
+            print(f"Error cargando recursos: {e}")
+            self.recursos = []
+
+    async def handle_upload(self, files: List[rx.UploadFile]):
+        """Sube archivos a assets/uploads y los registra en la BD."""
+        import os
+        from Personalidad.db.crud import guardar_recurso
+        
+        upload_dir = os.path.join("assets", "uploads")
+        if not os.path.exists(upload_dir):
+            os.makedirs(upload_dir)
+
+        for file in files:
+            upload_data = await file.read()
+            outfile = os.path.join(upload_dir, file.filename)
+            with open(outfile, "wb") as f:
+                f.write(upload_data)
+            
+            # Detectar tipo
+            tipo = "pdf" if file.filename.lower().endswith(".pdf") else "video"
+            
+            # Guardar en BD
+            guardar_recurso(
+                nombre=file.filename,
+                tipo=tipo,
+                url=f"/uploads/{file.filename}",
+                categoria=self.selected_categoria
+            )
+        
+        self.fetch_recursos()
+        return rx.toast(f"Subidos {len(files)} archivos a {self.selected_categoria}.")
+
+    def borrar_recurso(self, recurso: dict):
+        """Elimina un recurso de la BD y el archivo físico."""
+        import os
+        from Personalidad.db.crud import eliminar_recurso
+        
+        try:
+            if eliminar_recurso(recurso["id"]):
+                # Eliminar archivo físico
+                path_relativo = recurso["url"].lstrip("/") # uploads/file.ext
+                filepath = os.path.join("assets", path_relativo)
+                if os.path.exists(filepath):
+                    os.remove(filepath)
+                
+                self.fetch_recursos()
+                return rx.toast("Recurso eliminado.")
+        except Exception as e:
+            return rx.window_alert(f"Error al borrar: {e}")
 
     def fetch_users(self):
         self.is_loading = True
@@ -149,3 +211,4 @@ class AdminState(State):
         if self.user_role != "admin":
             return rx.redirect("/academia")
         self.fetch_users()
+        self.fetch_recursos()

@@ -9,8 +9,10 @@ class UserModel(BaseModel):
     count_login: int = Field(default=0)
     are_terms_accepted: bool
     rol: str = "estudiante"
- 
-
+    disabled_personalidad: bool = False
+    disabled_fisicas: bool = False
+    hasta_personalidad: str = "N/A"
+    hasta_fisicas: str = "N/A"
 
 class UserDBModel(UserModel):
     password: str

@@ -100,6 +100,35 @@ def user_management_row(user: dict) -> rx.Component:
     )
 
 
+def resource_item(recurso: dict) -> rx.Component:
+    """Representación de un recurso (PDF o Vídeo) en la lista del admin."""
+    return rx.hstack(
+        rx.cond(
+            recurso["tipo"] == "pdf",
+            rx.icon("file-text", size=18, color="#5B733A"),
+            rx.icon("video", size=18, color="#5B733A"),
+        ),
+        rx.vstack(
+            rx.text(recurso["nombre"], font_weight="bold", font_size="0.9em", color="black", max_width="180px", is_truncated=True),
+            rx.text(recurso["categoria"].to(str).upper(), font_size="0.7em", color="gray", font_weight="bold"),
+            spacing="0", align="start"
+        ),
+        rx.spacer(),
+        rx.icon(
+            "trash-2", 
+            size=18, 
+            color="red", 
+            cursor="pointer", 
+            on_click=lambda: AdminState.borrar_recurso(recurso)
+        ),
+        width="100%",
+        padding="0.8em",
+        border_radius="10px",
+        background="#f9f9f9",
+        border="1px solid #eee"
+    )
+
+
 def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
     return rx.vstack(
         rx.hstack(
@@ -182,19 +211,51 @@ def admin_panel() -> rx.Component:
                 # Recursos y Herramientas
                 rx.vstack(
                     admin_card(
-                        "Recursos PDF", "cloud-upload",
+                        "Gestión de Recursos", "cloud-upload",
+                        rx.text("Categoría destino:", font_size="0.9em", font_weight="bold", color="black"),
+                        rx.select(
+                            AdminState.categorias_disponibles,
+                            value=AdminState.selected_categoria,
+                            on_change=AdminState.set_selected_categoria,
+                            width="100%",
+                            background="white",
+                            color="black",
+                            border_radius="10px",
+                        ),
                         rx.upload(
                             rx.center(
                                 rx.vstack(
-                                    rx.icon("upload", size=45, color="#5B733A"),
-                                    rx.text("Cargar Archivos", font_weight="800"),
+                                    rx.icon("upload", size=40, color="#5B733A"),
+                                    rx.text("Arrastra Vídeos o PDFs", font_weight="700", color="black"),
                                     spacing="2",
                                 ),
                                 width="100%",
-                                height="220px",
+                                height="140px",
                             ),
+                            id="recursos_upload",
                             border="2px dashed #5B733A",
-                            border_radius="20px",
+                            border_radius="15px",
+                            padding="1em",
+                            width="100%",
+                        ),
+                        rx.button(
+                            "Guardar Archivos",
+                            on_click=AdminState.handle_upload(rx.upload_files(upload_id="recursos_upload")),
+                            width="100%",
+                            background_color="#5B733A",
+                            color="white",
+                            height="3em",
+                            border_radius="10px",
+                            _hover={"background_color": "#4a5d2f"},
+                        ),
+                        rx.divider(margin_y="1em"),
+                        rx.text("Recursos actuales:", font_size="0.9em", font_weight="bold", color="black"),
+                        rx.vstack(
+                            rx.foreach(AdminState.recursos, resource_item),
+                            width="100%",
+                            max_height="400px",
+                            overflow_y="auto",
+                            spacing="2",
                         ),
                     ),
                     width=["100%", "100%", "420px"],
@@ -214,3 +275,6 @@ def admin_panel() -> rx.Component:
             align_items="center",
         )
     )
+
+    #añadir para vídeos tmb
+    

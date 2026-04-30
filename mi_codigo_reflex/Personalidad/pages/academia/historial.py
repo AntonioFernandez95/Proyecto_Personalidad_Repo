@@ -21,7 +21,7 @@ def badge_resultado(texto: str, color: str) -> rx.Component:
 @rx.page(
     route="/academia/historial", 
     title="Academia Online - Mi Historial", 
-    on_load=[CalculadoraState.check_login, HistorialSimplificado_State.cargar_historial]
+    on_load=[CalculadoraState.check_fisicas_access, HistorialSimplificado_State.cargar_historial]
 )
 def historial() -> rx.Component:
     return academia_layout(

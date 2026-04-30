@@ -95,6 +95,8 @@ class ButtonClick(LoginState):
         increment_login_count(self.email)
         self.user = self.email
         self.user_role = user_data.rol
+        self.disabled_personalidad = user_data.disabled_personalidad
+        self.disabled_fisicas = user_data.disabled_fisicas
         self.isWaiting = False
         yield rx.redirect("/academia")
 

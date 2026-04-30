@@ -1,7 +1,6 @@
 import reflex as rx
-from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, plan_row, back_button, CARD_STYLE
-from Personalidad.states.fisicas_state import FisicasState
-from Personalidad.states.calculadora_state import CalculadoraState
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, plan_row, back_button, CARD_STYLE, BTN_PRIMARY_BASE
+from Personalidad.states.planificacion_state import PlanificacionState
 
 _MARCAS = [
     ("Flexiones",     "17 reps", "12 reps"),
@@ -10,13 +9,70 @@ _MARCAS = [
     ("Agilidad",      "25 seg",  "27 seg"),
 ]
 
-@rx.page(route="/academia/planificacion", title="Academia Online - Planificación", on_load=CalculadoraState.check_login)
+@rx.page(route="/academia/planificacion", title="Academia Online - Planificación", on_load=PlanificacionState.on_load)
 def planificacion() -> rx.Component:
     return academia_layout(
         rx.text("PLANIFICACIÓN DEL ENTRENAMIENTO", font_size="1.9em", font_weight="900", color="white"),
         rx.hstack(
             rx.vstack(
                 rx.text("📋 PLANES DE ENTRENAMIENTO", font_size="1em", font_weight="800", color=OLIVE, letter_spacing="0.05em"),
+                
+                # DESPLEGABLE DE RECURSOS DINÁMICOS (Versión Radix para máxima compatibilidad)
+                rx.vstack(
+                    rx.text("Selecciona un recurso:", font_size="0.8em", color="gray", font_weight="bold"),
+                    rx.select.root(
+                        rx.select.trigger(
+                            width="100%",
+                            background="white",
+                            color="black",
+                            border="1px solid #ddd",
+                            border_radius="10px",
+                            padding="0.5em"
+                        ),
+                        rx.select.content(
+                            rx.foreach(
+                                PlanificacionState.recursos,
+                                lambda r: rx.select.item(r["nombre"], value=r["id"].to(str))
+                            ),
+                        ),
+                        value=PlanificacionState.selected_recurso_id,
+                        on_change=PlanificacionState.set_selected_recurso_id,
+                    ),
+                    # Botón de acción dinámico según el tipo seleccionado
+                    rx.cond(
+                        PlanificacionState.selected_recurso_id != "",
+                        rx.hstack(
+                            rx.cond(
+                                PlanificacionState.selected_recurso["tipo"] == "pdf",
+                                rx.link(
+                                    rx.button(
+                                        rx.icon("file-down"), "Descargar PDF",
+                                        background_color=OLIVE, color="white", width="100%", height="3em", border_radius="10px"
+                                    ),
+                                    href=PlanificacionState.selected_recurso["url"].to(str),
+                                    is_external=True, width="100%", underline="none"
+                                ),
+                                # Si es vídeo, mostramos el reproductor directamente
+                                rx.vstack(
+                                    rx.video(
+                                        url=PlanificacionState.selected_recurso["url"].to(str),
+                                        width="100%", height="auto", border_radius="10px"
+                                    ),
+                                    width="100%"
+                                )
+                            ),
+                            width="100%", margin_top="1em"
+                        )
+                    ),
+                    width="100%",
+                    padding="1em",
+                    background="#f9f9f9",
+                    border_radius="15px",
+                    border="1px solid #eee",
+                    margin_bottom="1.5em"
+                ),
+
+                rx.text("Planes Estáticos:", font_size="0.8em", color="gray", font_weight="bold"),
                 plan_row("CURSO PRUEBA FÍSICAS 2026", "6 semanas · Nivel básico", "/curso_fisicas_2026.pdf"),
                 plan_row("PRUEBAS FÍSICAS 2026 CIRCUITO", "8 semanas · Nivel medio-alto", "/circuito_2026.pdf"),
                 plan_row("PRUEBAS FÍSICAS FLEXIONES Y PLANCHAS", "12 semanas · Máximo rendimiento", "/flexiones_planchas.pdf"),

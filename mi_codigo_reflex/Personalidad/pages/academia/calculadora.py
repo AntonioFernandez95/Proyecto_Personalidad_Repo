@@ -5,7 +5,7 @@ from Personalidad.states.historial_state import HistorialSimplificado_State
 from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, TEXT_MID, GRAY_LIGHT, BTN_PRIMARY_BASE, CARD_STYLE, back_button, BADGE_GREEN, BADGE_RED, BADGE_GRAY
 
 
-@rx.page(route="/academia/calculadora", title="Academia Online - Calculadora", on_load=[CalculadoraState.check_login, HistorialSimplificado_State.cargar_historial])
+@rx.page(route="/academia/calculadora", title="Academia Online - Calculadora", on_load=[CalculadoraState.check_fisicas_access, HistorialSimplificado_State.cargar_historial])
 def calculadora() -> rx.Component:
     return academia_layout(
         rx.text("CALCULADORA DE RESULTADOS", font_size="1.9em", font_weight="900", color="white"),

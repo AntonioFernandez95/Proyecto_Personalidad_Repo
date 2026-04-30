@@ -8,7 +8,7 @@ from Personalidad.components.progress import show_progress
 from Personalidad.states.results_state import ResultsState
 from Personalidad.states.base_state import State
 
-@rx.page(route="/results", title="Resultados", on_load=[State.check_login, ResultsState.calculate_results])
+@rx.page(route="/results", title="Resultados", on_load=[State.check_personalidad_access, ResultsState.calculate_results])
 def index():
     
     def get_progress_percentage(score: int) -> float:

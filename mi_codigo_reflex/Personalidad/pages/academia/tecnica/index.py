@@ -4,7 +4,7 @@ from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.calculadora_state import CalculadoraState
 from Personalidad.pages.academia.detallesTecnicas import detalles_tecnicas
 
-@rx.page(route="/academia/tecnica", title="Academia Online - Técnica", on_load=CalculadoraState.check_login)
+@rx.page(route="/academia/tecnica", title="Academia Online - Técnica", on_load=CalculadoraState.check_fisicas_access)
 def tecnica() -> rx.Component:
     return academia_layout(
         rx.text("TÉCNICA DE PRUEBAS FÍSICAS", font_size="2em", font_weight="900", color="white"),

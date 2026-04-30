@@ -1,7 +1,8 @@
 import reflex as rx
 from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, GRAY_LIGHT, back_button, CARD_STYLE
+from Personalidad.components.recursos import video_section, pdf_section
 
-# Importamos los estados que gestionan la seguridad y los datos
+from Personalidad.states.base_state import State
 from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.detallesTecnicas_state import DetallesTecnicasState
 
@@ -17,7 +18,7 @@ def item_lista(texto: str) -> rx.Component:
 @rx.page(
     route="/academia/tecnica/[prueba_id]", 
     title="Academia Online - Detalles de Técnica", 
-    on_load=[FisicasState.check_plan_fisicas, DetallesTecnicasState.cargar_datos_prueba]
+    on_load=[State.check_fisicas_access, DetallesTecnicasState.cargar_datos_prueba]
 )
 def detalles_tecnicas() -> rx.Component:
     return academia_layout(
@@ -31,16 +32,8 @@ def detalles_tecnicas() -> rx.Component:
             # CONTENEDOR BLANCO PRINCIPAL (Tipo Tarjeta)
             rx.box(
                 rx.vstack(
-                    # 2. VÍDEO TÉCNICO (Placeholder)
-                    rx.center(
-                        rx.vstack(
-                            rx.icon("play-circle", size=46, color="white"),
-                            rx.text("VÍDEO TÉCNICO", color="white", font_size="0.84em", font_weight="bold"),
-                            align="center",
-                        ),
-                        background="black", border_radius="12px",
-                        width="100%", height="200px", margin_bottom="1em"
-                    ),
+                    # 2. VÍDEO TÉCNICO DINÁMICO
+                    video_section(),
 
                     # 3. POSICIÓN INICIAL
                     rx.text("POSICIÓN INICIAL", font_size="1.1em", font_weight="800", color=TEXT_DARK, letter_spacing="0.05em"),
@@ -83,13 +76,17 @@ def detalles_tecnicas() -> rx.Component:
 
                     rx.divider(margin_y="1.5em"),
                     
-                    # 7. TIEMPOS E INTENTOS
                     rx.hstack(
                         rx.text(f"Tiempo máximo: {DetallesTecnicasState.tiempo}", font_weight="bold", color=OLIVE),
                         rx.text("|", color=TEXT_DARK),
                         rx.text(f"Intentos: {DetallesTecnicasState.intentos}", font_weight="bold", color=OLIVE),
                         spacing="4"
                     ),
+
+                    rx.divider(margin_y="1.5em"),
+
+                    # 8. RECURSOS PDF DINÁMICOS
+                    pdf_section(),
 
                     align="start",
                     width="100%",

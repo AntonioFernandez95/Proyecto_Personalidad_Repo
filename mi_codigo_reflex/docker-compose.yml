@@ -26,6 +26,7 @@ services:
       - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
     volumes:
       - .:/app
+      - uploads_data:/app/assets/uploads
 
   # Frontend Service (Static Files via Nginx)
   frontend:
@@ -34,8 +35,11 @@ services:
       dockerfile: Dockerfile.frontend
     ports:
       - "81:80"
+    volumes:
+      - uploads_data:/usr/share/nginx/html/uploads
     depends_on:
       - backend
 
 volumes:
   postgres_data:
+  uploads_data:

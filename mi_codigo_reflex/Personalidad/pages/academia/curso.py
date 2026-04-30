@@ -3,7 +3,7 @@ from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_MID,
 from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.calculadora_state import CalculadoraState
 
-@rx.page(route="/academia/curso", title="Academia Online - Curso", on_load=CalculadoraState.check_login)
+@rx.page(route="/academia/curso", title="Academia Online - Curso", on_load=CalculadoraState.check_fisicas_access)
 def curso() -> rx.Component:
     return academia_layout(
         rx.box(

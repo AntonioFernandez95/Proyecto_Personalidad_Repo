@@ -15,6 +15,10 @@ class DetallesTecnicasState(State):
     normas: list[str] = []
     tiempo: str = ""
     intentos: str = ""
+    
+    # Recursos dinámicos
+    videos: list[dict] = []
+    pdfs: list[dict] = []
 
     @rx.var
     def prueba_id(self) -> str:
@@ -49,6 +53,15 @@ class DetallesTecnicasState(State):
                 self.normas = datos.get("normas", [])
                 self.tiempo = datos.get("tiempo", "")
                 self.intentos = datos.get("intentos", "")
+                
+                # 3. Cargar Recursos adicionales (Vídeos y PDFs)
+                from Personalidad.db.crud import obtener_recursos_por_categoria
+                from Personalidad.db.schemas.recurso_schema import recurso_schema
+                
+                raw_recursos = obtener_recursos_por_categoria(id_a_buscar)
+                self.videos = [recurso_schema(r) for r in raw_recursos if r.tipo == "video"]
+                self.pdfs = [recurso_schema(r) for r in raw_recursos if r.tipo == "pdf"]
+                
             else:
                 self.titulo = "PRUEBA NO ENCONTRADA"
                 self.posicion_inicial = f"No se encontraron datos para: {id_a_buscar}"
@@ -56,6 +69,8 @@ class DetallesTecnicasState(State):
                 self.normas = []
                 self.tiempo = "--"
                 self.intentos = "--"
+                self.videos = []
+                self.pdfs = []
         except Exception as e:
             print(f"Error en cargar_datos_prueba: {e}")
             self.titulo = "ERROR INTERNO"

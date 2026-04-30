@@ -4,7 +4,8 @@ import os
 import json
 # Mantenemos tus imports y añadimos el nuevo modelo
 from Personalidad.db.models.historialSimplificado_model import HistorialSimplificado, Base
-from Personalidad.db.models.tecnicaDetalle_model import TecnicaDetalle  # <--- NUEVO
+from Personalidad.db.models.tecnicaDetalle_model import TecnicaDetalle
+from Personalidad.db.models.recurso_model import Recurso
 from Personalidad.db.schemas.historialSimplificado_schema import HistorialSimplificadoCreate
 
 # Tu configuración de conexión (IDÉNTICA)
@@ -73,3 +74,52 @@ def obtener_tecnica_por_id(prueba_id: str):
     finally:
         db.close()
 
+
+# --- FUNCIONES PARA RECURSOS (VÍDEOS Y PDFS) ---
+def guardar_recurso(nombre: str, tipo: str, url: str, categoria: str):
+    db = SessionLocal()
+    try:
+        nuevo_recurso = Recurso(
+            nombre=nombre,
+            tipo=tipo,
+            url=url,
+            categoria=categoria
+        )
+        db.add(nuevo_recurso)
+        db.commit()
+        db.refresh(nuevo_recurso)
+        return nuevo_recurso
+    except Exception as e:
+        db.rollback()
+        raise e
+    finally:
+        db.close()
+
+def obtener_recursos_por_categoria(categoria: str):
+    db = SessionLocal()
+    try:
+        return db.query(Recurso).filter(Recurso.categoria == categoria).all()
+    finally:
+        db.close()
+
+def obtener_todos_los_recursos():
+    db = SessionLocal()
+    try:
+        return db.query(Recurso).all()
+    finally:
+        db.close()
+
+def eliminar_recurso(recurso_id: int):
+    db = SessionLocal()
+    try:
+        recurso = db.query(Recurso).filter(Recurso.id == recurso_id).first()
+        if recurso:
+            db.delete(recurso)
+            db.commit()
+            return True
+        return False
+    except Exception as e:
+        db.rollback()
+        raise e
+    finally:
+        db.close()
