@@ -19,7 +19,7 @@ reflex run
 
 """
 
-@rx.page(route="/info", title="Info", on_load=[State.check_personalidad_access, TestState.reset_test]) #
+@rx.page(route="/info", title="Info", on_load=[State.check_personalidad_access, TestState.reset_test]) 
 def info() -> rx.Component:
     return rx.box(
         utils.langg(),

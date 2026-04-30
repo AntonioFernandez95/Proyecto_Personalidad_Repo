@@ -3,6 +3,7 @@ from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.calculadora_state import CalculadoraState
 from Personalidad.states.historial_state import HistorialSimplificado_State
 from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, TEXT_MID, GRAY_LIGHT, BTN_PRIMARY_BASE, CARD_STYLE, back_button, BADGE_GREEN, BADGE_RED, BADGE_GRAY
+from Personalidad.components.historial_table import historial_table_component
 
 
 @rx.page(route="/academia/calculadora", title="Academia Online - Calculadora", on_load=[CalculadoraState.check_fisicas_access, HistorialSimplificado_State.cargar_historial])
@@ -117,50 +118,8 @@ def calculadora() -> rx.Component:
             ),
             spacing="5", width="100%", max_width="780px", align="start", wrap="wrap",
         ),
-        # Historial Reciente
-        rx.vstack(
-            rx.text("HISTORIAL RECIENTE", font_size="1.2em", font_weight="800", color=OLIVE, margin_top="1em"),
-            rx.table.root(
-                rx.table.header(
-                    rx.table.row(
-                        rx.table.column_header_cell("Fecha", color=OLIVE),
-                        rx.table.column_header_cell("Género", color=OLIVE),
-                        rx.table.column_header_cell("Flexiones", color=OLIVE),
-                        rx.table.column_header_cell("Plancha", color=OLIVE),
-                        rx.table.column_header_cell("Carrera", color=OLIVE),
-                        rx.table.column_header_cell("Agilidad", color=OLIVE),
-                        rx.table.column_header_cell("Resultado", color=OLIVE),
-                    )
-                ),
-                rx.table.body(
-                    rx.foreach(
-                        HistorialSimplificado_State.historial,
-                        lambda item: rx.table.row(
-                            rx.table.cell(item["fecha"], color=OLIVE),
-                            rx.table.cell(item["gender"], color=OLIVE),
-                            rx.table.cell(item["flexiones"], color=rx.cond(item["flex_ok"], OLIVE, BADGE_RED)),
-                            rx.table.cell(item["plancha"],   color=rx.cond(item["plan_ok"], OLIVE, BADGE_RED)),
-                            rx.table.cell(item["km2000"],    color=rx.cond(item["carr_ok"], OLIVE, BADGE_RED)),
-                            rx.table.cell(item["agilidad"],  color=rx.cond(item["agil_ok"], OLIVE, BADGE_RED)),
-                            rx.table.cell(
-                                rx.box(
-                                    rx.text(item["resultado"], font_size="0.85em", font_weight="700", color="white"),
-                                    background=item["color"], 
-                                    border_radius="20px", 
-                                    padding="0.25em 0.9em",
-                                    display="inline-flex", 
-                                    align_items="center",
-                                    white_space="nowrap",
-                                )
-                            ),
-                        )
-                    )
-                ),
-                width="100%",
-                variant="surface",
-            ),
-            **CARD_STYLE, padding="1.5em", width="100%", max_width="780px", overflow="auto",
-        ),
+        # Historial Reciente Unificado (Filtrado por Físicas)
+        historial_table_component(tipo_filtro="FÍSICAS"),
         back_button(),
         align="center", spacing="4", padding_top="2em", width="100%",
     )

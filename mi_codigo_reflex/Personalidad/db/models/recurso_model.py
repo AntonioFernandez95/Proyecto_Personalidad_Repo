@@ -1,14 +1,27 @@
 from sqlalchemy import Column, String, Integer, DateTime
-from datetime import datetime
-from Personalidad.db.models.historialSimplificado_model import Base
+from sqlalchemy.ext.declarative import declarative_base
+import datetime
 
-class Recurso(Base):
-    __tablename__ = "recursos"
-    __table_args__ = {'schema': 'tecnicas'}
+Base = declarative_base()
 
+class Video(Base):
+    """Modelo para la tabla de vídeos en el esquema recursos."""
+    __tablename__ = "videos"
+    __table_args__ = {"schema": "recursos"}
+   
     id = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String, nullable=False)
-    tipo = Column(String, nullable=False) # 'video' o 'pdf'
-    url = Column(String, nullable=False) # URL o ruta al archivo
-    categoria = Column(String, nullable=False) # ej: 'flexiones', 'agilidad', etc.
-    fecha_creacion = Column(DateTime, default=datetime.utcnow)
+    url = Column(String, nullable=False)
+    categoria = Column(String, nullable=False)
+    fecha = Column(DateTime, default=datetime.datetime.utcnow)
+
+class PDF(Base):
+    """Modelo para la tabla de PDFs en el esquema recursos."""
+    __tablename__ = "pdfs"
+    __table_args__ = {"schema": "recursos"}
+   
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nombre = Column(String, nullable=False)
+    url = Column(String, nullable=False)
+    categoria = Column(String, nullable=False)
+    fecha = Column(DateTime, default=datetime.datetime.utcnow)

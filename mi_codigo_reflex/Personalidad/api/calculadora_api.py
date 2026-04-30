@@ -33,23 +33,35 @@ class CalculadoraAPI:
     @staticmethod
     async def _guardar_en_db(user_id, payload):
         try:
-            from Personalidad.db.crud import guardar_historial_ligero
-            from Personalidad.db.schemas.historialSimplificado_schema import HistorialSimplificadoCreate
+            from Personalidad.db.crud import guardar_historial_fisico
             
-            datos_ticket = HistorialSimplificadoCreate(
-                id=str(uuid.uuid4()),
+            def safe_int(v):
+                try: return int(float(v))
+                except: return 0
+
+            def safe_int_carrera(v):
+                try:
+                    if ":" in str(v):
+                        p = str(v).split(":")
+                        return int(float(p[0])) * 60 + int(float(p[1]))
+                    return int(float(v))
+                except: return 0
+            
+            def safe_float(v):
+                try: return float(v)
+                except: return 0.0
+
+            print(f"DEBUG DB: Guardando para {user_id}...")
+            guardar_historial_fisico(
                 user_id=user_id,
-                simulacro_code="CALC-API",
-                resultado=payload["resultado"],
                 gender=payload["gender"],
-                flexiones=payload["flexiones"],
-                plancha_seg=payload["plancha_seg"],
-                km2000=payload["km2000"],
-                agilidad_seg=payload["agilidad_seg"],
+                flexiones=safe_int(payload["flexiones"]),
+                plancha=safe_int(payload["plancha_seg"]),
+                km2000=safe_int_carrera(payload["km2000"]),
+                agilidad=safe_float(payload["agilidad_seg"]),
+                resultado=payload["resultado"],
                 porcentaje=payload["porcentaje"]
             )
-            print(f"DEBUG DB: Guardando para {user_id}...")
-            guardar_historial_ligero(datos_ticket)
             print(f"DEBUG DB: Guardado OK.")
         except Exception as e:
             print(f"DEBUG DB ERROR: {e}")

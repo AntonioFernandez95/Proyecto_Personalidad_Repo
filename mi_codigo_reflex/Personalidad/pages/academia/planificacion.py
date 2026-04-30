@@ -32,7 +32,7 @@ def planificacion() -> rx.Component:
                         rx.select.content(
                             rx.foreach(
                                 PlanificacionState.recursos,
-                                lambda r: rx.select.item(r["nombre"], value=r["id"].to(str))
+                                lambda r: rx.select.item(r["nombre"], value=r["full_id"].to(str))
                             ),
                         ),
                         value=PlanificacionState.selected_recurso_id,

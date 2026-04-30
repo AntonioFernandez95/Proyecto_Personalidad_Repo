@@ -1,7 +1,7 @@
 import reflex as rx
 from datetime import datetime
 from Personalidad.states.base_state import State
-from Personalidad.db.crud import guardar_historial_ligero
+from Personalidad.db.crud import guardar_historial_fisico
 
 class CalculadoraState(State):
     """Estado de la Calculadora: Hace las matemáticas y le pasa el dato al CRUD"""
@@ -80,7 +80,7 @@ class CalculadoraState(State):
             # guardar_historial_ligero(datos_para_guardar)
            
             # Mientras tu amigo termina, dejamos este print para que veas que tu parte funciona
-            print(f"✅ ¡Cálculo terminado! Esperando al CRUD de tu amigo para guardar esto: {datos_para_guardar}")
+            print(f"¡Cálculo terminado! {datos_para_guardar}")
            
         except Exception as e:
             print(f"❌ Error al conectar con el CRUD: {e}")

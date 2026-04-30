@@ -1,7 +1,5 @@
 import reflex as rx
 from Personalidad.states.base_state import State
-from Personalidad.db.crud import obtener_recursos_por_categoria
-from Personalidad.db.schemas.recurso_schema import recurso_schema
 
 class PlanificacionState(State):
     """Estado para gestionar los recursos dinámicos en la página de planificación."""
@@ -10,23 +8,40 @@ class PlanificacionState(State):
 
     def on_load(self):
         """Carga los recursos de la categoría 'planificacion'."""
-        # Verificamos login y acceso
         if not self.logged_in:
             return rx.redirect("/")
         if not self.has_fisicas_access:
             return rx.redirect("/academia")
             
-        # Refrescamos datos del usuario (permisos)
         self.refresh_user_data()
 
-        # Cargamos los recursos
+        # Cargamos los recursos (Vídeos + PDFs)
+        from Personalidad.db.crud import obtener_recursos_por_categoria_y_tipo
         try:
-            raw = obtener_recursos_por_categoria("planificacion")
-            self.recursos = [recurso_schema(r) for r in raw]
+            videos_raw = obtener_recursos_por_categoria_y_tipo("planificacion", "video")
+            pdfs_raw = obtener_recursos_por_categoria_y_tipo("planificacion", "pdf")
             
-            # Seleccionamos el primero por defecto si no hay ninguno seleccionado
+            self.recursos = []
+            for v in videos_raw:
+                self.recursos.append({
+                    "id": v.id, 
+                    "full_id": f"video_{v.id}",
+                    "nombre": f"{v.nombre} [Vídeo]", 
+                    "url": v.url, 
+                    "tipo": "video"
+                })
+            for p in pdfs_raw:
+                self.recursos.append({
+                    "id": p.id, 
+                    "full_id": f"pdf_{p.id}",
+                    "nombre": f"{p.nombre} [PDF]", 
+                    "url": p.url, 
+                    "tipo": "pdf"
+                })
+            
+            # Seleccionamos el primero por defecto usando el full_id
             if self.recursos and not self.selected_recurso_id:
-                self.selected_recurso_id = str(self.recursos[0]["id"])
+                self.selected_recurso_id = self.recursos[0]["full_id"]
         except Exception as e:
             print(f"Error cargando recursos de planificación: {e}")
             self.recursos = []
@@ -35,7 +50,7 @@ class PlanificacionState(State):
     def selected_recurso(self) -> dict:
         """Devuelve el recurso seleccionado actualmente."""
         for r in self.recursos:
-            if str(r["id"]) == self.selected_recurso_id:
+            if r["full_id"] == self.selected_recurso_id:
                 return r
         return {}
 

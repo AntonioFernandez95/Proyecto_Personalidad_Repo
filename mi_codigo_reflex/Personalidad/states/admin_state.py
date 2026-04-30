@@ -24,20 +24,19 @@ class AdminState(State):
     categorias_disponibles: List[str] = ["flexiones", "plancha", "agilidad", "carrera", "planificacion"]
     
     def fetch_recursos(self):
-        """Obtiene todos los recursos de la base de datos."""
-        from Personalidad.db.crud import obtener_todos_los_recursos
-        from Personalidad.db.schemas.recurso_schema import recurso_schema
+        """Obtiene todos los recursos combinados (vídeos y PDFs)."""
+        from Personalidad.db.crud import obtener_recursos_combinados
         try:
-            raw = obtener_todos_los_recursos()
-            self.recursos = [recurso_schema(r) for r in raw]
+            # Ahora la función unificada ya nos da el formato correcto
+            self.recursos = obtener_recursos_combinados()
         except Exception as e:
             print(f"Error cargando recursos: {e}")
             self.recursos = []
 
     async def handle_upload(self, files: List[rx.UploadFile]):
-        """Sube archivos a assets/uploads y los registra en la BD."""
+        """Sube archivos a assets/uploads y los registra en la BD correspondiente."""
         import os
-        from Personalidad.db.crud import guardar_recurso
+        from Personalidad.db.crud import guardar_video, guardar_pdf
         
         upload_dir = os.path.join("assets", "uploads")
         if not os.path.exists(upload_dir):
@@ -49,27 +48,29 @@ class AdminState(State):
             with open(outfile, "wb") as f:
                 f.write(upload_data)
             
-            # Detectar tipo
-            tipo = "pdf" if file.filename.lower().endswith(".pdf") else "video"
+            # Detectar tipo por extensión
+            nombre_archivo = file.filename
+            url_archivo = f"/uploads/{file.filename}"
             
-            # Guardar en BD
-            guardar_recurso(
-                nombre=file.filename,
-                tipo=tipo,
-                url=f"/uploads/{file.filename}",
-                categoria=self.selected_categoria
-            )
+            if nombre_archivo.lower().endswith(".pdf"):
+                guardar_pdf(nombre=nombre_archivo, url=url_archivo, categoria=self.selected_categoria)
+            else:
+                # Todo lo que no sea PDF lo tratamos como vídeo por ahora
+                guardar_video(nombre=nombre_archivo, url=url_archivo, categoria=self.selected_categoria)
         
         self.fetch_recursos()
         return rx.toast(f"Subidos {len(files)} archivos a {self.selected_categoria}.")
 
     def borrar_recurso(self, recurso: dict):
-        """Elimina un recurso de la BD y el archivo físico."""
+        """Elimina un recurso de su tabla y borra el archivo físico."""
         import os
-        from Personalidad.db.crud import eliminar_recurso
+        from Personalidad.db.crud import eliminar_recurso_por_tipo
         
         try:
-            if eliminar_recurso(recurso["id"]):
+            recurso_id = recurso.get("id")
+            tipo = recurso.get("tipo") # "video" o "pdf"
+            
+            if eliminar_recurso_por_tipo(recurso_id, tipo):
                 # Eliminar archivo físico
                 path_relativo = recurso["url"].lstrip("/") # uploads/file.ext
                 filepath = os.path.join("assets", path_relativo)
@@ -77,7 +78,7 @@ class AdminState(State):
                     os.remove(filepath)
                 
                 self.fetch_recursos()
-                return rx.toast("Recurso eliminado.")
+                return rx.toast("Recurso eliminado correctamente.")
         except Exception as e:
             return rx.window_alert(f"Error al borrar: {e}")
 

@@ -88,29 +88,49 @@ class ResultsState(rx.State):
         self.isApto()
         
         # 3. GUARDAMOS EN BASE DE DATOS
-        self.persist_results(user)
+        await self.persist_results(user)
 
-    def persist_results(self, user: str):
+    async def persist_results(self, user: str):
         """Envía los datos calculados a la tabla historial_simplificado.personalidad"""
         if not user:
             print("AVISO: No se puede guardar el resultado porque 'user' es None.")
             return
 
-        data = {
-            "id": str(uuid.uuid4()),
-            "user_id": user,
-            "sinceridad": self.score_item_1,
-            "extraversion": self.score_item_2,
-            "neuroticismo": (self.score_item_3 + self.score_item_4) // 2,
-            "psicoticismo": (self.score_item_5 + self.score_item_6 + self.score_item_7) // 3,
-            "es_apto": "APTO" if self.isUserApto else "NO APTO"
-        }
-        print(f"DEBUG: Intentando guardar resultados para {user}. Data: {data}")
-        success = guardar_resultado_personalidad(data)
-        if success:
-            print(f"ÉXITO: Resultado guardado correctamente en la tabla personalidad para {user}")
-        else:
-            print(f"ERROR: Falló el guardado en la base de datos para {user}. Revisa los logs de db_service.py")
+        try:
+            from Personalidad.db.crud import guardar_historial_personalidad, guardar_aptitudes
+            print(f"DEBUG: Intentando guardar resultados y aptitudes para {user}...")
+            
+            # 1. Guardado detallado en la nueva tabla (Aptitudes)
+            guardar_aptitudes(
+                user_id=user,
+                sinceridad=self.score_item_1,
+                extraversion=self.score_item_2,
+                depresion=self.score_item_3,
+                neuroticismo=self.score_item_4,
+                psicoticismo=self.score_item_5,
+                paranoidismo=self.score_item_6,
+                desviacion_psicopatica=self.score_item_7,
+                es_apto="APTO" if self.isUserApto else "NO APTO"
+            )
+
+            # 2. Guardado simplificado (Historial unificado)
+            guardar_historial_personalidad(
+                user_id=user,
+                sinceridad=self.score_item_1,
+                extraversion=self.score_item_2,
+                neuroticismo=(self.score_item_3 + self.score_item_4) // 2,
+                psicoticismo=(self.score_item_5 + self.score_item_6 + self.score_item_7) // 3,
+                es_apto="APTO" if self.isUserApto else "NO APTO"
+            )
+            print(f"ÉXITO: Resultados y Aptitudes guardados para {user}")
+            
+            # Refrescar el historial inmediatamente
+            from Personalidad.states.historial_state import HistorialSimplificado_State
+            hist_state = await self.get_state(HistorialSimplificado_State)
+            hist_state.cargar_historial()
+            
+        except Exception as e:
+            print(f"ERROR: Falló el guardado de personalidad: {e}")
         
     def key_converter(self, value: str) -> str:
         """Convierte la respuesta del usuario al nombre de columna en la BD."""
