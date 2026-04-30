@@ -8,4 +8,5 @@ class Color(Enum):
     LIGHT_GRAY = "#E8E8E8",
     MID_GRAY = "#B2B2B2",
     LIGHT_BLUE = "#D8FCF7",
-    CREAM = "#FBE6CC"
+    CREAM = "#FBE6CC",
+    GREEN = "#5B733A"

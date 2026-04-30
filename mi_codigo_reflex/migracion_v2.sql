@@ -28,7 +28,17 @@ BEGIN
     END IF;
 END $$;
 
--- 3. Crear tabla de Aptitudes (Historial Personalidad)
+-- 3. Insertar usuarios base si no existen (Claudia y Alejandra)
+-- Nota: Usamos una subconsulta para evitar errores si ya existen
+INSERT INTO usuarios_metodos.usuarios_plataformas (email, nombre, apellidos, rol, password, hasta_fisicas, hasta_personalidad, disabled_fisicas, disabled_personalidad)
+SELECT 'claudia@academiametodos.com', 'Claudia', 'Mendoza Antequera', 'admin', '$2b$12$yUNv.e9.gfvEv2HQZOp09uSWOKEoL358q.S4MoUt3jkvNkBWfN9ga', '2026-10-25', '2026-09-29', false, false
+WHERE NOT EXISTS (SELECT 1 FROM usuarios_metodos.usuarios_plataformas WHERE email = 'claudia@academiametodos.com');
+
+INSERT INTO usuarios_metodos.usuarios_plataformas (email, nombre, apellidos, rol, password, hasta_fisicas, hasta_personalidad, disabled_fisicas, disabled_personalidad)
+SELECT 'alejandragarzon.24@campuscamara.es', 'Alejandra', '', 'estudiante', '$2b$12$AbQPoUdyqBhSNnLidhCkH.j/n.RqkSFe5eePj6rD7LkQpefRGJ3QS', '2026-10-25', '2020-01-01', false, false
+WHERE NOT EXISTS (SELECT 1 FROM usuarios_metodos.usuarios_plataformas WHERE email = 'alejandragarzon.24@campuscamara.es');
+
+-- 4. Crear tabla de Aptitudes (Historial Personalidad)
 CREATE TABLE IF NOT EXISTS personalidad.aptitudes (
     id VARCHAR PRIMARY KEY,
     user_id VARCHAR,
@@ -44,7 +54,7 @@ CREATE TABLE IF NOT EXISTS personalidad.aptitudes (
 );
 CREATE INDEX IF NOT EXISTS idx_aptitudes_user_id ON personalidad.aptitudes(user_id);
 
--- 4. Crear tablas de Recursos (Panel Admin)
+-- 5. Crear tablas de Recursos (Panel Admin)
 CREATE TABLE IF NOT EXISTS recursos.videos (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(255),
@@ -61,7 +71,7 @@ CREATE TABLE IF NOT EXISTS recursos.pdfs (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 5. Limpieza: Eliminar tabla obsoleta
+-- 6. Limpieza: Eliminar tabla obsoleta
 DROP TABLE IF EXISTS tecnicas.recursos CASCADE;
 
 -- FIN DEL SCRIPT
