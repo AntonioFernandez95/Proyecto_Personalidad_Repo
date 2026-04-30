@@ -112,7 +112,7 @@ def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_
                 rx.heading(plan_name, size="5", color="black", font_weight="800"),
                 rx.badge(
                     status, 
-                    color_scheme=rx.cond(is_active_cond, "green", "gray"),
+                    color_scheme=rx.cond(is_active_cond, "green", "red"),
                     variant="solid",
                     size="2"
                 ),
@@ -129,7 +129,7 @@ def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_
                 expiration, 
                 font_weight="900", 
                 font_size="1.5em", 
-                color=rx.cond(is_active_cond, "#5B733A", "#999")
+                color=rx.cond(is_active_cond, "#5B733A", "red")
             ),
             width="100%", align="start",
         ),
@@ -162,7 +162,7 @@ def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_
             width="100%",
         ),
         rx.button(
-            rx.cond(is_active_cond, "Dar de Baja", "Reactivar Plan"),
+            rx.cond(is_active_cond, "Dar de Baja", "Dar de Alta"),
             background_color=rx.cond(is_active_cond, "#7d804e", "#5B733A"),
             color="white",
             width="100%", 

@@ -95,9 +95,19 @@ class AdminState(State):
             self.is_loading = False
 
     def select_user(self, user: dict):
-        self.selected_user = user
-        self.new_name = user.get("full_name", "")
-        self.new_email = user.get("email", "")
+        from Personalidad.services.auth_service import search_user
+        # Sincronizamos caducidad al seleccionar (esto actualiza los flags en la BD si han caducado)
+        search_user("email", user.get("email"))
+        
+        # Recargamos la lista para que el 'user' que pasamos a selected_user tenga los flags frescos
+        self.fetch_users()
+        
+        # Buscamos el usuario actualizado en nuestra lista
+        updated_user = next((u for u in self.users if u["email"] == user.get("email")), user)
+        
+        self.selected_user = updated_user
+        self.new_name = updated_user.get("full_name", "")
+        self.new_email = updated_user.get("email", "")
         self.days_to_add = "30"
         return rx.redirect("/academia/admin_plans")
 
@@ -159,16 +169,22 @@ class AdminState(State):
 
             nueva_fecha = fecha_actual + timedelta(days=days)
             
+            # Al alargar el plan, lo reactivamos automáticamente (ponemos disabled a False)
+            col_disabled = f"disabled_{tipo_plan}"
             success = db_client.update_one(
-                "usuarios_plataformas", "email", email, {col_fecha: nueva_fecha}
+                "usuarios_plataformas", "email", email, {
+                    col_fecha: nueva_fecha,
+                    col_disabled: False
+                }
             )
 
             if success:
                 new_selected = self.selected_user.copy()
                 new_selected[col_fecha] = nueva_fecha.strftime("%Y-%m-%d")
+                new_selected[col_disabled] = False # Reflejamos el alta inmediata
                 self.selected_user = new_selected
                 self.fetch_users()
-                return rx.toast(f"Plan {tipo_plan} extendido.")
+                return rx.toast(f"Plan {tipo_plan} extendido y activado.")
             
         except Exception as e:
             return rx.window_alert(f"Error: {str(e)}")
