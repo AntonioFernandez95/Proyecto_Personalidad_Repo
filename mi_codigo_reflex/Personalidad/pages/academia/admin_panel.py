@@ -4,19 +4,22 @@ from Personalidad.states.admin_state import AdminState
 from Personalidad.pages.academia.layout import academia_layout, BTN_PRIMARY_BASE, BTN_SECONDARY_BASE, CARD_STYLE
 
 
+
+
 def admin_header() -> rx.Component:
     return rx.flex(
         rx.vstack(
-            rx.heading("Panel de Administración", size="9", color="white", font_weight="900"),
+            rx.heading("Panel de Administración", size="9", color="white", font_weight="900", text_align="center"),
             rx.text(
-                "Gestión integral de alumnos y recursos.",
+                "Gestión integral de alumnos y recursos (PDFs y Vídeos).",
                 color="rgba(255,255,255,0.8)",
                 font_size="1.1em",
+                text_align="center",
             ),
-            align_items="start",
+            align_items="center",
             spacing="1",
+            width="100%",
         ),
-        rx.spacer(),
         rx.link(
             rx.button(
                 rx.icon("log-out", size=18),
@@ -33,12 +36,15 @@ def admin_header() -> rx.Component:
             underline="none",
         ),
         align="center",
+        justify="center",
         width="100%",
-        padding_top="4em", # ESPACIO EXTRA ARRIBA
+        padding_top="4em",
         padding_bottom="3em",
-        flex_direction=["column", "row"],
+        flex_direction="column",
         gap="2em",
     )
+
+
 
 
 def user_management_row(user: dict) -> rx.Component:
@@ -58,7 +64,7 @@ def user_management_row(user: dict) -> rx.Component:
             spacing="1",
             flex="1",
         ),
-        
+       
         # Bloque de Datos y Acciones
         rx.flex(
             rx.vstack(
@@ -85,7 +91,7 @@ def user_management_row(user: dict) -> rx.Component:
             width=["100%", "auto"], # Ancho completo en móvil
             justify="between",
         ),
-        
+       
         width="100%",
         padding="2em",
         border_radius="20px",
@@ -98,6 +104,8 @@ def user_management_row(user: dict) -> rx.Component:
         gap="2em",
         opacity="1",
     )
+
+
 
 
 def resource_item(recurso: dict) -> rx.Component:
@@ -115,10 +123,10 @@ def resource_item(recurso: dict) -> rx.Component:
         ),
         rx.spacer(),
         rx.icon(
-            "trash-2", 
-            size=18, 
-            color="red", 
-            cursor="pointer", 
+            "trash-2",
+            size=18,
+            color="red",
+            cursor="pointer",
             on_click=lambda: AdminState.borrar_recurso(recurso)
         ),
         width="100%",
@@ -129,14 +137,17 @@ def resource_item(recurso: dict) -> rx.Component:
     )
 
 
+
+
 def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
     return rx.vstack(
-        rx.hstack(
+        rx.vstack(
             rx.icon(icon_name, size=30, color="#5B733A"),
-            rx.heading(title, size="7", color="black", font_weight="900"),
-            spacing="4",
-            align="center",
+            rx.heading(title, size="7", color="black", font_weight="900", text_align="center"),
+            spacing="2",
+            align_items="center",
             margin_bottom="2em",
+            width="100%",
         ),
         rx.vstack(
             *children,
@@ -148,9 +159,11 @@ def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
         border_radius="30px",
         padding=["1.5em", "3em"],
         width="100%",
-        align_items="start",
+        align_items="center",
         box_shadow="0 15px 50px rgba(0,0,0,0.12)",
     )
+
+
 
 
 @rx.page(route="/academia/admin_panel", title="Panel Admin", on_load=AdminState.on_load)
@@ -158,57 +171,66 @@ def admin_panel() -> rx.Component:
     return academia_layout(
         rx.flex(
             admin_header(),
-            
-            # Filtros Adaptativos
+           
             rx.flex(
-                rx.input(
-                    placeholder="Buscar alumno por nombre o email...",
-                    width=["100%", "100%", "65%"],
-                    background="white",
-                    height="4em",
-                    color="black",
-                    font_size="1.05em",
-                    border="1px solid #ccd1d1", # BORDE MÁS FINO Y ELEGANTE
-                    padding_x="1.5em",
-                    border_radius="15px",
-                    on_change=AdminState.set_search_query,
-                    _focus={"border": "2px solid #5B733A"},
-                ),
-                rx.select(
-                    ["todos", "estudiante", "admin"],
-                    value=AdminState.filter_role,
-                    on_change=AdminState.set_filter_role,
-                    height="4em",
-                    width=["100%", "100%", "30%"],
-                    background="white",
-                    color="black",
-                    font_weight="600",
-                    border="1px solid #ccd1d1",
-                    border_radius="15px",
-                ),
-                width="100%",
-                spacing="4",
-                flex_wrap="wrap",
-                margin_bottom="3em",
-                justify="between",
-            ),
-
-            rx.flex(
-                # Lista de Alumnos Principal
-                admin_card(
-                    "Gestión de Alumnos", "users",
-                    rx.cond(
-                        AdminState.is_loading,
-                        rx.center(rx.spinner(size="3", color="#5B733A"), width="100%", padding="5em"),
-                        rx.vstack(
-                            rx.foreach(AdminState.filtered_users, user_management_row),
+                # Columna de Gestión de Alumnos
+                rx.vstack(
+                    # Buscador Integrado (Unidad Visual Única)
+                    rx.hstack(
+                        rx.icon("search", size=20, color="#888"),
+                        rx.input(
+                            placeholder="Buscar alumno por nombre o email...",
+                            variant="surface",
+                            border="none",
+                            background_color="transparent",
                             width="100%",
-                        )
+                            color="black",
+                            font_size="1.05em",
+                            on_change=AdminState.set_search_query,
+                            _focus={"outline": "none", "border": "none", "box_shadow": "none"},
+                        ),
+                        rx.divider(orientation="vertical", height="2em", margin_x="1em", color="#eee"),
+                        rx.select(
+                            ["todos", "estudiante", "admin"],
+                            value=AdminState.filter_role,
+                            on_change=AdminState.set_filter_role,
+                            variant="ghost",
+                            width="auto",
+                            color="black",
+                            font_weight="700",
+                            cursor="pointer",
+                        ),
+                        background="white",
+                        border="1px solid #ccd1d1",
+                        border_radius="15px",
+                        padding_x="1.5em",
+                        height="4.5em",
+                        width="100%",
+                        align="center",
+                        box_shadow="0 4px 15px rgba(0,0,0,0.05)",
+                        _focus_within={"border": "1px solid #5B733A"},
+                        margin_bottom="1.5em",
+                    ),
+                   
+                    # Lista de Alumnos Principal
+                    admin_card(
+                        "Gestión de Alumnos", "users",
+                        rx.cond(
+                            AdminState.is_loading,
+                            rx.center(rx.spinner(size="3", color="#5B733A"), width="100%", padding="5em"),
+                            rx.vstack(
+                                rx.foreach(AdminState.filtered_users, user_management_row),
+                                width="100%",
+                            )
+                        ),
+                        flex="1",
                     ),
                     flex="2",
+                    width="100%",
+                    spacing="0",
                 ),
-                
-                # Recursos y Herramientas
+               
+                # Recursos y Herramientas (PDFs y Vídeos)
                 rx.vstack(
                     admin_card(
                         "Gestión de Recursos", "cloud-upload",
@@ -227,6 +249,7 @@ def admin_panel() -> rx.Component:
                                 rx.vstack(
                                     rx.icon("upload", size=40, color="#5B733A"),
                                     rx.text("Arrastra Vídeos o PDFs", font_weight="700", color="black"),
+                                    rx.text("Sube tus clases o temarios", font_size="0.8em", color="gray"),
                                     spacing="2",
                                 ),
                                 width="100%",
@@ -264,17 +287,13 @@ def admin_panel() -> rx.Component:
                 width="100%",
                 spacing="8",
                 flex_direction=["column", "column", "row"],
-                align_items="start",
+                align_items=["center", "center", "start"],
             ),
-            
+           
             direction="column",
             width="100%",
-            max_width="1600px",
-            padding_x=["1em", "2em", "5em"],
             padding_bottom="10em",
             align_items="center",
-        )
+        ),
+        container_max_width="1400px",
     )
-
-    #añadir para vídeos tmb
-    

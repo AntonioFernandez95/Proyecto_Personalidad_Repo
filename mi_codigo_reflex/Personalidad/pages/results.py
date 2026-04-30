@@ -63,7 +63,7 @@ def index():
                             show_progress(get_progress_percentage(ResultsState.score_item_7), Size.ZERO, ResultsState.is_7_ok),
                             
                             rx.button(
-                                "SALIR AL DASHBOARD",
+                                "Salir",
                                 on_click=rx.redirect("/academia"),
                                 margin_top="1.5em",
                                 color_scheme="orange",

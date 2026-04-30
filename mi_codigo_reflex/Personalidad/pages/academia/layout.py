@@ -25,6 +25,10 @@ def academia_layout(*children, **props) -> rx.Component:
     # Establecer valores por defecto si no se pasan en props para evitar conflictos
     props.setdefault("align", "center")
     props.setdefault("spacing", "4")
+   
+    # NUEVO: Extraer max_width de props o usar el valor por defecto (1100px)
+    # Esto permite que páginas específicas sean más anchas o estrechas
+    container_max_width = props.pop("container_max_width", "1100px")
 
     return rx.box(
         navbar(),
@@ -34,7 +38,7 @@ def academia_layout(*children, **props) -> rx.Component:
                     *children,
                     **props,
                 ),
-                max_width="1100px",
+                max_width=container_max_width,
                 width="100%",
                 padding_x="1.5em",
                 padding_y="2em",
