@@ -2,9 +2,34 @@ import reflex as rx
 from Personalidad.states.base_state import State
 from Personalidad.states.admin_state import AdminState
 from Personalidad.pages.academia.layout import academia_layout, BTN_PRIMARY_BASE, BTN_SECONDARY_BASE, CARD_STYLE
+from Personalidad.styles.academia_styles import TEXT_DARK, TEXT_MID, CARD_BG, GRAY_LIGHT
 
 
 
+
+def system_status_dashboard() -> rx.Component:
+    return rx.flex(
+        rx.foreach(
+            AdminState.system_status,
+            lambda item: rx.badge(
+                rx.hstack(
+                    rx.cond(item[1], rx.icon("check-circle", size=14), rx.icon("alert-circle", size=14)),
+                    rx.text(item[0], font_size="0.8em"),
+                    spacing="1",
+                    align="center",
+                ),
+                color_scheme=rx.cond(item[1], "green", "red"),
+                variant="surface",
+                padding_x="1em",
+                border_radius="15px",
+            )
+        ),
+        spacing="3",
+        width="100%",
+        justify="center",
+        flex_wrap="wrap",
+        margin_bottom="2em",
+    )
 
 def admin_header() -> rx.Component:
     return rx.flex(
@@ -16,6 +41,7 @@ def admin_header() -> rx.Component:
                 font_size="1.1em",
                 text_align="center",
             ),
+            system_status_dashboard(),
             align_items="center",
             spacing="1",
             width="100%",
@@ -24,7 +50,7 @@ def admin_header() -> rx.Component:
             rx.button(
                 rx.icon("log-out", size=18),
                 "Salir a Academia",
-                background_color="white",
+                background_color=CARD_BG,
                 color="#5B733A",
                 font_weight="bold",
                 height="3em",
@@ -53,13 +79,13 @@ def user_management_row(user: dict) -> rx.Component:
         # Bloque de Información Principal
         rx.vstack(
             rx.flex(
-                rx.text(user["full_name"], font_weight="800", color="black", font_size="1.2em"),
+                rx.text(user["full_name"], font_weight="800", color=TEXT_DARK, font_size="1.2em"),
                 rx.badge(user["rol"], color_scheme=rx.cond(user["rol"] == "admin", "tomato", "blue"), variant="solid"),
                 spacing="3",
                 align="center",
                 flex_wrap="wrap",
             ),
-            rx.text(user["email"], font_size="1em", color="#555", font_weight="500"),
+            rx.text(user["email"], font_size="1em", color=TEXT_MID, font_weight="500"),
             align_items="start",
             spacing="1",
             flex="1",
@@ -68,7 +94,7 @@ def user_management_row(user: dict) -> rx.Component:
         # Bloque de Datos y Acciones
         rx.flex(
             rx.vstack(
-                rx.text("Accesos", font_size="0.8em", color="#666", font_weight="bold"),
+                rx.text("Accesos", font_size="0.8em", color=TEXT_MID, font_weight="bold"),
                 rx.text(user["count_login"], font_weight="900", color="#5B733A", font_size="1.3em"),
                 spacing="0", align="center",
                 min_width="80px",
@@ -95,7 +121,7 @@ def user_management_row(user: dict) -> rx.Component:
         width="100%",
         padding="2em",
         border_radius="20px",
-        background="white",
+        background=CARD_BG,
         border="1px solid #eee",
         box_shadow="0 6px 20px rgba(0,0,0,0.06)",
         align="center",
@@ -117,8 +143,8 @@ def resource_item(recurso: dict) -> rx.Component:
             rx.icon("video", size=18, color="#5B733A"),
         ),
         rx.vstack(
-            rx.text(recurso["nombre"], font_weight="bold", font_size="0.9em", color="black", max_width="180px", is_truncated=True),
-            rx.text(recurso["categoria"].to(str).upper(), font_size="0.7em", color="gray", font_weight="bold"),
+            rx.text(recurso["nombre"], font_weight="bold", font_size="0.9em", color=TEXT_DARK, max_width="180px", is_truncated=True),
+            rx.text(recurso["categoria"].to(str).upper(), font_size="0.7em", color=TEXT_MID, font_weight="bold"),
             spacing="0", align="start"
         ),
         rx.spacer(),
@@ -132,7 +158,7 @@ def resource_item(recurso: dict) -> rx.Component:
         width="100%",
         padding="0.8em",
         border_radius="10px",
-        background="#f9f9f9",
+        background=GRAY_LIGHT,
         border="1px solid #eee"
     )
 
@@ -143,7 +169,7 @@ def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
     return rx.vstack(
         rx.vstack(
             rx.icon(icon_name, size=30, color="#5B733A"),
-            rx.heading(title, size="7", color="black", font_weight="900", text_align="center"),
+            rx.heading(title, size="7", color=TEXT_DARK, font_weight="900", text_align="center"),
             spacing="2",
             align_items="center",
             margin_bottom="2em",
@@ -155,7 +181,7 @@ def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
             spacing="6",
         ),
         **kwargs,
-        background="white",
+        background=CARD_BG,
         border_radius="30px",
         padding=["1.5em", "3em"],
         width="100%",
@@ -184,7 +210,7 @@ def admin_panel() -> rx.Component:
                             border="none",
                             background_color="transparent",
                             width="100%",
-                            color="black",
+                            color=TEXT_DARK,
                             font_size="1.05em",
                             on_change=AdminState.set_search_query,
                             _focus={"outline": "none", "border": "none", "box_shadow": "none"},
@@ -196,7 +222,7 @@ def admin_panel() -> rx.Component:
                             on_change=AdminState.set_filter_role,
                             variant="ghost",
                             width="auto",
-                            color="black",
+                            color=TEXT_DARK,
                             font_weight="700",
                             cursor="pointer",
                         ),
@@ -234,22 +260,22 @@ def admin_panel() -> rx.Component:
                 rx.vstack(
                     admin_card(
                         "Gestión de Recursos", "cloud-upload",
-                        rx.text("Categoría destino:", font_size="0.9em", font_weight="bold", color="black"),
+                        rx.text("Categoría destino:", font_size="0.9em", font_weight="bold", color=TEXT_DARK),
                         rx.select(
                             AdminState.categorias_disponibles,
                             value=AdminState.selected_categoria,
                             on_change=AdminState.set_selected_categoria,
                             width="100%",
-                            background="white",
-                            color="black",
+                            background=CARD_BG,
+                            color=TEXT_DARK,
                             border_radius="10px",
                         ),
                         rx.upload(
                             rx.center(
                                 rx.vstack(
                                     rx.icon("upload", size=40, color="#5B733A"),
-                                    rx.text("Arrastra Vídeos o PDFs", font_weight="700", color="black"),
-                                    rx.text("Sube tus clases o temarios", font_size="0.8em", color="gray"),
+                                    rx.text("Arrastra Vídeos o PDFs", font_weight="700", color=TEXT_DARK),
+                                    rx.text("Sube tus clases o temarios", font_size="0.8em", color=TEXT_MID),
                                     spacing="2",
                                 ),
                                 width="100%",
@@ -272,7 +298,7 @@ def admin_panel() -> rx.Component:
                             _hover={"background_color": "#4a5d2f"},
                         ),
                         rx.divider(margin_y="1em"),
-                        rx.text("Recursos actuales:", font_size="0.9em", font_weight="bold", color="black"),
+                        rx.text("Recursos actuales:", font_size="0.9em", font_weight="bold", color=TEXT_DARK),
                         rx.vstack(
                             rx.foreach(AdminState.recursos, resource_item),
                             width="100%",

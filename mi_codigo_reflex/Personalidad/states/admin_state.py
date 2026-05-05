@@ -22,7 +22,34 @@ class AdminState(State):
     recursos: List[dict] = []
     selected_categoria: str = "flexiones"
     categorias_disponibles: List[str] = ["flexiones", "plancha", "agilidad", "carrera", "planificacion"]
+    system_status: Dict[str, bool] = {}
     
+    def check_system_health(self):
+        """Verifica la integridad de las tablas y esquemas."""
+        from sqlalchemy import text
+        from Personalidad.db.crud import engine
+        
+        tablas_a_verificar = [
+            ("usuarios_metodos.usuarios_plataformas", "Usuarios"),
+            ("historial_simplificado.fisicas", "Historial Físicas"),
+            ("historial_simplificado.personalidad", "Historial Personalidad"),
+            ("personalidad.aptitudes", "Aptitudes Detalladas"),
+            ("recursos.videos", "Vídeos"),
+            ("recursos.pdfs", "PDFs"),
+            ("tecnicas.tecnicas_data", "Datos de Técnicas")
+        ]
+        
+        status = {}
+        with engine.connect() as conn:
+            for tabla_full, nombre_amigable in tablas_a_verificar:
+                try:
+                    conn.execute(text(f"SELECT 1 FROM {tabla_full} LIMIT 1"))
+                    status[nombre_amigable] = True
+                except Exception:
+                    status[nombre_amigable] = False
+        
+        self.system_status = status
+
     def fetch_recursos(self):
         """Obtiene todos los recursos combinados (vídeos y PDFs)."""
         from Personalidad.db.crud import obtener_recursos_combinados
@@ -232,3 +259,4 @@ class AdminState(State):
             return rx.redirect("/academia")
         self.fetch_users()
         self.fetch_recursos()
+        self.check_system_health()

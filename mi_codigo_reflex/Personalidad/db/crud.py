@@ -23,6 +23,8 @@ try:
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS historial_simplificado"))
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS recursos"))
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS tecnicas"))
+        conn.execute(text("CREATE SCHEMA IF NOT EXISTS personalidad"))
+        conn.execute(text("CREATE SCHEMA IF NOT EXISTS usuarios_metodos"))
         conn.commit()
     Base.metadata.create_all(bind=engine)
 except Exception:

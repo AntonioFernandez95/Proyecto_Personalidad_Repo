@@ -1,8 +1,6 @@
 [
   {
-    "_id": {
-      "$oid": "666ab03080b7f807646644fe"
-    },
+    "_id": "666ab03080b7f807646644fe",
     "password": "ATC4IWR",
     "disabled": false,
     "email": "claudia@academiametodos.com",
@@ -13,10 +11,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "667926578928e96cee58b6a2"
-    },
-    "password": "¡N0fz0@",
+    "_id": "667926578928e96cee58b6a2",
+    "password": "$2b$12$J3ZpYfOH9A9lWL6zx9l01eqz0LMgws.AUrnY5c9Ba5.Yp.HgZMs7a",
     "disabled": false,
     "email": "enrique@academiametodos.com",
     "full_name": "",
@@ -26,10 +22,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "667953f9d856d5e418518719"
-    },
-    "password": "DDyo!nB",
+    "_id": "667953f9d856d5e418518719",
+    "password": "$2b$12$XMSszXjhTuza.zCIW9mk/engn9iHU8eObQj2pqS/iYLosVE0DlK06",
     "disabled": false,
     "email": "ema@academiametodos.com",
     "full_name": "",
@@ -39,10 +33,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "6679e8d1d856d5e41851871f"
-    },
-    "password": "i#nuYHB",
+    "_id": "6679e8d1d856d5e41851871f",
+    "password": "$2b$12$f4FUZIhLPUcniyKQOO1dCO5D2QqOLHV7D9PIN4ZIvQSXQUlTtcR7K",
     "disabled": false,
     "email": "jprieto@academiametodos.com",
     "full_name": "",
@@ -52,10 +44,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "667d3b9f61bb7ee0493c6f70"
-    },
-    "password": "?u?vi¡U",
+    "_id": "667d3b9f61bb7ee0493c6f70",
+    "password": "$2b$12$tmG45jGvcEq5ik6JDwGUK.aHSY4s.j2ogI2m/Lu3p9rT39/mGP63y",
     "disabled": false,
     "email": "btoledo@academiametodos.com",
     "full_name": "",
@@ -65,10 +55,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "66890b2b7418f33a8acdf488"
-    },
-    "password": "@n*LqaL",
+    "_id": "66890b2b7418f33a8acdf488",
+    "password": "$2b$12$Mogyi5bLcPP79/cR2as1e.0VQsMxR2lCges22/Pbmfm2FqWp6GdV6",
     "disabled": false,
     "email": "YSA59@academiametodos.com",
     "full_name": "",
@@ -78,10 +66,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "66b31f867418f33a8acdf5c7"
-    },
-    "password": "YIFi¿NT",
+    "_id": "66b31f867418f33a8acdf5c7",
+    "password": "$2b$12$Jom0xQULKJFDlVEGth/dSOXHCpnWg73RHSVqOPdpMFx/RJXqkL8v2",
     "disabled": false,
     "email": "mariam@academiametodos.com",
     "full_name": "",
@@ -91,10 +77,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "677d768ae6fda194438e1d34"
-    },
-    "password": "Nzai5P!",
+    "_id": "677d768ae6fda194438e1d34",
+    "password": "$2b$12$xtS7bGSX0ZsmvJfZ0RpIdOk1NWO6guLJqkAQ7ViDzWCvn6wtwvUhG",
     "disabled": false,
     "email": "rosa@academiametodos.com",
     "full_name": "",
@@ -104,10 +88,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "6815029996fa272cd58e1ab5"
-    },
-    "password": "X7$uO¡H",
+    "_id": "6815029996fa272cd58e1ab5",
+    "password": "$2b$12$72yYqyQPQYmzV6A1P.o/O.jqMpp5kRwtCfRdvXc7XpbTiiOMSudqu",
     "disabled": false,
     "email": "MAAR89@academiametodos.com",
     "full_name": "",
@@ -117,10 +99,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "6846adfbfe9ae3c415a4a257"
-    },
-    "password": "NvVoIff",
+    "_id": "6846adfbfe9ae3c415a4a257",
+    "password": "$2b$12$.lDV3wE2xlx3.TPE9cpg6O9QuVupBD6Yjoj9HOX.OCSAoAWHpNt4.",
     "disabled": false,
     "email": "FJDV73@academiametodos.com",
     "full_name": "",
@@ -130,10 +110,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "684843acfe9ae3c415a4a277"
-    },
-    "password": "i$h8xG*",
+    "_id": "684843acfe9ae3c415a4a277",
+    "password": "$2b$12$D5ecSlecEjxmK4gDccNrHeQSZkky9ga/Ynj3bNm5dUtf1DhGTEEWi",
     "disabled": false,
     "email": "aimb94@academiametodos.com",
     "full_name": "",
@@ -143,10 +121,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "686931e3d2bd1e9e1aa4a297"
-    },
-    "password": "7Qn0g¡B",
+    "_id": "686931e3d2bd1e9e1aa4a297",
+    "password": "$2b$12$31UVIlzdc/xifKdrFqkXsekHh8qMG8oOSluq8hw18S6BG/Nt.JnKa",
     "disabled": false,
     "email": "JPG81@academiametodos.com",
     "full_name": "",
@@ -156,10 +132,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "686ec9a6d2bd1e9e1aa4a2c7"
-    },
-    "password": "YO?nzVA",
+    "_id": "686ec9a6d2bd1e9e1aa4a2c7",
+    "password": "$2b$12$nHFii.PFKj22yBLjxupTyuL9wRJ.1yf0RypavVMyKphfA3v9xi4B6",
     "disabled": false,
     "email": "AHC90@academiametodos.com",
     "full_name": "",
@@ -169,10 +143,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "68838a0ed2bd1e9e1aa4a364"
-    },
-    "password": "*XIge#@",
+    "_id": "68838a0ed2bd1e9e1aa4a364",
+    "password": "$2b$12$ODkE3krMSABDVLIWwRnaFeD6/6.iQ3kepU3/gGPkXWUXcoDqD2FEy",
     "disabled": false,
     "email": "abbf96@academiametodos.com",
     "full_name": "",
@@ -182,10 +154,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "695025edde1df25530a4a54a"
-    },
-    "password": "6cLP6nE",
+    "_id": "695025edde1df25530a4a54a",
+    "password": "$2b$12$4tcgjoEIuV0n/m4eKTjsgeLC2PWJUXes334aPkF0v.UrGp2Pl10Q6",
     "disabled": false,
     "email": "scc74@academiametodos.com",
     "full_name": "",
@@ -195,10 +165,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "695e906ade1df25530a4a580"
-    },
-    "password": "qYHRV!D",
+    "_id": "695e906ade1df25530a4a580",
+    "password": "$2b$12$YYV3iMXl2TJywn0dEFqP6u5zAmYvAiUmxPLCoZ5..jBaUhwK.jEcm",
     "disabled": false,
     "email": "AAG78@academiametodos.com",
     "full_name": "",
@@ -208,10 +176,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "69653fbbfb2179e4e5a4a269"
-    },
-    "password": "x$CWUfH",
+    "_id": "69653fbbfb2179e4e5a4a269",
+    "password": "$2b$12$8fJ8Ov4kUJEkeSyMpBe8C.cIStIhAgtAQG3ok.I/KMRT.bGmA43wC",
     "disabled": false,
     "email": "RER33@academiametodos.com",
     "full_name": "",
@@ -221,10 +187,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "696a275dfb2179e4e5a4a293"
-    },
-    "password": "O5x3fl3",
+    "_id": "696a275dfb2179e4e5a4a293",
+    "password": "$2b$12$Fl2r5CmsX1lkexxXh0wYCuY4iz3UDRFC/.DTK8I0Zz2RhSYOzKFum",
     "disabled": false,
     "email": "pgg32@academiametodos.com",
     "full_name": "",
@@ -234,10 +198,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "6970a637fb2179e4e5a4a2cd"
-    },
-    "password": "PrO$1AY",
+    "_id": "6970a637fb2179e4e5a4a2cd",
+    "password": "$2b$12$KUyVbfSd4emDI5dHsBk3XexFHG7zpBGPfbW7cl0V.Zd8l31cOi62S",
     "disabled": false,
     "email": "MRM53@academiametodos.com",
     "full_name": "",
@@ -247,10 +209,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "697c9e93fb2179e4e5a4a352"
-    },
-    "password": "62¿AbE¡",
+    "_id": "697c9e93fb2179e4e5a4a352",
+    "password": "$2b$12$V71dK7W7IlCFT.RrY5m.ReiChjZj1TTfHtfty2om6A9d7jnUB5WHu",
     "disabled": false,
     "email": "DRM56@academiametodos.com",
     "full_name": "",
@@ -260,10 +220,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "69812cc1fb2179e4e5a4a397"
-    },
-    "password": "IIy2NXu",
+    "_id": "69812cc1fb2179e4e5a4a397",
+    "password": "$2b$12$m4qju4m6torDmgUrPj7eOe2BJz.07DT6vTxdzElxgln3lL7.qdnMK",
     "disabled": false,
     "email": "REG31@academiametodos.com",
     "full_name": "",
@@ -273,10 +231,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "698ca4c1fb2179e4e5a4a415"
-    },
-    "password": "G$x9h@5",
+    "_id": "698ca4c1fb2179e4e5a4a415",
+    "password": "$2b$12$JMBHesfW5u3M8KrCYKr3g.z/6n2bdVt6f7E2QV0eVzDWURwmpvhAy",
     "disabled": false,
     "email": "JL15@academiametodos.com",
     "full_name": "",
@@ -286,10 +242,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "6992d009fb2179e4e5a4a45e"
-    },
-    "password": "LOmq4hg",
+    "_id": "6992d009fb2179e4e5a4a45e",
+    "password": "$2b$12$XbHcv4Y4GWEaJma3zQkLK.mGyT9E9hjYhDN9CsDgfwcV0IQc/QtBq",
     "disabled": false,
     "email": "mmolina@academiametodos.com",
     "full_name": "",
@@ -299,10 +253,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "69a0b9d2fb2179e4e5a4a4bc"
-    },
-    "password": "c2jVbX!",
+    "_id": "69a0b9d2fb2179e4e5a4a4bc",
+    "password": "$2b$12$qyknne0Sb2.ABAMA1iAmJOdKopeS8aoGnudW37KoLVLnFB0bOl5w.",
     "disabled": false,
     "email": "HMVM69@academiametodos.com",
     "full_name": "",
@@ -312,10 +264,8 @@
     "is_optional_checked": true
   },
   {
-    "_id": {
-      "$oid": "69a9b206fb2179e4e5a4a575"
-    },
-    "password": "7KFD#i1",
+    "_id": "69a9b206fb2179e4e5a4a575",
+    "password": "$2b$12$TXqsiz9xnee5r/LqKcNIs.veon1/SqLMsGgOGhI2z62h/eUfEwXI6",
     "disabled": false,
     "email": "JV35@academiametodos.com",
     "full_name": "",

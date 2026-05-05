@@ -21,7 +21,8 @@ ARCHIVOS_A_IMPORTAR = {
     "Personalidad.users.json": ("personalidad", "users"),
     "Personalidad.db_personalidad.json": ("personalidad", "db_personalidad"),
     "usuarios_metodos.plataformas_metodos.json": ("usuarios_metodos", "plataformas_metodos"),
-    "usuarios_metodos.usuarios_plataformas.json": ("usuarios_metodos", "usuarios_plataformas")
+    "usuarios_metodos.usuarios_plataformas.json": ("usuarios_metodos", "usuarios_plataformas"),
+    "tecnicas_data.json": ("tecnicas", "tecnicas_data")
 }
 
 def obtener_conexion():
@@ -98,8 +99,18 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
                 elif col == "rol" and es_tabla_usuarios:
                     email_item = str(item.get("email", "")).lower()
                     val = "admin" if email_item.endswith("@academiametodos.com") else "estudiante"
+                elif col == "apellidos" and es_tabla_usuarios:
+                    # Combinamos apellido1 y apellido2 si existen
+                    ap1 = item.get("apellido1", "")
+                    ap2 = item.get("apellido2", "")
+                    val = f"{ap1} {ap2}".strip()
                 else:
                     val = item.get(col)
+                    # Fallback para campos con nombres alternativos en el JSON
+                    if val is None:
+                        if col == "count_login": val = item.get("count_login", 0)
+                        elif col == "are_terms_accepted": val = item.get("are_terms_accepted", False)
+                        elif col == "is_optional_checked": val = item.get("is_optional_checked", True)
 
                 if isinstance(val, (dict, list)):
                     valores.append(json.dumps(val))
@@ -114,16 +125,99 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
             cursor.execute(query, valores)
 
 def importar_todo():
-    """Ejecuta la importación completa de todos los archivos configurados."""
+    """Ejecuta la importación completa con fusión de datos de usuarios."""
     try:
         with obtener_conexion() as conn:
             with conn.cursor() as cur:
+                # 1. PRE-PROCESAMIENTO: Fusión de datos de usuarios
+                usuarios_maestros = {}
+                
+                archivos_usuarios = [
+                    "Personalidad.users.json",
+                    "usuarios_metodos.usuarios_plataformas.json"
+                ]
+                
+                for nombre_archivo in archivos_usuarios:
+                    ruta = os.path.join(RUTA_DATOS, nombre_archivo)
+                    if os.path.exists(ruta):
+                        with open(ruta, 'r', encoding='utf-8') as f:
+                            datos = json.load(f)
+                            for item in (datos if isinstance(datos, list) else [datos]):
+                                email = str(item.get("email", "")).lower()
+                                if not email or not email.endswith("@academiametodos.com"):
+                                    continue
+                                
+                                if email not in usuarios_maestros:
+                                    usuarios_maestros[email] = {}
+                                
+                                # Fusionar campos (priorizando valores no nulos)
+                                for k, v in item.items():
+                                    if v is not None and v != "":
+                                        usuarios_maestros[email][k] = v
+                                        
+                # 2. IMPORTACIÓN DE TABLAS NORMALES
                 for archivo, (esquema, tabla) in ARCHIVOS_A_IMPORTAR.items():
+                    if tabla == "usuarios_plataformas":
+                        continue # La procesamos luego con la fusión
                     importar_archivo(cur, archivo, esquema, tabla)
+                
+                # 3. IMPORTACIÓN DE LA TABLA DE USUARIOS FUSIONADA
+                print("Importando tabla de usuarios fusionada...")
+                esquema, tabla = "usuarios_metodos", "usuarios_plataformas"
+                columnas = [
+                    "nombre", "apellidos", "dni", "email", "password", 
+                    "pedido", "desde", "hasta", "count_login", 
+                    "are_terms_accepted", "is_optional_checked", "disabled", "rol"
+                ]
+                
+                cur.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
+                cur.execute(f"DROP TABLE IF EXISTS {esquema}.{tabla} CASCADE;")
+                
+                # Definición de tabla (simplificada para brevedad, igual que antes)
+                columnas_def = []
+                for col in columnas:
+                    if col in ["desde", "hasta"]: columnas_def.append(f'"{col}" TIMESTAMP')
+                    elif col in ["count_login", "pedido"]: columnas_def.append(f'"{col}" INTEGER DEFAULT 0')
+                    elif col in ["are_terms_accepted", "disabled", "is_optional_checked"]: columnas_def.append(f'"{col}" BOOLEAN DEFAULT TRUE')
+                    elif col == "rol": columnas_def.append(f'"{col}" TEXT DEFAULT \'estudiante\'')
+                    else: columnas_def.append(f'"{col}" TEXT')
+                
+                cur.execute(f"CREATE TABLE {esquema}.{tabla} ({', '.join(columnas_def)});")
+                
+                for email, info in usuarios_maestros.items():
+                    # Preparar valores con lógica de mapeo
+                    nombre = info.get("nombre", info.get("full_name", email.split("@")[0]))
+                    ap1 = info.get("apellido1", "")
+                    ap2 = info.get("apellido2", "")
+                    apellidos = info.get("apellidos", f"{ap1} {ap2}".strip())
+                    
+                    pw = str(info.get("password", "123456"))
+                    # Detectar si ya es un hash de bcrypt ($2a$, $2b$, $2y$)
+                    is_already_hashed = pw.startswith("$2") and len(pw) >= 50
+                    if not is_already_hashed:
+                        pw = bcrypt.hashpw(pw.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+                    valores = [
+                        nombre, apellidos, info.get("dni"), email, pw,
+                        info.get("pedido", 0), info.get("desde"), info.get("hasta"),
+                        info.get("count_login", 0), 
+                        info.get("are_terms_accepted", False),
+                        info.get("is_optional_checked", True),
+                        info.get("disabled", False),
+                        "admin" if email.endswith("@academiametodos.com") else "estudiante"
+                    ]
+                    
+                    query = sql.SQL("INSERT INTO {}.{} ({}) VALUES ({})").format(
+                        sql.Identifier(esquema), sql.Identifier(tabla),
+                        sql.SQL(', ').join(map(sql.Identifier, columnas)),
+                        sql.SQL(', ').join(sql.Placeholder() * len(columnas))
+                    )
+                    cur.execute(query, valores)
+
                 conn.commit()
-                print("\n--- IMPORTACIÓN FINALIZADA CON ÉXITO ---")
+                print("\n--- IMPORTACIÓN MAESTRA FINALIZADA CON ÉXITO ---")
     except Exception as e:
-        print(f"\nERROR CRÍTICO EN LA IMPORTACIÓN: {e}")
+        print(f"\nERROR CRÍTICO: {e}")
 
 if __name__ == "__main__":
     importar_todo()

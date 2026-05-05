@@ -9,9 +9,15 @@ from Personalidad.styles.academia_styles import (
     CARD_STYLE, BTN_PRIMARY_BASE, BTN_SECONDARY_BASE, BTN_BACK_BASE
 )
 
-PAGE_BG = (
-    "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), "
-    "url('/fondo-soldados (1).png')"
+PAGE_BG = rx.color_mode_cond(
+    light=(
+        "linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), "
+        "url('/fondo-soldados (1).png')"
+    ),
+    dark=(
+        "linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), "
+        "url('/fondo-soldados (1).png')"
+    )
 )
 
 
@@ -116,13 +122,13 @@ def prueba_row(icon_name: str, nombre: str, href: str) -> rx.Component:
             background=GRAY_LIGHT, border_radius="10px",
             width="52px", height="52px",
         ),
-        rx.text(nombre, font_size="1em", font_weight="600", color="black", flex="1"),
+        rx.text(nombre, font_size="1em", font_weight="600", color=TEXT_DARK, flex="1"),
         rx.link(
             rx.button("Ver técnica →", **BTN_SECONDARY_BASE, padding="0.6em 1.4em", font_size="0.85em"),
             href=href,
         ),
         width="100%", align="center", padding="1em",
-        background="white", border_radius="12px",
+        background=CARD_BG, border_radius="12px",
         box_shadow="0 2px 8px rgba(0,0,0,0.08)",
         _hover={"box_shadow": "0 4px 16px rgba(0,0,0,0.14)"},
         transition="all 0.2s",
@@ -144,7 +150,7 @@ def norma_item(texto: str) -> rx.Component:
 def plan_row(title: str, subtitle: str, href: str = "") -> rx.Component:
     return rx.hstack(
         rx.vstack(
-            rx.text(title,    font_size="1em",    font_weight="700", color="black"),
+            rx.text(title,    font_size="1em",    font_weight="700", color=TEXT_DARK),
             rx.text(subtitle, font_size="0.82em", color=TEXT_MID),
             spacing="0", align="start",
         ),
