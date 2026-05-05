@@ -2,6 +2,8 @@ import reflex as rx
 import Personalidad.styles.utils as utils
 
 
+
+
 from Personalidad.styles.fonts import Font
 from Personalidad.styles.styles import Size
 from Personalidad.styles.colors import Color
@@ -15,13 +17,21 @@ from Personalidad.states.test_state import TestState
 #from reflex_google_recaptcha_v2 import google_recaptcha_v2
 
 
+
+
 """
+
+
 
 
 reflex run
 
 
+
+
 """
+
+
 
 
 @rx.page(route="/info", title="Info", on_load=[State.check_personalidad_access, TestState.reset_test]) #
@@ -49,4 +59,5 @@ def info() -> rx.Component:
         ),
         footer(),
         background= rx.color_mode_cond(light="white", dark=Color.TEXT),
+        min_height="100vh",
     )

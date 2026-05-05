@@ -5,9 +5,12 @@ FROM python:3.12-slim
 RUN apt-get update && apt-get install -y \
     curl \
     unzip \
+    libpq-dev \
+    gcc \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
-    && apt-get clean
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -20,7 +23,7 @@ COPY . .
 RUN reflex init
 
 # 5. Exponer puertos (8000 para backend, 3000 interno para frontend)
-EXPOSE 8000 3000
+EXPOSE 8000
 
 # 6. Comando para ejecutar en modo producción
-CMD ["reflex", "run", "--env", "prod"]
+CMD ["reflex", "run", "--env", "prod", "--backend-only"]

@@ -22,6 +22,7 @@ try:
     with engine.connect() as conn:
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS historial_simplificado"))
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS recursos"))
+        conn.execute(text("CREATE SCHEMA IF NOT EXISTS tecnicas"))
         conn.commit()
     Base.metadata.create_all(bind=engine)
 except Exception:
@@ -209,3 +210,19 @@ def obtener_recursos_por_categoria_y_tipo(categoria: str, tipo: str):
             return session.query(Video).filter(Video.categoria == categoria).all()
         else:
             return session.query(PDF).filter(PDF.categoria == categoria).all()
+
+def obtener_recursos_por_categoria(categoria: str):
+    from Personalidad.db.models.recurso_model import Video, PDF
+    with Session(engine) as session:
+        # Aseguramos que el objeto tenga el atributo 'tipo' y 'fecha_creacion' para el schema
+        videos = session.query(Video).filter(Video.categoria == categoria).all()
+        for v in videos:
+            v.tipo = "video"
+            v.fecha_creacion = getattr(v, "fecha", None) # Mapeo de fecha a fecha_creacion
+            
+        pdfs = session.query(PDF).filter(PDF.categoria == categoria).all()
+        for p in pdfs:
+            p.tipo = "pdf"
+            p.fecha_creacion = getattr(p, "fecha", None)
+            
+        return videos + pdfs

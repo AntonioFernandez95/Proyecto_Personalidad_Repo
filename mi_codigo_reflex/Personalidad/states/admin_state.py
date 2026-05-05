@@ -224,6 +224,9 @@ class AdminState(State):
     def set_filter_role(self, role: str):
         self.filter_role = role
 
+    def set_selected_categoria(self, cat: str):
+        self.selected_categoria = cat
+
     def on_load(self):
         if self.user_role != "admin":
             return rx.redirect("/academia")

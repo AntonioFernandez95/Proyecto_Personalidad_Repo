@@ -24,6 +24,9 @@ COPY . .
 # Initialize Reflex
 RUN reflex init
 
+# Ensure uploads directory exists
+RUN mkdir -p assets/uploads
+
 # Expose backend port
 EXPOSE 8000
 

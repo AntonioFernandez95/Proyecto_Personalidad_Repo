@@ -22,10 +22,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application files
 COPY . .
 
-# Exportar el frontend. 
-# Usamos env vars vacías para que el código de conexión a DB no explote si no hay host
+# Initialize Reflex
 RUN reflex init
-RUN REFLEX_ENV=prod DATABASE_URL=postgresql://ignore:ignore@localhost/ignore reflex export --frontend-only --no-zip
+
+# Exportar el frontend. 
+# API_URL can be passed as a build argument
+ARG API_URL=http://localhost:8000
+RUN REFLEX_ENV=prod REFLEX_API_URL=${API_URL} DATABASE_URL=postgresql://ignore:ignore@localhost/ignore reflex export --frontend-only --no-zip
 
 # Stage 2: Serve the static files with Nginx
 FROM nginx:alpine
