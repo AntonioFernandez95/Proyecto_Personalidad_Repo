@@ -1,0 +1,23 @@
+[
+  {
+    "id": 7,
+    "nombre": "CURSO PRUEBAS FISICAS 2026_RESUMEN GENERAL PRUEBAS FISICAS.pdf",
+    "url": "/uploads/CURSO PRUEBAS FISICAS 2026_RESUMEN GENERAL PRUEBAS FISICAS.pdf",
+    "categoria": "plancha",
+    "tipo": "pdf"
+  },
+  {
+    "id": 8,
+    "nombre": "CURSO PRUEBAS FISICAS 2026_RESUMEN GENERAL PRUEBAS FISICAS.pdf",
+    "url": "/uploads/CURSO PRUEBAS FISICAS 2026_RESUMEN GENERAL PRUEBAS FISICAS.pdf",
+    "categoria": "flexiones",
+    "tipo": "pdf"
+  },
+  {
+    "id": 9,
+    "nombre": "CURSO PRUEBAS FISICAS 2026_CARRERA 2KM.pdf",
+    "url": "/uploads/CURSO PRUEBAS FISICAS 2026_CARRERA 2KM.pdf",
+    "categoria": "planificacion",
+    "tipo": "pdf"
+  }
+]

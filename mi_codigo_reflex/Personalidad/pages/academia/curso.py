@@ -1,7 +1,8 @@
 import reflex as rx
-from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_MID, BTN_PRIMARY_BASE, CARD_STYLE, back_button
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, TEXT_MID, BTN_PRIMARY_BASE, CARD_STYLE, back_button
 from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.calculadora_state import CalculadoraState
+
 
 @rx.page(route="/academia/curso", title="Academia Online - Curso", on_load=CalculadoraState.check_fisicas_access)
 def curso() -> rx.Component:
@@ -35,12 +36,12 @@ def curso() -> rx.Component:
         ),
         rx.box(
             rx.vstack(
-                rx.text("📣 COMUNIDAD", font_size="1em", font_weight="700", color="black", letter_spacing="0.1em"),
+                rx.text("📣 COMUNIDAD", font_size="1em", font_weight="700", color=TEXT_DARK, letter_spacing="0.1em"),
                 rx.hstack(
                     rx.button(
-                        "✈️  Telegram – Grupo Pruebas Físicas", 
-                        **BTN_PRIMARY_BASE, 
-                        padding="0.6em 1.4em", 
+                        "✈️  Telegram – Grupo Pruebas Físicas",
+                        **BTN_PRIMARY_BASE,
+                        padding="0.6em 1.4em",
                         width="100%",
                         on_click=rx.redirect("https://t.me/+1ftMK4D17I1iYzg0")
                     ),

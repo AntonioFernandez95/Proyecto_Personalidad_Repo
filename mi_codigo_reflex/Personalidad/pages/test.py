@@ -2,25 +2,35 @@ import reflex as rx
 import Personalidad.styles.utils as utils
 
 
+
+
 from Personalidad.styles.styles import Size
 from Personalidad.states.base_state import State
 from Personalidad.styles.colors import Color
 from Personalidad.components.navbar import navbar
 from Personalidad.components.progress import show_progress_test
 from Personalidad.components.alert_dialog import alert_dialog
-from Personalidad.components.round_button import round_button_left_icon, round_button_right_icon
+from Personalidad.components.round_button import round_button, round_button_left_icon, round_button_right_icon
 from Personalidad.states.test_state import TestState
+
+
 
 
 """
 reflex run
 
 
+
+
 """
+
+
 
 
 @rx.page(route="/test", title="Test", on_load=[State.check_personalidad_access, TestState.crear_test])
 def index():
+
+
 
 
     def showlist(item: rx.Var, index: int):        
@@ -45,6 +55,8 @@ def index():
             flex_shrink="0",
             key=(TestState.pag_actual * TestState.num_preguntas + index).to_string(),
         )
+
+
 
 
     return rx.box(
@@ -73,6 +85,8 @@ def index():
                                 rx.hstack(
                                     round_button_left_icon("Anterior","arrow-big-left", TestState.previous_page),
                                     rx.spacer(),
+                                    round_button("Volver", rx.redirect("/info")),
+                                    rx.spacer(),
                                     rx.cond(
                                         (TestState.pag_actual + 1) == TestState.total_pages,
                                         alert_dialog("Finalizar test", "¿Has revisado todas tus respuestas? Esta acción no es reversible.", "Revisar", "Sí, finalizar", TestState.finalizar_test),
@@ -85,6 +99,8 @@ def index():
                             rx.mobile_only(
                                 rx.hstack(
                                     round_button_left_icon("Anterior","arrow-big-left", TestState.previous_page),
+                                    rx.spacer(),
+                                    round_button("Volver", rx.redirect("/info")),
                                     rx.spacer(),
                                     rx.cond(
                                         (TestState.pag_actual + 1) == TestState.total_pages,

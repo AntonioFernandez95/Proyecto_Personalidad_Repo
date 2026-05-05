@@ -72,11 +72,12 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
         
         columnas_def = []
         for col in columnas:
+            primer_valor = lista_datos[0].get(col)
             if col in ["fecha", "desde", "hasta"]:
                 columnas_def.append(f'"{col}" TIMESTAMP DEFAULT CURRENT_TIMESTAMP')
-            elif col in ["count_login", "pedido"]:
+            elif col in ["count_login", "pedido"] or (col == "id" and isinstance(primer_valor, int)):
                 columnas_def.append(f'"{col}" INTEGER DEFAULT 0')
-            elif col in ["are_terms_accepted", "disabled", "is_optional_checked"]:
+            elif col in ["are_terms_accepted", "disabled", "is_optional_checked", "disabled_personalidad", "disabled_fisicas"]:
                 columnas_def.append(f'"{col}" BOOLEAN DEFAULT TRUE')
             elif col == "rol":
                 columnas_def.append(f'"{col}" TEXT DEFAULT \'estudiante\'')
@@ -133,29 +134,10 @@ def importar_todo():
     try:
         with obtener_conexion() as conn:
             with conn.cursor() as cur:
-                # 0. Asegurar esquema y tablas de recursos REALES (recursos.videos y recursos.pdfs)
-                print("Verificando esquema 'recursos' y tablas 'videos'/'pdfs'...")
+                # 0. Asegurar esquema de recursos
+                print("Verificando esquema 'recursos'...")
                 cur.execute("CREATE SCHEMA IF NOT EXISTS recursos;")
-                cur.execute("""
-                    CREATE TABLE IF NOT EXISTS recursos.videos (
-                        id SERIAL PRIMARY KEY,
-                        nombre TEXT NOT NULL,
-                        url TEXT NOT NULL,
-                        categoria TEXT NOT NULL,
-                        fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                    );
-                """)
-                cur.execute("""
-                    CREATE TABLE IF NOT EXISTS recursos.pdfs (
-                        id SERIAL PRIMARY KEY,
-                        nombre TEXT NOT NULL,
-                        url TEXT NOT NULL,
-                        categoria TEXT NOT NULL,
-                        fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                    );
-                """)
                 conn.commit()
-                print("Tablas de recursos listas.")
 
                 # 1. PRE-PROCESAMIENTO: Fusión de datos de usuarios
                 usuarios_maestros = {}

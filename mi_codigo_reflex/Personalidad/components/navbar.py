@@ -64,7 +64,7 @@ def navbar() -> rx.Component:
                 rx.hstack(
                     rx.link(
                         rx.icon("instagram", size=20, color=rx.color_mode_cond(light=Color.TEXT, dark="white")),
-                        href="https://instagram.com/academia.metodos",
+                        href="https://www.instagram.com/academiametodos/",
                         is_external=True,
                         _hover={"color": "#ee6a19"}
                     ),

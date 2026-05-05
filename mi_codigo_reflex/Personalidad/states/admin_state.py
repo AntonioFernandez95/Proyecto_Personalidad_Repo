@@ -159,8 +159,10 @@ class AdminState(State):
             sorted_users = sorted(raw_users, key=lambda x: x.get("email", ""))
             # Mapeamos al schema
             all_users = users_schema(sorted_users)
-            # FILTRO: Solo estudiantes en la lista de gestión
+            
+            # FILTRO ESTRICTO: Solo mostramos estudiantes
             self.users = [u for u in all_users if u.get("rol") == "estudiante"]
+                
         except Exception as e:
             print(f"Error cargando usuarios: {e}")
             self.users = []
