@@ -26,7 +26,7 @@ class LoginState(State):
     showEmailNotFoundAlert: bool = False 
     
     def update_email(self, email: str):
-        self.email = email.strip()
+        self.email = email.strip().lower()
         self.validate_email()
         
     def update_password(self, password: str):

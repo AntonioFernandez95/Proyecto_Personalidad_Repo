@@ -105,7 +105,7 @@ async def login(email: str, password: str) -> bool:
     db_password = user_db.password
 
     # 1. Comprobación Estándar (Bcrypt)
-    if db_password.startswith("$2") and len(db_password) >= 59:
+    if db_password.startswith("$2") and len(db_password) >= 50:
         try:
             return bcrypt.checkpw(password_bytes, db_password.encode('utf-8'))
         except Exception:
