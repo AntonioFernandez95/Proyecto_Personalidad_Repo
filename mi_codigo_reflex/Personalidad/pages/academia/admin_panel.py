@@ -258,6 +258,51 @@ def admin_panel() -> rx.Component:
                
                 # Recursos y Herramientas (PDFs y Vídeos)
                 rx.vstack(
+                    # NUEVA TARJETA: ALTA DE ALUMNOS
+                    admin_card(
+                        "Alta de Alumnos", "user-plus",
+                        rx.vstack(
+                            rx.text("Nombre y Apellidos:", font_size="0.85em", font_weight="bold", color=TEXT_DARK),
+                            rx.input(
+                                placeholder="Ej: Juan Pérez",
+                                value=AdminState.create_name,
+                                on_change=AdminState.set_create_name,
+                                width="100%",
+                                background=CARD_BG,
+                                color=TEXT_DARK,
+                            ),
+                            rx.text("Email del alumno:", font_size="0.85em", font_weight="bold", color=TEXT_DARK),
+                            rx.input(
+                                placeholder="alumno@email.com",
+                                value=AdminState.create_email,
+                                on_change=AdminState.set_create_email,
+                                width="100%",
+                                background=CARD_BG,
+                                color=TEXT_DARK,
+                            ),
+                            rx.text("Rol del usuario:", font_size="0.85em", font_weight="bold", color=TEXT_DARK),
+                            rx.select(
+                                ["estudiante", "admin"],
+                                value=AdminState.create_role,
+                                on_change=AdminState.set_create_role,
+                                width="100%",
+                                background=CARD_BG,
+                                color=TEXT_DARK,
+                            ),
+                            rx.button(
+                                "Crear y Enviar Accesos",
+                                on_click=AdminState.crear_usuario_manual,
+                                width="100%",
+                                **BTN_PRIMARY_BASE,
+                                height="3.5em",
+                                margin_top="1em",
+                            ),
+                            spacing="3",
+                            width="100%",
+                            align_items="start",
+                        ),
+                    ),
+
                     admin_card(
                         "Gestión de Recursos", "cloud-upload",
                         rx.text("Categoría destino:", font_size="0.9em", font_weight="bold", color=TEXT_DARK),

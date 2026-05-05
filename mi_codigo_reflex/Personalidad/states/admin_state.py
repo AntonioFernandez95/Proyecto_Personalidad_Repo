@@ -18,6 +18,11 @@ class AdminState(State):
     new_email: str = ""
     days_to_add: str = "30"
 
+    # --- CAMPOS PARA CREACIÓN DE USUARIOS ---
+    create_name: str = ""
+    create_email: str = ""
+    create_role: str = "estudiante"
+
     # --- GESTIÓN DE RECURSOS ---
     recursos: List[dict] = []
     selected_categoria: str = "flexiones"
@@ -188,22 +193,24 @@ class AdminState(State):
             days = int(self.days_to_add)
             email = self.selected_user["email"]
             col_fecha = f"hasta_{tipo_plan}"
+            col_disabled = f"disabled_{tipo_plan}"
             
             raw_user = db_client.find_one("usuarios_plataformas", "email", email)
-            fecha_actual = raw_user.get(col_fecha)
+            # Buscamos la fecha actual (específica o genérica)
+            fecha_actual = raw_user.get(col_fecha) or raw_user.get("hasta")
             if not fecha_actual or not isinstance(fecha_actual, datetime):
                 fecha_actual = datetime.now()
 
             nueva_fecha = fecha_actual + timedelta(days=days)
             
-            # Al alargar el plan, lo reactivamos automáticamente (ponemos disabled a False)
-            col_disabled = f"disabled_{tipo_plan}"
-            success = db_client.update_one(
-                "usuarios_plataformas", "email", email, {
-                    col_fecha: nueva_fecha,
-                    col_disabled: False
-                }
-            )
+            # Intentamos detectar si usamos columnas separadas o unificadas
+            updates = {col_fecha: nueva_fecha, col_disabled: False}
+            success = db_client.update_one("usuarios_plataformas", "email", email, updates)
+            
+            if not success:
+                # Reintento con columnas unificadas
+                updates = {"hasta": nueva_fecha, "disabled": False}
+                success = db_client.update_one("usuarios_plataformas", "email", email, updates)
 
             if success:
                 new_selected = self.selected_user.copy()
@@ -216,6 +223,68 @@ class AdminState(State):
         except Exception as e:
             return rx.window_alert(f"Error: {str(e)}")
 
+    def crear_usuario_manual(self):
+        """Crea un nuevo usuario con contraseña aleatoria."""
+        from Personalidad.services.auth_service import generate_random_password
+        import bcrypt
+        
+        if not self.create_name or not self.create_email:
+            return rx.window_alert("Nombre y Email son obligatorios.")
+            
+        # 1. Generar contraseña aleatoria
+        temp_pass = generate_random_password(8)
+        hashed_pass = bcrypt.hashpw(temp_pass.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        
+        # 2. Preparar datos
+        partes = self.create_name.split(" ", 1)
+        nombre = partes[0]
+        apellidos = partes[1] if len(partes) > 1 else ""
+        
+        try:
+            # Comprobamos si ya existe
+            existente = db_client.find_one("usuarios_plataformas", "email", self.create_email.lower().strip())
+            if existente:
+                return rx.window_alert("Este email ya está registrado.")
+
+            # Inserción manual via SQL para asegurar todos los campos por defecto
+            import psycopg2
+            from Personalidad.config import DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
+            conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST, port=DB_PORT)
+            cur = conn.cursor()
+            
+            sql = """
+                INSERT INTO usuarios_metodos.usuarios_plataformas 
+                (nombre, apellidos, email, password, rol, desde, hasta, 
+                 count_login, are_terms_accepted, is_optional_checked, disabled) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """
+            valores = (
+                nombre, apellidos, self.create_email.lower().strip(), hashed_pass, self.create_role,
+                datetime.now(), datetime.now() + timedelta(days=30),
+                0, True, True, False
+            )
+            
+            cur.execute(sql, valores)
+            conn.commit()
+            conn.close()
+            
+            # 3. Enviar Email con credenciales
+            from Personalidad.services.email_service import send_credentials_email
+            email_enviado = send_credentials_email(self.create_email.lower().strip(), temp_pass)
+            
+            # Limpiar campos y refrescar
+            self.create_name = ""
+            self.create_email = ""
+            self.fetch_users()
+            
+            if email_enviado:
+                return rx.toast("¡Usuario creado y credenciales enviadas por email!")
+            else:
+                return rx.window_alert(f"Usuario creado, pero hubo un error al enviar el email.\n\nContraseña generada: {temp_pass}")
+
+        except Exception as e:
+            return rx.window_alert(f"Error al crear usuario: {str(e)}")
+
     def toggle_baja_plan(self, tipo_plan: str):
         if not self.selected_user or not self.selected_user.get("email"):
             return rx.window_alert("No hay usuario seleccionado.")
@@ -227,6 +296,12 @@ class AdminState(State):
         success = db_client.update_one(
             "usuarios_plataformas", "email", email, {col_disabled: nuevo_estado}
         )
+
+        if not success:
+            # Reintento con columna unificada
+            success = db_client.update_one(
+                "usuarios_plataformas", "email", email, {"disabled": nuevo_estado}
+            )
 
         if success:
             new_selected = self.selected_user.copy()

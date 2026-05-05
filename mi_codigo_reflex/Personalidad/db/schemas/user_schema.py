@@ -4,9 +4,13 @@
 def user_schema(user):
     if not user: return {}
     
-    # Formateo seguro de fechas
-    h_perso = user.get("hasta_personalidad")
-    h_fisicas = user.get("hasta_fisicas")
+    # Formateo seguro de fechas (usamos 'hasta' unificado si no existen las específicas)
+    h_perso = user.get("hasta_personalidad") or user.get("hasta")
+    h_fisicas = user.get("hasta_fisicas") or user.get("hasta")
+    
+    # Estados de baja (usamos 'disabled' unificado si no existen las específicas)
+    d_perso = user.get("disabled_personalidad", user.get("disabled", False))
+    d_fisicas = user.get("disabled_fisicas", user.get("disabled", False))
     
     return {
         "id": str(user.get("id", user.get("_id", ""))),        
@@ -21,8 +25,8 @@ def user_schema(user):
         "rol": user.get("rol", "estudiante"),
         "hasta_personalidad": h_perso.strftime("%Y-%m-%d") if hasattr(h_perso, "strftime") else "N/A",
         "hasta_fisicas": h_fisicas.strftime("%Y-%m-%d") if hasattr(h_fisicas, "strftime") else "N/A",
-        "disabled_personalidad": bool(user.get("disabled_personalidad", False)),
-        "disabled_fisicas": bool(user.get("disabled_fisicas", False)),
+        "disabled_personalidad": bool(d_perso),
+        "disabled_fisicas": bool(d_fisicas),
     }
 
 #*Devuelve un listado de usuarios*#

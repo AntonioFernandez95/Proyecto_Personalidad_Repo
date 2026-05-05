@@ -3,6 +3,7 @@ import json
 import psycopg2
 from psycopg2 import sql
 import bcrypt
+from datetime import datetime, timedelta
 
 # Importamos la configuración centralizada
 try:
@@ -197,9 +198,12 @@ def importar_todo():
                     if not is_already_hashed:
                         pw = bcrypt.hashpw(pw.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
+                    desde = info.get("desde") or datetime.now()
+                    hasta = info.get("hasta") or (datetime.now() + timedelta(days=30))
+
                     valores = [
                         nombre, apellidos, info.get("dni"), email, pw,
-                        info.get("pedido", 0), info.get("desde"), info.get("hasta"),
+                        info.get("pedido", 0), desde, hasta,
                         info.get("count_login", 0), 
                         info.get("are_terms_accepted", False),
                         info.get("is_optional_checked", True),
