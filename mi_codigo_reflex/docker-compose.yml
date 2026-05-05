@@ -31,7 +31,9 @@ services:
     environment:
       - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
     volumes:
-      - uploads_data:/app/assets/uploads
+      - .:/app
+      - ./assets/uploads:/app/assets/uploads
+      - ./data:/app/data
 
   # Frontend Service (Static Files via Nginx)
   frontend:

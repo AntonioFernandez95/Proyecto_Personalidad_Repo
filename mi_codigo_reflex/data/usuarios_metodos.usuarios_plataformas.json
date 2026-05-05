@@ -161,5 +161,60 @@
     },
     "direccion": "Calle Barrau 3 (H5) 8ºA",
     "telefono": "659888278"
+  },
+  {
+    "nombre": "Antonio",
+    "apellido1": "",
+    "email": "antoniomanuelfernandez.24@campuscamara.es",
+    "password": "$2b$12$iRxuiDNvshADpR54P87ke.LC9J2XYzPX/z/jsS855Ut21XJuNrtaG",
+    "rol": "estudiante",
+    "desde": "2026-05-05T09:40:13.820862",
+    "hasta": "2026-06-04T09:40:13.820873",
+    "disabled_personalidad": false,
+    "disabled_fisicas": true
+  },
+  {
+    "nombre": "Antonio",
+    "apellido1": "",
+    "email": "antoniomanuelfernandez.24@campuscamara.es",
+    "password": "$2b$12$gfImkB9Y6CGXg9fEJgT3Du8yS2RXNLZSLVTp8ED2iurRC./bu.eX6",
+    "rol": "estudiante",
+    "desde": "2026-05-05T09:48:14.374108",
+    "hasta": "2026-06-04T09:48:14.374117",
+    "disabled_personalidad": false,
+    "disabled_fisicas": true
+  },
+  {
+    "nombre": "Alejandra",
+    "apellido1": "",
+    "email": "alejandragarzon.24@campuscamara.es",
+    "password": "$2b$12$AL3ggfnox7z6lLpSKGyhSe4JxmIFabVQFTK3buZ31UazNEgmqQovS",
+    "rol": "estudiante",
+    "desde": "2026-05-05T09:48:42.658164",
+    "hasta": "2026-06-04T09:48:42.658194",
+    "disabled_personalidad": false,
+    "disabled_fisicas": false
+  },
+  {
+    "nombre": "Carlos",
+    "apellido1": "",
+    "email": "carlosesquivias.24@campuscamara.es",
+    "password": "$2b$12$dd2rriWAkRl54.B5Xze0puIK9FRIBJiIJV97ZO/ysfOk8VmGhfNjm",
+    "rol": "estudiante",
+    "desde": "2026-05-05T09:49:01.191843",
+    "hasta": "2026-06-04T09:49:01.191857",
+    "disabled_personalidad": false,
+    "disabled_fisicas": false
+  },
+  {
+    "nombre": "Pablo",
+    "apellido1": "",
+    "email": "pablogonzalez.24@campuscamara.es",
+    "password": "$2b$12$ifCI0Dm.JM9DRZpHEqn/1eaWB9p9WXpMiZbbnufG0hHnLMDLZKwle",
+    "rol": "estudiante",
+    "desde": "2026-05-05T09:49:16.280739",
+    "hasta": "2026-06-04T09:49:16.280747",
+    "disabled_personalidad": true,
+    "disabled_fisicas": false
   }
 ]

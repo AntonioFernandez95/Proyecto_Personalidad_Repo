@@ -23,6 +23,7 @@ ARCHIVOS_A_IMPORTAR = {
     "Personalidad.db_personalidad.json": ("personalidad", "db_personalidad"),
     "usuarios_metodos.plataformas_metodos.json": ("usuarios_metodos", "plataformas_metodos"),
     "usuarios_metodos.usuarios_plataformas.json": ("usuarios_metodos", "usuarios_plataformas"),
+    "usuarios_metodos.recursos.json": ("usuarios_metodos", "recursos"),
     "tecnicas_data.json": ("tecnicas", "tecnicas_data")
 }
 
@@ -59,7 +60,8 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
             columnas = [
                 "nombre", "apellidos", "dni", "email", "password", 
                 "pedido", "desde", "hasta", "count_login", 
-                "are_terms_accepted", "is_optional_checked", "disabled", "rol"
+                "are_terms_accepted", "is_optional_checked", "disabled", "rol",
+                "disabled_personalidad", "disabled_fisicas"
             ]
         else:
             columnas = columnas_originales
@@ -130,6 +132,22 @@ def importar_todo():
     try:
         with obtener_conexion() as conn:
             with conn.cursor() as cur:
+                # 0. Crear esquema y tabla de RECURSOS si no existen
+                print("Verificando tabla de recursos (usuarios_metodos.recursos)...")
+                cur.execute("CREATE SCHEMA IF NOT EXISTS usuarios_metodos;")
+                cur.execute("""
+                    CREATE TABLE IF NOT EXISTS usuarios_metodos.recursos (
+                        id SERIAL PRIMARY KEY,
+                        nombre TEXT NOT NULL,
+                        tipo TEXT NOT NULL,
+                        url TEXT NOT NULL,
+                        categoria TEXT NOT NULL,
+                        fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    );
+                """)
+                conn.commit()
+                print("Tabla de recursos lista.")
+
                 # 1. PRE-PROCESAMIENTO: Fusión de datos de usuarios
                 usuarios_maestros = {}
                 
@@ -168,7 +186,8 @@ def importar_todo():
                 columnas = [
                     "nombre", "apellidos", "dni", "email", "password", 
                     "pedido", "desde", "hasta", "count_login", 
-                    "are_terms_accepted", "is_optional_checked", "disabled", "rol"
+                    "are_terms_accepted", "is_optional_checked", "disabled", "rol",
+                    "disabled_personalidad", "disabled_fisicas"
                 ]
                 
                 cur.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
@@ -208,7 +227,9 @@ def importar_todo():
                         info.get("are_terms_accepted", False),
                         info.get("is_optional_checked", True),
                         info.get("disabled", False),
-                        "admin" if email.endswith("@academiametodos.com") else "estudiante"
+                        "admin" if email.endswith("@academiametodos.com") else "estudiante",
+                        info.get("disabled_personalidad", False),
+                        info.get("disabled_fisicas", False)
                     ]
                     
                     query = sql.SQL("INSERT INTO {}.{} ({}) VALUES ({})").format(

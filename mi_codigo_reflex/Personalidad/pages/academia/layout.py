@@ -1,29 +1,29 @@
 import reflex as rx
 
+
 # ─────────────────────────────────────────────
 # COLORES Y CONSTANTES (Importados de academia_styles)
 # ─────────────────────────────────────────────
 from Personalidad.styles.academia_styles import (
-    OLIVE, OLIVE_DARK, OLIVE_LIGHT, CARD_BG, NAV_BG, 
+    OLIVE, OLIVE_DARK, OLIVE_LIGHT, CARD_BG, NAV_BG,
     TEXT_DARK, TEXT_MID, GRAY_LIGHT, BADGE_GREEN, BADGE_RED, BADGE_GRAY,
     CARD_STYLE, BTN_PRIMARY_BASE, BTN_SECONDARY_BASE, BTN_BACK_BASE
 )
 
+
 PAGE_BG = rx.color_mode_cond(
-    light=(
-        "linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), "
-        "url('/fondo-soldados (1).png')"
-    ),
-    dark=(
-        "linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), "
-        "url('/fondo-soldados (1).png')"
-    )
+    light="url('/fondo-soldados (1).png')",
+    dark="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/fondo-soldados (1).png')"
 )
+
+
 
 
 # COMPONENTES COMPARTIDOS
 # ─────────────────────────────────────────────
 from Personalidad.components.navbar import navbar
+
+
 
 
 def academia_layout(*children, **props) -> rx.Component:
@@ -35,6 +35,7 @@ def academia_layout(*children, **props) -> rx.Component:
     # NUEVO: Extraer max_width de props o usar el valor por defecto (1100px)
     # Esto permite que páginas específicas sean más anchas o estrechas
     container_max_width = props.pop("container_max_width", "1100px")
+
 
     return rx.box(
         navbar(),
@@ -50,6 +51,7 @@ def academia_layout(*children, **props) -> rx.Component:
                 padding_y="2em",
             ),
             width="100%",
+            padding_top="6em",
             min_height="calc(100vh - 5em)",
         ),
         background=PAGE_BG,
@@ -59,6 +61,8 @@ def academia_layout(*children, **props) -> rx.Component:
         min_height="100vh",
         font_family="'Roboto', sans-serif",
     )
+
+
 
 
 # ─────────────────────────────────────────────
@@ -86,6 +90,8 @@ def big_card(icon_name: str, title: str, subtitle: str,
     )
 
 
+
+
 def small_card(icon_name: str, title: str, desc: str,
                btn_label: str, href: str) -> rx.Component:
     return rx.vstack(
@@ -107,12 +113,16 @@ def small_card(icon_name: str, title: str, desc: str,
     )
 
 
+
+
 def back_button(label: str = "← Volver", href: str = "/academia/fisicas") -> rx.Component:
     return rx.link(
         rx.button(label, **BTN_BACK_BASE, padding="0.5em 1.2em"),
         href=href,
         margin_top="2em",
     )
+
+
 
 
 def prueba_row(icon_name: str, nombre: str, href: str) -> rx.Component:
@@ -135,6 +145,8 @@ def prueba_row(icon_name: str, nombre: str, href: str) -> rx.Component:
     )
 
 
+
+
 def norma_item(texto: str) -> rx.Component:
     return rx.hstack(
         rx.center(
@@ -145,6 +157,8 @@ def norma_item(texto: str) -> rx.Component:
         rx.text(texto, font_size="0.9em", color=TEXT_MID),
         spacing="2", align="center",
     )
+
+
 
 
 def plan_row(title: str, subtitle: str, href: str = "") -> rx.Component:

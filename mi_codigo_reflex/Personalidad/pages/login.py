@@ -1,11 +1,13 @@
 import reflex as rx
 import Personalidad.styles.utils as utils
 
+
 from Personalidad.styles.fonts import Font
 from Personalidad.styles.styles import Size
 from Personalidad.styles.colors import Color
 from Personalidad.components.navbar import navbar
 from Personalidad.states.login_state import LoginState, ButtonClick
+
 
 @rx.page(route="/", title="Login", on_load=ButtonClick.check_authenticated)
 def index():
@@ -105,6 +107,7 @@ def index():
                             width="100%",
                         ),
 
+
                         # Checkbox Términos y Condiciones
                         rx.hstack(
                             rx.checkbox(
@@ -128,6 +131,7 @@ def index():
                             width="100%",
                         ),
 
+
                         # Alerta Términos No Aceptados
                         rx.cond(
                             ButtonClick.show_terms_alert,
@@ -138,6 +142,7 @@ def index():
                                 color_scheme="red",
                             ),
                         ),
+
 
                         # --- OPCIÓN RECUPERACIÓN DE CONTRASEÑA ---
                         rx.box(
@@ -153,6 +158,7 @@ def index():
                             text_align="right",
                         ),
 
+
                         # Botón Acceder
                         rx.button(
                             "Acceder",
@@ -166,7 +172,7 @@ def index():
                         align="center",
                         spacing="3",
                         max_width="60em",
-                    ), 
+                    ),
                 ),
                 width= "90%",
                 max_width= "450px",
@@ -185,8 +191,8 @@ def index():
         ),
         height="100vh",
         width="100%",
-        background="linear-gradient(rgba(0,0,0,0.8), rgba(27,154,175,0.8)), url('/fondo-soldados (1).png')",
+        background="url('/fondo-soldado(1).png')",
         background_size="cover",
         position="relative",
-        background_position="center", 
+        background_position="center",
     )

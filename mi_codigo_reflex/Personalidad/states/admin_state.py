@@ -67,6 +67,27 @@ class AdminState(State):
             print(f"Error cargando recursos: {e}")
             self.recursos = []
 
+    def sync_recursos_to_json(self):
+        """Exporta la lista actual de recursos de la BD al archivo JSON local."""
+        import json
+        import os
+        try:
+            json_path = os.path.join("data", "usuarios_metodos.recursos.json")
+            # Convertimos objetos datetime a string para el JSON
+            datos_json = []
+            for r in self.recursos:
+                item = r.copy()
+                if "fecha_creacion" in item and item["fecha_creacion"]:
+                    if isinstance(item["fecha_creacion"], datetime):
+                        item["fecha_creacion"] = item["fecha_creacion"].isoformat()
+                datos_json.append(item)
+                
+            with open(json_path, "w", encoding="utf-8") as f:
+                json.dump(datos_json, f, indent=2, ensure_ascii=False)
+            print(f"Sincronizado: {json_path}")
+        except Exception as e:
+            print(f"Error sincronizando recursos a JSON: {e}")
+
     async def handle_upload(self, files: List[rx.UploadFile]):
         """Sube archivos a assets/uploads y los registra en la BD correspondiente."""
         import os
@@ -93,6 +114,7 @@ class AdminState(State):
                 guardar_video(nombre=nombre_archivo, url=url_archivo, categoria=self.selected_categoria)
         
         self.fetch_recursos()
+        self.sync_recursos_to_json() # <--- Sincronizar con JSON local
         return rx.toast(f"Subidos {len(files)} archivos a {self.selected_categoria}.")
 
     def borrar_recurso(self, recurso: dict):
@@ -112,6 +134,7 @@ class AdminState(State):
                     os.remove(filepath)
                 
                 self.fetch_recursos()
+                self.sync_recursos_to_json() # <--- Sincronizar con JSON local
                 return rx.toast("Recurso eliminado correctamente.")
         except Exception as e:
             return rx.window_alert(f"Error al borrar: {e}")
@@ -276,6 +299,34 @@ class AdminState(State):
             conn.commit()
             conn.close()
             
+            # --- NUEVO: Persistencia en el archivo JSON ---
+            try:
+                import json
+                import os
+                json_path = os.path.join("data", "usuarios_metodos.usuarios_plataformas.json")
+                if os.path.exists(json_path):
+                    with open(json_path, "r", encoding="utf-8") as f:
+                        json_data = json.load(f)
+                    
+                    nuevo_json_user = {
+                        "nombre": nombre,
+                        "apellido1": apellidos,
+                        "email": self.create_email.lower().strip(),
+                        "password": hashed_pass, # Guardamos el hash para máxima seguridad
+                        "rol": self.create_role,
+                        "desde": datetime.now().isoformat(),
+                        "hasta": (datetime.now() + timedelta(days=30)).isoformat(),
+                        "disabled_personalidad": not self.create_has_personality,
+                        "disabled_fisicas": not self.create_has_physical
+                    }
+                    json_data.append(nuevo_json_user)
+                    
+                    with open(json_path, "w", encoding="utf-8") as f:
+                        json.dump(json_data, f, indent=2, ensure_ascii=False)
+                    print(f"Usuario {self.create_email} persistido en JSON.")
+            except Exception as e_json:
+                print(f"Error guardando en JSON: {e_json}")
+
             # 3. Enviar Email con credenciales
             from Personalidad.services.email_service import send_credentials_email
             email_enviado = send_credentials_email(self.create_email.lower().strip(), temp_pass)

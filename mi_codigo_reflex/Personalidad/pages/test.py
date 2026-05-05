@@ -1,6 +1,7 @@
 import reflex as rx
 import Personalidad.styles.utils as utils
 
+
 from Personalidad.styles.styles import Size
 from Personalidad.states.base_state import State
 from Personalidad.styles.colors import Color
@@ -10,13 +11,17 @@ from Personalidad.components.alert_dialog import alert_dialog
 from Personalidad.components.round_button import round_button_left_icon, round_button_right_icon
 from Personalidad.states.test_state import TestState
 
+
 """
 reflex run
 
+
 """
+
 
 @rx.page(route="/test", title="Test", on_load=[State.check_personalidad_access, TestState.crear_test])
 def index():
+
 
     def showlist(item: rx.Var, index: int):        
         return rx.vstack(
@@ -41,6 +46,7 @@ def index():
             key=(TestState.pag_actual * TestState.num_preguntas + index).to_string(),
         )
 
+
     return rx.box(
         utils.lang(),
         rx.vstack(
@@ -58,7 +64,7 @@ def index():
                         rx.vstack(
                             rx.vstack(
                                 rx.foreach(
-                                    TestState.current_data, 
+                                    TestState.current_data,
                                     lambda item, index: showlist(item, index)
                                 ),
                                 width="100%",
@@ -111,22 +117,20 @@ def index():
                 margin_bottom="2em",
                 background= rx.color_mode_cond(light="white", dark=Color.TEXT),
                 padding= "3.1em 1.8em",
-                height="100vh",
-                overflow_y="auto",
+                height="auto",
                 border_radius="10px",
                 align= "center",
                 box_shadow="0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
             ),
             align="center",
             width="100%",
-            height="100vh",
+            min_height="100vh",
         ),
-        height="100vh",
+        min_height="100vh",
         width="100%",
-        background="linear-gradient(rgba(0,0,0,0.8), rgba(27,154,175,0.8)), url('/tropa.jpg')",
+        background_image="url('/fondo-soldado(1).png')",
         background_size="cover",
         background_attachment="fixed",
-        position="relative",
-        background_position="center", 
+        background_position="center",
         background_repeat="no-repeat"
     )

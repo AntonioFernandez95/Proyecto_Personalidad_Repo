@@ -1,6 +1,7 @@
 import reflex as rx
-from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, plan_row, back_button, CARD_STYLE, BTN_PRIMARY_BASE
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, TEXT_MID, GRAY_LIGHT, plan_row, back_button, CARD_STYLE, BTN_PRIMARY_BASE
 from Personalidad.states.planificacion_state import PlanificacionState
+
 
 _MARCAS = [
     ("Flexiones",     "17 reps", "12 reps"),
@@ -9,6 +10,7 @@ _MARCAS = [
     ("Agilidad",      "25 seg",  "27 seg"),
 ]
 
+
 @rx.page(route="/academia/planificacion", title="Academia Online - Planificación", on_load=PlanificacionState.on_load)
 def planificacion() -> rx.Component:
     return academia_layout(
@@ -16,15 +18,15 @@ def planificacion() -> rx.Component:
         rx.hstack(
             rx.vstack(
                 rx.text("📋 PLANES DE ENTRENAMIENTO", font_size="1em", font_weight="800", color=OLIVE, letter_spacing="0.05em"),
-                
+               
                 # DESPLEGABLE DE RECURSOS DINÁMICOS (Versión Radix para máxima compatibilidad)
                 rx.vstack(
-                    rx.text("Selecciona un recurso:", font_size="0.8em", color="gray", font_weight="bold"),
+                    rx.text("Selecciona un recurso:", font_size="0.8em", color=TEXT_MID, font_weight="bold"),
                     rx.select.root(
                         rx.select.trigger(
                             width="100%",
-                            background="white",
-                            color="black",
+                            background="transparent",
+                            color=TEXT_DARK,
                             border="1px solid #ddd",
                             border_radius="10px",
                             padding="0.5em"
@@ -66,13 +68,14 @@ def planificacion() -> rx.Component:
                     ),
                     width="100%",
                     padding="1em",
-                    background="#f9f9f9",
+                    background=GRAY_LIGHT,
                     border_radius="15px",
-                    border="1px solid #eee",
+                    border=rx.color_mode_cond(light="1px solid #eee", dark="1px solid #444"),
                     margin_bottom="1.5em"
                 ),
 
-                rx.text("Planes Estáticos:", font_size="0.8em", color="gray", font_weight="bold"),
+
+                rx.text("Planes Estáticos:", font_size="0.8em", color=TEXT_MID, font_weight="bold"),
                 plan_row("CURSO PRUEBA FÍSICAS 2026", "6 semanas · Nivel básico", "/curso_fisicas_2026.pdf"),
                 plan_row("PRUEBAS FÍSICAS 2026 CIRCUITO", "8 semanas · Nivel medio-alto", "/circuito_2026.pdf"),
                 plan_row("PRUEBAS FÍSICAS FLEXIONES Y PLANCHAS", "12 semanas · Máximo rendimiento", "/flexiones_planchas.pdf"),
@@ -92,9 +95,9 @@ def planificacion() -> rx.Component:
                     rx.table.body(
                         *[
                             rx.table.row(
-                                rx.table.cell(prueba,   color="black"),
-                                rx.table.cell(hombres,  color="black"),
-                                rx.table.cell(mujeres,  color="black"),
+                                rx.table.cell(prueba,   color=TEXT_DARK),
+                                rx.table.cell(hombres,  color=TEXT_DARK),
+                                rx.table.cell(mujeres,  color=TEXT_DARK),
                             )
                             for prueba, hombres, mujeres in _MARCAS
                         ]
