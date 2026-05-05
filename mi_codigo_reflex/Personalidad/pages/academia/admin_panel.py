@@ -70,9 +70,10 @@ def user_management_row(user: dict) -> rx.Component:
             ),
             rx.button(
                 rx.icon("settings", size=24),
-                "Gestionar",
+                rx.cond(user["rol"] == "admin", "Admin", "Gestionar"),
                 on_click=AdminState.select_user(user),
-                background_color="#5B733A",
+                is_disabled=user["rol"] == "admin",
+                background_color=rx.cond(user["rol"] == "admin", "#ccc", "#5B733A"),
                 color="white",
                 height="4em",
                 font_size="1.1em",

@@ -23,7 +23,8 @@ ARCHIVOS_A_IMPORTAR = {
     "Personalidad.db_personalidad.json": ("personalidad", "db_personalidad"),
     "usuarios_metodos.plataformas_metodos.json": ("usuarios_metodos", "plataformas_metodos"),
     "usuarios_metodos.usuarios_plataformas.json": ("usuarios_metodos", "usuarios_plataformas"),
-    "usuarios_metodos.recursos.json": ("usuarios_metodos", "recursos"),
+    "recursos_videos.json": ("recursos", "videos"),
+    "recursos_pdfs.json": ("recursos", "pdfs"),
     "tecnicas_data.json": ("tecnicas", "tecnicas_data")
 }
 
@@ -132,21 +133,29 @@ def importar_todo():
     try:
         with obtener_conexion() as conn:
             with conn.cursor() as cur:
-                # 0. Crear esquema y tabla de RECURSOS si no existen
-                print("Verificando tabla de recursos (usuarios_metodos.recursos)...")
-                cur.execute("CREATE SCHEMA IF NOT EXISTS usuarios_metodos;")
+                # 0. Asegurar esquema y tablas de recursos REALES (recursos.videos y recursos.pdfs)
+                print("Verificando esquema 'recursos' y tablas 'videos'/'pdfs'...")
+                cur.execute("CREATE SCHEMA IF NOT EXISTS recursos;")
                 cur.execute("""
-                    CREATE TABLE IF NOT EXISTS usuarios_metodos.recursos (
+                    CREATE TABLE IF NOT EXISTS recursos.videos (
                         id SERIAL PRIMARY KEY,
                         nombre TEXT NOT NULL,
-                        tipo TEXT NOT NULL,
                         url TEXT NOT NULL,
                         categoria TEXT NOT NULL,
-                        fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                        fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    );
+                """)
+                cur.execute("""
+                    CREATE TABLE IF NOT EXISTS recursos.pdfs (
+                        id SERIAL PRIMARY KEY,
+                        nombre TEXT NOT NULL,
+                        url TEXT NOT NULL,
+                        categoria TEXT NOT NULL,
+                        fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     );
                 """)
                 conn.commit()
-                print("Tabla de recursos lista.")
+                print("Tablas de recursos listas.")
 
                 # 1. PRE-PROCESAMIENTO: Fusión de datos de usuarios
                 usuarios_maestros = {}

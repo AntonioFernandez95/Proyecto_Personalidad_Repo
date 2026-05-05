@@ -68,23 +68,35 @@ class AdminState(State):
             self.recursos = []
 
     def sync_recursos_to_json(self):
-        """Exporta la lista actual de recursos de la BD al archivo JSON local."""
+        """Exporta la lista actual de recursos de la BD a archivos JSON locales (separados)."""
         import json
         import os
         try:
-            json_path = os.path.join("data", "usuarios_metodos.recursos.json")
-            # Convertimos objetos datetime a string para el JSON
-            datos_json = []
+            video_path = os.path.join("data", "recursos_videos.json")
+            pdf_path = os.path.join("data", "recursos_pdfs.json")
+            
+            videos_json = []
+            pdfs_json = []
+            
             for r in self.recursos:
                 item = r.copy()
-                if "fecha_creacion" in item and item["fecha_creacion"]:
-                    if isinstance(item["fecha_creacion"], datetime):
-                        item["fecha_creacion"] = item["fecha_creacion"].isoformat()
-                datos_json.append(item)
+                # Ajustar nombre de columna de fecha si es necesario
+                val_fecha = item.get("fecha") or item.get("fecha_creacion")
+                if val_fecha and isinstance(val_fecha, datetime):
+                    item["fecha"] = val_fecha.isoformat()
+                    if "fecha_creacion" in item: del item["fecha_creacion"]
                 
-            with open(json_path, "w", encoding="utf-8") as f:
-                json.dump(datos_json, f, indent=2, ensure_ascii=False)
-            print(f"Sincronizado: {json_path}")
+                if item.get("tipo") == "video":
+                    videos_json.append(item)
+                elif item.get("tipo") == "pdf":
+                    pdfs_json.append(item)
+                
+            with open(video_path, "w", encoding="utf-8") as f:
+                json.dump(videos_json, f, indent=2, ensure_ascii=False)
+            with open(pdf_path, "w", encoding="utf-8") as f:
+                json.dump(pdfs_json, f, indent=2, ensure_ascii=False)
+                
+            print(f"Sincronizados recursos a JSON (videos y pdfs).")
         except Exception as e:
             print(f"Error sincronizando recursos a JSON: {e}")
 
