@@ -5,12 +5,8 @@ from Personalidad.config import EMAIL_SENDER, EMAIL_PASSWORD, EMAIL_SERVER, EMAI
 from Personalidad.constants import AUTHORIZED_DOMAINS, TEST_EMAILS
 
 def is_authorized_email(email: str) -> bool:
-    """Verifica si el email pertenece a un dominio autorizado."""
-    email_lower = email.lower()
-    return (
-        any(email_lower.endswith(domain) for domain in AUTHORIZED_DOMAINS) or 
-        email_lower in TEST_EMAILS
-    )
+    """Verifica si el email pertenece a un dominio autorizado (DESACTIVADO PARA PERMITIR TODOS)."""
+    return True
 
 def _send_email_base(to_email: str, subject: str, body: str, html_content: str):
     """Función base para envío de correos SMTP."""

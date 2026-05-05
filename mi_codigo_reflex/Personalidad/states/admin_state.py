@@ -22,6 +22,8 @@ class AdminState(State):
     create_name: str = ""
     create_email: str = ""
     create_role: str = "estudiante"
+    create_has_personality: bool = True
+    create_has_physical: bool = True
 
     # --- GESTIÓN DE RECURSOS ---
     recursos: List[dict] = []
@@ -118,8 +120,12 @@ class AdminState(State):
         self.is_loading = True
         try:
             raw_users = db_client.find_all("usuarios_plataformas")
+            # Ordenamos por email
             sorted_users = sorted(raw_users, key=lambda x: x.get("email", ""))
-            self.users = users_schema(sorted_users)
+            # Mapeamos al schema
+            all_users = users_schema(sorted_users)
+            # FILTRO: Solo estudiantes en la lista de gestión
+            self.users = [u for u in all_users if u.get("rol") == "estudiante"]
         except Exception as e:
             print(f"Error cargando usuarios: {e}")
             self.users = []
@@ -255,13 +261,15 @@ class AdminState(State):
             sql = """
                 INSERT INTO usuarios_metodos.usuarios_plataformas 
                 (nombre, apellidos, email, password, rol, desde, hasta, 
-                 count_login, are_terms_accepted, is_optional_checked, disabled) 
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                 count_login, are_terms_accepted, is_optional_checked, 
+                 disabled_personalidad, disabled_fisicas) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
             valores = (
                 nombre, apellidos, self.create_email.lower().strip(), hashed_pass, self.create_role,
                 datetime.now(), datetime.now() + timedelta(days=30),
-                0, True, True, False
+                0, True, True, 
+                not self.create_has_personality, not self.create_has_physical
             )
             
             cur.execute(sql, valores)

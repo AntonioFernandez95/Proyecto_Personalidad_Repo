@@ -289,6 +289,24 @@ def admin_panel() -> rx.Component:
                                 background=CARD_BG,
                                 color=TEXT_DARK,
                             ),
+                            rx.divider(margin_y="0.5em"),
+                            rx.text("Activar planes:", font_size="0.85em", font_weight="bold", color=TEXT_DARK),
+                            rx.hstack(
+                                rx.checkbox(
+                                    "Test Personalidad",
+                                    checked=AdminState.create_has_personality,
+                                    on_change=AdminState.set_create_has_personality,
+                                    color_scheme="green",
+                                ),
+                                rx.checkbox(
+                                    "Pruebas Físicas",
+                                    checked=AdminState.create_has_physical,
+                                    on_change=AdminState.set_create_has_physical,
+                                    color_scheme="green",
+                                ),
+                                spacing="4",
+                                width="100%",
+                            ),
                             rx.button(
                                 "Crear y Enviar Accesos",
                                 on_click=AdminState.crear_usuario_manual,
