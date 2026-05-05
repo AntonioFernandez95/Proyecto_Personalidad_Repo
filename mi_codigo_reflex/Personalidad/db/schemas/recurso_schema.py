@@ -13,7 +13,7 @@ class RecursoCreate(RecursoBase):
 
 class RecursoRead(RecursoBase):
     id: int
-    fecha_creacion: datetime
+    fecha: datetime
 
     class Config:
         from_attributes = True
@@ -26,5 +26,5 @@ def recurso_schema(recurso) -> dict:
         "tipo": recurso.tipo,
         "url": recurso.url,
         "categoria": recurso.categoria,
-        "fecha_creacion": recurso.fecha_creacion.isoformat() if recurso.fecha_creacion else None
+        "fecha": recurso.fecha.isoformat() if recurso.fecha else None
     }

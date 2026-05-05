@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS recursos.videos (
     nombre VARCHAR(255),
     url TEXT,
     categoria VARCHAR(100),
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS recursos.pdfs (
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS recursos.pdfs (
     nombre VARCHAR(255),
     url TEXT,
     categoria VARCHAR(100),
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- 6. Limpieza: Eliminar tabla obsoleta

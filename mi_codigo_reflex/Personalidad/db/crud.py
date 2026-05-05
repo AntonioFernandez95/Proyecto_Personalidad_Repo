@@ -220,11 +220,9 @@ def obtener_recursos_por_categoria(categoria: str):
         videos = session.query(Video).filter(Video.categoria == categoria).all()
         for v in videos:
             v.tipo = "video"
-            v.fecha_creacion = getattr(v, "fecha", None) # Mapeo de fecha a fecha_creacion
             
         pdfs = session.query(PDF).filter(PDF.categoria == categoria).all()
         for p in pdfs:
             p.tipo = "pdf"
-            p.fecha_creacion = getattr(p, "fecha", None)
             
         return videos + pdfs

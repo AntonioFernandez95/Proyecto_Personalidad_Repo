@@ -80,11 +80,9 @@ class AdminState(State):
             
             for r in self.recursos:
                 item = r.copy()
-                # Ajustar nombre de columna de fecha si es necesario
-                val_fecha = item.get("fecha") or item.get("fecha_creacion")
+                val_fecha = item.get("fecha")
                 if val_fecha and isinstance(val_fecha, datetime):
                     item["fecha"] = val_fecha.isoformat()
-                    if "fecha_creacion" in item: del item["fecha_creacion"]
                 
                 if item.get("tipo") == "video":
                     videos_json.append(item)
