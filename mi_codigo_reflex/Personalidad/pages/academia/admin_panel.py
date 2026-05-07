@@ -92,7 +92,7 @@ def user_management_row(user: dict) -> rx.Component:
         padding="2.5em",
         border_radius="20px",
         background=CARD_BG,
-        border="1px solid #eee",
+        border=rx.color_mode_cond(light="1px solid #eee", dark="1px solid #333"),
         box_shadow="0 6px 20px rgba(0,0,0,0.06)",
         align="center",
         margin_bottom="1.5em",
@@ -126,7 +126,7 @@ def resource_item(recurso: dict) -> rx.Component:
         padding="1.2em",
         border_radius="10px",
         background=GRAY_LIGHT,
-        border="1px solid #eee"
+        border=rx.color_mode_cond(light="1px solid #eee", dark="1px solid #333")
     )
 
 def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:

@@ -1,5 +1,5 @@
 import reflex as rx
-from Personalidad.pages.academia.layout import academia_layout, OLIVE, CARD_STYLE, back_button, BADGE_GREEN, BADGE_GRAY
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, CARD_STYLE, back_button, BADGE_GREEN, BADGE_GRAY
 from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.calculadora_state import CalculadoraState
 from Personalidad.states.historial_state import HistorialSimplificado_State
@@ -39,8 +39,8 @@ def historial() -> rx.Component:
                     rx.foreach(
                         HistorialSimplificado_State.historial,
                         lambda item: rx.table.row(
-                            rx.table.cell(item["fecha"], color="black"),
-                            rx.table.cell(item["user_id"], color="black"),
+                            rx.table.cell(item["fecha"], color=TEXT_DARK),
+                            rx.table.cell(item["user_id"], color=TEXT_DARK),
                             rx.table.cell(badge_resultado(item["resultado"], item["color"])),
                         )
                     )

@@ -79,12 +79,13 @@ def big_card(icon_name: str, title: str, subtitle: str,
         rx.text(title,    font_size="1.25em", font_weight="800", color=TEXT_DARK, text_align="center"),
         rx.text(subtitle, font_size="0.9em",  color=TEXT_MID,   text_align="center"),
         rx.link(
-            rx.button(btn_label, **BTN_PRIMARY_BASE, padding="0.6em 1.4em"),
-            href=href, margin_top="0.8em",
+            rx.button(btn_label, **BTN_PRIMARY_BASE, width="100%", padding="0.8em 2em"),
+            href=href, margin_top="1.5em",
+            width="80%", # Para que no pegue a los bordes de la tarjeta
         ),
         align="center", spacing="3",
         **CARD_STYLE, padding="2em",
-        width="280px", min_height="280px", justify="center",
+        width="340px", height="380px", justify="center",
         _hover={"box_shadow": "0 12px 40px rgba(0,0,0,0.25)", "transform": "translateY(-4px)"},
         transition="all 0.25s ease",
     )

@@ -81,7 +81,7 @@ def calculadora() -> rx.Component:
                         rx.text(
                             CalculadoraState.porcentaje,
                             "% del objetivo",
-                            font_size="1.05em", font_weight="700", color="black",
+                            font_size="1.05em", font_weight="700", color=TEXT_DARK,
                         ),
                         align="center", spacing="2",
                     ),

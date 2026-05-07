@@ -2,7 +2,10 @@ import reflex as rx
 from typing import Any
 from Personalidad.states.base_state import State
 from Personalidad.states.admin_state import AdminState
-from Personalidad.pages.academia.layout import academia_layout, BTN_PRIMARY_BASE, BTN_SECONDARY_BASE, BTN_BACK_BASE, CARD_STYLE
+from Personalidad.pages.academia.layout import (
+    academia_layout, BTN_PRIMARY_BASE, BTN_SECONDARY_BASE, BTN_BACK_BASE, CARD_STYLE,
+    TEXT_DARK, TEXT_MID, GRAY_LIGHT
+)
 
 def admin_plans_header() -> rx.Component:
     return rx.flex(
@@ -47,35 +50,35 @@ def edit_profile_card() -> rx.Component:
     return rx.vstack(
         rx.hstack(
             rx.icon("user-cog", size=28, color="#5B733A"),
-            rx.heading("Perfil del Alumno", size="6", color="black", font_weight="900"),
+            rx.heading("Perfil del Alumno", size="6", color=TEXT_DARK, font_weight="900"),
             spacing="3",
             align="center",
             margin_bottom="1.5em",
         ),
         rx.flex(
             rx.vstack(
-                rx.text("Nombre Completo:", font_size="0.9em", color="#444", font_weight="bold"),
+                rx.text("Nombre Completo:", font_size="0.9em", color=TEXT_MID, font_weight="bold"),
                 rx.input(
                     value=AdminState.new_name,
                     on_change=AdminState.set_new_name,
                     width="100%",
-                    background="white",
-                    color="black",
-                    border="1px solid #ddd",
+                    background=GRAY_LIGHT,
+                    color=TEXT_DARK,
+                    border=rx.color_mode_cond(light="1px solid #ddd", dark="1px solid #444"),
                     height="3.5em",
                     border_radius="10px",
                 ),
                 width="100%", flex="1",
             ),
             rx.vstack(
-                rx.text("Correo Electrónico:", font_size="0.9em", color="#444", font_weight="bold"),
+                rx.text("Correo Electrónico:", font_size="0.9em", color=TEXT_MID, font_weight="bold"),
                 rx.input(
                     value=AdminState.new_email,
                     on_change=AdminState.set_new_email,
                     width="100%",
-                    background="white",
-                    color="black",
-                    border="1px solid #ddd",
+                    background=GRAY_LIGHT,
+                    color=TEXT_DARK,
+                    border=rx.color_mode_cond(light="1px solid #ddd", dark="1px solid #444"),
                     height="3.5em",
                     border_radius="10px",
                 ),
@@ -109,7 +112,7 @@ def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_
     return rx.vstack(
         rx.hstack(
             rx.vstack(
-                rx.heading(plan_name, size="5", color="black", font_weight="800"),
+                rx.heading(plan_name, size="5", color=TEXT_DARK, font_weight="800"),
                 rx.badge(
                     status, 
                     color_scheme=rx.cond(is_active_cond, "green", "red"),
@@ -124,7 +127,7 @@ def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_
         ),
         rx.divider(margin_y="1.5em", border_color="#eee"),
         rx.vstack(
-            rx.text("Vencimiento Actual:", font_size="0.9em", color="#666", font_weight="bold"),
+            rx.text("Vencimiento Actual:", font_size="0.9em", color=TEXT_MID, font_weight="bold"),
             rx.text(
                 expiration, 
                 font_weight="900", 
@@ -134,16 +137,16 @@ def plan_management_card(plan_name: str, status: rx.Var, expiration: rx.Var, on_
             width="100%", align="start",
         ),
         rx.vstack(
-            rx.text("Añadir tiempo (días):", font_size="0.85em", color="#444", margin_top="1em"),
+            rx.text("Añadir tiempo (días):", font_size="0.85em", color=TEXT_MID, margin_top="1em"),
             rx.hstack(
                 rx.input(
                     placeholder="Ej: 30", 
                     width="100%",
                     value=AdminState.days_to_add,
                     on_change=AdminState.set_days_to_add,
-                    background="white",
-                    color="black",
-                    border="1px solid #ddd",
+                    background=GRAY_LIGHT,
+                    color=TEXT_DARK,
+                    border=rx.color_mode_cond(light="1px solid #ddd", dark="1px solid #444"),
                     height="3em",
                     border_radius="10px",
                 ),

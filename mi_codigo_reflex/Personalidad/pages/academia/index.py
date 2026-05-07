@@ -21,6 +21,6 @@ def index() -> rx.Component:
                 State.has_fisicas_access,
                 big_card("person-standing", "PRUEBAS FÍSICAS",      "Curso completo y herramientas", "Acceder al Curso", "/academia/fisicas"),
             ),
-            spacing="6", wrap="wrap", justify="center",
+            spacing="8", wrap="wrap", justify="center", align_items="stretch",
         ),
     )

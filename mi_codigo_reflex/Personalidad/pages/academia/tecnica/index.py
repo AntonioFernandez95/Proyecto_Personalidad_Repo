@@ -9,7 +9,7 @@ def tecnica() -> rx.Component:
     return academia_layout(
         rx.text("TÉCNICA DE PRUEBAS FÍSICAS", font_size="2em", font_weight="900", color="white"),
         rx.vstack(
-            prueba_row("hand-metal", "Flexo-extensiones de brazos",   "/academia/tecnica/flexiones"),
+            prueba_row("dumbbell",   "Flexo-extensiones de brazos",   "/academia/tecnica/flexiones"),
             prueba_row("timer",      "Plancha isométrica",             "/academia/tecnica/plancha"),
             prueba_row("zap",        "Circuito de agilidad-velocidad", "/academia/tecnica/agilidad"),
             prueba_row("footprints", "Carrera de 2000 metros",         "/academia/tecnica/carrera"),

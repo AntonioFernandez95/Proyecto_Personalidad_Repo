@@ -1,5 +1,5 @@
 import reflex as rx
-from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_MID, back_button, CARD_STYLE
+from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK, TEXT_MID, back_button, CARD_STYLE
 from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.calculadora_state import CalculadoraState
 
@@ -17,13 +17,13 @@ def simulacro() -> rx.Component:
                 rx.divider(),
                 rx.hstack(
                     rx.vstack(
-                        rx.text("Fecha:", font_weight="700", color="black"),
+                        rx.text("Fecha:", font_weight="700", color=TEXT_DARK),
                         rx.text("25 de Abril, 2026", color=TEXT_MID),
                         align="start", spacing="0",
                     ),
                     rx.spacer(),
                     rx.vstack(
-                        rx.text("Ubicación:", font_weight="700", color="black"),
+                        rx.text("Ubicación:", font_weight="700", color=TEXT_DARK),
                         rx.text("Centro Deportivo Municipal", color=TEXT_MID),
                         align="start", spacing="0",
                     ),

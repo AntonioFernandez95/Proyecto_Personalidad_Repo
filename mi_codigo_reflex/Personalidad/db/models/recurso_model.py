@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Integer, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 import datetime
 
-Base = declarative_base()
+from Personalidad.db.models.historialSimplificado_model import Base
 
 class Video(Base):
     """Modelo para la tabla de vídeos en el esquema recursos."""

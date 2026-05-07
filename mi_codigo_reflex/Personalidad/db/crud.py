@@ -19,6 +19,10 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # Inicialización de esquemas
 try:
     from sqlalchemy import text
+    from Personalidad.db.models.recurso_model import Video, PDF
+    from Personalidad.db.models.aptitud_model import AptitudModel
+    from Personalidad.db.models.tecnicaDetalle_model import TecnicaDetalle
+    
     with engine.connect() as conn:
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS historial_simplificado"))
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS recursos"))
@@ -26,8 +30,11 @@ try:
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS personalidad"))
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS usuarios_metodos"))
         conn.commit()
+    
+    # Esta llamada creará todas las tablas de los modelos importados si no existen
     Base.metadata.create_all(bind=engine)
-except Exception:
+except Exception as e:
+    print(f"Error inicializando esquemas: {e}")
     pass
 
 # --- HISTORIAL ---
