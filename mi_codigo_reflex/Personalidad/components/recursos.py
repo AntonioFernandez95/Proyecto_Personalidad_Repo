@@ -67,7 +67,13 @@ def pdf_section() -> rx.Component:
     return rx.cond(
         DetallesTecnicasState.pdfs.length() > 0,
         rx.vstack(
-            rx.text("RECURSOS Y GUÍAS PDF", font_size="1.1em", font_weight="800", color=TEXT_DARK, letter_spacing="0.05em"),
+            rx.text(
+                "RECURSOS Y GUÍAS PDF", 
+                font_size="1.1em", 
+                font_weight="800", 
+                color=rx.color_mode_cond(light=TEXT_DARK, dark="#e2e2e2"), 
+                letter_spacing="0.05em"
+            ),
             rx.vstack(
                 rx.foreach(
                     DetallesTecnicasState.pdfs,
