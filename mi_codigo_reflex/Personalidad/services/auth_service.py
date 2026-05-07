@@ -19,46 +19,38 @@ def _sync_expiration(email: str, user_data: dict):
     updates = {}
     now = datetime.now()
 
-    # --- Evaluación de FÍSICAS ---
-    hasta_fisicas = user_data.get("hasta_fisicas")
-    # psycopg2 devuelve datetime nativo directamente, pero por seguridad soportamos string también
-    if isinstance(hasta_fisicas, str):
+    # Función auxiliar para parsear fechas de forma segura
+    def parse_fecha(v):
+        if not v or v == "N/A": return None
+        if isinstance(v, datetime): return v
         try:
             from dateutil import parser as dateutil_parser
-            hasta_fisicas = dateutil_parser.parse(hasta_fisicas)
-        except Exception:
-            hasta_fisicas = None
+            return dateutil_parser.parse(str(v))
+        except: return None
+        
+    def to_bool(val):
+        if isinstance(val, bool): return val
+        if isinstance(val, str): return val.lower() in ("true", "1", "yes", "t")
+        return bool(val)
 
+    # Evaluación de FÍSICAS
+    hasta_fisicas = parse_fecha(user_data.get("hasta_fisicas")) or parse_fecha(user_data.get("hasta"))
     is_fisicas_expired = (hasta_fisicas is None) or (hasta_fisicas < now)
-    current_disabled_fisicas = bool(user_data.get("disabled_fisicas", False))
+    current_disabled_fisicas = to_bool(user_data.get("disabled_fisicas")) or to_bool(user_data.get("disabled", False))
 
     if is_fisicas_expired and not current_disabled_fisicas:
         updates["disabled_fisicas"] = True
-        print(f"[SYNC] Plan FÍSICAS caducado para {email}. Bloqueando acceso...")
-    elif not is_fisicas_expired and current_disabled_fisicas:
-        updates["disabled_fisicas"] = False
-        print(f"[SYNC] Plan FÍSICAS renovado para {email}. Desbloqueando acceso...")
+        updates["disabled"] = True
 
-    # --- Evaluación de PERSONALIDAD ---
-    hasta_personalidad = user_data.get("hasta_personalidad")
-    if isinstance(hasta_personalidad, str):
-        try:
-            from dateutil import parser as dateutil_parser
-            hasta_personalidad = dateutil_parser.parse(hasta_personalidad)
-        except Exception:
-            hasta_personalidad = None
-
+    # Evaluación de PERSONALIDAD
+    hasta_personalidad = parse_fecha(user_data.get("hasta_personalidad")) or parse_fecha(user_data.get("hasta"))
     is_perso_expired = (hasta_personalidad is None) or (hasta_personalidad < now)
-    current_disabled_perso = bool(user_data.get("disabled_personalidad", False))
+    current_disabled_perso = to_bool(user_data.get("disabled_personalidad")) or to_bool(user_data.get("disabled", False))
 
     if is_perso_expired and not current_disabled_perso:
         updates["disabled_personalidad"] = True
-        print(f"[SYNC] Plan PERSONALIDAD caducado para {email}. Bloqueando acceso...")
-    elif not is_perso_expired and current_disabled_perso:
-        updates["disabled_personalidad"] = False
-        print(f"[SYNC] Plan PERSONALIDAD renovado para {email}. Desbloqueando acceso...")
+        updates["disabled"] = True
 
-    # Solo tocamos la BD si hay algo que cambiar
     if updates:
         db_client.update_one("usuarios_plataformas", "email", email, updates)
 

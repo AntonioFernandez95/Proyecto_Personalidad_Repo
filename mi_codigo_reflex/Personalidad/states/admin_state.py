@@ -98,6 +98,37 @@ class AdminState(State):
         except Exception as e:
             print(f"Error sincronizando recursos a JSON: {e}")
 
+    def sync_users_to_json(self):
+        """Exporta la lista completa de usuarios de la BD al archivo JSON local para persistencia en Docker."""
+        import json
+        import os
+        from datetime import datetime
+        try:
+            json_path = os.path.join("data", "usuarios_metodos.usuarios_plataformas.json")
+            
+            # Obtenemos todos los usuarios directamente de la base de datos para asegurar fidelidad
+            raw_users = db_client.find_all("usuarios_plataformas")
+            
+            json_ready_users = []
+            for user in raw_users:
+                item = user.copy()
+                # Convertimos campos de fecha a formato ISO string
+                for date_field in ["desde", "hasta", "hasta_personalidad", "hasta_fisicas"]:
+                    val = item.get(date_field)
+                    if val and isinstance(val, datetime):
+                        item[date_field] = val.isoformat()
+                
+                # Eliminar campos internos de Postgres si existen
+                item.pop("id", None)
+                json_ready_users.append(item)
+                
+            with open(json_path, "w", encoding="utf-8") as f:
+                json.dump(json_ready_users, f, indent=2, ensure_ascii=False)
+            
+            print(f"Sincronizados {len(json_ready_users)} usuarios a JSON correctamente.")
+        except Exception as e:
+            print(f"Error sincronizando usuarios a JSON: {e}")
+
     async def handle_upload(self, files: List[rx.UploadFile]):
         """Sube archivos a assets/uploads y los registra en la BD correspondiente."""
         import os
@@ -169,19 +200,29 @@ class AdminState(State):
 
     def select_user(self, user: dict):
         from Personalidad.services.auth_service import search_user
-        # Sincronizamos caducidad al seleccionar (esto actualiza los flags en la BD si han caducado)
-        search_user("email", user.get("email"))
+        email = user.get("email")
         
-        # Recargamos la lista para que el 'user' que pasamos a selected_user tenga los flags frescos
-        self.fetch_users()
+        # 1. Sincronizamos caducidad (esto limpia flags en la BD)
+        search_user("email", email)
         
-        # Buscamos el usuario actualizado en nuestra lista
-        updated_user = next((u for u in self.users if u["email"] == user.get("email")), user)
+        # 2. Leemos el usuario directamente de la base de datos (SIN usar la lista local que puede estar desactualizada)
+        raw_user = db_client.find_one("usuarios_plataformas", "email", email)
+        if not raw_user:
+            return rx.window_alert("Error: No se ha encontrado el usuario en la base de datos.")
+            
+        # 3. Aplicamos el schema para tener los campos listos para la UI
+        from Personalidad.db.schemas.user_schema import user_schema
+        updated_user = user_schema(raw_user)
         
+        # 4. Actualizamos el estado
         self.selected_user = updated_user
         self.new_name = updated_user.get("full_name", "")
         self.new_email = updated_user.get("email", "")
         self.days_to_add = "30"
+        
+        # Refrescamos la lista general también
+        self.fetch_users()
+        
         return rx.redirect("/academia/admin_plans")
 
     def guardar_perfil(self):
@@ -219,6 +260,7 @@ class AdminState(State):
                 new_selected["email"] = self.new_email
                 self.selected_user = new_selected
                 self.fetch_users()
+                self.sync_users_to_json() # <--- Persistir en JSON
                 return rx.toast("Perfil actualizado correctamente.")
             else:
                 return rx.window_alert("Error al actualizar la base de datos.")
@@ -245,7 +287,8 @@ class AdminState(State):
             nueva_fecha = fecha_actual + timedelta(days=days)
             
             # Intentamos detectar si usamos columnas separadas o unificadas
-            updates = {col_fecha: nueva_fecha, col_disabled: False}
+            # IMPORTANTE: Ponemos 'disabled' en False también para evitar conflictos
+            updates = {col_fecha: nueva_fecha, col_disabled: False, "disabled": False}
             success = db_client.update_one("usuarios_plataformas", "email", email, updates)
             
             if not success:
@@ -259,6 +302,7 @@ class AdminState(State):
                 new_selected[col_disabled] = False # Reflejamos el alta inmediata
                 self.selected_user = new_selected
                 self.fetch_users()
+                self.sync_users_to_json() # <--- Persistir en JSON
                 return rx.toast(f"Plan {tipo_plan} extendido y activado.")
             
         except Exception as e:
@@ -311,42 +355,15 @@ class AdminState(State):
             conn.commit()
             conn.close()
             
-            # --- NUEVO: Persistencia en el archivo JSON ---
-            try:
-                import json
-                import os
-                json_path = os.path.join("data", "usuarios_metodos.usuarios_plataformas.json")
-                if os.path.exists(json_path):
-                    with open(json_path, "r", encoding="utf-8") as f:
-                        json_data = json.load(f)
-                    
-                    nuevo_json_user = {
-                        "nombre": nombre,
-                        "apellido1": apellidos,
-                        "email": self.create_email.lower().strip(),
-                        "password": hashed_pass, # Guardamos el hash para máxima seguridad
-                        "rol": self.create_role,
-                        "desde": datetime.now().isoformat(),
-                        "hasta": (datetime.now() + timedelta(days=30)).isoformat(),
-                        "disabled_personalidad": not self.create_has_personality,
-                        "disabled_fisicas": not self.create_has_physical
-                    }
-                    json_data.append(nuevo_json_user)
-                    
-                    with open(json_path, "w", encoding="utf-8") as f:
-                        json.dump(json_data, f, indent=2, ensure_ascii=False)
-                    print(f"Usuario {self.create_email} persistido en JSON.")
-            except Exception as e_json:
-                print(f"Error guardando en JSON: {e_json}")
-
             # 3. Enviar Email con credenciales
             from Personalidad.services.email_service import send_credentials_email
             email_enviado = send_credentials_email(self.create_email.lower().strip(), temp_pass)
-            
+
             # Limpiar campos y refrescar
             self.create_name = ""
             self.create_email = ""
             self.fetch_users()
+            self.sync_users_to_json() # <--- Sincronizar todo al JSON (incluyendo el nuevo usuario)
             
             if email_enviado:
                 return rx.toast("¡Usuario creado y credenciales enviadas por email!")
@@ -364,8 +381,13 @@ class AdminState(State):
         col_disabled = f"disabled_{tipo_plan}"
         nuevo_estado = not self.selected_user.get(col_disabled, False)
         
+        # Al activar (nuevo_estado = False), aseguramos que la columna general 'disabled' también sea False
+        updates = {col_disabled: nuevo_estado}
+        if not nuevo_estado:
+            updates["disabled"] = False
+
         success = db_client.update_one(
-            "usuarios_plataformas", "email", email, {col_disabled: nuevo_estado}
+            "usuarios_plataformas", "email", email, updates
         )
 
         if not success:
@@ -379,6 +401,7 @@ class AdminState(State):
             new_selected[col_disabled] = nuevo_estado
             self.selected_user = new_selected
             self.fetch_users()
+            self.sync_users_to_json() # <--- Persistir en JSON
             return rx.toast("Estado del plan actualizado.")
 
     @rx.var
