@@ -54,14 +54,8 @@ def planificacion() -> rx.Component:
                                     href=PlanificacionState.selected_recurso["url"].to(str),
                                     is_external=True, width="100%", underline="none"
                                 ),
-                                # Si es vídeo, mostramos el reproductor directamente
-                                rx.vstack(
-                                    rx.video(
-                                        url=PlanificacionState.selected_recurso["url"].to(str),
-                                        width="100%", height="auto", border_radius="10px"
-                                    ),
-                                    width="100%"
-                                )
+                                # Si es vídeo, no mostramos nada aquí para evitar el reproductor vacío
+                                rx.spacer(),
                             ),
                             width="100%", margin_top="1em"
                         )
@@ -83,6 +77,30 @@ def planificacion() -> rx.Component:
                 spacing="3", **CARD_STYLE, padding="2em", flex="1", min_width="280px", align="start",
             ),
             rx.vstack(
+                rx.text("VÍDEO DE PLANIFICACIÓN", font_size="1em", font_weight="800", color=OLIVE, letter_spacing="0.05em"),
+                rx.box(
+                    rx.el.iframe(
+                        src="https://player.mediadelivery.net/embed/634843/d0a3ef88-493c-45a6-89de-7f25c18a1161?autoplay=false&loop=false&muted=false&preload=true&responsive=false",
+                        border="none",
+                        height="100%",
+                        width="100%",
+                        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;",
+                        allow_full_screen=True,
+                        style={
+                            "position": "absolute",
+                            "top": "0",
+                            "left": "0",
+                        }
+                    ),
+                    style={
+                        "position": "relative",
+                        "padding-top": "56.25%",
+                        "width": "100%",
+                        "border_radius": "12px",
+                        "overflow": "hidden",
+                        "margin_bottom": "1.5em",
+                    }
+                ),
                 rx.text("🏅 TABLAS DE MARCAS", font_size="1em", font_weight="800", color=OLIVE, letter_spacing="0.05em"),
                 rx.table.root(
                     rx.table.header(

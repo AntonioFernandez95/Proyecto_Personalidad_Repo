@@ -9,11 +9,28 @@ def curso() -> rx.Component:
     return academia_layout(
         rx.box(
             rx.hstack(
-                rx.video(
-                    url="https://www.youtube.com/watch?v=47nDxfaBD3I",
-                    width="300px",
-                    height="190px",
-                    border_radius="12px",
+                rx.box(
+                    rx.el.iframe(
+                        src="https://player.mediadelivery.net/embed/634843/99f51822-0894-4df5-9334-8cf6bdd300a0?autoplay=false&loop=false&muted=false&preload=true&responsive=false",
+                        border="none",
+                        height="100%",
+                        width="100%",
+                        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;",
+                        allow_full_screen=True,
+                        style={
+                            "position": "absolute",
+                            "top": "0",
+                            "left": "0",
+                        }
+                    ),
+                    style={
+                        "position": "relative",
+                        "padding-top": "56.25%",
+                        "width": "100%",
+                        "max_width": "350px",
+                        "border_radius": "12px",
+                        "overflow": "hidden",
+                    }
                 ),
                 rx.vstack(
                     rx.text("BIENVENIDA AL CURSO", font_size="1.45em", font_weight="800", color=OLIVE),
