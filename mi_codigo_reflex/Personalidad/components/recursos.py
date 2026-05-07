@@ -19,7 +19,7 @@ def video_section() -> rx.Component:
                             border="none",
                             height="100%",
                             width="100%",
-                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;",
+                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen",
                             allow_full_screen=True,
                             style={
                                 "position": "absolute",

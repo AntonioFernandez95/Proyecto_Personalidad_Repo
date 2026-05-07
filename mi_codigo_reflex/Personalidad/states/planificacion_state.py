@@ -23,6 +23,9 @@ class PlanificacionState(State):
             
             self.recursos = []
             for v in videos_raw:
+                # Omitimos el vídeo principal para que no salga duplicado en el desplegable
+                if "PLAN DE ENTRENAMIENTO" in v.nombre.upper():
+                    continue
                 self.recursos.append({
                     "id": v.id, 
                     "full_id": f"video_{v.id}",

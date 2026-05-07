@@ -80,11 +80,16 @@ def planificacion() -> rx.Component:
                 rx.text("VÍDEO DE PLANIFICACIÓN", font_size="1em", font_weight="800", color=OLIVE, letter_spacing="0.05em"),
                 rx.box(
                     rx.el.iframe(
-                        src="https://player.mediadelivery.net/embed/634843/d0a3ef88-493c-45a6-89de-7f25c18a1161?autoplay=false&loop=false&muted=false&preload=true&responsive=false",
+                        # Si hay un recurso seleccionado y es vídeo, lo mostramos. Si no, mostramos el de mentalidad por defecto.
+                        src=rx.cond(
+                            (PlanificacionState.selected_recurso_id != "") & (PlanificacionState.selected_recurso["tipo"] == "video"),
+                            PlanificacionState.selected_recurso["url"].to(str),
+                            "https://player.mediadelivery.net/embed/634843/d0a3ef88-493c-45a6-89de-7f25c18a1161?autoplay=false&loop=false&muted=false&preload=true&responsive=false"
+                        ),
                         border="none",
                         height="100%",
                         width="100%",
-                        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;",
+                        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen",
                         allow_full_screen=True,
                         style={
                             "position": "absolute",
