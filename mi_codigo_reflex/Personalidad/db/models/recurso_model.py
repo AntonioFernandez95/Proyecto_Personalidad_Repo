@@ -12,6 +12,7 @@ class Video(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String, nullable=False)
     url = Column(String, nullable=False)
+    tipo = Column(String, nullable=False)
     categoria = Column(String, nullable=False)
     fecha = Column(DateTime, default=datetime.datetime.utcnow)
 
@@ -23,5 +24,6 @@ class PDF(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String, nullable=False)
     url = Column(String, nullable=False)
+    tipo = Column(String, nullable=False)
     categoria = Column(String, nullable=False)
     fecha = Column(DateTime, default=datetime.datetime.utcnow)

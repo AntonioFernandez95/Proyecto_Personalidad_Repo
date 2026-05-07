@@ -223,13 +223,6 @@ def obtener_recursos_por_categoria_y_tipo(categoria: str, tipo: str):
 def obtener_recursos_por_categoria(categoria: str):
     from Personalidad.db.models.recurso_model import Video, PDF
     with Session(engine) as session:
-        # Aseguramos que el objeto tenga el atributo 'tipo' y 'fecha_creacion' para el schema
         videos = session.query(Video).filter(Video.categoria == categoria).all()
-        for v in videos:
-            v.tipo = "video"
-            
         pdfs = session.query(PDF).filter(PDF.categoria == categoria).all()
-        for p in pdfs:
-            p.tipo = "pdf"
-            
         return videos + pdfs

@@ -71,11 +71,21 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
         cursor.execute(f"DROP TABLE IF EXISTS {esquema}.{tabla} CASCADE;")
         
         columnas_def = []
+        # Asegurar que la tabla tenga una columna 'id' si no está en el JSON
+        if "id" not in columnas:
+            columnas_def.append('"id" SERIAL PRIMARY KEY')
+        
         for col in columnas:
             primer_valor = lista_datos[0].get(col)
+            # Si el 'id' ya está en el JSON, lo definimos como clave primaria detectando su tipo
+            if col == "id":
+                tipo_id = "INTEGER" if isinstance(primer_valor, int) else "TEXT"
+                columnas_def.append(f'"{col}" {tipo_id} PRIMARY KEY')
+                continue
+                
             if col in ["fecha", "desde", "hasta"]:
                 columnas_def.append(f'"{col}" TIMESTAMP DEFAULT CURRENT_TIMESTAMP')
-            elif col in ["count_login", "pedido"] or (col == "id" and isinstance(primer_valor, int)):
+            elif col in ["count_login", "pedido"]:
                 columnas_def.append(f'"{col}" INTEGER DEFAULT 0')
             elif col in ["are_terms_accepted", "disabled", "is_optional_checked", "disabled_personalidad", "disabled_fisicas"]:
                 columnas_def.append(f'"{col}" BOOLEAN DEFAULT TRUE')
@@ -84,7 +94,8 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
             else:
                 columnas_def.append(f'"{col}" TEXT')
         
-        cursor.execute(f"CREATE TABLE {esquema}.{tabla} ({', '.join(columnas_def)});")
+        cur_sql = f"CREATE TABLE {esquema}.{tabla} ({', '.join(columnas_def)});"
+        cursor.execute(cur_sql)
         
         for item in lista_datos:
             # Filtro de seguridad (solo academia para la tabla principal)

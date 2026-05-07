@@ -11,14 +11,39 @@ def video_section() -> rx.Component:
         rx.foreach(
             DetallesTecnicasState.videos,
             lambda vid: rx.center(
-                rx.video(
-                    url=vid["url"].to(str),
-                    width="100%",
-                    height="auto",
-                    border_radius="12px",
+                rx.cond(
+                    vid["url"].to(str).contains("embed") | vid["url"].to(str).contains("player"),
+                    rx.box(
+                        rx.el.iframe(
+                            src=vid["url"].to(str),
+                            border="none",
+                            height="100%",
+                            width="100%",
+                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;",
+                            allow_full_screen=True,
+                            style={
+                                "position": "absolute",
+                                "top": "0",
+                                "left": "0",
+                            }
+                        ),
+                        style={
+                            "position": "relative",
+                            "padding-top": "56.25%",
+                            "width": "100%",
+                            "border_radius": "12px",
+                            "overflow": "hidden",
+                        }
+                    ),
+                    rx.video(
+                        url=vid["url"].to(str),
+                        width="100%",
+                        height="auto",
+                        border_radius="12px",
+                    ),
                 ),
                 width="100%",
-                margin_bottom="1em"
+                margin_bottom="1.5em"
             )
         ),
         # Si no hay vídeos, mostramos el placeholder

@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "nombre": "Curso Pruebas Físicas (Flexiones y Plancha)",
+    "url": "/uploads/flexiones_plancha_2026.pdf",
+    "categoria": "flexiones",
+    "tipo": "pdf",
+    "fecha": "2026-05-07T10:04:00"
+  },
+  {
+    "nombre": "Curso Pruebas Físicas (Flexiones y Plancha)",
+    "url": "/uploads/flexiones_plancha_2026.pdf",
+    "categoria": "plancha",
+    "tipo": "pdf",
+    "fecha": "2026-05-07T10:04:00"
+  }
+]
