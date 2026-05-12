@@ -1,6 +1,7 @@
 import reflex as rx
 from Personalidad.states.base_state import State
 from Personalidad.states.admin_state import AdminState
+from Personalidad.states.simulacro_state import SimulacroState
 from Personalidad.pages.academia.layout import academia_layout, BTN_PRIMARY_BASE, BTN_SECONDARY_BASE, CARD_STYLE
 from Personalidad.styles.academia_styles import TEXT_DARK, TEXT_MID, CARD_BG, GRAY_LIGHT
 
@@ -129,6 +130,39 @@ def resource_item(recurso: dict) -> rx.Component:
         border=rx.color_mode_cond(light="1px solid #eee", dark="1px solid #333")
     )
 
+def simulacro_row(simulacro: dict) -> rx.Component:
+    """Fila para gestionar un simulacro existente."""
+    return rx.hstack(
+        rx.vstack(
+            rx.text(simulacro["titulo"], font_weight="bold", color=TEXT_DARK),
+            rx.text(f"{simulacro['fecha']} - {simulacro['ubicacion']}", font_size="0.85em", color=TEXT_MID),
+            spacing="0", align="start"
+        ),
+        rx.spacer(),
+        rx.hstack(
+            rx.icon(
+                "pencil",
+                size=18,
+                color="#5B733A",
+                cursor="pointer",
+                on_click=lambda: SimulacroState.set_edit_simulacro(simulacro)
+            ),
+            rx.icon(
+                "trash-2",
+                size=18,
+                color="red",
+                cursor="pointer",
+                on_click=lambda: SimulacroState.eliminar_simulacro_action(simulacro["id"])
+            ),
+            spacing="4"
+        ),
+        width="100%",
+        padding="1em",
+        border_radius="10px",
+        background=GRAY_LIGHT,
+        border="1px solid #eee"
+    )
+
 def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
     # Establecemos valores por defecto que se pueden sobreescribir vía kwargs
     kwargs.setdefault("width", "100%")
@@ -155,16 +189,15 @@ def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
         **kwargs,
     )
 
-@rx.page(route="/academia/admin_panel", title="Panel Admin", on_load=AdminState.on_load)
+@rx.page(route="/academia/admin_panel", title="Panel Admin", on_load=[AdminState.on_load, SimulacroState.fetch_simulacros])
 def admin_panel() -> rx.Component:
     return academia_layout(
         rx.vstack(
             admin_header(),
-           
             rx.flex(
-                # Columna de Gestión de Alumnos (Izquierda - Más ancha)
+                # Columna Izquierda: Gestión (Alumnos + Simulacros)
                 rx.vstack(
-                    # Buscador Integrado (Alineado con la lista)
+                    # Buscador
                     rx.hstack(
                         rx.icon("search", size=24, color="#888"),
                         rx.input(
@@ -190,24 +223,134 @@ def admin_panel() -> rx.Component:
                         margin_bottom="1.5em",
                     ),
                    
-                    # Lista de Alumnos Principal
+                    # Gestión de Alumnos
                     admin_card(
                         "Gestión de Alumnos", "users",
                         rx.cond(
                             AdminState.is_loading,
                             rx.center(rx.spinner(size="3", color="#5B733A"), width="100%", padding="5em"),
                             rx.vstack(
-                                rx.foreach(AdminState.filtered_users, user_management_row),
+                                # Muestra los primeros 2 usuarios siempre
+                                rx.foreach(AdminState.filtered_users[:2], user_management_row),
+                                
+                                # El resto se oculta bajo un rx.cond (Lógica de expansión)
+                                rx.cond(
+                                    AdminState.mostrar_todos_alumnos,
+                                    rx.vstack(
+                                        rx.foreach(AdminState.filtered_users[2:], user_management_row),
+                                        width="100%",
+                                    ),
+                                ),
+
+                                # Botón Ver más / Ver menos (Solo si hay más de 2 usuarios)
+                                rx.cond(
+                                    AdminState.filtered_users.length() > 2,
+                                    rx.center(
+                                        rx.button(
+                                            rx.hstack(
+                                                rx.text(rx.cond(AdminState.mostrar_todos_alumnos, "Ver menos", "Ver más"), color="white"),
+                                                rx.cond(
+                                                    AdminState.mostrar_todos_alumnos,
+                                                    rx.icon("chevron-up", size=20, color="white"),
+                                                    rx.icon("chevron-down", size=20, color="white")
+                                                ),
+                                                spacing="2",
+                                                align="center",
+                                            ),
+                                            on_click=AdminState.alternar_ver_mas,
+                                            background_color="#5B733A",
+                                            color="white",
+                                            border_radius="25px",
+                                            padding_x="2em",
+                                            height="3em",
+                                            font_weight="bold",
+                                            margin_top="1em",
+                                            _hover={"background_color": "#4a5d2f", "transform": "scale(1.05)"},
+                                        ),
+                                        width="100%",
+                                    )
+                                ),
                                 width="100%",
                             )
                         ),
                     ),
-                    flex="1.8", # Proporción para que sea más ancha
+
+                    # Gestión de Simulacros (Debajo de alumnos)
+                    admin_card(
+                        "Gestión de Simulacros", "calendar",
+                        rx.vstack(
+                            rx.text("Título / Convocatoria:", font_size="0.85em", font_weight="bold", color=TEXT_DARK),
+                            rx.input(
+                                placeholder="Ej: PRÓXIMA CONVOCATORIA",
+                                value=SimulacroState.titulo,
+                                on_change=SimulacroState.set_titulo,
+                                width="100%",
+                                **CARD_STYLE
+                            ),
+                            rx.text("Fecha del evento:", font_size="0.85em", font_weight="bold", color=TEXT_DARK),
+                            rx.input(
+                                placeholder="Ej: 25 de Abril, 2026",
+                                value=SimulacroState.fecha,
+                                on_change=SimulacroState.set_fecha,
+                                width="100%",
+                                **CARD_STYLE
+                            ),
+                            rx.text("Ubicación:", font_size="0.85em", font_weight="bold", color=TEXT_DARK),
+                            rx.input(
+                                placeholder="Ej: Centro Deportivo Municipal",
+                                value=SimulacroState.ubicacion,
+                                on_change=SimulacroState.set_ubicacion,
+                                width="100%",
+                                **CARD_STYLE
+                            ),
+                            rx.text("Descripción corta:", font_size="0.85em", font_weight="bold", color=TEXT_DARK),
+                            rx.text_area(
+                                placeholder="Escribe aquí los detalles del simulacro...",
+                                value=SimulacroState.descripcion,
+                                on_change=SimulacroState.set_descripcion,
+                                width="100%",
+                                height="100px",
+                                **CARD_STYLE
+                            ),
+                            rx.vstack(
+                                rx.button(
+                                    rx.cond(SimulacroState.edit_id == -1, "Crear Simulacro", "Guardar Cambios"),
+                                    on_click=SimulacroState.guardar_simulacro_action,
+                                    width="100%",
+                                    **BTN_PRIMARY_BASE,
+                                    height="3.5em",
+                                ),
+                                rx.cond(
+                                    SimulacroState.edit_id != -1,
+                                    rx.button(
+                                        "Descartar Cambios",
+                                        on_click=SimulacroState.clear_form,
+                                        width="100%",
+                                        **BTN_SECONDARY_BASE,
+                                        height="3.5em",
+                                    )
+                                ),
+                                width="100%",
+                                spacing="3"
+                            ),
+                            rx.divider(margin_y="1em"),
+                            rx.text("Simulacros Actuales:", font_weight="bold", color=TEXT_DARK),
+                            rx.vstack(
+                                rx.foreach(SimulacroState.simulacros, simulacro_row),
+                                width="100%",
+                                spacing="2"
+                            ),
+                            spacing="4",
+                            width="100%",
+                        ),
+                        width="100%",
+                    ),
+                    flex="1.8",
                     width="100%",
-                    spacing="0",
+                    spacing="6",
                 ),
                
-                # Columna de Herramientas (Derecha - Más estrecha y fija)
+                # Columna Derecha: Herramientas
                 rx.vstack(
                     # Alta de Alumnos
                     admin_card(
@@ -337,19 +480,37 @@ def admin_panel() -> rx.Component:
                             _hover={"opacity": 0.8}
                         ),
                         rx.divider(margin_y="0.5em"),
-                        rx.text("Recursos actuales:", font_size="0.95em", font_weight="bold", color=TEXT_DARK),
-                        rx.vstack(
-                            rx.foreach(AdminState.recursos, resource_item),
+                        rx.hstack(
+                            rx.heading("Recursos (PDF y Vídeos)", size="5", color=TEXT_DARK),
+                            rx.spacer(),
+                            # Este es el botón nuevo que añadí para ir a la biblioteca completa
+                            rx.link(
+                                rx.button(
+                                    "Ver más", 
+                                    background_color="#5B733A",
+                                    color="white",
+                                    border_radius="25px",
+                                    padding_x="1.5em",
+                                    size="2",
+                                    _hover={"background_color": "#4a5d2f", "transform": "scale(1.05)"}
+                                ),
+                                href="/academia/view_recursos"
+                            ),
                             width="100%",
-                            max_height="300px",
-                            overflow_y="auto",
+                            align="center",
+                            margin_bottom="1em",
+                        ),
+                        rx.vstack(
+                            rx.foreach(AdminState.ultimos_recursos, resource_item),
+                            width="100%",
                             spacing="2",
                         ),
                         width="100%",
                     ),
-                    width=["100%", "100%", "400px"],
+                    width=["100%", "100%", "450px"],
                     spacing="8",
-                    flex="1",
+                    align="center",
+                    flex="none",
                 ),
                 width="100%",
                 spacing="8",

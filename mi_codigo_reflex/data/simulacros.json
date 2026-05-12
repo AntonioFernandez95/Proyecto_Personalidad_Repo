@@ -1,0 +1,16 @@
+[
+    {
+        "id": 3,
+        "titulo": "PRÓXIMA CONVOCATORIA",
+        "fecha": "11",
+        "ubicacion": "111",
+        "descripcion": "111111"
+    },
+    {
+        "id": 1,
+        "titulo": "PRÓXIMA CONVOCATORIA",
+        "fecha": "20 de Mayo de 2026",
+        "ubicacion": "Centro Deportivo Municipal",
+        "descripcion": "Pequña prueba"
+    }
+]

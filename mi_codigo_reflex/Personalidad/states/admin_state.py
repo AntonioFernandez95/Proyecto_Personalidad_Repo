@@ -33,6 +33,14 @@ class AdminState(State):
     video_manual_url: str = ""
     system_status: Dict[str, bool] = {}
     
+    mostrar_todos_alumnos: bool = False
+
+
+    def alternar_ver_mas(self):
+        """Cambia el estado de expansión de la lista de alumnos."""
+        self.mostrar_todos_alumnos = not self.mostrar_todos_alumnos
+
+
     def check_system_health(self):
         """Verifica la integridad de las tablas y esquemas."""
         from sqlalchemy import text
@@ -397,7 +405,12 @@ class AdminState(State):
             
             # 3. Enviar Email con credenciales
             from Personalidad.services.email_service import send_credentials_email
-            email_enviado = send_credentials_email(self.create_email.lower().strip(), temp_pass)
+            email_enviado = send_credentials_email(
+                self.create_email.lower().strip(),
+                temp_pass,
+                self.create_name
+            )
+
 
             # Limpiar campos y refrescar
             self.create_name = ""
@@ -469,3 +482,79 @@ class AdminState(State):
         self.fetch_users()
         self.fetch_recursos()
         self.check_system_health()
+
+    @rx.var
+    def ultimos_recursos(self) -> List[dict]:
+        """Devuelve los últimos 5 recursos añadidos (ordenados por fecha si existe)."""
+        # Intentamos ordenar por fecha descendente, si no hay fecha, simplemente los últimos 5
+        try:
+            ordenados = sorted(self.recursos, key=lambda x: x.get("fecha") or "", reverse=True)
+            return ordenados[:5]
+        except:
+            return self.recursos[:5]
+
+    @rx.var
+    def recursos_flexiones_pdf(self) -> List[dict]:
+        return [r for r in self.recursos if r["categoria"] == "flexiones" and r["tipo"] == "pdf"]
+
+    @rx.var
+    def recursos_flexiones_video(self) -> List[dict]:
+        return [r for r in self.recursos if r["categoria"] == "flexiones" and r["tipo"] == "video"]
+
+    @rx.var
+    def recursos_plancha_pdf(self) -> List[dict]:
+        return [r for r in self.recursos if r["categoria"] == "plancha" and r["tipo"] == "pdf"]
+
+    @rx.var
+    def recursos_plancha_video(self) -> List[dict]:
+        return [r for r in self.recursos if r["categoria"] == "plancha" and r["tipo"] == "video"]
+
+    @rx.var
+    def recursos_agilidad_pdf(self) -> List[dict]:
+        return [r for r in self.recursos if r["categoria"] == "agilidad" and r["tipo"] == "pdf"]
+
+    @rx.var
+    def recursos_agilidad_video(self) -> List[dict]:
+        return [r for r in self.recursos if r["categoria"] == "agilidad" and r["tipo"] == "video"]
+
+    @rx.var
+    def recursos_carrera_pdf(self) -> List[dict]:
+        return [r for r in self.recursos if r["categoria"] == "carrera" and r["tipo"] == "pdf"]
+
+    @rx.var
+    def recursos_carrera_video(self) -> List[dict]:
+        return [r for r in self.recursos if r["categoria"] == "carrera" and r["tipo"] == "video"]
+
+    @rx.var
+    def recursos_planificacion_pdf(self) -> List[dict]:
+        return [r for r in self.recursos if r["categoria"] == "planificacion" and r["tipo"] == "pdf"]
+
+    @rx.var
+    def recursos_planificacion_video(self) -> List[dict]:
+        return [r for r in self.recursos if r["categoria"] == "planificacion" and r["tipo"] == "video"]
+
+    @rx.var
+    def ultimos_recursos(self) -> List[dict]:
+        # Toma la lista completa (que ya ordenamos por fecha) 
+        # y devuelve solo los 2 primeros
+        return self.recursos[:2]
+
+    carousel_index_pdf: int = 0
+    carousel_index_video: int = 0
+    
+    def next_slide_pdf(self):
+        if self.carousel_index_pdf < 3:
+            self.carousel_index_pdf += 1
+            
+    def prev_slide_pdf(self):
+        if self.carousel_index_pdf > 0:
+            self.carousel_index_pdf -= 1
+
+    def next_slide_video(self):
+        if self.carousel_index_video < 3:
+            self.carousel_index_video += 1
+            
+    def prev_slide_video(self):
+        if self.carousel_index_video > 0:
+            self.carousel_index_video -= 1
+

@@ -96,8 +96,40 @@ def detalles_tecnicas() -> rx.Component:
                     rx.divider(margin_y="1.5em"),
 
 
-                    # 8. RECURSOS PDF DINÁMICOS
-                    pdf_section(),
+                    # 8. RECURSOS PDF DINÁMICOS (Lógica de 1 vs Varios)
+                    rx.cond(
+                        DetallesTecnicasState.pdfs.length() > 1,
+                        pdf_section(),
+                        rx.cond(
+                            DetallesTecnicasState.pdfs.length() == 1,
+                            rx.vstack(
+                                rx.text("RECURSO PDF", font_size="1.1em", font_weight="800", color=TEXT_DARK, letter_spacing="0.05em"),
+                                rx.foreach(
+                                    DetallesTecnicasState.pdfs,
+                                    lambda pdf: rx.link(
+                                        rx.hstack(
+                                            rx.icon("file-text", color=OLIVE),
+                                            rx.text(pdf["nombre"], font_size="0.95em", color=TEXT_DARK, font_weight="500"),
+                                            rx.spacer(),
+                                            rx.icon("download", color=TEXT_MID, size=18),
+                                            width="100%",
+                                            padding="1em",
+                                            border_radius="10px",
+                                            background=GRAY_LIGHT,
+                                            _hover={"background": "#e8f5e9"}
+                                        ),
+                                        href=pdf["url"].to(str),
+                                        is_external=True,
+                                        width="100%",
+                                        underline="none"
+                                    )
+                                ),
+                                width="100%",
+                                align="start",
+                                margin_top="1.5em"
+                            )
+                        )
+                    ),
 
 
                     align="start",

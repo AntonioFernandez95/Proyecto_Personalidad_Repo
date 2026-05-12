@@ -64,6 +64,43 @@ class State(rx.State):
         if self.user_role != "admin":
             return rx.redirect("/academia")
 
+    # --- NOTIFICACIONES ---
+    show_notification: bool = False
+    
+    def close_notification(self):
+        self.show_notification = False
+
+    def check_for_updates(self):
+        """Verifica si hay simulacros nuevos para el alumno."""
+        if not self.user or self.user_role == "admin":
+            return
+            
+        import os
+        import json
+        # Usamos una ruta más robusta
+        notify_path = "data/novedades.json"
+        if os.path.exists(notify_path):
+            try:
+                with open(notify_path, "r") as f:
+                    data = json.load(f)
+                    if data.get("nuevo_simulacro", False):
+                        self.show_notification = True
+            except Exception as e:
+                print(f"Error leyendo notificaciones: {e}")
+
+    def clear_update_flag(self):
+        """Limpia la bandera de actualización global."""
+        import os
+        import json
+        notify_path = "data/novedades.json"
+        try:
+            if not os.path.exists("data"):
+                os.makedirs("data")
+            with open(notify_path, "w") as f:
+                json.dump({"nuevo_simulacro": False}, f)
+        except Exception as e:
+            print(f"Error limpiando notificaciones: {e}")
+
     @rx.var
     def logged_in(self):
         """Check if a user is logged in."""

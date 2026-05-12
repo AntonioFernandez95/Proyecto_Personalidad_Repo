@@ -15,7 +15,7 @@ def header()-> rx.Component:
     return rx.box(
         rx.vstack(
             rx.image(
-                src="/ic_test_personalidad.png",
+                src="/logo_perso.png",
                 align="center",
                 width="100px",
                 height="auto" ,
