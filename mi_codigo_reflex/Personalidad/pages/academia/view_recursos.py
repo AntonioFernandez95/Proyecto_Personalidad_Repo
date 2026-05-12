@@ -496,9 +496,17 @@ def view_recursos() -> rx.Component:
                 rx.accordion.item(
                     header=rx.hstack(
                         rx.icon("file-text", color="#5B733A", size=22),
-                        rx.text("BIBLIOTECA DE PDFs", font_weight="bold", font_size="1.1em", color="#5B733A"),
+                        rx.text("BIBLIOTECA DE PDFs", font_weight="900", font_size="1.1em", color="#5B733A"),
+                        rx.spacer(),
+                        rx.icon("chevron-down", color="#5B733A", size=18),
                         spacing="3",
                         width="100%",
+                        padding="1.2em 2em",
+                        background="white", # La burbuja blanca
+                        border_radius="35px",
+                        box_shadow="0 10px 30px rgba(0,0,0,0.15)",
+                        _hover={"transform": "scale(1.01)", "box_shadow": "0 15px 40px rgba(0,0,0,0.2)"},
+                        transition="all 0.3s ease",
                     ),
                     content=rx.box(
                         resource_carousel(
@@ -508,24 +516,30 @@ def view_recursos() -> rx.Component:
                             AdminState.prev_slide_pdf
                         ),
                         width="100%",
+                        padding_top="2em",
+                        padding_bottom="1em",
                     ),
                     value="pdfs",
-                    background="rgba(255, 255, 255, 0.98)",
-                    backdrop_filter="blur(10px)",
-                    border_radius="35px",
-                    border="1px solid rgba(255,255,255,0.8)",
-                    box_shadow="0 15px 35px rgba(0,0,0,0.2)",
-                    margin_bottom="1.5em",
-                    padding="0.5em",
+                    border="none", # Quitamos el borde rojo/cuadrado
+                    background="transparent", # Fondo invisible para el contenedor
+                    margin_bottom="2em",
                 ),
 
                 # SECCIÓN 2: VÍDEOS
                 rx.accordion.item(
                     header=rx.hstack(
                         rx.icon("video", color="#5B733A", size=22),
-                        rx.text("BIBLIOTECA DE VÍDEOS", font_weight="bold", font_size="1.1em", color="#5B733A"),
+                        rx.text("BIBLIOTECA DE VÍDEOS", font_weight="900", font_size="1.1em", color="#5B733A"),
+                        rx.spacer(),
+                        rx.icon("chevron-down", color="#5B733A", size=18),
                         spacing="3",
                         width="100%",
+                        padding="1.2em 2em",
+                        background="white", # La burbuja blanca
+                        border_radius="35px",
+                        box_shadow="0 10px 30px rgba(0,0,0,0.15)",
+                        _hover={"transform": "scale(1.01)", "box_shadow": "0 15px 40px rgba(0,0,0,0.2)"},
+                        transition="all 0.3s ease",
                     ),
                     content=rx.box(
                         resource_carousel(
@@ -535,24 +549,24 @@ def view_recursos() -> rx.Component:
                             AdminState.prev_slide_video
                         ),
                         width="100%",
+                        padding_top="2em",
+                        padding_bottom="1em",
                     ),
                     value="videos",
-                    background="rgba(255, 255, 255, 0.98)",
-                    backdrop_filter="blur(10px)",
-                    border_radius="35px",
-                    border="1px solid rgba(255,255,255,0.8)",
-                    box_shadow="0 15px 35px rgba(0,0,0,0.2)",
-                    padding="0.5em",
+                    border="none", # Quitamos el borde rojo/cuadrado
+                    background="transparent", # Fondo invisible para el contenedor
                 ),
                 width="100%",
                 variant="ghost",
                 collapsible=True,
                 default_value=["pdfs"],
+                border="none",
+                background="transparent",
             ),
-           
+            
             width="100%",
             padding_bottom="4em",
             position="relative",
         ),
-        container_max_width="1100px",
+        container_max_width="1150px",
     )
