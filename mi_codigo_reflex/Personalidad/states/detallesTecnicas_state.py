@@ -45,6 +45,42 @@ class DetallesTecnicasState(State):
             return
 
         try:
+            # 3. Cargar Recursos adicionales (Vídeos y PDFs) - Siempre intentamos cargarlos si hay ID
+            from Personalidad.db.crud import obtener_recursos_por_categoria
+            from Personalidad.db.schemas.recurso_schema import recurso_schema
+            
+            raw_recursos = obtener_recursos_por_categoria(id_a_buscar)
+            self.videos = [recurso_schema(r) for r in raw_recursos if r.tipo == "video"]
+            self.pdfs = [recurso_schema(r) for r in raw_recursos if r.tipo == "pdf"]
+
+            # 3.1 Fallback/Sincronización con JSON (si en la BD no hay nada o para asegurar conexión)
+            import json
+            import os
+            try:
+                # Cargar Vídeos desde JSON
+                video_json_path = os.path.join("data", "recursos_videos.json")
+                if os.path.exists(video_json_path):
+                    with open(video_json_path, "r", encoding="utf-8") as f:
+                        videos_data = json.load(f)
+                        for v in videos_data:
+                            # Si coincide la categoría y no está ya en la lista (por URL)
+                            if v.get("categoria") == id_a_buscar:
+                                if not any(existing["url"] == v["url"] for existing in self.videos):
+                                    self.videos.append(v)
+                
+                # Cargar PDFs desde JSON
+                pdf_json_path = os.path.join("data", "recursos_pdfs.json")
+                if os.path.exists(pdf_json_path):
+                    with open(pdf_json_path, "r", encoding="utf-8") as f:
+                        pdfs_data = json.load(f)
+                        for p in pdfs_data:
+                            if p.get("categoria") == id_a_buscar:
+                                if not any(existing["url"] == p["url"] for existing in self.pdfs):
+                                    self.pdfs.append(p)
+            except Exception as json_err:
+                print(f"Error cargando fallback JSON: {json_err}")
+
+            # 4. Cargar Info técnica
             datos = DetallesTecnicasAPI.obtener_info_prueba(id_a_buscar)
             if datos:
                 self.titulo = datos.get("titulo", "")
@@ -53,24 +89,13 @@ class DetallesTecnicasState(State):
                 self.normas = datos.get("normas", [])
                 self.tiempo = datos.get("tiempo", "")
                 self.intentos = datos.get("intentos", "")
-                
-                # 3. Cargar Recursos adicionales (Vídeos y PDFs)
-                from Personalidad.db.crud import obtener_recursos_por_categoria
-                from Personalidad.db.schemas.recurso_schema import recurso_schema
-                
-                raw_recursos = obtener_recursos_por_categoria(id_a_buscar)
-                self.videos = [recurso_schema(r) for r in raw_recursos if r.tipo == "video"]
-                self.pdfs = [recurso_schema(r) for r in raw_recursos if r.tipo == "pdf"]
-                
             else:
-                self.titulo = "PRUEBA NO ENCONTRADA"
-                self.posicion_inicial = f"No se encontraron datos para: {id_a_buscar}"
+                self.titulo = id_a_buscar.upper()
+                self.posicion_inicial = f"Información técnica pendiente de actualización."
                 self.ejecucion = []
                 self.normas = []
                 self.tiempo = "--"
                 self.intentos = "--"
-                self.videos = []
-                self.pdfs = []
         except Exception as e:
             print(f"Error en cargar_datos_prueba: {e}")
             self.titulo = "ERROR INTERNO"

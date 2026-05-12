@@ -153,7 +153,7 @@ def obtener_tecnica_por_id(prueba_id: str):
 def guardar_video(nombre: str, url: str, categoria: str):
     from Personalidad.db.models.recurso_model import Video
     with Session(engine) as session:
-        nuevo = Video(nombre=nombre, url=url, categoria=categoria)
+        nuevo = Video(nombre=nombre, url=url, categoria=categoria, tipo="video")
         session.add(nuevo)
         session.commit()
 
@@ -181,7 +181,7 @@ def guardar_aptitudes(user_id: str, sinceridad: int, extraversion: int, depresio
 def guardar_pdf(nombre: str, url: str, categoria: str):
     from Personalidad.db.models.recurso_model import PDF
     with Session(engine) as session:
-        nuevo = PDF(nombre=nombre, url=url, categoria=categoria)
+        nuevo = PDF(nombre=nombre, url=url, categoria=categoria, tipo="pdf")
         session.add(nuevo)
         session.commit()
 

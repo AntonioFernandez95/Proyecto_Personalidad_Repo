@@ -301,13 +301,40 @@ def admin_panel() -> rx.Component:
                             width="100%",
                         ),
                         rx.button(
-                            "Guardar",
+                            "Subir Archivos",
                             on_click=AdminState.handle_upload(rx.upload_files(upload_id="recursos_upload")),
                             width="100%",
                             background_color="#5B733A",
                             color="white",
                             height="3em",
                             border_radius="10px",
+                            _hover={"opacity": 0.8}
+                        ),
+                        rx.divider(margin_y="1em"),
+                        rx.text("Añadir vídeo manual (enlace):", font_size="0.95em", font_weight="bold", color=TEXT_DARK),
+                        rx.input(
+                            placeholder="Nombre del vídeo",
+                            value=AdminState.video_manual_nombre,
+                            on_change=AdminState.set_video_manual_nombre,
+                            width="100%",
+                            **CARD_STYLE
+                        ),
+                        rx.input(
+                            placeholder="URL del vídeo (ej: YouTube, Drive...)",
+                            value=AdminState.video_manual_url,
+                            on_change=AdminState.set_video_manual_url,
+                            width="100%",
+                            **CARD_STYLE
+                        ),
+                        rx.button(
+                            "Guardar Vídeo Manual",
+                            on_click=AdminState.guardar_video_manual,
+                            width="100%",
+                            background_color="#5B733A",
+                            color="white",
+                            height="3em",
+                            border_radius="10px",
+                            _hover={"opacity": 0.8}
                         ),
                         rx.divider(margin_y="0.5em"),
                         rx.text("Recursos actuales:", font_size="0.95em", font_weight="bold", color=TEXT_DARK),

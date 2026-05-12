@@ -1,37 +1,44 @@
 [
   {
+    "id": 1,
     "nombre": "Técnica oficial Flexiones",
     "url": "https://player.mediadelivery.net/embed/634843/8222c88f-45cd-49e7-927b-e28e7bcaf9f5?autoplay=false&loop=false&muted=false&preload=true&responsive=false",
     "categoria": "flexiones",
-    "tipo": "video",
-    "fecha": "2026-05-07T09:44:00"
+    "tipo": "video"
   },
   {
+    "id": 2,
     "nombre": "DESCRIPCIÓN DE PRUEBAS: PLANCHA",
     "url": "https://player.mediadelivery.net/embed/634843/6efc2ab7-6c02-48d6-b9a2-0d37b5b0463d?autoplay=false&loop=false&muted=false&preload=true&responsive=false",
     "categoria": "plancha",
-    "tipo": "video",
-    "fecha": "2026-05-07T11:45:00"
+    "tipo": "video"
   },
   {
+    "id": 3,
     "nombre": "DESCRIPCIÓN DE PRUEBAS: CARRERA 2000 METROS",
     "url": "https://player.mediadelivery.net/embed/634843/73674c72-da15-4ad5-a62f-94793e76a11e?autoplay=false&loop=false&muted=false&preload=true&responsive=false",
     "categoria": "carrera",
-    "tipo": "video",
-    "fecha": "2026-05-07T11:45:00"
+    "tipo": "video"
   },
   {
+    "id": 4,
     "nombre": "INTRODUCCIÓN Y MENTALIDAD",
     "url": "https://player.mediadelivery.net/embed/634843/99f51822-0894-4df5-9334-8cf6bdd300a0?autoplay=false&loop=false&muted=false&preload=true&responsive=false",
     "categoria": "presentacion",
-    "tipo": "video",
-    "fecha": "2026-05-07T11:48:00"
+    "tipo": "video"
   },
   {
+    "id": 5,
     "nombre": "PLAN DE ENTRENAMIENTO",
     "url": "https://player.mediadelivery.net/embed/634843/d0a3ef88-493c-45a6-89de-7f25c18a1161?autoplay=false&loop=false&muted=false&preload=true&responsive=false",
     "categoria": "planificacion",
-    "tipo": "video",
-    "fecha": "2026-05-07T11:53:00"
+    "tipo": "video"
+  },
+  {
+    "id": 8,
+    "nombre": "Video Agilidad",
+    "url": "https://player.mediadelivery.net/embed/634843/38e946de-23c6-4579-82bb-4d9375979beb?autoplay=false&loop=false&muted=false&preload=true&responsive=false",
+    "categoria": "agilidad",
+    "tipo": "video"
   }
 ]

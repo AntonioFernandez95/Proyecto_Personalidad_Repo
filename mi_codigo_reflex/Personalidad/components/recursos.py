@@ -10,9 +10,10 @@ def video_section() -> rx.Component:
     return rx.vstack(
         rx.foreach(
             DetallesTecnicasState.videos,
-            lambda vid: rx.center(
+            lambda vid: rx.box(
                 rx.cond(
-                    vid["url"].to(str).contains("embed") | vid["url"].to(str).contains("player"),
+                    vid["url"].to(str).contains("embed") | 
+                    vid["url"].to(str).contains("player"),
                     rx.box(
                         rx.el.iframe(
                             src=vid["url"].to(str),
@@ -25,14 +26,19 @@ def video_section() -> rx.Component:
                                 "position": "absolute",
                                 "top": "0",
                                 "left": "0",
+                                "width": "100%",
+                                "height": "100%",
+                                "border": "none",
                             }
                         ),
                         style={
                             "position": "relative",
-                            "padding-top": "56.25%",
+                            "padding-bottom": "56.25%", # Ratio 16:9
+                            "height": "0",
                             "width": "100%",
                             "border_radius": "12px",
                             "overflow": "hidden",
+                            "background_color": "black",
                         }
                     ),
                     rx.video(
@@ -43,7 +49,7 @@ def video_section() -> rx.Component:
                     ),
                 ),
                 width="100%",
-                margin_bottom="1.5em"
+                margin_bottom="2em"
             )
         ),
         # Si no hay vídeos, mostramos el placeholder

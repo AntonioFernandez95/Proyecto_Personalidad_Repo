@@ -1,72 +1,79 @@
 [
   {
+    "id": 1,
     "nombre": "INTRODUCCION AL PLAN DE ENTRENAMIENTO",
     "url": "/uploads/intro_entrenamiento.pdf",
     "categoria": "planificacion",
-    "tipo": "pdf",
-    "fecha": "2026-05-07T11:30:00"
+    "tipo": "pdf"
   },
   {
+    "id": 2,
     "nombre": "FASE 1: ADIESTRAMIENTO BÁSICO (primeras 4 semanas)",
     "url": "/uploads/fase1_adiestramiento.pdf",
     "categoria": "planificacion",
-    "tipo": "pdf",
-    "fecha": "2026-05-07T11:30:00"
+    "tipo": "pdf"
   },
   {
+    "id": 3,
     "nombre": "FASE 2: DESARROLLO DE MARCAS (semanas 5 a 8)",
     "url": "/uploads/fase2_marcas.pdf",
     "categoria": "planificacion",
-    "tipo": "pdf",
-    "fecha": "2026-05-07T11:30:00"
+    "tipo": "pdf"
   },
   {
+    "id": 4,
     "nombre": "FASE 3: PERFECCIONAMIENTO DE MARCAS (semanas 9 a 12)",
     "url": "/uploads/fase3_perfeccionamiento.pdf",
     "categoria": "planificacion",
-    "tipo": "pdf",
-    "fecha": "2026-05-07T11:30:00"
+    "tipo": "pdf"
   },
   {
+    "id": 5,
     "nombre": "FASE 4: SIMULACIÓN Y PRE CFOR (semanas 13 a 16)",
     "url": "/uploads/fase4_simulacion.pdf",
     "categoria": "planificacion",
-    "tipo": "pdf",
-    "fecha": "2026-05-07T11:30:00"
+    "tipo": "pdf"
   },
   {
+    "id": 6,
     "nombre": "RESUMEN GENERAL DE LAS PRUEBAS",
     "url": "/uploads/resumen_general_fisicas.pdf",
     "categoria": "planificacion",
-    "tipo": "pdf",
-    "fecha": "2026-05-07T11:30:00"
+    "tipo": "pdf"
   },
   {
+    "id": 7,
     "nombre": "DESCRIPCIÓN DE PRUEBA: CARRERA DE 2 KM",
     "url": "/uploads/curso_carrera_2km.pdf",
     "categoria": "carrera",
-    "tipo": "pdf",
-    "fecha": "2026-05-07T11:30:00"
+    "tipo": "pdf"
   },
   {
+    "id": 8,
     "nombre": "DESCRIPCIÓN DE PRUEBA: CIRCUITO DE AGILIDAD",
     "url": "/uploads/curso_agilidad.pdf",
     "categoria": "agilidad",
-    "tipo": "pdf",
-    "fecha": "2026-05-07T11:30:00"
+    "tipo": "pdf"
   },
   {
+    "id": 9,
     "nombre": "DESCRIPCIÓN DE PRUEBA: FLEXIONES Y PLANCHA",
     "url": "/uploads/curso_flexiones_plancha.pdf",
     "categoria": "flexiones",
-    "tipo": "pdf",
-    "fecha": "2026-05-07T11:30:00"
+    "tipo": "pdf"
   },
   {
+    "id": 10,
     "nombre": "DESCRIPCIÓN DE PRUEBA: FLEXIONES Y PLANCHA",
     "url": "/uploads/curso_flexiones_plancha.pdf",
     "categoria": "plancha",
-    "tipo": "pdf",
-    "fecha": "2026-05-07T11:30:00"
+    "tipo": "pdf"
+  },
+  {
+    "id": 11,
+    "nombre": "CURSO PRUEBAS FISICAS 2026_FLEXIONES Y PLANCHA.pdf",
+    "url": "/uploads/CURSO PRUEBAS FISICAS 2026_FLEXIONES Y PLANCHA.pdf",
+    "categoria": "carrera",
+    "tipo": "pdf"
   }
 ]

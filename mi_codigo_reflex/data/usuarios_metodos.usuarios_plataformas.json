@@ -467,7 +467,7 @@
     "pedido": 0,
     "desde": "2024-01-15T11:39:44",
     "hasta": "2024-08-30T11:39:44",
-    "count_login": 32,
+    "count_login": 33,
     "are_terms_accepted": false,
     "is_optional_checked": true,
     "disabled": false,
@@ -476,20 +476,20 @@
     "disabled_fisicas": "false"
   },
   {
-    "nombre": "Pablo",
-    "apellidos": "Gonzalez Delgado",
+    "nombre": "Alejandra",
+    "apellidos": "",
     "dni": null,
-    "email": "pablogonzalez.24@campuscamara.es",
-    "password": "$2b$12$wNKsAy.43EKFcL9N.3MSju/PJDAxvIjHBjjSL009KD.Mph65/ZQrS",
+    "email": "alejandragarzon.24@campuscamara.es",
+    "password": "$2b$12$YnWYmRKpcG7Wy3FySujNIeM/JBks.u.hzwbvyf23kqtLADkZx7YHa",
     "pedido": 0,
-    "desde": "2026-05-07T11:01:13.685533",
-    "hasta": "2027-07-01T11:01:13.685536",
-    "count_login": 7,
+    "desde": "2026-05-12T07:27:55.760760",
+    "hasta": "2026-06-11T07:27:55.760766",
+    "count_login": 0,
     "are_terms_accepted": true,
     "is_optional_checked": true,
-    "disabled": false,
+    "disabled": true,
     "rol": "estudiante",
-    "disabled_personalidad": "true",
+    "disabled_personalidad": "false",
     "disabled_fisicas": "false"
   }
 ]

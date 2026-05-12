@@ -29,6 +29,8 @@ class AdminState(State):
     recursos: List[dict] = []
     selected_categoria: str = "flexiones"
     categorias_disponibles: List[str] = ["flexiones", "plancha", "agilidad", "carrera", "planificacion"]
+    video_manual_nombre: str = ""
+    video_manual_url: str = ""
     system_status: Dict[str, bool] = {}
     
     def check_system_health(self):
@@ -157,6 +159,44 @@ class AdminState(State):
         self.fetch_recursos()
         self.sync_recursos_to_json() # <--- Sincronizar con JSON local
         return rx.toast(f"Subidos {len(files)} archivos a {self.selected_categoria}.")
+
+    def guardar_video_manual(self):
+        """Guarda un enlace de vídeo introducido manualmente."""
+        from Personalidad.db.crud import guardar_video
+        
+        if not self.video_manual_nombre or not self.video_manual_url:
+            return rx.window_alert("El nombre y el enlace del vídeo son obligatorios.")
+            
+        try:
+            url = self.video_manual_url.strip()
+            
+            # Conversión automática de enlaces de YouTube a formato embed
+            if "youtu.be/" in url:
+                # https://youtu.be/VIDEO_ID -> https://www.youtube.com/embed/VIDEO_ID
+                video_id = url.split("youtu.be/")[1].split("?")[0]
+                url = f"https://www.youtube.com/embed/{video_id}"
+            elif "youtube.com/watch?v=" in url:
+                # https://www.youtube.com/watch?v=VIDEO_ID -> https://www.youtube.com/embed/VIDEO_ID
+                video_id = url.split("v=")[1].split("&")[0]
+                url = f"https://www.youtube.com/embed/{video_id}"
+            
+            guardar_video(
+                nombre=self.video_manual_nombre,
+                url=url,
+                categoria=self.selected_categoria
+            )
+            
+            # Limpiar campos
+            self.video_manual_nombre = ""
+            self.video_manual_url = ""
+            
+            # Refrescar y sincronizar
+            self.fetch_recursos()
+            self.sync_recursos_to_json()
+            
+            return rx.toast(f"Vídeo manual guardado en {self.selected_categoria}.")
+        except Exception as e:
+            return rx.window_alert(f"Error al guardar vídeo manual: {e}")
 
     def borrar_recurso(self, recurso: dict):
         """Elimina un recurso de su tabla y borra el archivo físico."""
