@@ -38,7 +38,10 @@ BASE_STYLE = {
         "border_radius": "0",
         "background_color": Color.PRIMARY.value,
         "_hover": {
-            "background_color": Color.SECONDARY.value
+            "background_color": Color.ACCENT.value
+        },
+        "_active": {
+            "background_color": Color.ACCENT.value
         }
     },
     rx.link: {

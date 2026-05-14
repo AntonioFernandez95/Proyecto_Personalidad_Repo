@@ -312,6 +312,14 @@ def admin_panel() -> rx.Component:
                                 height="100px",
                                 **CARD_STYLE
                             ),
+                            rx.text("Enlace de reserva (opcional):", font_size="0.85em", font_weight="bold", color=TEXT_DARK),
+                            rx.input(
+                                placeholder="https://ejemplo.com/reserva",
+                                value=SimulacroState.url_reserva,
+                                on_change=SimulacroState.set_url_reserva,
+                                width="100%",
+                                **CARD_STYLE
+                            ),
                             rx.vstack(
                                 rx.button(
                                     rx.cond(SimulacroState.edit_id == -1, "Crear Simulacro", "Guardar Cambios"),

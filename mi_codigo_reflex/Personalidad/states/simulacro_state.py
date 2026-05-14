@@ -20,6 +20,7 @@ class SimulacroState(State):
     fecha: str = ""
     ubicacion: str = ""
     descripcion: str = ""
+    url_reserva: str = ""
     
     def next_simulacro(self):
         """Avanza al siguiente simulacro."""
@@ -40,7 +41,8 @@ class SimulacroState(State):
                 "titulo": s.titulo,
                 "fecha": s.fecha,
                 "ubicacion": s.ubicacion,
-                "descripcion": s.descripcion
+                "descripcion": s.descripcion,
+                "url_reserva": s.url_reserva
             } for s in raw
         ]
 
@@ -51,6 +53,7 @@ class SimulacroState(State):
         self.fecha = simulacro["fecha"]
         self.ubicacion = simulacro["ubicacion"]
         self.descripcion = simulacro["descripcion"]
+        self.url_reserva = simulacro.get("url_reserva", "")
 
     def clear_form(self):
         """Limpia el formulario."""
@@ -59,6 +62,7 @@ class SimulacroState(State):
         self.fecha = ""
         self.ubicacion = ""
         self.descripcion = ""
+        self.url_reserva = ""
 
     def _guardar_json_respaldo(self):
         """Guarda la lista actual de simulacros en un archivo JSON como respaldo."""
@@ -87,7 +91,8 @@ class SimulacroState(State):
                 titulo=self.titulo,
                 fecha=self.fecha,
                 ubicacion=self.ubicacion,
-                descripcion=self.descripcion
+                descripcion=self.descripcion,
+                url_reserva=self.url_reserva
             )
             
             # --- ACTIVAR NOTIFICACIÓN PARA ALUMNOS ---

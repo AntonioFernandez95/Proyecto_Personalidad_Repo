@@ -33,12 +33,28 @@ def simulacro_card(s: dict) -> rx.Component:
                 s["descripcion"],
                 font_size="0.95em", color=TEXT_MID, margin_top="1em",
             ),
-            rx.button(
-                "RESERVAR PLAZA",
-                background=OLIVE, color="white", border_radius="8px",
-                padding="0.8em 2em", font_weight="700", width="100%",
-                margin_top="1.5em",
-                _hover={"transform": "scale(1.02)", "background": "#3E5228"},
+            rx.link(
+                rx.button(
+                    "RESERVAR PLAZA",
+                    background=OLIVE, color="white", border_radius="8px",
+                    padding="0.8em 2em", font_weight="700", width="100%",
+                    margin_top="1.5em",
+                    _hover={"transform": "scale(1.02)", "background": "#3E5228"},
+                ),
+                href=s["url_reserva"].to(str),
+                is_external=True,
+                width="100%",
+                display=rx.cond(s["url_reserva"].to(str) != "", "block", "none")
+            ),
+            rx.cond(
+                s["url_reserva"].to(str) == "",
+                rx.button(
+                    "RESERVAR PLAZA (Próximamente)",
+                    background="#ccc", color="white", border_radius="8px",
+                    padding="0.8em 2em", font_weight="700", width="100%",
+                    margin_top="1.5em",
+                    cursor="not-allowed",
+                )
             ),
             spacing="3", align="start",
         ),

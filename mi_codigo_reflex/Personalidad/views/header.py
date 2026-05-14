@@ -24,10 +24,13 @@ def header()-> rx.Component:
             ),
             rx.heading(
                 utils.titulo,
-                color="#1A9FB4",
+                color=Color.GREEN.value,
                 font_family=Font.DEFAULT,
                 ),
-            rx.text(utils.descripcion),
+            rx.text(
+                utils.descripcion,
+                color=Color.GREEN.value,
+            ),
             rx.spacer(),
             # Info boxes con wrap responsivo (sin duplicar código)
             rx.hstack(
@@ -45,7 +48,7 @@ def header()-> rx.Component:
             rx.spacer(),
             rx.heading(
                 utils.titulo_2,
-                color="#1A9FB4",
+                color=Color.GREEN.value,
                 font_family=Font.DEFAULT,
                 size="5"
             ),

@@ -19,10 +19,13 @@ def crear_fecha_manual():
         print("Añadiendo columna 'fecha' a recursos.pdfs...")
         cur.execute("ALTER TABLE recursos.pdfs ADD COLUMN IF NOT EXISTS fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP;")
         
+        print("Añadiendo columna 'url_reserva' a recursos.simulacros...")
+        cur.execute("ALTER TABLE recursos.simulacros ADD COLUMN IF NOT EXISTS url_reserva TEXT;")
+        
         conn.commit()
         cur.close()
         conn.close()
-        print("Columnas 'fecha' creadas correctamente.")
+        print("Columnas de base de datos actualizadas correctamente.")
     except Exception as e:
         print(f"Error al crear las columnas: {e}")
 

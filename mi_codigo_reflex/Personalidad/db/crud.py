@@ -292,7 +292,7 @@ def eliminar_simulacro(id: int):
             return True
     return False
 
-def upsert_simulacro(id: int = None, titulo: str = "", fecha: str = "", ubicacion: str = "", descripcion: str = ""):
+def upsert_simulacro(id: int = None, titulo: str = "", fecha: str = "", ubicacion: str = "", descripcion: str = "", url_reserva: str = ""):
     from Personalidad.db.models.simulacro_model import Simulacro
     with Session(engine) as session:
         if id:
@@ -302,11 +302,12 @@ def upsert_simulacro(id: int = None, titulo: str = "", fecha: str = "", ubicacio
                 item.fecha = fecha
                 item.ubicacion = ubicacion
                 item.descripcion = descripcion
+                item.url_reserva = url_reserva
                 session.commit()
                 return item.id
         
         # Si no hay ID o no se encontró, creamos uno nuevo
-        nuevo = Simulacro(titulo=titulo, fecha=fecha, ubicacion=ubicacion, descripcion=descripcion)
+        nuevo = Simulacro(titulo=titulo, fecha=fecha, ubicacion=ubicacion, descripcion=descripcion, url_reserva=url_reserva)
         session.add(nuevo)
         session.commit()
         return nuevo.id

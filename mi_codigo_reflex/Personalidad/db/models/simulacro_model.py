@@ -12,4 +12,5 @@ class Simulacro(Base):
     fecha = Column(String, nullable=False) # Guardamos como string para flexibilidad (ej: "25 de Abril, 2026")
     ubicacion = Column(String, nullable=False)
     descripcion = Column(String, nullable=False)
+    url_reserva = Column(String, nullable=True) # Enlace opcional para reserva de plaza
     fecha_creacion = Column(DateTime, default=datetime.datetime.utcnow)

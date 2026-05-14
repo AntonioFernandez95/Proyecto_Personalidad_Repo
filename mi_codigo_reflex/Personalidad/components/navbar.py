@@ -34,7 +34,7 @@ def navbar() -> rx.Component:
                 State.logged_in,
                 rx.hstack(
                     rx.link(
-                        rx.text("Simulacro", color=rx.color_mode_cond(light=Color.TEXT, dark="white"), font_weight="500", _hover={"color": "#ee6a19"}),
+                        rx.text("Simulacro Presencial", color=rx.color_mode_cond(light=Color.TEXT, dark="white"), font_weight="500", _hover={"color": "#ee6a19"}),
                         href="/academia/simulacro",
                         underline="none",
                     ),
