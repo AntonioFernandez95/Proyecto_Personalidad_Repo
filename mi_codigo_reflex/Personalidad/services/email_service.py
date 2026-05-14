@@ -54,12 +54,12 @@ def send_credentials_email(email: str, password: str, full_name: str = "Alumno")
             body {{ font-family: 'Roboto', sans-serif; font-size: 14px; color: #333333; line-height: 1.6; }}
             .container {{ text-align: center; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 20px; border_radius: 10px; }}
             .logo {{ display: block; margin: 0 auto; max-width: 250px; width: 100%; }}
-            .welcome {{ font-weight: bold; font-size: 18px; color: #1B9AAF; margin-top: 20px; text-transform: uppercase; }}
+            .welcome {{ font-weight: bold; font-size: 18px; color: #5B733A; margin-top: 20px; text-transform: uppercase; }}
             .link {{ color: #FC4F00; font-weight: bold; text-decoration: none; }}
             table {{ width: auto; border-collapse: collapse; margin: 25px auto; background-color: #f9f9f9; }}
             table, th, td {{ border: 1px solid #ddd; }}
             th, td {{ padding: 12px 20px; text-align: left; }}
-            th {{ background-color: #1B9AAF; color: white; font-weight: bold; }}
+            th {{ background-color: #5B733A; color: white; font-weight: bold; }}
             .social img {{ max-width: 35px; margin: 0 10px; }}
             .contact-info {{ color: #FC4F00; font-weight: bold; }}
             .legal-cell {{ text-align: justify; background-color: #FAFAFA; font-size: 11px; color: #666; padding: 15px; border-top: 3px solid #FC4F00; margin-top: 30px; }}
@@ -113,8 +113,8 @@ def send_recovery_email(email: str, password: str):
             body {{ font-family: 'Roboto', sans-serif; font-size: 14px; color: #333333; }}
             .container {{ text-align: center; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 20px; }}
             .header {{ font-weight: bold; font-size: 18px; color: #FC4F00; margin-top: 20px; }}
-            .pass-box {{ background-color: #1B9AAF; color: white; padding: 15px; font-size: 20px; font-weight: bold; display: inline-block; margin: 20px 0; border_radius: 5px; }}
-            .link {{ color: #1B9AAF; font-weight: bold; }}
+            .pass-box {{ background-color: #5B733A; color: white; padding: 15px; font-size: 20px; font-weight: bold; display: inline-block; margin: 20px 0; border_radius: 5px; }}
+            .link {{ color: #5B733A; font-weight: bold; }}
         </style>
     </head>
     <body>

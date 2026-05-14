@@ -160,18 +160,18 @@ def pdf_section(pdfs_list: rx.Var = None) -> rx.Component:
                 collapsible=True,
                 accent_color="grass",
                 style={
-                    "border": "1px solid #e2e2e2",
+                    "border": "1px solid rgba(255,255,255,0.1)",
                     "border_radius": "8px",
                     "overflow": "hidden",
                     "max_width": "700px",
-                    "background_color": "white !important",
+                    "background_color": "transparent !important",
                 }
             ),
             align="start",
             width="100%",
             spacing="0"
         ),
-        background_color="white",
+        background_color="transparent",
         width="100%",
         margin_top="0.5em"
     )
