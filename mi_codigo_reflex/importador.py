@@ -64,6 +64,10 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
                 "are_terms_accepted", "is_optional_checked", "disabled", "rol",
                 "disabled_personalidad", "disabled_fisicas"
             ]
+        elif esquema == "recursos":
+            columnas = columnas_originales
+            if "fecha" not in columnas:
+                columnas.append("fecha")
         else:
             columnas = columnas_originales
 
@@ -104,8 +108,10 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
                 if not email.endswith("@academiametodos.com"):
                     continue
 
+            columnas_presentes = []
             valores = []
             for col in columnas:
+                val = None
                 if col == "password" and es_tabla_usuarios:
                     raw_pass = str(item.get("password", ""))
                     if raw_pass.startswith("$2") and len(raw_pass) >= 59:
@@ -116,7 +122,6 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
                     email_item = str(item.get("email", "")).lower()
                     val = "admin" if email_item.endswith("@academiametodos.com") else "estudiante"
                 elif col == "apellidos" and es_tabla_usuarios:
-                    # Combinamos apellido1 y apellido2 si existen
                     ap1 = item.get("apellido1", "")
                     ap2 = item.get("apellido2", "")
                     val = f"{ap1} {ap2}".strip()
@@ -127,7 +132,12 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
                         if col == "count_login": val = item.get("count_login", 0)
                         elif col == "are_terms_accepted": val = item.get("are_terms_accepted", False)
                         elif col == "is_optional_checked": val = item.get("is_optional_checked", True)
-
+                
+                # Si el valor es None y la columna es 'fecha', la omitimos para que use el DEFAULT
+                if val is None and col == "fecha":
+                    continue
+                
+                columnas_presentes.append(col)
                 if isinstance(val, (dict, list)):
                     valores.append(json.dumps(val))
                 else:
@@ -135,8 +145,8 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
            
             query = sql.SQL("INSERT INTO {}.{} ({}) VALUES ({})").format(
                 sql.Identifier(esquema), sql.Identifier(tabla),
-                sql.SQL(', ').join(map(sql.Identifier, columnas)),
-                sql.SQL(', ').join(sql.Placeholder() * len(columnas))
+                sql.SQL(', ').join(map(sql.Identifier, columnas_presentes)),
+                sql.SQL(', ').join(sql.Placeholder() * len(columnas_presentes))
             )
             cursor.execute(query, valores)
 

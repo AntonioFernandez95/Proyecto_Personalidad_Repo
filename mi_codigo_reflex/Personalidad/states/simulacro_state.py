@@ -3,7 +3,7 @@ from typing import List, Dict, Any
 from Personalidad.states.base_state import State
 from Personalidad.db.crud import (
     obtener_simulacros, guardar_simulacro, actualizar_simulacro, 
-    eliminar_simulacro, obtener_simulacro_por_id
+    eliminar_simulacro, obtener_simulacro_por_id, upsert_simulacro
 )
 
 class SimulacroState(State):
@@ -105,32 +105,8 @@ class SimulacroState(State):
             return rx.window_alert(f"Error al guardar: {e}")
 
     def guardar_simulacro_action(self):
-        """Crea o actualiza un simulacro."""
-        if not self.fecha or not self.ubicacion or not self.descripcion:
-            return rx.window_alert("Todos los campos son obligatorios.")
-            
-        if self.edit_id == -1:
-            guardar_simulacro(
-                fecha=self.fecha,
-                ubicacion=self.ubicacion,
-                descripcion=self.descripcion,
-                titulo=self.titulo
-            )
-            mensaje = "Simulacro creado correctamente."
-        else:
-            actualizar_simulacro(
-                id=self.edit_id,
-                fecha=self.fecha,
-                ubicacion=self.ubicacion,
-                descripcion=self.descripcion,
-                titulo=self.titulo
-            )
-            mensaje = "Simulacro actualizado correctamente."
-            
-        self.clear_form()
-        self.fetch_simulacros()
-        self._guardar_json_respaldo()
-        return rx.toast(mensaje)
+        """Crea o actualiza un simulacro delegando en save_simulacro para activar la notificación."""
+        return self.save_simulacro()
 
     def eliminar_simulacro_action(self, id: int):
         """Elimina un simulacro."""

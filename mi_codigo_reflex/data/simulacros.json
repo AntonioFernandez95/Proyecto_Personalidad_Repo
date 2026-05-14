@@ -1,16 +1,23 @@
 [
     {
         "id": 3,
-        "titulo": "PRÓXIMA CONVOCATORIA",
-        "fecha": "11",
-        "ubicacion": "111",
-        "descripcion": "111111"
+        "titulo": "popup",
+        "fecha": "111",
+        "ubicacion": "11",
+        "descripcion": "1"
+    },
+    {
+        "id": 2,
+        "titulo": "PRÓXIMA ",
+        "fecha": "21",
+        "ubicacion": "Prueba",
+        "descripcion": "prueba"
     },
     {
         "id": 1,
         "titulo": "PRÓXIMA CONVOCATORIA",
-        "fecha": "20 de Mayo de 2026",
+        "fecha": "25 de Abril, 2026",
         "ubicacion": "Centro Deportivo Municipal",
-        "descripcion": "Pequña prueba"
+        "descripcion": "Nada."
     }
 ]
