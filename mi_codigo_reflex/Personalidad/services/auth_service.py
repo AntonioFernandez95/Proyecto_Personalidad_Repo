@@ -127,10 +127,6 @@ def generate_random_password(length=7):
     return ''.join(random.choices(chars, k=length))
 
 
-async def update_optional_terms(email: str, checked: bool):
-    """Actualiza el estado de aceptación de términos opcionales."""
-    return db_client.update_one("usuarios_plataformas", "email", email, {"is_optional_checked": checked})
-
 
 def increment_login_count(email: str):
     """Incrementa el contador de inicios de sesión de un usuario."""

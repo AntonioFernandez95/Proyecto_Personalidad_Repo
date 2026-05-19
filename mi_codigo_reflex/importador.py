@@ -61,7 +61,7 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
             columnas = [
                 "nombre", "apellidos", "dni", "email", "password", 
                 "pedido", "desde", "hasta", "count_login", 
-                "are_terms_accepted", "is_optional_checked", "disabled", "rol",
+                "disabled", "rol",
                 "disabled_personalidad", "disabled_fisicas"
             ]
         elif esquema == "recursos":
@@ -94,7 +94,7 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
                 columnas_def.append(f'"{col}" TIMESTAMP DEFAULT CURRENT_TIMESTAMP')
             elif col in ["count_login", "pedido"]:
                 columnas_def.append(f'"{col}" INTEGER DEFAULT 0')
-            elif col in ["are_terms_accepted", "disabled", "is_optional_checked", "disabled_personalidad", "disabled_fisicas"]:
+            elif col in ["disabled", "disabled_personalidad", "disabled_fisicas"]:
                 columnas_def.append(f'"{col}" BOOLEAN DEFAULT TRUE')
             elif col == "rol":
                 columnas_def.append(f'"{col}" TEXT DEFAULT \'estudiante\'')
@@ -133,8 +133,6 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
                     # Fallback para campos con nombres alternativos en el JSON
                     if val is None:
                         if col == "count_login": val = item.get("count_login", 0)
-                        elif col == "are_terms_accepted": val = item.get("are_terms_accepted", False)
-                        elif col == "is_optional_checked": val = item.get("is_optional_checked", True)
                 
                 # Si el valor es None y la columna es 'fecha', la omitimos para que use el DEFAULT
                 if val is None and col == "fecha":
