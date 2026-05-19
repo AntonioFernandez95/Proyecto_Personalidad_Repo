@@ -1,7 +1,6 @@
 import reflex as rx
 import Personalidad.styles.utils as utils
 
-
 from Personalidad.styles.fonts import Font
 from Personalidad.styles.styles import Size
 from Personalidad.styles.colors import Color
@@ -84,65 +83,6 @@ def index():
                                 width="100%",
                             ),
                         ),
-                        # Checkbox Condiciones Acceso
-                        rx.hstack(
-                            rx.checkbox(
-                                checked=ButtonClick.isOptionalChecked,
-                                on_change=ButtonClick.toggleOptionalCheck,
-                            ),
-                            rx.text(
-                                "Acepto las ",
-                                rx.link(
-                                    "condiciones de acceso",
-                                    is_external=True,
-                                    href="https://academiametodos.com/home/acceso-gratis-al-test-de-personalidad-consentimiento/",
-                                    color_scheme="orange",
-                                ),
-                                " al test gratuito",
-                                size="1",
-                                cursor="default",
-                            ),
-                            spacing="2",
-                            align="center",
-                            width="100%",
-                        ),
-
-
-                        # Checkbox Términos y Condiciones
-                        rx.hstack(
-                            rx.checkbox(
-                                checked=ButtonClick.isChecked,
-                                on_change=ButtonClick.toggleCheck,
-                            ),
-                            rx.text(
-                                "Acepto los ",
-                                rx.link(
-                                    "términos y condiciones",
-                                    is_external=True,
-                                    href="https://academiametodos.com/home/terminos-y-condiciones-test-de-personalidad-tropa-y-marineria/",
-                                    color_scheme="orange",
-                                ),
-                                " de la aplicación",
-                                size="1",
-                                cursor="default",
-                            ),
-                            spacing="2",
-                            align="center",
-                            width="100%",
-                        ),
-
-
-                        # Alerta Términos No Aceptados
-                        rx.cond(
-                            ButtonClick.show_terms_alert,
-                            rx.callout(
-                                "Acepta los términos para poder continuar",
-                                size="1",
-                                width="100%",
-                                color_scheme="red",
-                            ),
-                        ),
-
 
                         # --- OPCIÓN RECUPERACIÓN DE CONTRASEÑA ---
                         rx.box(
@@ -158,7 +98,6 @@ def index():
                             text_align="right",
                         ),
 
-
                         # Botón Acceder
                         rx.button(
                             "Acceder",
@@ -168,6 +107,20 @@ def index():
                             disabled=ButtonClick.checkStatusButton,
                             background_color=Color.ACCENT,
                             width="100%",
+                        ),
+                        # Botón Comprar / Renovar Plazo
+                        rx.link(
+                            rx.button(
+                                "Renueva tu suscripción aquí",
+                                size="3",
+                                background_color=Color.ACCENT,
+                                width="100%",
+                                cursor="pointer",
+                            ),
+                            href="https://academiametodos.com/tienda/#tropa_y_marineria",
+                            is_external=True,
+                            width="100%",
+                            text_decoration="none",
                         ),
                         align="center",
                         spacing="3",

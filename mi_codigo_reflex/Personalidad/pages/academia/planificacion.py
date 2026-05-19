@@ -3,12 +3,24 @@ from Personalidad.pages.academia.layout import academia_layout, OLIVE, TEXT_DARK
 from Personalidad.states.planificacion_state import PlanificacionState
 
 
+
+
+
+
+
+
 _MARCAS = [
     ("Flexiones",     "17 reps", "12 reps"),
     ("Plancha",       "60 seg",  "40 seg"),
     ("Carrera 2000m", "11:00",   "13:00"),
     ("Agilidad",      "25 seg",  "27 seg"),
 ]
+
+
+
+
+
+
 
 
 @rx.page(route="/academia/planificacion", title="Academia Online - Planificación", on_load=PlanificacionState.on_load)
@@ -69,11 +81,17 @@ def planificacion() -> rx.Component:
                 ),
 
 
-                rx.text("Planes Estáticos:", font_size="0.8em", color=TEXT_MID, font_weight="bold"),
-                plan_row("CURSO PRUEBA FÍSICAS 2026", "6 semanas · Nivel básico", "/curso_fisicas_2026.pdf"),
-                plan_row("PRUEBAS FÍSICAS 2026 CIRCUITO", "8 semanas · Nivel medio-alto", "/circuito_2026.pdf"),
-                plan_row("PRUEBAS FÍSICAS FLEXIONES Y PLANCHAS", "12 semanas · Máximo rendimiento", "/flexiones_planchas.pdf"),
-                plan_row("CURSO PRUEBA FÍSICAS CARRERA", "Entrenamiento específico", "/curso_carrera.pdf"),
+
+
+
+
+
+
+                rx.text("Cómo son las pruebas físicas:", font_size="0.8em", color=TEXT_MID, font_weight="bold"),
+                plan_row("RESUMEN DE LAS PRUEBAS", "6 semanas · Nivel básico", "/curso_fisicas_2026.pdf"),
+                plan_row("CIRCUITO DE AGILIDAD Y VELOCIDAD", "8 semanas · Nivel medio-alto", "/circuito_2026.pdf"),
+                plan_row("PRUEBAS TREN SUPERIOR: FLEXIONES Y PLANCHA", "12 semanas · Máximo rendimiento", "/flexiones_planchas.pdf"),
+                plan_row("CARRERA 2000 METROS", "Entrenamiento específico", "/curso_carrera.pdf"),
                 spacing="3", **CARD_STYLE, padding="2em", flex="1", min_width="280px", align="start",
             ),
             rx.vstack(

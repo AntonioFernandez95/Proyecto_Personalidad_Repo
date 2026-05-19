@@ -5,6 +5,7 @@ from Personalidad.states.simulacro_state import SimulacroState
 from Personalidad.pages.academia.layout import academia_layout, BTN_PRIMARY_BASE, BTN_SECONDARY_BASE, CARD_STYLE
 from Personalidad.styles.academia_styles import TEXT_DARK, TEXT_MID, CARD_BG, GRAY_LIGHT
 
+
 def admin_header() -> rx.Component:
     return rx.flex(
         rx.vstack(
@@ -42,6 +43,7 @@ def admin_header() -> rx.Component:
         flex_direction="column",
         gap="2em",
     )
+
 
 def user_management_row(user: dict) -> rx.Component:
     """Fila de usuario hiper-flexible y adaptativa."""
@@ -102,6 +104,7 @@ def user_management_row(user: dict) -> rx.Component:
         opacity="1",
     )
 
+
 def resource_item(recurso: dict) -> rx.Component:
     """Representación de un recurso (PDF o Vídeo) en la lista del admin."""
     return rx.hstack(
@@ -121,7 +124,7 @@ def resource_item(recurso: dict) -> rx.Component:
             size=22,
             color="red",
             cursor="pointer",
-            on_click=lambda: AdminState.borrar_recurso(recurso)
+            on_click=lambda: AdminState.solicitar_borrar_recurso(recurso)
         ),
         width="100%",
         padding="1.2em",
@@ -129,6 +132,7 @@ def resource_item(recurso: dict) -> rx.Component:
         background=GRAY_LIGHT,
         border=rx.color_mode_cond(light="1px solid #eee", dark="1px solid #333")
     )
+
 
 def simulacro_row(simulacro: dict) -> rx.Component:
     """Fila para gestionar un simulacro existente."""
@@ -164,6 +168,8 @@ def simulacro_row(simulacro: dict) -> rx.Component:
     )
 
 
+
+
 def auto_alta_row(alta: dict) -> rx.Component:
     """Representación de una fila en la tabla de auto-altas."""
     plan_nombre = rx.cond(
@@ -176,17 +182,18 @@ def auto_alta_row(alta: dict) -> rx.Component:
             )
         )
     )
-    
+   
     badge_color = rx.cond(
         alta["estado"] == "processed", "green",
         rx.cond(alta["estado"] == "failed", "red", "yellow")
     )
-    
+   
     err_text = rx.cond(
-        alta["error"] != "", 
+        alta["error"] != "",
         rx.text(f"Error: {alta['error']}", font_size="0.8em", color="red", font_style="italic"),
         rx.text("Procesado con éxito", font_size="0.8em", color="green")
     )
+
 
     return rx.table.row(
         rx.table.cell(rx.text(alta["pedido_id"], font_weight="bold", color=TEXT_DARK)),
@@ -204,6 +211,7 @@ def auto_alta_row(alta: dict) -> rx.Component:
         align="center",
     )
 
+
 def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
     # Establecemos valores por defecto que se pueden sobreescribir vía kwargs
     kwargs.setdefault("width", "100%")
@@ -212,6 +220,7 @@ def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
     kwargs.setdefault("padding", ["1.5em", "3em"])
     kwargs.setdefault("align_items", "center")
     kwargs.setdefault("box_shadow", "0 15px 50px rgba(0,0,0,0.12)")
+
 
     return rx.vstack(
         rx.vstack(
@@ -229,6 +238,7 @@ def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
         ),
         **kwargs,
     )
+
 
 @rx.page(route="/academia/admin_panel", title="Panel Admin", on_load=[AdminState.on_load, SimulacroState.fetch_simulacros])
 def admin_panel() -> rx.Component:
@@ -273,7 +283,7 @@ def admin_panel() -> rx.Component:
                             rx.vstack(
                                 # Muestra los primeros 2 usuarios siempre
                                 rx.foreach(AdminState.filtered_users[:2], user_management_row),
-                                
+                               
                                 # El resto se oculta bajo un rx.cond (Lógica de expansión)
                                 rx.cond(
                                     AdminState.mostrar_todos_alumnos,
@@ -282,6 +292,7 @@ def admin_panel() -> rx.Component:
                                         width="100%",
                                     ),
                                 ),
+
 
                                 # Botón Ver más / Ver menos (Solo si hay más de 2 usuarios)
                                 rx.cond(
@@ -315,6 +326,7 @@ def admin_panel() -> rx.Component:
                             )
                         ),
                     ),
+
 
                     # Gestión de Simulacros (Debajo de alumnos)
                     admin_card(
@@ -394,6 +406,7 @@ def admin_panel() -> rx.Component:
                         ),
                         width="100%",
                     ),
+
 
                     # Historial de Auto-Altas WooCommerce
                     admin_card(
@@ -496,6 +509,7 @@ def admin_panel() -> rx.Component:
                         width="100%",
                     ),
 
+
                     # Gestión de Recursos
                     admin_card(
                         "Gestión de Recursos", "cloud-upload",
@@ -568,7 +582,7 @@ def admin_panel() -> rx.Component:
                             # Este es el botón nuevo que añadí para ir a la biblioteca completa
                             rx.link(
                                 rx.button(
-                                    "Ver más", 
+                                    "Ver más",
                                     background_color="#5B733A",
                                     color="white",
                                     border_radius="25px",

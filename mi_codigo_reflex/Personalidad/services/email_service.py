@@ -5,9 +5,13 @@ from Personalidad.config import EMAIL_SENDER, EMAIL_PASSWORD, EMAIL_SERVER, EMAI
 from Personalidad.constants import AUTHORIZED_DOMAINS, TEST_EMAILS
 
 
+
+
 def is_authorized_email(email: str) -> bool:
     """Verifica si el email pertenece a un dominio autorizado (DESACTIVADO PARA PERMITIR TODOS)."""
     return True
+
+
 
 
 def _send_email_base(to_email: str, subject: str, body: str, html_content: str):
@@ -39,10 +43,12 @@ def _send_email_base(to_email: str, subject: str, body: str, html_content: str):
         return False
 
 
+
+
 def send_credentials_email(email: str, password: str, full_name: str = "Alumno"):
     """Envía las credenciales de acceso inicial con el nuevo diseño profesional."""
     subject = '¡Bienvenido a Academia Métodos! - Tus credenciales'
-    body = f"¡Bienvenido {full_name}!\n\nTu usuario: {email}\nTu contraseña: {password}\nAcceso: http://tropa.academiametodos.com"
+    body = f"¡Bienvenido {full_name}!\n\nTu usuario: {email}\nTu contraseña: {password}\nAcceso: https://tropa-fase2.academiametodos.com"
    
     html = f"""
     <!DOCTYPE html>
@@ -67,10 +73,10 @@ def send_credentials_email(email: str, password: str, full_name: str = "Alumno")
     </head>
     <body>
         <div class="container">
-            <img class="logo" src="http://tropa.academiametodos.com/Logo_tumbado.png" alt="Academia Métodos">
+            <img class="logo" src="https://tropa-fase2.academiametodos.com/Logo_tumbado.png" alt="Academia Métodos">
             <p class="welcome">¡BIENVENIDO {full_name.upper()}!</p>
             <p>Te damos la bienvenida a <b>Métodos</b>. Con estos datos podrás acceder al curso a través del siguiente enlace:</p>
-            <p><a class="link" href="http://tropa.academiametodos.com">ACCEDER A LA PLATAFORMA</a></p>
+            <p><a class="link" href="https://tropa-fase2.academiametodos.com">ACCEDER A LA PLATAFORMA</a></p>
             <table>
                 <tr>
                     <th>Tu usuario</th>
@@ -85,9 +91,9 @@ def send_credentials_email(email: str, password: str, full_name: str = "Alumno")
             <p>Antes de comenzar, te recomendamos que revises la <b>guía de uso</b> del curso que encontrarás al entrar en él.</p>
             <br>
             <div class="social">
-                <a href="https://www.facebook.com/academiametodos/"><img src="http://tropa.academiametodos.com/FB.png" alt="FB"></a>
-                <a href="https://www.instagram.com/academiametodos/"><img src="http://tropa.academiametodos.com/INSTA.png" alt="IG"></a>
-                <a href="https://www.youtube.com/channel/UC9yYj498kx_vUxlX-R5ne1A"><img src="http://tropa.academiametodos.com/YOUTUBE.png" alt="YT"></a>
+                <a href="https://www.facebook.com/academiametodos/"><img src="https://tropa-fase2.academiametodos.com/FB.png" alt="FB"></a>
+                <a href="https://www.instagram.com/academiametodos/"><img src="https://tropa-fase2.academiametodos.com/INSTA.png" alt="IG"></a>
+                <a href="https://www.youtube.com/channel/UC9yYj498kx_vUxlX-R5ne1A"><img src="https://tropa-fase2.academiametodos.com/YOUTUBE.png" alt="YT"></a>
             </div>
             <div class="legal-cell">
                 <b>AVISO LEGAL:</b> Por motivos de seguridad, las claves son secretas y para uso privado. Este mensaje es confidencial. Si lo ha recibido por error, por favor notifíquelo a metodos@academiametodos.com. Queda prohibida la distribución o copia de este mensaje.
@@ -97,6 +103,8 @@ def send_credentials_email(email: str, password: str, full_name: str = "Alumno")
     </html>
     """
     return _send_email_base(email, subject, body, html)
+
+
 
 
 def send_recovery_email(email: str, password: str):
@@ -119,13 +127,13 @@ def send_recovery_email(email: str, password: str):
     </head>
     <body>
         <div class="container">
-            <img src="http://tropa.academiametodos.com/Logo_tumbado.png" width="200">
+            <img src="https://tropa-fase2.academiametodos.com/Logo_tumbado.png" width="200">
             <p class="header">RECUPERACIÓN DE ACCESO</p>
             <p>Has solicitado recuperar tu contraseña para el Test de Personalidad de Métodos.</p>
             <p>Tu contraseña de acceso es:</p>
             <div class="pass-box">{password}</div>
             <p>Ya puedes volver a la web e iniciar sesión:</p>
-            <p><a class="link" href="http://tropa.academiametodos.com">Volver a la Academia</a></p>
+            <p><a class="link" href="https://tropa-fase2.academiametodos.com">Volver a la Academia</a></p>
         </div>
     </body>
     </html>
@@ -133,11 +141,13 @@ def send_recovery_email(email: str, password: str):
     return _send_email_base(email, subject, body, html)
 
 
+
+
 def send_access_extended_email(email: str, new_expiration: str, full_name: str = "Alumno"):
     """Envía una notificación de que el acceso a la plataforma ha sido ampliado."""
     subject = '¡Tu acceso a la plataforma ha sido renovado! - Academia Métodos'
-    body = f"¡Hola {full_name}!\n\nTe informamos de que tu acceso a la plataforma ha sido ampliado hasta el {new_expiration}.\n\nYa puedes seguir practicando: http://tropa.academiametodos.com"
-    
+    body = f"¡Hola {full_name}!\n\nTe informamos de que tu acceso a la plataforma ha sido ampliado hasta el {new_expiration}.\n\nYa puedes seguir practicando: https://tropa-fase2.academiametodos.com"
+   
     html = f"""
     <!DOCTYPE html>
     <html>
@@ -159,20 +169,20 @@ def send_access_extended_email(email: str, new_expiration: str, full_name: str =
     </head>
     <body>
         <div class="container">
-            <img class="logo" src="http://tropa.academiametodos.com/Logo_tumbado.png" alt="Academia Métodos">
+            <img class="logo" src="https://tropa-fase2.academiametodos.com/Logo_tumbado.png" alt="Academia Métodos">
             <p class="welcome">¡ACCESO RENOVADO, {full_name.upper()}!</p>
             <p>Te informamos de que hemos ampliado o renovado tu período de acceso a la plataforma para que puedas seguir preparándote al máximo.</p>
             <div class="info-box">
                 <p>Nueva fecha límite de acceso:</p>
                 <p class="date">{new_expiration}</p>
             </div>
-            <p><a class="link" href="http://tropa.academiametodos.com">SEGUIR ESTUDIANDO AHORA</a></p>
+            <p><a class="link" href="https://tropa-fase2.academiametodos.com">SEGUIR ESTUDIANDO AHORA</a></p>
             <p>Si tienes cualquier duda, estamos a tu disposición en <span class="contact-info">metodos@academiametodos.com</span> o en el <span class="contact-info">954 650 700</span>.</p>
             <br>
             <div class="social">
-                <a href="https://www.facebook.com/academiametodos/"><img src="http://tropa.academiametodos.com/FB.png" alt="FB"></a>
-                <a href="https://www.instagram.com/academiametodos/"><img src="http://tropa.academiametodos.com/INSTA.png" alt="IG"></a>
-                <a href="https://www.youtube.com/channel/UC9yYj498kx_vUxlX-R5ne1A"><img src="http://tropa.academiametodos.com/YOUTUBE.png" alt="YT"></a>
+                <a href="https://www.facebook.com/academiametodos/"><img src="https://tropa-fase2.academiametodos.com/FB.png" alt="FB"></a>
+                <a href="https://www.instagram.com/academiametodos/"><img src="https://tropa-fase2.academiametodos.com/INSTA.png" alt="IG"></a>
+                <a href="https://www.youtube.com/channel/UC9yYj498kx_vUxlX-R5ne1A"><img src="https://tropa-fase2.academiametodos.com/YOUTUBE.png" alt="YT"></a>
             </div>
             <div class="legal-cell">
                 <b>AVISO LEGAL:</b> Este correo es confidencial y va dirigido exclusivamente a su destinatario. Si lo ha recibido por error, por favor notifíquelo a metodos@academiametodos.com.
@@ -182,3 +192,5 @@ def send_access_extended_email(email: str, new_expiration: str, full_name: str =
     </html>
     """
     return _send_email_base(email, subject, body, html)
+
+

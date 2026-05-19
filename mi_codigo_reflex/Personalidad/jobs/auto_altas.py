@@ -63,8 +63,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Job de automatización de altas en Academia Métodos.")
     parser.add_argument("--dry-run", action="store_true", help="Lee pedidos y simula altas sin modificar la BD de Reflex ni enviar correos.")
     parser.add_argument("--pedido-id", type=str, default=None, help="Fuerza el procesamiento de un único ID de pedido.")
+    parser.add_argument("--audit", action="store_true", help="Audita el esquema de la base de datos externa de WooCommerce.")
     
     args = parser.parse_args()
+
+    if args.audit:
+        reader = OrdersReader()
+        reader.audit_schema()
+        sys.exit(0)
 
     # Adquirir FileLock antes de la ejecución real (evita concurrencias indeseadas)
     # Si ya se está ejecutando, saldrá limpiamente con código 0

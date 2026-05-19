@@ -10,68 +10,62 @@ from Personalidad.services.email_service import (
 )
 from Personalidad.states.base_state import State
 
+
 class LoginState(State):
     """Estado base para la gestión de login."""
     email: str = ""
     password: str = ""
-    isWaiting: bool = False 
+    isWaiting: bool = False
     isEmailValid: bool = False
     display: str = "none"
     description: str = "Introduce tus credenciales para acceder al test"
     isEmailRegistered: bool = False
-    isChecked: bool = False
-    isOptionalChecked: bool = False
     isClick1Done: bool = False
-    showPasswordAlert: str = "none" 
-    showEmailNotFoundAlert: bool = False 
-    
+    showPasswordAlert: str = "none"
+    showEmailNotFoundAlert: bool = False
+   
     def update_email(self, email: str):
         self.email = email.strip().lower()
         self.validate_email()
-        
+       
     def update_password(self, password: str):
         self.password = password
         self.showPasswordAlert = "none"
-        
+       
     def validate_email(self):
         """Valida el formato del email mediante regex."""
         regex = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
         self.isEmailValid = bool(re.match(regex, self.email))
-    
-    def toggleCheck(self, checked: bool):
-        self.isChecked = checked
-        
-    def toggleOptionalCheck(self, checked: bool):
-        self.isOptionalChecked = checked
-    
+   
     @rx.var
     def checkStatusButton(self) -> bool:
-        """Determina si el botón de login debe estar activado."""
-        return not (self.isChecked and self.isEmailValid and self.password != "")
-    
+        """Determina si el botón de login debe estar activado (solo requiere email válido y password)."""
+        return not (self.isEmailValid and self.password != "")
+   
     @rx.var
     def show_email_alert(self) -> str:
         return "none" if self.isEmailValid or self.email == "" else "block"
-        
+       
     @rx.var
     def show_terms_alert(self) -> bool:
-        """Determina si debe mostrarse la alerta de términos (True = mostrar)."""
-        return not self.isChecked
+        """Determina si debe mostrarse la alerta de términos (False ya que no hay checkboxes)."""
+        return False
+
 
 class ButtonClick(LoginState):
     """Maneja las acciones de los botones (Login y Recuperación)."""
-    
+   
     @rx.background
     async def click_event(self):
         self.isWaiting = True
-        self.showEmailNotFoundAlert = False 
+        self.showEmailNotFoundAlert = False
         self.showPasswordAlert = "none"
         yield
 
         # 1. Filtro de dominio (Solo academia o correos de prueba)
         if not is_authorized_email(self.email):
             self.isWaiting = False
-            self.showEmailNotFoundAlert = True 
+            self.showEmailNotFoundAlert = True
             yield
             return
 
@@ -82,7 +76,7 @@ class ButtonClick(LoginState):
             self.showEmailNotFoundAlert = True
             yield
             return
-        
+       
         # 3. Validación de credenciales
         login_success = await login(self.email, self.password)
         if not login_success:
@@ -110,7 +104,7 @@ class ButtonClick(LoginState):
 
         self.isWaiting = True
         yield
-        
+       
         # 1. Filtro de dominio
         if not is_authorized_email(self.email):
             self.isWaiting = False
@@ -127,7 +121,7 @@ class ButtonClick(LoginState):
                 send_recovery_email(self.email, new_pass)
                 self.isWaiting = False
                 yield rx.toast.success(
-                    f"Nueva contraseña enviada a {self.email}", 
+                    f"Nueva contraseña enviada a {self.email}",
                     position="bottom-right"
                 )
                 return
@@ -148,7 +142,5 @@ class ButtonClick(LoginState):
         self.email = ""
         self.password = ""
         self.isEmailValid = False
-        self.isChecked = False
-        self.isOptionalChecked = False
         self.showPasswordAlert = "none"
         self.showEmailNotFoundAlert = False
