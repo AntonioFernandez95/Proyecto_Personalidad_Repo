@@ -83,8 +83,11 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
             primer_valor = lista_datos[0].get(col)
             # Si el 'id' ya está en el JSON, lo definimos como clave primaria detectando su tipo
             if col == "id":
-                tipo_id = "INTEGER" if isinstance(primer_valor, int) else "TEXT"
-                columnas_def.append(f'"{col}" {tipo_id} PRIMARY KEY')
+                if esquema == "recursos":
+                    columnas_def.append(f'"{col}" SERIAL PRIMARY KEY')
+                else:
+                    tipo_id = "INTEGER" if isinstance(primer_valor, int) else "TEXT"
+                    columnas_def.append(f'"{col}" {tipo_id} PRIMARY KEY')
                 continue
                 
             if col in ["fecha", "desde", "hasta"]:
@@ -150,6 +153,26 @@ def importar_archivo(cursor, nombre_archivo, esquema, tabla):
             )
             cursor.execute(query, valores)
 
+        # Al finalizar de insertar, actualizamos la secuencia del SERIAL si es recursos
+        if esquema == "recursos":
+            try:
+                # Usar SAVEPOINT para proteger la transacción si esto da error en la BD
+                cursor.execute("SAVEPOINT seq_restart_sp;")
+                cursor.execute(f"SELECT COALESCE(MAX(id), 0) FROM {esquema}.{tabla};")
+                max_id = cursor.fetchone()[0]
+                nuevo_val = max(1, max_id + 1)
+                
+                seq_name = f"{esquema}.{tabla}_id_seq"
+                cursor.execute(f"ALTER SEQUENCE {seq_name} RESTART WITH {nuevo_val};")
+                cursor.execute("RELEASE SAVEPOINT seq_restart_sp;")
+                print(f"[OK] Secuencia {seq_name} reiniciada en {nuevo_val}")
+            except Exception as seq_err:
+                try:
+                    cursor.execute("ROLLBACK TO SAVEPOINT seq_restart_sp;")
+                except:
+                    pass
+                print(f"[WARN] No se pudo reiniciar secuencia para {esquema}.{tabla}: {seq_err}")
+
 def importar_todo():
     """Ejecuta la importación completa con fusión de datos de usuarios."""
     try:
@@ -199,7 +222,8 @@ def importar_todo():
                     "nombre", "apellidos", "dni", "email", "password", 
                     "pedido", "desde", "hasta", "count_login", 
                     "are_terms_accepted", "is_optional_checked", "disabled", "rol",
-                    "disabled_personalidad", "disabled_fisicas"
+                    "disabled_personalidad", "disabled_fisicas",
+                    "hasta_personalidad", "hasta_fisicas"
                 ]
                 
                 cur.execute(f"CREATE SCHEMA IF NOT EXISTS {esquema};")
@@ -208,9 +232,9 @@ def importar_todo():
                 # Definición de tabla (simplificada para brevedad, igual que antes)
                 columnas_def = []
                 for col in columnas:
-                    if col in ["desde", "hasta"]: columnas_def.append(f'"{col}" TIMESTAMP')
+                    if col in ["desde", "hasta", "hasta_personalidad", "hasta_fisicas"]: columnas_def.append(f'"{col}" TIMESTAMP')
                     elif col in ["count_login", "pedido"]: columnas_def.append(f'"{col}" INTEGER DEFAULT 0')
-                    elif col in ["are_terms_accepted", "disabled", "is_optional_checked"]: columnas_def.append(f'"{col}" BOOLEAN DEFAULT TRUE')
+                    elif col in ["are_terms_accepted", "disabled", "is_optional_checked", "disabled_personalidad", "disabled_fisicas"]: columnas_def.append(f'"{col}" BOOLEAN DEFAULT TRUE')
                     elif col == "rol": columnas_def.append(f'"{col}" TEXT DEFAULT \'estudiante\'')
                     else: columnas_def.append(f'"{col}" TEXT')
                 
@@ -232,6 +256,17 @@ def importar_todo():
                     desde = info.get("desde") or datetime.now()
                     hasta = info.get("hasta") or (datetime.now() + timedelta(days=30))
 
+                    # Parsear fechas de vencimiento si vienen como string en el JSON
+                    hasta_pers = info.get("hasta_personalidad")
+                    if isinstance(hasta_pers, str):
+                        try: hasta_pers = datetime.fromisoformat(hasta_pers)
+                        except: pass
+                    
+                    hasta_fis = info.get("hasta_fisicas")
+                    if isinstance(hasta_fis, str):
+                        try: hasta_fis = datetime.fromisoformat(hasta_fis)
+                        except: pass
+
                     valores = [
                         nombre, apellidos, info.get("dni"), email, pw,
                         info.get("pedido", 0), desde, hasta,
@@ -241,7 +276,9 @@ def importar_todo():
                         info.get("disabled", False),
                         "admin" if email.endswith("@academiametodos.com") else "estudiante",
                         info.get("disabled_personalidad", False),
-                        info.get("disabled_fisicas", False)
+                        info.get("disabled_fisicas", False),
+                        hasta_pers,
+                        hasta_fis
                     ]
                     
                     query = sql.SQL("INSERT INTO {}.{} ({}) VALUES ({})").format(

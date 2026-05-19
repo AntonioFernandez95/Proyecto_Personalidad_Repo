@@ -165,7 +165,7 @@ def obtener_tecnica_por_id(prueba_id: str):
 def guardar_video(nombre: str, url: str, categoria: str):
     from Personalidad.db.models.recurso_model import Video
     with Session(engine) as session:
-        nuevo = Video(nombre=nombre, url=url, categoria=categoria)
+        nuevo = Video(nombre=nombre, url=url, categoria=categoria, tipo="video")
         session.add(nuevo)
         session.commit()
 
@@ -195,7 +195,7 @@ def guardar_aptitudes(user_id: str, sinceridad: int, extraversion: int, depresio
 def guardar_pdf(nombre: str, url: str, categoria: str):
     from Personalidad.db.models.recurso_model import PDF
     with Session(engine) as session:
-        nuevo = PDF(nombre=nombre, url=url, categoria=categoria)
+        nuevo = PDF(nombre=nombre, url=url, categoria=categoria, tipo="pdf")
         session.add(nuevo)
         session.commit()
 
@@ -311,3 +311,37 @@ def upsert_simulacro(id: int = None, titulo: str = "", fecha: str = "", ubicacio
         session.add(nuevo)
         session.commit()
         return nuevo.id
+
+
+def obtener_auto_altas_recientes(limit: int = 10):
+    from sqlalchemy import text
+    try:
+        with engine.connect() as conn:
+            query = text("""
+                SELECT id, pedido_id, linea_id, producto_id, email, estado, intentos, error, usuario_id, fecha_inicio, fecha_vencimiento, created_at, updated_at
+                FROM usuarios_metodos.auto_altas_procesadas
+                ORDER BY created_at DESC
+                LIMIT :limit;
+            """)
+            result = conn.execute(query, {"limit": limit})
+            altas = []
+            for r in result:
+                altas.append({
+                    "id": r[0],
+                    "pedido_id": str(r[1]),
+                    "linea_id": str(r[2]),
+                    "producto_id": str(r[3]),
+                    "email": str(r[4]),
+                    "estado": str(r[5]),
+                    "intentos": int(r[6]),
+                    "error": str(r[7] or ""),
+                    "usuario_id": str(r[8] or ""),
+                    "fecha_inicio": r[9].strftime("%Y-%m-%d %H:%M") if r[9] else "",
+                    "fecha_vencimiento": r[10].strftime("%Y-%m-%d") if r[10] else "",
+                    "created_at": r[11].strftime("%Y-%m-%d %H:%M") if r[11] else "",
+                    "updated_at": r[12].strftime("%Y-%m-%d %H:%M") if r[12] else "",
+                })
+            return altas
+    except Exception as e:
+        print(f"Error al obtener auto-altas: {e}")
+        return []

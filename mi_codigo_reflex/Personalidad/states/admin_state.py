@@ -34,6 +34,7 @@ class AdminState(State):
     system_status: Dict[str, bool] = {}
     
     mostrar_todos_alumnos: bool = False
+    auto_altas: List[dict] = []
 
 
     def alternar_ver_mas(self):
@@ -476,11 +477,21 @@ class AdminState(State):
     def set_selected_categoria(self, cat: str):
         self.selected_categoria = cat
 
+    def fetch_auto_altas(self):
+        """Obtiene las auto-altas de WooCommerce procesadas recientemente."""
+        from Personalidad.db.crud import obtener_auto_altas_recientes
+        try:
+            self.auto_altas = obtener_auto_altas_recientes(15)
+        except Exception as e:
+            print(f"Error al obtener auto-altas: {e}")
+            self.auto_altas = []
+
     def on_load(self):
         if self.user_role != "admin":
             return rx.redirect("/academia")
         self.fetch_users()
         self.fetch_recursos()
+        self.fetch_auto_altas()
         self.check_system_health()
 
     @rx.var

@@ -163,6 +163,47 @@ def simulacro_row(simulacro: dict) -> rx.Component:
         border="1px solid #eee"
     )
 
+
+def auto_alta_row(alta: dict) -> rx.Component:
+    """Representación de una fila en la tabla de auto-altas."""
+    plan_nombre = rx.cond(
+        alta["producto_id"] == "380893", "Pers. (5d)",
+        rx.cond(
+            alta["producto_id"] == "396346", "Pers. (7d)",
+            rx.cond(
+                alta["producto_id"] == "396348", "Fisicas (30d)",
+                rx.cond(alta["producto_id"] == "396350", "Doble (30d)", f"Prod: {alta['producto_id']}")
+            )
+        )
+    )
+    
+    badge_color = rx.cond(
+        alta["estado"] == "processed", "green",
+        rx.cond(alta["estado"] == "failed", "red", "yellow")
+    )
+    
+    err_text = rx.cond(
+        alta["error"] != "", 
+        rx.text(f"Error: {alta['error']}", font_size="0.8em", color="red", font_style="italic"),
+        rx.text("Procesado con éxito", font_size="0.8em", color="green")
+    )
+
+    return rx.table.row(
+        rx.table.cell(rx.text(alta["pedido_id"], font_weight="bold", color=TEXT_DARK)),
+        rx.table.cell(rx.text(alta["email"], color=TEXT_MID, max_width="180px", is_truncated=True)),
+        rx.table.cell(rx.text(plan_nombre, color=TEXT_DARK, font_weight="500")),
+        rx.table.cell(rx.text(alta["fecha_vencimiento"], color=TEXT_MID)),
+        rx.table.cell(rx.badge(alta["estado"], color_scheme=badge_color, variant="solid")),
+        rx.table.cell(
+            rx.vstack(
+                rx.text(alta["created_at"], color=TEXT_MID, font_size="0.9em"),
+                err_text,
+                spacing="0", align="start"
+            )
+        ),
+        align="center",
+    )
+
 def admin_card(title: str, icon_name: str, *children, **kwargs) -> rx.Component:
     # Establecemos valores por defecto que se pueden sobreescribir vía kwargs
     kwargs.setdefault("width", "100%")
@@ -352,6 +393,39 @@ def admin_panel() -> rx.Component:
                             width="100%",
                         ),
                         width="100%",
+                    ),
+
+                    # Historial de Auto-Altas WooCommerce
+                    admin_card(
+                        "Historial de Auto-Altas (WooCommerce)", "shopping-bag",
+                        rx.cond(
+                            AdminState.auto_altas.length() == 0,
+                            rx.center(
+                                rx.text("Sin registros de altas procesadas todavía.", color=TEXT_MID, font_style="italic"),
+                                width="100%", padding="2em"
+                            ),
+                            rx.vstack(
+                                rx.table.root(
+                                    rx.table.header(
+                                        rx.table.row(
+                                            rx.table.column_header_cell("Pedido"),
+                                            rx.table.column_header_cell("Email"),
+                                            rx.table.column_header_cell("Plan"),
+                                            rx.table.column_header_cell("Vence"),
+                                            rx.table.column_header_cell("Estado"),
+                                            rx.table.column_header_cell("Fecha y Diagnóstico"),
+                                        )
+                                    ),
+                                    rx.table.body(
+                                        rx.foreach(AdminState.auto_altas, auto_alta_row)
+                                    ),
+                                    width="100%",
+                                    variant="surface",
+                                ),
+                                width="100%",
+                                overflow_x="auto", # Desplazamiento horizontal en tablas anchas (móvil)
+                            )
+                        ),
                     ),
                     flex="1.8",
                     width="100%",

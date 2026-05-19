@@ -1,13 +1,5 @@
 [
     {
-        "id": 6,
-        "titulo": "PRÓXIMA CONVOCATORIA",
-        "fecha": "25 de Abril, 2025",
-        "ubicacion": "Centro Municipal",
-        "descripcion": "escribo",
-        "url_reserva": "https://academiametodos.com/tropa-y-marineria/tropa-y-marineria-intensivo/?gad_source=1&gad_campaignid=23209479100&gbraid=0AAAAADhgRbGhy5mlD2yGzieXNYSdPPnVL&gclid=CjwKCAjw5ZXQBhBdEiwAI5XVWaGn38RQHMeduRvHuvBE-UBuYRQOUW2UINKcCBZjRnjKAVqSSMS1zBoCqpMQAvD_BwE"
-    },
-    {
         "id": 5,
         "titulo": " CONVOCATORIA",
         "fecha": "28 de Mayo",
