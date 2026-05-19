@@ -22,8 +22,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.backend
+    container_name: tropa-fase2-backend
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8100:8000"
     env_file: .env
     depends_on:
       db:
@@ -40,13 +41,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.frontend
+      args:
+        - API_URL=https://tropa-fase2.academiametodos.com
+    container_name: tropa-fase2-frontend
     ports:
-      - "81:80"
+      - "127.0.0.1:3100:80"
     volumes:
       - ./assets/uploads:/usr/share/nginx/html/uploads
     depends_on:
       - backend
 
 volumes:
-  postgres_data:
+  tropa_fase2_pgdata:
   uploads_data:
