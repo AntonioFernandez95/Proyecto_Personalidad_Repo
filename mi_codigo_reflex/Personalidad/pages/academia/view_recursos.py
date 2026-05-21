@@ -53,7 +53,7 @@ def resource_list_item(recurso: dict) -> rx.Component:
             # BOTÓN BORRAR
             rx.button(
                 rx.icon("trash-2", size=16),
-                on_click=lambda: AdminState.borrar_recurso(recurso),
+                on_click=lambda: AdminState.solicitar_borrar_recurso(recurso),
                 variant="ghost",
                 color_scheme="red",
                 size="1",
@@ -248,7 +248,7 @@ def resource_carousel(categories_data: list, current_index: rx.Var, next_action,
             # BOTÓN BORRAR
             rx.button(
                 rx.icon("trash-2", size=16),
-                on_click=lambda: AdminState.borrar_recurso(recurso),
+                on_click=lambda: AdminState.solicitar_borrar_recurso(recurso),
                 variant="ghost",
                 color_scheme="red",
                 size="1",
@@ -428,6 +428,66 @@ def resource_carousel(categories_data: list, current_index: rx.Var, next_action,
     )
 
 
+def confirm_delete_dialog() -> rx.Component:
+    """Diálogo modal de confirmación premium para el borrado de recursos."""
+    return rx.dialog.root(
+        rx.dialog.content(
+            rx.vstack(
+                rx.hstack(
+                    rx.center(
+                        rx.icon("triangle_alert", size=22, color="#E54D2E"),
+                        width="40px",
+                        height="40px",
+                        border_radius="10px",
+                        background="rgba(229, 77, 46, 0.1)",
+                    ),
+                    rx.dialog.title(
+                        "¿Estás seguro?",
+                        font_weight="bold",
+                        font_size="1.2em",
+                        margin="0"
+                    ),
+                    spacing="3",
+                    align="center",
+                ),
+                rx.dialog.description(
+                    "Esta acción no se puede deshacer. Se eliminará el recurso y el archivo del servidor de forma permanente.",
+                    font_size="0.9em",
+                    color_scheme="gray",
+                    margin_top="1em",
+                ),
+                rx.hstack(
+                    rx.dialog.close(
+                        rx.button(
+                            "No",
+                            on_click=AdminState.cancelar_borrar_recurso,
+                            variant="soft",
+                            color_scheme="gray",
+                            cursor="pointer",
+                        )
+                    ),
+                    rx.dialog.close(
+                        rx.button(
+                            "Sí",
+                            on_click=AdminState.confirmar_borrar_recurso,
+                            color_scheme="red",
+                            cursor="pointer",
+                        )
+                    ),
+                    spacing="3",
+                    margin_top="1.5em",
+                    justify="end",
+                    width="100%",
+                ),
+                align="start",
+                spacing="2",
+            ),
+            style={"max_width": 450},
+        ),
+        open=AdminState.show_confirm_delete,
+    )
+
+
 @rx.page(route="/academia/view_recursos", title="Biblioteca de Recursos", on_load=AdminState.on_load)
 def view_recursos() -> rx.Component:
     # Datos para los carruseles
@@ -563,6 +623,9 @@ def view_recursos() -> rx.Component:
                 border="none",
                 background="transparent",
             ),
+            
+            # Modal de Confirmación
+            confirm_delete_dialog(),
             
             width="100%",
             padding_bottom="4em",
