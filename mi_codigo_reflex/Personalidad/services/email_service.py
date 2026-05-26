@@ -143,10 +143,16 @@ def send_recovery_email(email: str, password: str):
 
 
 
-def send_access_extended_email(email: str, new_expiration: str, full_name: str = "Alumno"):
+def send_access_extended_email(email: str, full_name: str = "Alumno", modules: list = None, new_expiration: str = ""):
     """Envía una notificación de que el acceso a la plataforma ha sido ampliado."""
+    # Convertir fecha si viene como datetime
+    if hasattr(new_expiration, "strftime"):
+        new_expiration_str = new_expiration.strftime("%Y-%m-%d")
+    else:
+        new_expiration_str = str(new_expiration)
+
     subject = '¡Tu acceso a la plataforma ha sido renovado! - Academia Métodos'
-    body = f"¡Hola {full_name}!\n\nTe informamos de que tu acceso a la plataforma ha sido ampliado hasta el {new_expiration}.\n\nYa puedes seguir practicando: https://tropa-fase2.academiametodos.com"
+    body = f"¡Hola {full_name}!\n\nTe informamos de que tu acceso a la plataforma ha sido ampliado hasta el {new_expiration_str}.\n\nYa puedes seguir practicando: https://tropa-fase2.academiametodos.com"
    
     html = f"""
     <!DOCTYPE html>
@@ -174,7 +180,7 @@ def send_access_extended_email(email: str, new_expiration: str, full_name: str =
             <p>Te informamos de que hemos ampliado o renovado tu período de acceso a la plataforma para que puedas seguir preparándote al máximo.</p>
             <div class="info-box">
                 <p>Nueva fecha límite de acceso:</p>
-                <p class="date">{new_expiration}</p>
+                <p class="date">{new_expiration_str}</p>
             </div>
             <p><a class="link" href="https://tropa-fase2.academiametodos.com">SEGUIR ESTUDIANDO AHORA</a></p>
             <p>Si tienes cualquier duda, estamos a tu disposición en <span class="contact-info">metodos@academiametodos.com</span> o en el <span class="contact-info">954 650 700</span>.</p>

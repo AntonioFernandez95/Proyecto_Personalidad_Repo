@@ -15,14 +15,30 @@ import psycopg2
 from Personalidad.config import DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
 from Personalidad.services.email_service import send_credentials_email, send_access_extended_email
 
-# ---------------------------------------------------------------------------
-# MAPEADO DE PRODUCTOS → días de acceso y módulos habilitados
-# ---------------------------------------------------------------------------
 PRODUCT_ACCESS = {
+    # Antiguos/Pruebas SI
     "380893": {"days": 5,  "modules": ["personalidad"]},
     "396346": {"days": 7,  "modules": ["personalidad"]},
     "396348": {"days": 30, "modules": ["pruebas_fisicas"]},
     "396350": {"days": 30, "modules": ["personalidad", "pruebas_fisicas"]},
+    
+    # Nuevos Cursos Básicos comentar por ahora
+    # "146799": {"days": 30, "modules": ["personalidad"]},
+    # "146802": {"days": 5,  "modules": ["personalidad"]},
+    # "146805": {"days": 15, "modules": ["personalidad"]},
+    # "146808": {"days": 60, "modules": ["personalidad"]},
+    
+    # Curso Completo Online comentar por ahora
+    # "146820": {"days": 30, "modules": ["personalidad"]},  # Matrícula / Primer mes no da acceso a nada. 
+    # "146822": {"days": 30, "modules": ["personalidad"]},  # Mensualidad
+    
+    # Oficiales y Suboficiales comentar por ahora
+    # "146859": {"days": 30, "modules": ["personalidad"]},  # Pago por Plazos
+    
+    # Curso Intensivo Online comentar por ahora
+    # "146925": {"days": 30, "modules": ["personalidad"]},  # Intensivo + Plataforma
+    # "149873": {"days": 30, "modules": ["personalidad"]},  # Intensivo Online 1
+    # "396046": {"days": 30, "modules": ["personalidad"]},  # Intensivo Online 2 (OFERTA FLASH)
 }
 
 # ---------------------------------------------------------------------------
@@ -306,7 +322,7 @@ class AutoAltasService:
                         "UPDATE usuarios_metodos.usuarios_plataformas "
                         "SET hasta_personalidad=%s, hasta_fisicas=%s, "
                         "    disabled_personalidad=%s, disabled_fisicas=%s, "
-                        "    disabled=false, hasta=%s, pedido=%s "
+                        "    disabled=false, rol='estudiante', hasta=%s, pedido=%s "
                         "WHERE email=%s",
                         (hasta_perso_new, hasta_fisicas_new,
                          dis_perso_new, dis_fisicas_new,

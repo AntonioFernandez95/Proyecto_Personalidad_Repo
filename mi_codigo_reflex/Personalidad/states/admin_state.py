@@ -290,17 +290,18 @@ class AdminState(State):
 
 
     def fetch_users(self):
+        """Carga usuarios combinando la tabla principal y los auto‑altas procesados."""
         self.is_loading = True
         try:
             raw_users = db_client.find_all("usuarios_plataformas")
+            raw_auto = db_client.find_all("auto_altas_procesadas")
+            combined_raw = raw_users + raw_auto
             # Ordenamos por email
-            sorted_users = sorted(raw_users, key=lambda x: x.get("email", ""))
+            sorted_users = sorted(combined_raw, key=lambda x: x.get("email", ""))
             # Mapeamos al schema
             all_users = users_schema(sorted_users)
-           
             # FILTRO ESTRICTO: Solo mostramos estudiantes
-            self.users = [u for u in all_users if u.get("rol") == "estudiante"]
-               
+            self.users = [u for u in all_users if u.get("rol", "estudiante") == "estudiante"]
         except Exception as e:
             print(f"Error cargando usuarios: {e}")
             self.users = []
@@ -690,15 +691,7 @@ class AdminState(State):
 
 
 
-    @rx.var
-    def ultimos_recursos(self) -> List[dict]:
-        # Toma la lista completa (que ya ordenamos por fecha)
-        # y devuelve solo los 2 primeros
-        return self.recursos[:2]
-
-
-
-
+    # Carrusel de recursos
     carousel_index_pdf: int = 0
     carousel_index_video: int = 0
    

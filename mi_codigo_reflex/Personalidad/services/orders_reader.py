@@ -9,7 +9,7 @@ import pymysql
 from pymysql.cursors import DictCursor
 
 # IDs de producto que generan altas automáticas
-PRODUCT_IDS = ("380893", "396346", "396348", "396350")
+PRODUCT_IDS = ()
 
 
 class OrdersReader:
@@ -20,6 +20,20 @@ class OrdersReader:
         self.db       = os.getenv("ORDERS_DB_NAME",     "gestion")
         self.user     = os.getenv("ORDERS_DB_USER",     "usuOzein")
         self.password = os.getenv("ORDERS_DB_PASSWORD", "Ozy.rul3s.cl0ud")
+
+    def _get_last_processed_id(self) -> int:
+        """Return the highest pedido_id already processed.
+        The column is stored as VARCHAR, so we cast to integer.
+        Returns 0 if no rows exist.
+        """
+        conn = self._conn()
+        try:
+            with conn.cursor() as cur:
+                cur.execute("SELECT COALESCE(MAX(CAST(pedido_id AS INTEGER)), 0) FROM usuarios_metodos.auto_altas_procesadas")
+                result = cur.fetchone()
+                return int(result[0]) if result else 0
+        finally:
+            conn.close()
 
     def _conn(self):
         return pymysql.connect(
@@ -87,32 +101,35 @@ class OrdersReader:
     # ------------------------------------------------------------------
     # EXTRACCIÓN — Estrategia A: tabla personalizada woo_orders_items_todos
     # ------------------------------------------------------------------
+
     def _fetch_custom_table(self, desde: datetime.datetime) -> list:
         """
-        Intenta usar woo_orders_items_todos (tabla pre-agregada).
+        Intenta usar la tabla personalizada woo_orders_items_todos.
         Los nombres de columna se ajustan TRAS ejecutar audit_schema().
         """
+        # Determine the last processed order ID for incremental fetch
+        last_id = self._get_last_processed_id()
         query = """
             SELECT
                 order_id      AS pedido_id,
-                item_id       AS linea_id,
+                order_item_id AS linea_id,
                 product_id    AS producto_id,
-                billing_email AS email,
-                first_name    AS nombre,
-                last_name     AS apellidos,
-                date_created  AS created_at,
-                status        AS estado
-            FROM woo_orders_items_todos
-            WHERE date_created >= %s
-              AND status IN ('wc-completed','wc-processing','completed','processing','paid')
-              AND product_id IN %s;
+                _billing_email AS email,
+                _billing_first_name AS nombre,
+                _billing_last_name AS apellidos,
+                order_date    AS created_at,
+                order_status  AS estado
+            FROM resultados
+            WHERE order_status = 'wc-completed'
+              AND order_date >= %s
+              AND CAST(order_id AS INTEGER) > %s
         """
         conn = self._conn()
         try:
             with conn.cursor() as cur:
-                cur.execute(query, (desde, PRODUCT_IDS))
+                cur.execute(query, (desde, last_id))
                 rows = cur.fetchall()
-                print(f"[ORDERS] {len(rows)} registros desde woo_orders_items_todos.")
+                print(f"[ORDERS] {len(rows)} registros desde la tabla resultados (incremental > {last_id}).")
                 return list(rows)
         except Exception as e:
             print(f"[ORDERS] woo_orders_items_todos no disponible: {e}")
@@ -128,6 +145,8 @@ class OrdersReader:
         Query nativa sobre mcfi_posts + mcfi_postmeta + mcfi_woocommerce_order_items.
         Fallback automático si woo_orders_items_todos no tiene los campos necesarios.
         """
+        # Determine the last processed order ID for incremental fetch
+        last_id = self._get_last_processed_id()
         query = """
             SELECT
                 p.ID AS pedido_id,
@@ -146,17 +165,16 @@ class OrdersReader:
             INNER JOIN mcfi_postmeta pm
                 ON pm.post_id = p.ID
             WHERE p.post_type   = 'shop_order'
-              AND p.post_status IN ('wc-completed', 'wc-processing')
               AND p.post_date  >= %s
+              AND CAST(p.ID AS INTEGER) > %s
               AND pm.meta_key  IN ('_billing_email','_billing_first_name','_billing_last_name')
-            GROUP BY p.ID, oi.order_item_id
-            HAVING producto_id IN ('380893','396346','396348','396350');
+            GROUP BY p.ID, oi.order_item_id;
         """
         conn = self._conn()
         try:
             with conn.cursor() as cur:
-                print(f"[ORDERS] Query WooCommerce nativa desde {desde}...")
-                cur.execute(query, (desde,))
+                print(f"[ORDERS] Query WooCommerce nativa desde {desde} (incremental > {last_id})...")
+                cur.execute(query, (desde, last_id))
                 rows = cur.fetchall()
                 print(f"[ORDERS] {len(rows)} registros desde tablas mcfi_.")
                 return list(rows)
@@ -175,9 +193,11 @@ class OrdersReader:
         desde = (ahora - datetime.timedelta(days=1)).replace(
             hour=0, minute=0, second=0, microsecond=0
         )
+        print("[DEBUG] fetch_recent_orders() invoked")
         pedidos = self._fetch_custom_table(desde)
         if not pedidos:
             pedidos = self._fetch_woocommerce_native(desde)
+        print(f"[ORDERS] {len(pedidos)} registros obtenidos (limit 10).")
         return pedidos
 
     # ------------------------------------------------------------------

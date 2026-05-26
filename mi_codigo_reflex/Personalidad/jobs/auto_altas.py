@@ -14,6 +14,7 @@ def procesar_flujo(dry_run=False, forzar_pedido_id=None):
     # 1. Instanciar lector de pedidos y motor lógico del backend
     reader = OrdersReader()
     backend = AutoAltasService()
+    backend.init_db()  # Crea la tabla si no existe (idempotente)
     
     # 2. Extraer pedidos
     pedidos_bruto = reader.fetch_recent_orders()
