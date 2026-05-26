@@ -38,6 +38,8 @@ def crear_claudia():
             "disabled": False,
             "full_name": "Claudia Antequera",
             "count_login": 0,
+            "are_terms_accepted": True,
+            "is_optional_checked": True,
             "rol": "admin"
         }
     
@@ -55,6 +57,8 @@ def crear_claudia():
         "dni": "32132321a",
         "disabled": claudia_data.get("disabled", False),
         "count_login": claudia_data.get("count_login", 0),
+        "are_terms_accepted": True,
+        "is_optional_checked": True,
         "rol": "admin",
         "hasta_personalidad": "2026-12-31 23:59:59",
         "hasta_fisicas": "2026-12-31 23:59:59",
@@ -102,25 +106,27 @@ def crear_claudia():
             cur.execute("""
                 UPDATE usuarios_metodos.usuarios_plataformas 
                 SET password = %s, rol = %s, hasta_personalidad = %s, hasta_fisicas = %s, 
-                    disabled_personalidad = %s, disabled_fisicas = %s,
+                    disabled_personalidad = %s, disabled_fisicas = %s, are_terms_accepted = %s, is_optional_checked = %s,
                     nombre = %s, apellidos = %s, dni = %s, disabled = %s
                 WHERE email = %s
             """, (
                 claudia_final["password"], claudia_final["rol"], claudia_final["hasta_personalidad"], 
                 claudia_final["hasta_fisicas"], claudia_final["disabled_personalidad"], 
-                claudia_final["disabled_fisicas"], claudia_final["nombre"], claudia_final["apellidos"],
+                claudia_final["disabled_fisicas"], claudia_final["are_terms_accepted"],
+                claudia_final["is_optional_checked"], claudia_final["nombre"], claudia_final["apellidos"],
                 claudia_final["dni"], claudia_final["disabled"], claudia_final["email"]
             ))
         else:
             print("Insertando Claudia en la BD...")
             cur.execute("""
                 INSERT INTO usuarios_metodos.usuarios_plataformas 
-                (email, password, nombre, apellidos, dni, rol, hasta_personalidad, hasta_fisicas, disabled_personalidad, disabled_fisicas, disabled)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                (email, password, nombre, apellidos, dni, rol, hasta_personalidad, hasta_fisicas, disabled_personalidad, disabled_fisicas, are_terms_accepted, is_optional_checked, disabled)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """, (
                 claudia_final["email"], claudia_final["password"], claudia_final["nombre"], claudia_final["apellidos"],
                 claudia_final["dni"], claudia_final["rol"], claudia_final["hasta_personalidad"], claudia_final["hasta_fisicas"],
-                claudia_final["disabled_personalidad"], claudia_final["disabled_fisicas"], claudia_final["disabled"]
+                claudia_final["disabled_personalidad"], claudia_final["disabled_fisicas"], 
+                claudia_final["are_terms_accepted"], claudia_final["is_optional_checked"], claudia_final["disabled"]
             ))
         
         conn.commit()

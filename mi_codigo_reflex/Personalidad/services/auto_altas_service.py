@@ -333,10 +333,11 @@ class AutoAltasService:
                     cur.execute(
                         "INSERT INTO usuarios_metodos.usuarios_plataformas "
                         "(nombre,apellidos,dni,email,password,pedido,desde,hasta,"
-                        " count_login,disabled,rol,hasta_personalidad,hasta_fisicas,"
+                        " count_login,are_terms_accepted,is_optional_checked,"
+                        " disabled,rol,hasta_personalidad,hasta_fisicas,"
                         " disabled_personalidad,disabled_fisicas) "
                         "VALUES (%s,%s,%s,%s,%s,%s,NOW(),%s,"
-                        "        0,false,'estudiante',%s,%s,%s,%s)",
+                        "        0,false,true,false,'estudiante',%s,%s,%s,%s)",
                         (nombre, apellidos, dni, email, hashed_pwd,
                          pedido_num, hasta_global,
                          hasta_p, hasta_f, dis_p, dis_f)

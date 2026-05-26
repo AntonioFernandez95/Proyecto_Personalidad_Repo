@@ -7,6 +7,7 @@ class UserModel(BaseModel):
     email: str
     full_name: str
     count_login: int = Field(default=0)
+    are_terms_accepted: bool
     rol: str = "estudiante"
     disabled_personalidad: bool = False
     disabled_fisicas: bool = False
