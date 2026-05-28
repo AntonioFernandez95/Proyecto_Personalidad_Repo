@@ -113,6 +113,43 @@ def calculadora() -> rx.Component:
                         font_size="0.9em", color=TEXT_MID, text_align="center",
                     ),
                 ),
+                # Tabla de marcas mínimas
+                rx.vstack(
+                    rx.text("🏅 MÍNIMOS PARA APROBAR", font_size="0.8em", font_weight="800", color=OLIVE, letter_spacing="0.05em"),
+                    rx.table.root(
+                        rx.table.header(
+                            rx.table.row(
+                                rx.table.column_header_cell("Prueba",    font_weight="700", color=OLIVE, font_size="0.78em"),
+                                rx.table.column_header_cell("Hombres",   font_weight="700", color=OLIVE, font_size="0.78em"),
+                                rx.table.column_header_cell("Mujeres",   font_weight="700", color=OLIVE, font_size="0.78em"),
+                            )
+                        ),
+                        rx.table.body(
+                            rx.table.row(
+                                rx.table.cell("Potencia tren superior", color=TEXT_DARK, font_size="0.78em"),
+                                rx.table.cell("9 rep.",  color=TEXT_DARK, font_size="0.78em"),
+                                rx.table.cell("5 rep.",  color=TEXT_DARK, font_size="0.78em"),
+                            ),
+                            rx.table.row(
+                                rx.table.cell("Fuerza abdominal", color=TEXT_DARK, font_size="0.78em"),
+                                rx.table.cell("40 s",    color=TEXT_DARK, font_size="0.78em"),
+                                rx.table.cell("40 s",    color=TEXT_DARK, font_size="0.78em"),
+                            ),
+                            rx.table.row(
+                                rx.table.cell("Resistencia (2.000m)", color=TEXT_DARK, font_size="0.78em"),
+                                rx.table.cell("11' 54\"", color=TEXT_DARK, font_size="0.78em"),
+                                rx.table.cell("12' 58\"", color=TEXT_DARK, font_size="0.78em"),
+                            ),
+                            rx.table.row(
+                                rx.table.cell("Agilidad-velocidad", color=TEXT_DARK, font_size="0.78em"),
+                                rx.table.cell("15,4 s",  color=TEXT_DARK, font_size="0.78em"),
+                                rx.table.cell("17,1 s",  color=TEXT_DARK, font_size="0.78em"),
+                            ),
+                        ),
+                        width="100%",
+                    ),
+                    width="100%", spacing="2", margin_top="0.5em",
+                ),
                 spacing="4", align="center",
                 **CARD_STYLE, padding="2em", flex="1", min_width="260px", justify="center",
             ),

@@ -5,6 +5,8 @@ import json
 from Personalidad.db.models.historialSimplificado_model import HistorialFisicas, HistorialPersonalidad, Base
 
 
+
+
 # Configuración de conexión
 DB_NAME = os.getenv("DB_NAME", "db_personalidad_proyecto")
 DB_USER = os.getenv("DB_USER", "postgres")
@@ -13,11 +15,17 @@ DB_HOST = os.getenv("DB_HOST", "db")
 DB_PORT = os.getenv("DB_PORT", "5432")
 
 
+
+
 DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+
 
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True, pool_size=10, max_overflow=20)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+
 
 
 # Inicialización de esquemas
@@ -43,6 +51,8 @@ except Exception as e:
     pass
 
 
+
+
 # --- HISTORIAL ---
 def guardar_historial_fisico(user_id: str, gender: str, flexiones: int, plancha: int, km2000: int, agilidad: float, resultado: str, porcentaje: str):
     with Session(engine) as session:
@@ -66,6 +76,8 @@ def guardar_historial_fisico(user_id: str, gender: str, flexiones: int, plancha:
             return False
 
 
+
+
 def guardar_historial_personalidad(user_id: str, sinceridad: int, extraversion: int, neuroticismo: int, psicoticismo: int, es_apto: str):
     with Session(engine) as session:
         try:
@@ -84,6 +96,8 @@ def guardar_historial_personalidad(user_id: str, sinceridad: int, extraversion: 
             session.rollback()
             print(f"Error guardando historial personalidad: {e}")
             return False
+
+
 
 
 def consultar_historial_completo(user_id: str):
@@ -107,12 +121,16 @@ def consultar_historial_completo(user_id: str):
                     carrera_str = f"{mins:02d}:{secs:02d}"
 
 
+
+
                 # Lógica de baremo para colores individuales
                 g = f.gender.lower() if f.gender else "male"
-                if g == "female":
-                    t_flex, t_plan, t_agil, t_carr = 12, 40, 27.0, 780
+                if g in ["female", "femenino"]:
+                    t_flex, t_plan, t_agil, t_carr = 5, 40, 17.1, 778
                 else:
-                    t_flex, t_plan, t_agil, t_carr = 17, 60, 25.0, 660
+                    t_flex, t_plan, t_agil, t_carr = 9, 40, 15.4, 714
+
+
 
 
                 historial.append({
@@ -155,11 +173,15 @@ def consultar_historial_completo(user_id: str):
             return []
 
 
+
+
 # --- TÉCNICAS (Textos descriptivos) ---
 def obtener_tecnica_por_id(prueba_id: str):
     from Personalidad.db.models.tecnicaDetalle_model import TecnicaDetalle
     with Session(engine) as session:
         return session.query(TecnicaDetalle).filter(TecnicaDetalle.id == prueba_id).first()
+
+
 
 
 def guardar_video(nombre: str, url: str, categoria: str):
@@ -168,6 +190,8 @@ def guardar_video(nombre: str, url: str, categoria: str):
         nuevo = Video(nombre=nombre, url=url, categoria=categoria, tipo="video")
         session.add(nuevo)
         session.commit()
+
+
 
 
 def guardar_aptitudes(user_id: str, sinceridad: int, extraversion: int, depresion: int,
@@ -192,12 +216,16 @@ def guardar_aptitudes(user_id: str, sinceridad: int, extraversion: int, depresio
         session.commit()
 
 
+
+
 def guardar_pdf(nombre: str, url: str, categoria: str):
     from Personalidad.db.models.recurso_model import PDF
     with Session(engine) as session:
         nuevo = PDF(nombre=nombre, url=url, categoria=categoria, tipo="pdf")
         session.add(nuevo)
         session.commit()
+
+
 
 
 def obtener_recursos_combinados():
@@ -212,6 +240,8 @@ def obtener_recursos_combinados():
         for p in pdfs:
             resultado.append({"id": p.id, "nombre": p.nombre, "url": p.url, "categoria": p.categoria, "tipo": "pdf", "fecha": p.fecha})
         return resultado
+
+
 
 
 def eliminar_recurso_por_tipo(recurso_id: int, tipo: str):
@@ -229,6 +259,8 @@ def eliminar_recurso_por_tipo(recurso_id: int, tipo: str):
     return False
 
 
+
+
 def obtener_recursos_por_categoria_y_tipo(categoria: str, tipo: str):
     from Personalidad.db.models.recurso_model import Video, PDF
     with Session(engine) as session:
@@ -236,6 +268,8 @@ def obtener_recursos_por_categoria_y_tipo(categoria: str, tipo: str):
             return session.query(Video).filter(Video.categoria == categoria).all()
         else:
             return session.query(PDF).filter(PDF.categoria == categoria).all()
+
+
 
 
 def obtener_recursos_por_categoria(categoria: str):
@@ -246,6 +280,8 @@ def obtener_recursos_por_categoria(categoria: str):
         return videos + pdfs
 
 
+
+
 # --- SIMULACROS ---
 def obtener_simulacros():
     from Personalidad.db.models.simulacro_model import Simulacro
@@ -253,10 +289,14 @@ def obtener_simulacros():
         return session.query(Simulacro).order_by(Simulacro.fecha_creacion.desc()).all()
 
 
+
+
 def obtener_simulacro_por_id(id: int):
     from Personalidad.db.models.simulacro_model import Simulacro
     with Session(engine) as session:
         return session.query(Simulacro).filter(Simulacro.id == id).first()
+
+
 
 
 def guardar_simulacro(fecha: str, ubicacion: str, descripcion: str, titulo: str = "PRÓXIMA CONVOCATORIA"):
@@ -266,6 +306,8 @@ def guardar_simulacro(fecha: str, ubicacion: str, descripcion: str, titulo: str 
         session.add(nuevo)
         session.commit()
         return nuevo.id
+
+
 
 
 def actualizar_simulacro(id: int, fecha: str, ubicacion: str, descripcion: str, titulo: str):
@@ -282,6 +324,8 @@ def actualizar_simulacro(id: int, fecha: str, ubicacion: str, descripcion: str, 
     return False
 
 
+
+
 def eliminar_simulacro(id: int):
     from Personalidad.db.models.simulacro_model import Simulacro
     with Session(engine) as session:
@@ -291,6 +335,7 @@ def eliminar_simulacro(id: int):
             session.commit()
             return True
     return False
+
 
 def upsert_simulacro(id: int = None, titulo: str = "", fecha: str = "", ubicacion: str = "", descripcion: str = "", url_reserva: str = ""):
     from Personalidad.db.models.simulacro_model import Simulacro
@@ -305,12 +350,14 @@ def upsert_simulacro(id: int = None, titulo: str = "", fecha: str = "", ubicacio
                 item.url_reserva = url_reserva
                 session.commit()
                 return item.id
-        
+       
         # Si no hay ID o no se encontró, creamos uno nuevo
         nuevo = Simulacro(titulo=titulo, fecha=fecha, ubicacion=ubicacion, descripcion=descripcion, url_reserva=url_reserva)
         session.add(nuevo)
         session.commit()
         return nuevo.id
+
+
 
 
 def obtener_auto_altas_recientes(limit: int = 10):

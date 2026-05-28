@@ -9,12 +9,28 @@ from Personalidad.states.planificacion_state import PlanificacionState
 
 
 
+
+
+
+
+
+
+
+
 _MARCAS = [
-    ("Flexiones",     "17 reps", "12 reps"),
-    ("Plancha",       "60 seg",  "40 seg"),
-    ("Carrera 2000m", "11:00",   "13:00"),
-    ("Agilidad",      "25 seg",  "27 seg"),
+    ("Potencia tren superior", "9 rep.",   "5 rep."),
+    ("Fuerza abdominal",       "40 s",     "40 s"),
+    ("Resistencia (2.000m)",   "11' 54\"", "12' 58\""),
+    ("Agilidad-velocidad",     "15,4 s",   "17,1 s"),
 ]
+
+
+
+
+
+
+
+
 
 
 
@@ -79,6 +95,14 @@ def planificacion() -> rx.Component:
                     border=rx.color_mode_cond(light="1px solid #eee", dark="1px solid #444"),
                     margin_bottom="1.5em"
                 ),
+
+
+
+
+
+
+
+
 
 
 

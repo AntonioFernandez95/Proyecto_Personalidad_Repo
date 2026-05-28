@@ -81,11 +81,21 @@ def agilidad() -> rx.Component:
 
                     rx.divider(margin_y="1.5em"),
                    
-                    rx.hstack(
-                        rx.text(f"Tiempo máximo: {DetallesTecnicasState.tiempo}", font_weight="bold", color=OLIVE),
-                        rx.text("|", color=TEXT_DARK),
-                        rx.text(f"Intentos: {DetallesTecnicasState.intentos}", font_weight="bold", color=OLIVE),
-                        spacing="4"
+                    rx.vstack(
+                        rx.hstack(
+                            rx.icon("timer", color=OLIVE, size=20),
+                            rx.text(f"Tiempo: {DetallesTecnicasState.tiempo}", font_weight="bold", color=OLIVE),
+                            spacing="2",
+                            align="center"
+                        ),
+                        rx.hstack(
+                            rx.icon("rotate-ccw", color=OLIVE, size=20),
+                            rx.text(f"Intentos: {DetallesTecnicasState.intentos}", font_weight="bold", color=OLIVE),
+                            spacing="2",
+                            align="center"
+                        ),
+                        spacing="2",
+                        align="start",
                     ),
 
 

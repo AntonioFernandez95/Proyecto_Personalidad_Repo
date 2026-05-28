@@ -4,6 +4,8 @@ from Personalidad.states.fisicas_state import FisicasState
 from Personalidad.states.calculadora_state import CalculadoraState
 
 
+
+
 @rx.page(route="/academia/curso", title="Academia Online - Curso", on_load=CalculadoraState.check_fisicas_access)
 def curso() -> rx.Component:
     return academia_layout(
@@ -40,10 +42,41 @@ def curso() -> rx.Component:
                         color=TEXT_MID, font_size="0.92em",
                     ),
                     rx.vstack(
-                        rx.hstack(rx.icon("file-text", size=15, color=OLIVE), rx.text("Normativa de las pruebas",    font_size="0.9em", color=OLIVE)),
-                        rx.hstack(rx.icon("calendar",  size=15, color=OLIVE), rx.text("Calendario de convocatorias", font_size="0.9em", color=OLIVE)),
-                        rx.hstack(rx.icon("pen-line",  size=15, color=OLIVE), rx.text("Proceso de inscripción",      font_size="0.9em", color=OLIVE)),
+                        rx.link(
+                            rx.hstack(
+                                rx.icon("dumbbell", size=15, color=OLIVE),
+                                rx.text("Técnica", font_size="0.9em", color=OLIVE),
+                                align="center",
+                                spacing="2",
+                            ),
+                            href="/academia/tecnica",
+                            transition="all 0.2s ease",
+                            _hover={"opacity": 0.7, "text_decoration": "underline"},
+                        ),
+                        rx.link(
+                            rx.hstack(
+                                rx.icon("calendar", size=15, color=OLIVE),
+                                rx.text("Planes de entrenamientos", font_size="0.9em", color=OLIVE),
+                                align="center",
+                                spacing="2",
+                            ),
+                            href="/academia/planificacion",
+                            transition="all 0.2s ease",
+                            _hover={"opacity": 0.7, "text_decoration": "underline"},
+                        ),
+                        rx.link(
+                            rx.hstack(
+                                rx.icon("calculator", size=15, color=OLIVE),
+                                rx.text("Registra tus marcas y calcula tu resultado", font_size="0.9em", color=OLIVE),
+                                align="center",
+                                spacing="2",
+                            ),
+                            href="/academia/calculadora",
+                            transition="all 0.2s ease",
+                            _hover={"opacity": 0.7, "text_decoration": "underline"},
+                        ),
                         spacing="2", margin_top="0.5em",
+                        align_items="start",
                     ),
                     spacing="3", flex="1",
                 ),

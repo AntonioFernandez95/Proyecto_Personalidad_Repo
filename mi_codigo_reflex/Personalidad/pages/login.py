@@ -1,11 +1,14 @@
 import reflex as rx
 import Personalidad.styles.utils as utils
 
+
 from Personalidad.styles.fonts import Font
 from Personalidad.styles.styles import Size
 from Personalidad.styles.colors import Color
 from Personalidad.components.navbar import navbar
 from Personalidad.states.login_state import LoginState, ButtonClick
+
+
 
 
 @rx.page(route="/", title="Login", on_load=ButtonClick.check_authenticated)
@@ -18,13 +21,19 @@ def index():
                 rx.box(
                     rx.vstack(
                         rx.heading(
-                            "Test de Personalidad",
+                            "CURSO SEGUNDA FASE",
                             font_size=Size.MEDIUM_BIG,
                             font_family=Font.DEFAULT,
                             text_align="center"
                         ),
+                        rx.heading(
+                            "Tropa y Marinería",
+                            font_size=Size.DEFAULT,
+                            font_family=Font.DEFAULT,
+                            text_align="center"
+                        ),
                         rx.text(
-                            "Introduce tus credenciales para acceder al test",
+                            "Introduce tus credenciales para acceder",
                             text_align="center",
                             margin_top=Size.SMALL
                         ),
@@ -84,6 +93,7 @@ def index():
                             ),
                         ),
 
+
                         # --- OPCIÓN RECUPERACIÓN DE CONTRASEÑA ---
                         rx.box(
                             rx.link(
@@ -97,6 +107,7 @@ def index():
                             width="100%",
                             text_align="right",
                         ),
+
 
                         # Botón Acceder
                         rx.button(

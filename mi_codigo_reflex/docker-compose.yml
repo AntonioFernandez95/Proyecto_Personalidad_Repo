@@ -46,7 +46,7 @@ services:
       context: .
       dockerfile: Dockerfile.frontend
       args:
-        - API_URL=https://tropa-fase2.academiametodos.com
+        - API_URL=http://localhost:8100
     container_name: tropa-fase2-frontend
     ports:
       - "127.0.0.1:3100:80"

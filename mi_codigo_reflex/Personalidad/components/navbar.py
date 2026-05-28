@@ -20,6 +20,7 @@ def navbar() -> rx.Component:
                 "Métodos",
                 font_size=Size.BIG,
                 font_family=Font.LOGO,
+                font_weight="normal",
                 color=rx.color_mode_cond(light=Color.TEXT, dark="white"),
             ),
             align="center",
