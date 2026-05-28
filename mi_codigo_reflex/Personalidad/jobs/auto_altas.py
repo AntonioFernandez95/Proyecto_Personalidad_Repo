@@ -39,6 +39,7 @@ def procesar_flujo(dry_run=False, forzar_pedido_id=None):
             print(f"    - Pedido/Línea: {p['pedido_id']} / {p['linea_id']}")
             print(f"    - Producto: {p['producto_id']}")
             print(f"    - Alumno: {p['nombre']} {p['apellidos']} ({p['email']})")
+            print(f"    - Método Pago: {p.get('metodo_pago')}")
         else:
             # === MODO REAL (PRODUCCIÓN) ===
             success = backend.procesar_linea(
@@ -48,7 +49,8 @@ def procesar_flujo(dry_run=False, forzar_pedido_id=None):
                 email=p["email"],
                 nombre=p["nombre"],
                 apellidos=p["apellidos"],
-                dni=p["dni"]
+                dni=p["dni"],
+                metodo_pago=p.get("metodo_pago", "")
             )
             if success:
                 altas_reales += 1

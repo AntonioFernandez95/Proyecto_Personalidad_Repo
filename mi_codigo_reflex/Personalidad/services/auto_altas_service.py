@@ -132,6 +132,7 @@ class AutoAltasService:
             usuario_id        VARCHAR(255) NULL,
             fecha_inicio      TIMESTAMP    NULL,
             fecha_vencimiento TIMESTAMP    NULL,
+            metodo_pago       VARCHAR(100) NOT NULL DEFAULT '',
             created_at        TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
             updated_at        TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
             CONSTRAINT uq_pedido_linea_producto UNIQUE (pedido_id, linea_id, producto_id)
@@ -193,6 +194,7 @@ class AutoAltasService:
         nombre: str = "",
         apellidos: str = "",
         dni: str = None,
+        metodo_pago: str = "",
     ) -> bool:
         email       = email.strip().lower()
         pedido_id   = str(pedido_id).strip()
@@ -234,13 +236,13 @@ class AutoAltasService:
                     print(f"[IDEM] Máximo de intentos alcanzado. Saltando.")
                     return False
 
-                # Reintentar
+                # Reintentar y actualizar método de pago por si cambió o se reintenta
                 with conn.cursor() as cur:
                     cur.execute(
                         "UPDATE usuarios_metodos.auto_altas_procesadas "
-                        "SET estado='processing', intentos=%s, updated_at=NOW(), error=NULL "
+                        "SET estado='processing', intentos=%s, metodo_pago=%s, updated_at=NOW(), error=NULL "
                         "WHERE id=%s",
-                        (intentos + 1, registro["id"])
+                        (intentos + 1, metodo_pago, registro["id"])
                     )
                 conn.commit()
             else:
@@ -249,9 +251,9 @@ class AutoAltasService:
                     with conn.cursor() as cur:
                         cur.execute(
                             "INSERT INTO usuarios_metodos.auto_altas_procesadas "
-                            "(pedido_id,linea_id,producto_id,email,estado,intentos,created_at,updated_at) "
-                            "VALUES (%s,%s,%s,%s,'processing',1,NOW(),NOW())",
-                            (pedido_id, linea_id, producto_id, email)
+                            "(pedido_id,linea_id,producto_id,email,estado,intentos,metodo_pago,created_at,updated_at) "
+                            "VALUES (%s,%s,%s,%s,'processing',1,%s,NOW(),NOW())",
+                            (pedido_id, linea_id, producto_id, email, metodo_pago)
                         )
                     conn.commit()
                 except psycopg2.IntegrityError:

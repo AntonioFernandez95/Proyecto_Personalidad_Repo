@@ -29,9 +29,16 @@ class OrdersReader:
         conn = self._conn()
         try:
             with conn.cursor() as cur:
-                cur.execute("SELECT COALESCE(MAX(CAST(pedido_id AS INTEGER)), 0) FROM usuarios_metodos.auto_altas_procesadas")
+                # Usamos SIGNED ya que la conexión es de tipo MySQL/PyMySQL
+                cur.execute("SELECT COALESCE(MAX(CAST(pedido_id AS SIGNED)), 0) FROM resultados")
                 result = cur.fetchone()
-                return int(result[0]) if result else 0
+                if result:
+                    val = list(result.values())[0] if isinstance(result, dict) else result[0]
+                    return int(val or 0)
+                return 0
+        except Exception as e:
+            print(f"[ORDERS] Fallback en _get_last_processed_id (retornando 0): {e}")
+            return 0
         finally:
             conn.close()
 
@@ -118,11 +125,12 @@ class OrdersReader:
                 _billing_first_name AS nombre,
                 _billing_last_name AS apellidos,
                 order_date    AS created_at,
-                order_status  AS estado
+                order_status  AS estado,
+                _payment_method AS metodo_pago
             FROM resultados
             WHERE order_status = 'wc-completed'
               AND order_date >= %s
-              AND CAST(order_id AS INTEGER) > %s
+              AND CAST(order_id AS SIGNED) > %s
         """
         conn = self._conn()
         try:
@@ -155,6 +163,7 @@ class OrdersReader:
                 MAX(CASE WHEN pm.meta_key = '_billing_email'      THEN pm.meta_value END) AS email,
                 MAX(CASE WHEN pm.meta_key = '_billing_first_name' THEN pm.meta_value END) AS nombre,
                 MAX(CASE WHEN pm.meta_key = '_billing_last_name'  THEN pm.meta_value END) AS apellidos,
+                MAX(CASE WHEN pm.meta_key = '_payment_method'     THEN pm.meta_value END) AS metodo_pago,
                 p.post_date   AS created_at,
                 p.post_status AS estado
             FROM mcfi_posts p
@@ -166,8 +175,8 @@ class OrdersReader:
                 ON pm.post_id = p.ID
             WHERE p.post_type   = 'shop_order'
               AND p.post_date  >= %s
-              AND CAST(p.ID AS INTEGER) > %s
-              AND pm.meta_key  IN ('_billing_email','_billing_first_name','_billing_last_name')
+              AND CAST(p.ID AS SIGNED) > %s
+              AND pm.meta_key  IN ('_billing_email','_billing_first_name','_billing_last_name','_payment_method')
             GROUP BY p.ID, oi.order_item_id;
         """
         conn = self._conn()
@@ -210,6 +219,16 @@ class OrdersReader:
             if not email or "@" not in email:
                 print(f"[SANITY] Pedido {item.get('pedido_id')} sin email válido. Saltando.")
                 continue
+
+            # Mapeo de método de pago (redsys -> Tarjeta, bizum/redy_bizum -> redsys_bizum)
+            raw_method = str(item.get("metodo_pago") or "").strip().lower()
+            if "bizum" in raw_method or "redy_bizum" in raw_method or "redsys_bizum" in raw_method:
+                metodo_pago = "redsys_bizum"
+            elif "redsys" in raw_method or "card" in raw_method or "stripe" in raw_method:
+                metodo_pago = "Tarjeta"
+            else:
+                metodo_pago = raw_method  # Keep transfers or others untouched
+
             limpios.append({
                 "pedido_id":   str(item.get("pedido_id") or "").strip(),
                 "linea_id":    str(item.get("linea_id")  or "").strip(),
@@ -218,6 +237,7 @@ class OrdersReader:
                 "nombre":      str(item.get("nombre")    or "").strip().title(),
                 "apellidos":   str(item.get("apellidos") or "").strip().title(),
                 "dni":         None,  # WooCommerce no almacena DNI por defecto
+                "metodo_pago": metodo_pago,
             })
         print(f"[SANITY] {len(limpios)}/{len(raw)} registros válidos.")
         return limpios
